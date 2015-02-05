@@ -31,8 +31,11 @@
  *   by #include "WProgram.h".
  */
  
+#include "Arduino.h"
+#include "scheduler.h"
 #include "packet.h"
 #include "radio.h"
+#include "cops_and_robbers.h"
 //#include <Metro.h> // Include the Metro library to create a periodic task for sending messages.
 
 //#define LED_PIN 13 // Change accordingly to your board.
@@ -51,6 +54,9 @@ volatile uint8_t rxflag = 0;
 int joypinY = A1;
 int joypinX = A2;
 
+int buttonpin = A0;
+int sensorValueButton = 0;
+
 uint8_t station_addr[5] = {0xAA, 0xAA, 0xAA, 0xAA, 0xAA}; // Receiver address
 uint8_t my_addr[5] = { 0x98, 0x76, 0x54, 0x32, 0x11 }; // Transmitter address
 
@@ -58,6 +64,7 @@ int16_t sensorValueX;
 int16_t sensorValueY;
 
 radiopacket_t packet;
+radiopacket_t IRpacket;
 
 //Metro DisplayMetro = Metro(500); // 1 second in 8MHz clock
  
@@ -80,6 +87,7 @@ void setup()
 	Radio_Configure(RADIO_2MBPS, RADIO_HIGHEST_POWER);
 
         packet.type = COMMAND;
+        IRpacket.type = IR_COMMAND;
         memcpy(packet.payload.command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
 //   
 //        packet.payload.command.command = 137;
@@ -95,6 +103,13 @@ void setup()
 	//digitalWrite(LED_PIN, HIGH);
 	//Radio_Transmit(&packet, RADIO_WAIT_FOR_TX);
 	//delay(100);
+        
+        pinMode(buttonpin, INPUT);
+     
+        Scheduler_Init();
+     
+        Scheduler_StartTask(0, 25, joyControl);
+	Scheduler_StartTask(0, 50, joyButton);   
 }
 
 void joyControl(){
@@ -152,7 +167,7 @@ void joyControl(){
           sensorValueX = map(sensorValueX, -2, 2, -250, 250);
         }
        }
-       sensorValueY = 600;
+       sensorValueY = -600;
      }
      else if(sensorValueY < 0 && (sensorValueX > 0 || sensorValueX < 0))
      {
@@ -178,7 +193,7 @@ void joyControl(){
           sensorValueX = map(-1*sensorValueY, -2, 2, -250, 250);
         }
        }
-       sensorValueY = -600;
+       sensorValueY = 600;
      }   
   }
 
@@ -203,8 +218,8 @@ void roombaControl(int16_t valX, int16_t valY)
       packet.payload.command.arguments[1] = LOW_BYTE(valX);
       packet.payload.command.arguments[2] = HIGH_BYTE(valY);
       packet.payload.command.arguments[3] = LOW_BYTE(valY);
-      //if (Radio_Transmit(&packet, RADIO_WAIT_FOR_TX) == RADIO_TX_MAX_RT) // Transmitt packet.
-      if (Radio_Transmit(&packet, RADIO_RETURN_ON_TX) == RADIO_TX_MAX_RT) // Transmitt packet.
+      if (Radio_Transmit(&packet, RADIO_WAIT_FOR_TX) == RADIO_TX_MAX_RT) // Transmitt packet.
+      //if (Radio_Transmit(&packet, RADIO_RETURN_ON_TX) == RADIO_TX_MAX_RT) // Transmitt packet.
       {
    	//Serial.println("Data not trasmitted. Max retry.");
       }
@@ -231,12 +246,61 @@ void roombaControl(int16_t valX, int16_t valY)
     }  
 }
 
+void joyButton()
+{
+        sensorValueButton = analogRead(buttonpin);
+  
+        if(sensorValueButton < 20)
+        {
+          //Serial.println("SENDING");
+          IRpacket.type = IR_COMMAND;
+          memcpy(IRpacket.payload.ir_command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
+          IRpacket.payload.ir_command.ir_command = SEND_BYTE;
+          IRpacket.payload.ir_command.ir_data = 'A';
+          
+          if (Radio_Transmit(&IRpacket, RADIO_WAIT_FOR_TX) == RADIO_TX_MAX_RT) // Transmitt packet.
+          {
+            
+          }
+          else
+          {
+            
+          }
+          
+          if (rxflag)
+          {
+            if (Radio_Receive(&packet) != RADIO_RX_MORE_PACKETS)
+            {
+              rxflag = 0;
+            } 
+          }
+          
+          
+        }        
+  
+  
+}
+
+void idle(uint32_t idle_period)
+{
+ delay(idle_period); 
+}
+
 void loop()
 {
 	//delay(1000);
 	//digitalWrite(LED_PIN, HIGH);
 	// load up the packet contents again because the packet was used as an ACK packet before.
-        joyControl();       
+        //joyControl();
+        //joyButton();
+    
+    
+      
+        uint32_t idle_period = Scheduler_Dispatch();
+        if (idle_period)
+        {
+          idle(idle_period);
+        }    
 }
 
 // The radio_rxhandler is called by the radio IRQ pin interrupt routine when RX_DR is read in STATUS register.
