@@ -44,7 +44,6 @@
 // If you power your board with 5V, comment the following lines.
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 #define CPU_8MHz        0x01
-
 #define HIGH_BYTE(x) x>>8
 #define LOW_BYTE(x) x & 0x00FF 
  
@@ -71,103 +70,90 @@ radiopacket_t IRpacket;
 void setup()
 {
   //for (;;);
-	//CPU_PRESCALE(CPU_8MHz);
-	//Serial.begin(57600);
-  	Serial.begin(9600);
-        pinMode(10, OUTPUT);
-	digitalWrite(10, LOW);
-	delay(100);
-	digitalWrite(10, HIGH);
-	//pinMode(LED_PIN, OUTPUT);
-	Radio_Init();
+  //CPU_PRESCALE(CPU_8MHz);
+  //Serial.begin(57600);
+  Serial.begin(9600);
+  pinMode(10, OUTPUT);
+  digitalWrite(10, LOW);
+  delay(100);
+  digitalWrite(10, HIGH);
+  //pinMode(LED_PIN, OUTPUT);
+  Radio_Init();
 
-	// configure the receive settings for radio pipe 0
-	Radio_Configure_Rx(RADIO_PIPE_0, my_addr, ENABLE);
-	// configure radio transceiver settings.
-	Radio_Configure(RADIO_2MBPS, RADIO_HIGHEST_POWER);
+  // configure the receive settings for radio pipe 0
+  Radio_Configure_Rx(RADIO_PIPE_0, my_addr, ENABLE);
+  // configure radio transceiver settings.
+  Radio_Configure(RADIO_2MBPS, RADIO_HIGHEST_POWER);
 
-        packet.type = COMMAND;
-        IRpacket.type = IR_COMMAND;
-        memcpy(packet.payload.command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
-//   
-//        packet.payload.command.command = 137;
-//        packet.payload.command.num_arg_bytes = 4;
-//        packet.payload.command.arguments[0] = 255;
-//        packet.payload.command.arguments[1] = 56;
-//        packet.payload.command.arguments[2] = 1;
-//        packet.payload.command.arguments[3] = 244;
-
-
-	Radio_Set_Tx_Addr(station_addr);
-	//Serial.println("Yay");
-	//digitalWrite(LED_PIN, HIGH);
-	//Radio_Transmit(&packet, RADIO_WAIT_FOR_TX);
-	//delay(100);
-        
-        pinMode(buttonpin, INPUT);
+  packet.type = COMMAND;
+  IRpacket.type = IR_COMMAND;
+  memcpy(packet.payload.command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
+  Radio_Set_Tx_Addr(station_addr);
+  pinMode(buttonpin, INPUT);
      
-        Scheduler_Init();
+  Scheduler_Init();
      
-        Scheduler_StartTask(0, 25, joyControl);
-	Scheduler_StartTask(0, 50, joyButton);   
+  Scheduler_StartTask(0, 25, joyControl);
+  Scheduler_StartTask(0, 50, joyButton);   
 }
 
 void joyControl(){
   sensorValueX = map(analogRead(joypinX), 0, 1023, -2, 2);
   sensorValueY = map(analogRead(joypinY), 0, 1023, -2, 2);
-  if(sensorValueY == 0 && sensorValueX != 0)
+  if(sensorValueY == 0 && sensorValueX != 0) // Move straight command
   {
     if(sensorValueX > 0)
     {
       sensorValueX = map(sensorValueX, -2, 2, -250, 250);
-      sensorValueY = 0x8000;
+      sensorValueY = 0x8000; // set straight rotation
     }
     else
     {
       sensorValueX = map(sensorValueX, -2, 2, -250, 250);
-      sensorValueY = -0x8000;
+      sensorValueY = -0x8000; // set straight rotation for other direction
     }
   }
-  else if(sensorValueY != 0 && sensorValueX == 0)
+  else if(sensorValueY != 0 && sensorValueX == 0) // Rotate on spot command
   {
     if(sensorValueY > 0)
     {
-      sensorValueX = map(sensorValueY, -2, 2, -250, 250);
-      sensorValueY = 1;
+      sensorValueX = map(sensorValueY, -2, 2, -250, 250); // set speed
+      sensorValueY = -1; // set rotation
     }
     else
     {
-      sensorValueX = map(-1*sensorValueY, -2, 2, -250, 250);
-      sensorValueY = -1;
+      sensorValueX = map(-1*sensorValueY, -2, 2, -250, 250); // set speed
+      sensorValueY = 1; // set rotation
     }
   }
-  else
+  else  // calculate roughly 45 degree movement
   {
      if(sensorValueY > 0 && (sensorValueX > 0 || sensorValueX < 0))
      {
+       // Calculate the speed in one direction
        if(sensorValueY > 0 && sensorValueX > 0)
        {
-         if(sensorValueY > sensorValueX)
+         if(sensorValueY > sensorValueX) // Check faster speed
          {
-           sensorValueX = map(sensorValueY, -2, 2, -250, 250);
+           sensorValueX = map(sensorValueY, -2, 2, -250, 250); // set speed
          }
          else
          {
-           sensorValueX = map(sensorValueX, -2, 2, -250, 250);
+           sensorValueX = map(sensorValueX, -2, 2, -250, 250); // set speed
          } 
        } 
-       else
+       else // Calculate the speed in other direction
        {
-        if(sensorValueY > -1*sensorValueX)
+        if(sensorValueY > -1*sensorValueX) 
         {
-           sensorValueX = map(-1*sensorValueY, -2, 2, -250, 250);
+           sensorValueX = map(-1*sensorValueY, -2, 2, -250, 250); // set speed
         }
         else
         {
-          sensorValueX = map(sensorValueX, -2, 2, -250, 250);
+          sensorValueX = map(sensorValueX, -2, 2, -250, 250); // set speed
         }
        }
-       sensorValueY = -600;
+       sensorValueY = -600; // set rotation angle
      }
      else if(sensorValueY < 0 && (sensorValueX > 0 || sensorValueX < 0))
      {
@@ -175,110 +161,78 @@ void joyControl(){
        {
          if(sensorValueY > sensorValueX)
          {
-           sensorValueX = map(sensorValueX, -2, 2, -250, 250);
+           sensorValueX = map(sensorValueX, -2, 2, -250, 250); // set speed
          }
          else
          {
-           sensorValueX = map(sensorValueY, -2, 2, -250, 250);
+           sensorValueX = map(sensorValueY, -2, 2, -250, 250); // set speed
          } 
        } 
        else
        {
         if(sensorValueY > -1*sensorValueX)
         {
-           sensorValueX = map(sensorValueX, -2, 2, -250, 250);
+           sensorValueX = map(sensorValueX, -2, 2, -250, 250); // set speed
         }
         else
         {
-          sensorValueX = map(-1*sensorValueY, -2, 2, -250, 250);
+          sensorValueX = map(-1*sensorValueY, -2, 2, -250, 250); // set speed
         }
        }
-       sensorValueY = 600;
+       sensorValueY = 600; // set angle
      }   
   }
-
-  Serial.print(sensorValueX);
-  Serial.print(" ");
-  Serial.println(sensorValueY);
+  // When sent, sensorValueX is speed
+  // sesnorValueY is Rotation
   roombaControl(sensorValueX, sensorValueY);
-
-
-  
-  
-  //delay(20);   
 }
 
-void roombaControl(int16_t valX, int16_t valY)
+void roombaControl(int16_t valSpeed, int16_t valRot)
 {
-      packet.type = COMMAND;
-      memcpy(packet.payload.command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
-      packet.payload.command.command = 137;
-      packet.payload.command.num_arg_bytes = 4;
-      packet.payload.command.arguments[0] = HIGH_BYTE(valX);
-      packet.payload.command.arguments[1] = LOW_BYTE(valX);
-      packet.payload.command.arguments[2] = HIGH_BYTE(valY);
-      packet.payload.command.arguments[3] = LOW_BYTE(valY);
-      if (Radio_Transmit(&packet, RADIO_WAIT_FOR_TX) == RADIO_TX_MAX_RT) // Transmitt packet.
-      //if (Radio_Transmit(&packet, RADIO_RETURN_ON_TX) == RADIO_TX_MAX_RT) // Transmitt packet.
-      {
-   	//Serial.println("Data not trasmitted. Max retry.");
-      }
-      else // Transmitted succesfully.
-      {
-        //Serial.println("Data trasmitted.");
-      }
-	
-      // The rxflag is set by radio_rxhandler function below indicating that a
-      // new packet is ready to be read.
-      if (rxflag)
-      {
-      	if (Radio_Receive(&packet) != RADIO_RX_MORE_PACKETS) // Receive packet.
-    	{
-          // if there are no more packets on the radio, clear the receive flag;
-	  // otherwise, we want to handle the next packet on the next loop iteration.
-	  rxflag = 0;
-	}
-//	if (packet.type == ACK)
-//	{
-//        Serial.println("ACK");
-//	  //digitalWrite(LED_PIN, LOW); // Turn off the led.
-//	}
-    }  
+  packet.type = COMMAND;
+  memcpy(packet.payload.command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
+  packet.payload.command.command = 137; // move opcode
+  packet.payload.command.num_arg_bytes = 4;
+  // set the four segment of high and low bytes of commands
+  packet.payload.command.arguments[0] = HIGH_BYTE(valSpeed);
+  packet.payload.command.arguments[1] = LOW_BYTE(valSpeed);
+  packet.payload.command.arguments[2] = HIGH_BYTE(valRot);
+  packet.payload.command.arguments[3] = LOW_BYTE(valRot);
+  Radio_Transmit(&packet, RADIO_WAIT_FOR_TX) == RADIO_TX_MAX_RT; 
+  // The rxflag is set by radio_rxhandler function below indicating that a
+  // new packet is ready to be read.
+  if (rxflag)
+  {
+     if (Radio_Receive(&packet) != RADIO_RX_MORE_PACKETS) // Receive packet.
+     {
+        // if there are no more packets on the radio, clear the receive flag;
+        // otherwise, we want to handle the next packet on the next loop iteration.
+        rxflag = 0;
+     }
+  }
 }
 
 void joyButton()
 {
-        sensorValueButton = analogRead(buttonpin);
-  
-        if(sensorValueButton < 20)
-        {
-          //Serial.println("SENDING");
-          IRpacket.type = IR_COMMAND;
-          memcpy(IRpacket.payload.ir_command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
-          IRpacket.payload.ir_command.ir_command = SEND_BYTE;
-          IRpacket.payload.ir_command.ir_data = 'A';
-          
-          if (Radio_Transmit(&IRpacket, RADIO_WAIT_FOR_TX) == RADIO_TX_MAX_RT) // Transmitt packet.
-          {
-            
-          }
-          else
-          {
-            
-          }
-          
-          if (rxflag)
-          {
-            if (Radio_Receive(&packet) != RADIO_RX_MORE_PACKETS)
-            {
-              rxflag = 0;
-            } 
-          }
-          
-          
-        }        
-  
-  
+  sensorValueButton = analogRead(buttonpin);
+
+  if(sensorValueButton < 20)
+  {
+    //Serial.println("SENDING");
+    IRpacket.type = IR_COMMAND;
+    memcpy(IRpacket.payload.ir_command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
+    IRpacket.payload.ir_command.ir_command = SEND_BYTE;
+    IRpacket.payload.ir_command.ir_data = 'A';
+    
+    Radio_Transmit(&IRpacket, RADIO_WAIT_FOR_TX) == RADIO_TX_MAX_RT;
+    if (rxflag)
+    {
+      if (Radio_Receive(&packet) != RADIO_RX_MORE_PACKETS)
+      {
+        rxflag = 0;
+      } 
+    }
+  }        
 }
 
 void idle(uint32_t idle_period)
@@ -288,24 +242,17 @@ void idle(uint32_t idle_period)
 
 void loop()
 {
-	//delay(1000);
-	//digitalWrite(LED_PIN, HIGH);
-	// load up the packet contents again because the packet was used as an ACK packet before.
-        //joyControl();
-        //joyButton();
-    
-    
-      
-        uint32_t idle_period = Scheduler_Dispatch();
-        if (idle_period)
-        {
-          idle(idle_period);
-        }    
+  uint32_t idle_period = Scheduler_Dispatch();
+  if (idle_period)
+  {
+    idle(idle_period);
+  }    
+
 }
 
 // The radio_rxhandler is called by the radio IRQ pin interrupt routine when RX_DR is read in STATUS register.
 void radio_rxhandler(uint8_t pipe_number)
 {
-	rxflag = 1;
+rxflag = 1;
 }
 
