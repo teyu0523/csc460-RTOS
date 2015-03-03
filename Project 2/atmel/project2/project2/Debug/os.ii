@@ -1,5 +1,5 @@
 # 1 ".././os.cpp"
-# 1 "E:\\Google Drive\\Course\\csc460\\CSC 460\\Project 2\\atmel\\project2\\project2\\Debug//"
+# 1 "E:\\Google Drive\\Course\\csc460\\lab\\CSC460\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
 # 1 "<command-line>"
 # 1 ".././os.cpp"
 # 12 ".././os.cpp"
@@ -545,12 +545,23 @@ _delay_us(double __us)
 extern "C" {
 # 224 ".././os.h"
 typedef struct service SERVICE;
-# 252 ".././os.h"
+
+
+
+
+
+
+ extern const unsigned char PPP[];
+
+
+ extern const unsigned int PT;
+# 255 ".././os.h"
 void OS_Abort();
-# 270 ".././os.h"
+# 273 ".././os.h"
 int8_t Task_Create_System(void (*f)(void), int16_t arg);
 int8_t Task_Create_RR( void (*f)(void), int16_t arg);
-# 289 ".././os.h"
+int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name);
+# 292 ".././os.h"
 int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16_t wcet, uint16_t start);
 
 
@@ -568,13 +579,13 @@ void Task_Next();
 
 
 int16_t Task_GetArg();
-# 315 ".././os.h"
+# 318 ".././os.h"
 SERVICE *Service_Init();
-# 325 ".././os.h"
+# 328 ".././os.h"
 void Service_Subscribe( SERVICE *s, int16_t *v );
-# 335 ".././os.h"
+# 338 ".././os.h"
 void Service_Publish( SERVICE *s, int16_t v );
-# 355 ".././os.h"
+# 358 ".././os.h"
 uint16_t Now();
 
 
@@ -719,20 +730,7 @@ ERR_RUN_5_RTOS_INTERNAL_ERROR,
 
 
 int r_main();
-
-
-
-
-const unsigned char PPP[] = {1, 140*2,
-       0, 2*2,
-       0, 6*2,
-       0, 12*2,
-              0, 40*2 };
-
-
-const unsigned int PT = 5;
-
-
+# 35 ".././os.cpp"
 static task_descriptor_t* cur_task = 0;
 
 
@@ -814,7 +812,7 @@ static void idle (void)
     for(;;)
     {};
 }
-# 137 ".././os.cpp"
+# 132 ".././os.cpp"
 static void kernel_main_loop(void)
 {
     for(;;)
@@ -829,7 +827,7 @@ static void kernel_main_loop(void)
         kernel_handle_request();
     }
 }
-# 161 ".././os.cpp"
+# 156 ".././os.cpp"
 static void kernel_dispatch(void)
 {
 
@@ -860,7 +858,7 @@ static void kernel_dispatch(void)
         cur_task->state = RUNNING;
     }
 }
-# 201 ".././os.cpp"
+# 196 ".././os.cpp"
 static void kernel_handle_request(void)
 {
    switch(kernel_request)
@@ -952,14 +950,14 @@ static void kernel_handle_request(void)
 
     kernel_request = NONE;
 }
-# 408 ".././os.cpp"
+# 412 ".././os.cpp"
 static void exit_kernel(void)
 {
 
 
 
 
-     asm volatile ( "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;asm volatile ( "push   r31             \n\t" "push   r30             \n\t" "push   r29             \n\t" "push   r28             \n\t" "push   r27             \n\t" "push   r26             \n\t" "push   r25             \n\t" "push   r24             \n\t" "push   r23             \n\t" "push   r22             \n\t" "push   r21             \n\t" "push   r20             \n\t" "push   r19             \n\t" "push   r18             \n\t" "push   r17             \n\t" "push   r16             \n\t" "push   r15             \n\t" "push   r14             \n\t" "push   r13             \n\t" "push   r12             \n\t" "push   r11             \n\t" "push   r10             \n\t" "push   r9              \n\t" "push   r8              \n\t" "push   r7              \n\t" "push   r6              \n\t" "push   r5              \n\t" "push   r4              \n\t" "push   r3              \n\t" "push   r2              \n\t" "push   r1              \n\t" "push   r0              \n\t"::);;;
+     asm volatile ( "push   r31             \n\t" "in     r31,0X3C        \n\t" "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;asm volatile ( "push   r31             \n\t" "push   r30             \n\t" "push   r29             \n\t" "push   r28             \n\t" "push   r27             \n\t" "push   r26             \n\t" "push   r25             \n\t" "push   r24             \n\t" "push   r23             \n\t" "push   r22             \n\t" "push   r21             \n\t" "push   r20             \n\t" "push   r19             \n\t" "push   r18             \n\t" "push   r17             \n\t" "push   r16             \n\t" "push   r15             \n\t" "push   r14             \n\t" "push   r13             \n\t" "push   r12             \n\t" "push   r11             \n\t" "push   r10             \n\t" "push   r9              \n\t" "push   r8              \n\t" "push   r7              \n\t" "push   r6              \n\t" "push   r5              \n\t" "push   r4              \n\t" "push   r3              \n\t" "push   r2              \n\t" "push   r1              \n\t" "push   r0              \n\t"::);;;
 
 
 
@@ -974,18 +972,18 @@ static void exit_kernel(void)
 
 
 
-    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t" "pop    r31             \n\t" "out    __SREG__, r31    \n\t" "pop    r31             \n\t"::);;
-# 440 ".././os.cpp"
+    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t"::);;asm volatile ( "pop    r31             \n\t" "out    __SREG__, r31   \n\t" "pop    r31             \n\t" "out    0X3C, r31       \n\t" "pop    r31             \n\t"::);;;
+# 444 ".././os.cpp"
     asm volatile ("ret\n"::);
 }
-# 453 ".././os.cpp"
+# 457 ".././os.cpp"
 static void enter_kernel(void)
 {
 
 
 
 
-    asm volatile ( "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;asm volatile ( "push   r31             \n\t" "push   r30             \n\t" "push   r29             \n\t" "push   r28             \n\t" "push   r27             \n\t" "push   r26             \n\t" "push   r25             \n\t" "push   r24             \n\t" "push   r23             \n\t" "push   r22             \n\t" "push   r21             \n\t" "push   r20             \n\t" "push   r19             \n\t" "push   r18             \n\t" "push   r17             \n\t" "push   r16             \n\t" "push   r15             \n\t" "push   r14             \n\t" "push   r13             \n\t" "push   r12             \n\t" "push   r11             \n\t" "push   r10             \n\t" "push   r9              \n\t" "push   r8              \n\t" "push   r7              \n\t" "push   r6              \n\t" "push   r5              \n\t" "push   r4              \n\t" "push   r3              \n\t" "push   r2              \n\t" "push   r1              \n\t" "push   r0              \n\t"::);;;
+    asm volatile ( "push   r31             \n\t" "in     r31,0X3C        \n\t" "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;asm volatile ( "push   r31             \n\t" "push   r30             \n\t" "push   r29             \n\t" "push   r28             \n\t" "push   r27             \n\t" "push   r26             \n\t" "push   r25             \n\t" "push   r24             \n\t" "push   r23             \n\t" "push   r22             \n\t" "push   r21             \n\t" "push   r20             \n\t" "push   r19             \n\t" "push   r18             \n\t" "push   r17             \n\t" "push   r16             \n\t" "push   r15             \n\t" "push   r14             \n\t" "push   r13             \n\t" "push   r12             \n\t" "push   r11             \n\t" "push   r10             \n\t" "push   r9              \n\t" "push   r8              \n\t" "push   r7              \n\t" "push   r6              \n\t" "push   r5              \n\t" "push   r4              \n\t" "push   r3              \n\t" "push   r2              \n\t" "push   r1              \n\t" "push   r0              \n\t"::);;;
 
 
 
@@ -1000,7 +998,7 @@ static void enter_kernel(void)
 
 
 
-    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t" "pop    r31             \n\t" "out    __SREG__, r31    \n\t" "pop    r31             \n\t"::);;
+    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t"::);;asm volatile ( "pop    r31             \n\t" "out    __SREG__, r31   \n\t" "pop    r31             \n\t" "out    0X3C, r31       \n\t" "pop    r31             \n\t"::);;;
 
 
 
@@ -1010,11 +1008,11 @@ static void enter_kernel(void)
 
     asm volatile ("ret\n"::);
 }
-# 500 ".././os.cpp"
+# 504 ".././os.cpp"
 void __vector_17(void)
 {
-# 514 ".././os.cpp"
-    asm volatile ( "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;
+# 518 ".././os.cpp"
+    asm volatile ( "push   r31             \n\t" "in     r31,0X3C        \n\t" "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;
 
     asm volatile ( "ori    r31, 0x80        \n\t"::);;
 
@@ -1047,11 +1045,11 @@ void __vector_17(void)
 
 
 
-    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t" "pop    r31             \n\t" "out    __SREG__, r31    \n\t" "pop    r31             \n\t"::);;
-# 557 ".././os.cpp"
+    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t"::);;asm volatile ( "pop    r31             \n\t" "out    __SREG__, r31   \n\t" "pop    r31             \n\t" "out    0X3C, r31       \n\t" "pop    r31             \n\t"::);;;
+# 561 ".././os.cpp"
     asm volatile ("ret\n"::);
 }
-# 572 ".././os.cpp"
+# 576 ".././os.cpp"
 static int kernel_create_task()
 {
 
@@ -1101,7 +1099,7 @@ static int kernel_create_task()
  }
 
     stack_bottom = &(p->stack[256 -1]);
-# 631 ".././os.cpp"
+# 635 ".././os.cpp"
     uint8_t* stack_top = stack_bottom - (32 + 1 + 2 + 2);
 
 
@@ -1112,16 +1110,14 @@ static int kernel_create_task()
     stack_top[2] = (uint8_t) 0;
 
     stack_top[32] = (uint8_t) (1 << ((7)));
-# 649 ".././os.cpp"
-    stack_top[34] = (uint8_t)((uint16_t)(kernel_request_create_args.f) >> 8);
-    stack_top[35] = (uint8_t)(uint16_t)(kernel_request_create_args.f);
-    stack_top[36] = (uint8_t)((uint16_t)Task_Terminate >> 8);
-    stack_top[37] = (uint8_t)(uint16_t)Task_Terminate;
-
-
-
-
-
+# 653 ".././os.cpp"
+  stack_top[35] = (uint8_t)(0);
+  stack_top[36] = (uint8_t)((uint16_t)(kernel_request_create_args.f) >> 8);
+  stack_top[37] = (uint8_t)(uint16_t)(kernel_request_create_args.f);
+  stack_top[38] = (uint8_t)(0);
+  stack_top[39] = (uint8_t)((uint16_t)Task_Terminate >> 8);
+  stack_top[40] = (uint8_t)(uint16_t)Task_Terminate;
+# 669 ".././os.cpp"
     p->sp = stack_top;
 
     p->state = READY;
@@ -1169,7 +1165,7 @@ static void kernel_terminate_task(void)
     }
     enqueue(&dead_pool_queue, cur_task);
 }
-# 716 ".././os.cpp"
+# 727 ".././os.cpp"
 static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add)
 {
     task_to_add->next = 0;
@@ -1187,7 +1183,7 @@ static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add)
         queue_ptr->tail = task_to_add;
     }
 }
-# 741 ".././os.cpp"
+# 752 ".././os.cpp"
 static task_descriptor_t* dequeue(queue_t* queue_ptr)
 {
     task_descriptor_t* task_ptr = queue_ptr->head;
@@ -1270,7 +1266,7 @@ static void check_PPP_names(void)
         }
     }
 }
-# 845 ".././os.cpp"
+# 856 ".././os.cpp"
 void OS_Init()
 {
     int i;
@@ -1413,7 +1409,7 @@ void OS_Abort(void)
         }
     }
 }
-# 1006 ".././os.cpp"
+# 1016 ".././os.cpp"
 int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name)
 {
     int retval;

@@ -1,5 +1,5 @@
 # 1 ".././project2.cpp"
-# 1 "E:\\Google Drive\\Course\\csc460\\CSC 460\\Project 2\\atmel\\project2\\project2\\Debug//"
+# 1 "E:\\Google Drive\\Course\\csc460\\lab\\CSC460\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
 # 1 "<command-line>"
 # 1 ".././project2.cpp"
 
@@ -225,50 +225,6 @@ typedef struct
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\lock.h" 1 3
 # 631 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
 # 3 ".././project2.cpp" 2
-# 13 ".././project2.cpp"
-# 1 ".././os.h" 1
-
-
-
-
-extern "C" {
-# 224 ".././os.h"
-typedef struct service SERVICE;
-# 252 ".././os.h"
-void OS_Abort();
-# 270 ".././os.h"
-int8_t Task_Create_System(void (*f)(void), int16_t arg);
-int8_t Task_Create_RR( void (*f)(void), int16_t arg);
-# 289 ".././os.h"
-int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16_t wcet, uint16_t start);
-
-
-
-
-
-
-
-void Task_Terminate();
-
-
-void Task_Next();
-
-
-
-
-int16_t Task_GetArg();
-# 315 ".././os.h"
-SERVICE *Service_Init();
-# 325 ".././os.h"
-void Service_Subscribe( SERVICE *s, int16_t *v );
-# 335 ".././os.h"
-void Service_Publish( SERVICE *s, int16_t v );
-# 355 ".././os.h"
-uint16_t Now();
-
-
-}
-# 14 ".././project2.cpp" 2
 # 1 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\cores\\arduino/Arduino.h" 1
 # 23 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\cores\\arduino/Arduino.h"
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 1 3
@@ -1819,19 +1775,239 @@ static const uint8_t A5 = 19;
 static const uint8_t A6 = 20;
 static const uint8_t A7 = 21;
 # 236 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\cores\\arduino/Arduino.h" 2
-# 15 ".././project2.cpp" 2
+# 4 ".././project2.cpp" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 1 3
+# 43 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 1 3
+# 40 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
+static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
+# 80 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+void
+_delay_loop_1(uint8_t __count)
+{
+ __asm__ volatile (
+  "1: dec %0" "\n\t"
+  "brne 1b"
+  : "=r" (__count)
+  : "0" (__count)
+ );
+}
+# 102 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+void
+_delay_loop_2(uint16_t __count)
+{
+ __asm__ volatile (
+  "1: sbiw %0,1" "\n\t"
+  "brne 1b"
+  : "=w" (__count)
+  : "0" (__count)
+ );
+}
+# 44 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 2 3
+# 84 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+static inline void _delay_us(double __us) __attribute__((always_inline));
+static inline void _delay_ms(double __ms) __attribute__((always_inline));
+# 141 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+void
+_delay_ms(double __ms)
+{
+ double __tmp ;
 
-enum { A=1, B, C, D, E, F, G };
-const unsigned int PT = 0;
-const unsigned char PPP[] = {};
+
+
+ uint32_t __ticks_dc;
+ extern void __builtin_avr_delay_cycles(unsigned long);
+ __tmp = ((16000000L) / 1e3) * __ms;
+# 160 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+  __ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+
+
+ __builtin_avr_delay_cycles(__ticks_dc);
+# 186 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+}
+# 223 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+void
+_delay_us(double __us)
+{
+ double __tmp ;
 
 
 
-void round_robin(void)
+ uint32_t __ticks_dc;
+ extern void __builtin_avr_delay_cycles(unsigned long);
+ __tmp = ((16000000L) / 1e6) * __us;
+# 242 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+  __ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+
+
+ __builtin_avr_delay_cycles(__ticks_dc);
+# 268 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+}
+# 5 ".././project2.cpp" 2
+# 1 ".././kernel.h" 1
+# 15 ".././kernel.h"
+extern "C" {
+
+
+
+# 1 ".././os.h" 1
+
+
+
+
+extern "C" {
+# 224 ".././os.h"
+typedef struct service SERVICE;
+
+
+
+
+
+
+ extern const unsigned char PPP[];
+
+
+ extern const unsigned int PT;
+# 255 ".././os.h"
+void OS_Abort();
+# 273 ".././os.h"
+int8_t Task_Create_System(void (*f)(void), int16_t arg);
+int8_t Task_Create_RR( void (*f)(void), int16_t arg);
+int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name);
+# 292 ".././os.h"
+int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16_t wcet, uint16_t start);
+
+
+
+
+
+
+
+void Task_Terminate();
+
+
+void Task_Next();
+
+
+
+
+int16_t Task_GetArg();
+# 318 ".././os.h"
+SERVICE *Service_Init();
+# 328 ".././os.h"
+void Service_Subscribe( SERVICE *s, int16_t *v );
+# 338 ".././os.h"
+void Service_Publish( SERVICE *s, int16_t v );
+# 358 ".././os.h"
+uint16_t Now();
+
+
+}
+# 20 ".././kernel.h" 2
+# 44 ".././kernel.h"
+typedef void (*voidfuncvoid_ptr) (void);
+
+
+
+
+typedef enum
+{
+    DEAD = 0,
+    RUNNING,
+    READY,
+    WAITING
+}
+task_state_t;
+
+
+
+
+typedef enum
+{
+    NONE = 0,
+    TIMER_EXPIRED,
+    TASK_CREATE,
+    TASK_TERMINATE,
+    TASK_NEXT,
+    TASK_GET_ARG,
+}
+kernel_request_t;
+
+
+
+
+
+typedef struct
 {
 
+    voidfuncvoid_ptr f;
+
+    int arg;
+
+    uint8_t level;
+
+    uint8_t name;
+}
+create_args_t;
+
+
+typedef struct td_struct task_descriptor_t;
+
+
+
+struct td_struct
+{
+
+    uint8_t stack[256];
+
+    uint8_t* volatile sp;
+
+    uint8_t name;
+
+    task_state_t state;
+
+    int arg;
+
+    uint8_t level;
+
+    task_descriptor_t* next;
+};
 
 
 
 
+
+typedef struct
+{
+
+    task_descriptor_t* head;
+
+    task_descriptor_t* tail;
+}
+queue_t;
+
+
+}
+# 6 ".././project2.cpp" 2
+
+
+const unsigned int PT = 1;
+const unsigned char PPP[2] = {1, 255};
+
+
+
+void p()
+{
+ (*(volatile uint8_t *)((0x04) + 0x20)) = 1 << 7;
+ for(;;){
+  _delay_ms(10);
+  (*(volatile uint8_t *)((0x05) + 0x20)) ^= 1 << 7;
+ }
+}
+
+extern int r_main(void)
+{
+ Task_Create(p, 0, 1, 0);
+ return 1;
 }

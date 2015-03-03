@@ -23,18 +23,13 @@
 
 /** @brief main function provided by user application. The first task to run. */
 int r_main();
-//int main();
 
 
 /** PPP and PT defined in user application. *///extern const unsigned char PPP[];
-const unsigned char PPP[] = {1, 140*PERIODIC, 
-    			0, 2*PERIODIC, 
-    			0, 6*PERIODIC, 
-    			0, 12*PERIODIC,
-    		    0, 40*PERIODIC };
+//extern const unsigned char PPP[];
 
 /** PPP and PT defined in user application. */
-const unsigned int PT = 5;
+//extern const unsigned int PT;
 
 /** The task descriptor of the currently RUNNING task. */
 static task_descriptor_t* cur_task = NULL;
@@ -304,6 +299,8 @@ static void kernel_handle_request(void)
  * is used, the interrupts need to be disabled, or they already are disabled.
  */
 #define    SAVE_CTX_TOP()       asm volatile (\
+	"push   r31             \n\t"\
+    "in     r31,0X3C        \n\t"\
     "push   r31             \n\t"\
     "in     r31,__SREG__    \n\t"\
     "cli                    \n\t"::); /* Disable interrupt */
@@ -353,7 +350,7 @@ static void kernel_handle_request(void)
 /**
  * @brief Pop all registers and the status register.
  */
-#define    RESTORE_CTX()    asm volatile (\
+#define    RESTORE_CTX_BOTTOM()    asm volatile (\
     "pop    r0                \n\t"\
     "pop    r1                \n\t"\
     "pop    r2                \n\t"\
@@ -384,11 +381,18 @@ static void kernel_handle_request(void)
     "pop    r27             \n\t"\
     "pop    r28             \n\t"\
     "pop    r29             \n\t"\
-    "pop    r30             \n\t"\
-    "pop    r31             \n\t"\
-	"out    __SREG__, r31    \n\t"\
-    "pop    r31             \n\t"::);
+    "pop    r30             \n\t"::);
+    
 
+#define RESTORE_CTX_TOP()	asm volatile (\
+	"pop    r31             \n\t"\
+    "out    __SREG__, r31   \n\t"\
+    "pop    r31             \n\t"\
+    "out    0X3C, r31       \n\t"\
+    "pop    r31             \n\t"::);
+	
+	
+#define RESTORE_CTX()	RESTORE_CTX_BOTTOM();RESTORE_CTX_TOP();
 
 /**
  * @fn exit_kernel
@@ -646,10 +650,17 @@ static int kernel_create_task()
      * (ret and reti) pop addresses off in BIG ENDIAN (most sig. first, least sig.
      * second), even though the AT90 is LITTLE ENDIAN machine.
      */
-    stack_top[34] = (uint8_t)((uint16_t)(kernel_request_create_args.f) >> 8);
-    stack_top[35] = (uint8_t)(uint16_t)(kernel_request_create_args.f);
-    stack_top[36] = (uint8_t)((uint16_t)Task_Terminate >> 8);
-    stack_top[37] = (uint8_t)(uint16_t)Task_Terminate;
+	 stack_top[35] = (uint8_t)(0);
+	 stack_top[36] = (uint8_t)((uint16_t)(kernel_request_create_args.f) >> 8);
+	 stack_top[37] = (uint8_t)(uint16_t)(kernel_request_create_args.f);
+	 stack_top[38] = (uint8_t)(0);
+	 stack_top[39] = (uint8_t)((uint16_t)Task_Terminate >> 8);
+	 stack_top[40] = (uint8_t)(uint16_t)Task_Terminate;
+	
+    //stack_top[34] = (uint8_t)((uint16_t)(kernel_request_create_args.f) >> 8);
+    //stack_top[35] = (uint8_t)(uint16_t)(kernel_request_create_args.f);
+    //stack_top[36] = (uint8_t)((uint16_t)Task_Terminate >> 8);
+    //stack_top[37] = (uint8_t)(uint16_t)Task_Terminate;
 
     /*
      * Make stack pointer point to cell above stack (the top).
@@ -984,7 +995,6 @@ void OS_Abort(void)
         }
     }
 }
-
 
 /**
  * @param f  a parameterless function to be created as a process instance

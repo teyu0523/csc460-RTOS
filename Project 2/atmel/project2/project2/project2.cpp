@@ -1,53 +1,26 @@
 
 #include <avr/io.h>
-
-/**
- * @file   test001.c
- * @author Scott Craig and Justin Tanner
- * @date   Mon Oct 29 16:19:32 2007
- *
- * @brief  Test 001 - sanity test, can we print to UART
- *
- */
-
-#include "os.h"
 #include <Arduino.h>
+#include <util/delay.h>
+#include "kernel.h"
+#include "os.h"
 
-enum { A=1, B, C, D, E, F, G };
-const unsigned int PT = 0;
-const unsigned char PPP[] = {};
+const unsigned int PT = 1;
+const unsigned char PPP[2] = {1, 255};
 
 //EVENT* print_event;
 
-void round_robin(void)
+void p()
 {
-    //for(;;)
-    //{
-//        Event_Signal(print_event);
-//        Task_Next();
-   // }
+	DDRB = 1 << PB7;
+	for(;;){
+		_delay_ms(10);
+		PORTB ^= 1 << PB7;
+	}
 }
 
-//int main(void)
-//{
-	
-	//OS_Init();
-	
-	
-	
-	
-    /* setup the test */
-    /*uart_init();
-    uart_write((uint8_t*)"\r\nSTART\r\n", 9);
-    set_test(1);
-
-    print_event = Event_Init();*/
-
-    /* Run clock at 8MHz. */
-    /*TCCR3B = _BV(CS30);
-
-    Task_Create(round_robin, 0, RR, 0);
-
-    Event_Wait(print_event);
-    print_trace();*/
-//}
+extern int r_main(void)
+{
+	Task_Create(p, 0, RR, 0);
+	return 1;
+}

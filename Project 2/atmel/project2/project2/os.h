@@ -168,7 +168,7 @@ extern "C" {
  *
  */  
 #include "stdint.h"
-   
+
 /*==================================================================  
  *             T Y P E S   &   C O N S T A N T S  
  *==================================================================  
@@ -228,7 +228,10 @@ typedef struct service SERVICE;
   *    G L O B A L S
   *================
   */
- 
+ extern const unsigned char PPP[];
+
+ /** PPP and PT defined in user application. */
+ extern const unsigned int PT;
   
   
 /*==================================================================  
@@ -269,7 +272,7 @@ void OS_Abort();
    */
 int8_t   Task_Create_System(void (*f)(void), int16_t arg);
 int8_t   Task_Create_RR(    void (*f)(void), int16_t arg);
-
+int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name);
  /**
    * \param f a parameterless function to be created as a process instance
    * \param arg an integer argument to be assigned to this process instanace
