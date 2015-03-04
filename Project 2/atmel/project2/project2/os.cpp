@@ -26,10 +26,10 @@ int r_main();
 
 
 /** PPP and PT defined in user application. *///extern const unsigned char PPP[];
-//extern const unsigned char PPP[];
+extern const unsigned char PPP[];
 
 /** PPP and PT defined in user application. */
-//extern const unsigned int PT;
+extern const unsigned int PT;
 
 /** The task descriptor of the currently RUNNING task. */
 static task_descriptor_t* cur_task = NULL;
