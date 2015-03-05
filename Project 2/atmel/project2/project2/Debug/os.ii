@@ -545,16 +545,6 @@ _delay_us(double __us)
 extern "C" {
 # 224 ".././os.h"
 typedef struct service SERVICE;
-
-
-
-
-
-
- extern const unsigned char PPP[];
-
-
- extern const unsigned int PT;
 # 255 ".././os.h"
 void OS_Abort();
 # 273 ".././os.h"
@@ -579,13 +569,13 @@ void Task_Next();
 
 
 int16_t Task_GetArg();
-# 318 ".././os.h"
+# 319 ".././os.h"
 SERVICE *Service_Init();
-# 328 ".././os.h"
+# 329 ".././os.h"
 void Service_Subscribe( SERVICE *s, int16_t *v );
-# 338 ".././os.h"
+# 339 ".././os.h"
 void Service_Publish( SERVICE *s, int16_t v );
-# 358 ".././os.h"
+# 359 ".././os.h"
 uint16_t Now();
 
 
@@ -636,7 +626,11 @@ typedef struct
 
     uint8_t level;
 
-    uint8_t name;
+
+
+ uint16_t period;
+ uint16_t wcet;
+ uint16_t start;
 }
 create_args_t;
 
@@ -652,7 +646,10 @@ struct td_struct
 
     uint8_t* volatile sp;
 
-    uint8_t name;
+ uint16_t period;
+ uint16_t wcet;
+ uint16_t start;
+
 
     task_state_t state;
 
@@ -661,8 +658,16 @@ struct td_struct
     uint8_t level;
 
     task_descriptor_t* next;
+
+ task_descriptor_t* prev;
 };
 
+typedef struct
+{
+ task_descriptor_t* head;
+ task_descriptor_t* tail;
+}
+linkedlist_t;
 
 
 
@@ -730,8 +735,11 @@ ERR_RUN_5_RTOS_INTERNAL_ERROR,
 
 
 int r_main();
-# 35 ".././os.cpp"
+# 36 ".././os.cpp"
 static task_descriptor_t* cur_task = 0;
+
+
+static task_descriptor_t* next_task_periodic = 0;
 
 
 static volatile uint16_t kernel_sp;
@@ -758,11 +766,14 @@ static queue_t dead_pool_queue;
 static queue_t rr_queue;
 
 
+static linkedlist_t periodic_queue;
+
+
 static queue_t system_queue;
 
 
 static volatile uint8_t ticks_remaining = 0;
-
+static volatile uint8_t ticks_counter = 0;
 
 static uint8_t slot_task_finished = 0;
 
@@ -773,7 +784,7 @@ static unsigned int slot_name_index = 0;
 static task_descriptor_t* name_to_task_ptr[8 + 1];
 
 
-static uint8_t name_in_PPP[8 + 1];
+
 
 
 static uint8_t volatile error_msg = ERR_RUN_1_USER_CALLED_OS_ABORT;
@@ -792,12 +803,16 @@ extern "C" void __vector_17(void) __attribute__ ((signal, naked));
 static int kernel_create_task();
 static void kernel_terminate_task(void);
 
+static void addlist(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_add);
+static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_find_before);
+static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_delete);
+
 
 static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add);
 static task_descriptor_t* dequeue(queue_t* queue_ptr);
 
 static void kernel_update_ticker(void);
-static void check_PPP_names(void);
+
 static void idle (void);
 static void _delay_25ms(void);
 
@@ -812,7 +827,7 @@ static void idle (void)
     for(;;)
     {};
 }
-# 132 ".././os.cpp"
+# 143 ".././os.cpp"
 static void kernel_main_loop(void)
 {
     for(;;)
@@ -827,7 +842,7 @@ static void kernel_main_loop(void)
         kernel_handle_request();
     }
 }
-# 156 ".././os.cpp"
+# 167 ".././os.cpp"
 static void kernel_dispatch(void)
 {
 
@@ -840,10 +855,14 @@ static void kernel_dispatch(void)
         {
             cur_task = dequeue(&system_queue);
         }
-        else if(!slot_task_finished && PT > 0 && name_to_task_ptr[PPP[slot_name_index]] != 0)
+
+        else if(periodic_queue.head != 0)
         {
 
-            cur_task = name_to_task_ptr[PPP[slot_name_index]];
+
+
+            cur_task = get_next(&periodic_queue, cur_task);
+   ticks_remaining = cur_task->period;
         }
         else if(rr_queue.head != 0)
         {
@@ -858,7 +877,7 @@ static void kernel_dispatch(void)
         cur_task->state = RUNNING;
     }
 }
-# 196 ".././os.cpp"
+# 211 ".././os.cpp"
 static void kernel_handle_request(void)
 {
    switch(kernel_request)
@@ -894,8 +913,8 @@ static void kernel_handle_request(void)
 
 
             if(cur_task->level == 1 &&
-               kernel_request_create_args.level == 2 &&
-               PPP[slot_name_index] == kernel_request_create_args.name)
+               kernel_request_create_args.level == 2)
+
             {
                 cur_task->state = READY;
             }
@@ -924,6 +943,7 @@ static void kernel_handle_request(void)
 
      case 2:
          slot_task_finished = 1;
+            addlist(&periodic_queue, cur_task);
          break;
 
      case 1:
@@ -947,10 +967,9 @@ static void kernel_handle_request(void)
         OS_Abort();
         break;
     }
-
     kernel_request = NONE;
 }
-# 412 ".././os.cpp"
+# 427 ".././os.cpp"
 static void exit_kernel(void)
 {
 
@@ -973,10 +992,10 @@ static void exit_kernel(void)
 
 
     asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t"::);;asm volatile ( "pop    r31             \n\t" "out    __SREG__, r31   \n\t" "pop    r31             \n\t" "out    0X3C, r31       \n\t" "pop    r31             \n\t"::);;;
-# 444 ".././os.cpp"
+# 459 ".././os.cpp"
     asm volatile ("ret\n"::);
 }
-# 457 ".././os.cpp"
+# 472 ".././os.cpp"
 static void enter_kernel(void)
 {
 
@@ -1008,10 +1027,10 @@ static void enter_kernel(void)
 
     asm volatile ("ret\n"::);
 }
-# 504 ".././os.cpp"
+# 519 ".././os.cpp"
 void __vector_17(void)
 {
-# 518 ".././os.cpp"
+# 533 ".././os.cpp"
     asm volatile ( "push   r31             \n\t" "in     r31,0X3C        \n\t" "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;
 
     asm volatile ( "ori    r31, 0x80        \n\t"::);;
@@ -1046,10 +1065,10 @@ void __vector_17(void)
 
 
     asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t"::);;asm volatile ( "pop    r31             \n\t" "out    __SREG__, r31   \n\t" "pop    r31             \n\t" "out    0X3C, r31       \n\t" "pop    r31             \n\t"::);;;
-# 561 ".././os.cpp"
+# 576 ".././os.cpp"
     asm volatile ("ret\n"::);
 }
-# 576 ".././os.cpp"
+# 591 ".././os.cpp"
 static int kernel_create_task()
 {
 
@@ -1062,32 +1081,7 @@ static int kernel_create_task()
 
         return 0;
     }
-
-    if(kernel_request_create_args.level == 2 &&
-        (kernel_request_create_args.name == 0 ||
-         kernel_request_create_args.name > 8))
-    {
-
-        error_msg = ERR_2_CREATE_NAME_OUT_OF_RANGE;
-        OS_Abort();
-    }
-
-    if(kernel_request_create_args.level == 2 &&
-        name_in_PPP[kernel_request_create_args.name] == 0)
-    {
-        error_msg = ERR_5_NAME_NOT_IN_PPP;
-        OS_Abort();
-    }
-
-    if(kernel_request_create_args.level == 2 &&
-    name_to_task_ptr[kernel_request_create_args.name] != 0)
-    {
-
-        error_msg = ERR_4_PERIODIC_NAME_IN_USE;
-        OS_Abort();
-    }
-
-
+# 629 ".././os.cpp"
  if(kernel_request_create_args.level == 0)
  {
   p = &task_desc[8];
@@ -1099,7 +1093,7 @@ static int kernel_create_task()
  }
 
     stack_bottom = &(p->stack[256 -1]);
-# 635 ".././os.cpp"
+# 650 ".././os.cpp"
     uint8_t* stack_top = stack_bottom - (32 + 1 + 2 + 2);
 
 
@@ -1110,27 +1104,28 @@ static int kernel_create_task()
     stack_top[2] = (uint8_t) 0;
 
     stack_top[32] = (uint8_t) (1 << ((7)));
-# 653 ".././os.cpp"
+# 668 ".././os.cpp"
   stack_top[35] = (uint8_t)(0);
   stack_top[36] = (uint8_t)((uint16_t)(kernel_request_create_args.f) >> 8);
   stack_top[37] = (uint8_t)(uint16_t)(kernel_request_create_args.f);
   stack_top[38] = (uint8_t)(0);
   stack_top[39] = (uint8_t)((uint16_t)Task_Terminate >> 8);
   stack_top[40] = (uint8_t)(uint16_t)Task_Terminate;
-# 669 ".././os.cpp"
+# 684 ".././os.cpp"
     p->sp = stack_top;
 
     p->state = READY;
     p->arg = kernel_request_create_args.arg;
     p->level = kernel_request_create_args.level;
-    p->name = kernel_request_create_args.name;
+
 
  switch(kernel_request_create_args.level)
  {
  case 2:
 
-        name_to_task_ptr[kernel_request_create_args.name] = p;
-  break;
+
+  addlist(&periodic_queue, p);
+        break;
 
     case 3:
 
@@ -1161,11 +1156,87 @@ static void kernel_terminate_task(void)
     cur_task->state = DEAD;
     if(cur_task->level == 2)
     {
-        name_to_task_ptr[cur_task->name] = 0;
+        delete_task(&periodic_queue, cur_task);
     }
     enqueue(&dead_pool_queue, cur_task);
 }
-# 727 ".././os.cpp"
+
+
+
+
+static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_delete)
+{
+
+ if(linkedlist_ptr->head == task_to_delete && linkedlist_ptr->head->next != 0)
+ {
+  linkedlist_ptr->head = linkedlist_ptr->head->next;
+  linkedlist_ptr->head->prev = 0;
+  return;
+ } else if (linkedlist_ptr->tail == task_to_delete && linkedlist_ptr->tail->prev != 0) {
+  linkedlist_ptr->tail = linkedlist_ptr->tail->prev;
+  linkedlist_ptr->tail->next = 0;
+  return;
+ } else if (linkedlist_ptr->tail == task_to_delete && linkedlist_ptr->head == task_to_delete) {
+  linkedlist_ptr->tail = 0;
+  linkedlist_ptr->head = 0;
+  return;
+ }
+ task_descriptor_t* temp = linkedlist_ptr->head;
+ while(temp!=0)
+ {
+  if (temp == task_to_delete){
+   temp = temp->prev;
+   temp->next = temp->next->next;
+   temp->next->prev = temp;
+   return;
+  }
+  temp = temp->next;
+ }
+
+}
+
+
+
+static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_find_before)
+{
+ if(task_to_find_before == 0)
+ {
+  return linkedlist_ptr->head;
+ }
+ task_descriptor_t* temp = linkedlist_ptr->head;
+ while(temp!=0)
+ {
+  if(temp == task_to_find_before)
+  {
+   return temp->next;
+  }
+  temp = temp->next;
+ }
+ return 0;
+}
+
+
+
+
+static void addlist(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_add)
+{
+ task_to_add->next = 0;
+  if(linkedlist_ptr->head == 0)
+  {
+
+   task_to_add->prev = 0;
+   linkedlist_ptr->head = task_to_add;
+   linkedlist_ptr->tail = task_to_add;
+  }
+  else
+  {
+
+   linkedlist_ptr->tail->next = task_to_add;
+   task_to_add->prev = linkedlist_ptr->tail;
+   linkedlist_ptr->tail = task_to_add;
+  }
+}
+# 819 ".././os.cpp"
 static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add)
 {
     task_to_add->next = 0;
@@ -1183,7 +1254,7 @@ static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add)
         queue_ptr->tail = task_to_add;
     }
 }
-# 752 ".././os.cpp"
+# 844 ".././os.cpp"
 static task_descriptor_t* dequeue(queue_t* queue_ptr)
 {
     task_descriptor_t* task_ptr = queue_ptr->head;
@@ -1207,66 +1278,39 @@ static void kernel_update_ticker(void)
 {
 
 
-    if(PT > 0)
+
+ ++ticks_counter;
+ --ticks_remaining;
+ if(ticks_remaining == 0)
+ {
+
+  if(next_task_periodic == 0){
+   while(next_task_periodic!=0){
+    next_task_periodic = get_next(&periodic_queue, cur_task);
+    if(next_task_periodic->start > ticks_counter%20)
     {
-        --ticks_remaining;
-
-        if(ticks_remaining == 0)
-        {
-
-            if(cur_task != 0 && cur_task->level == 2 && slot_task_finished == 0)
-            {
-
-                error_msg = ERR_RUN_3_PERIODIC_TOOK_TOO_LONG;
-                OS_Abort();
-            }
-
-            slot_name_index += 2;
-            if(slot_name_index >= 2 * PT)
-            {
-                slot_name_index = 0;
-            }
-
-            ticks_remaining = PPP[slot_name_index + 1];
-
-            if(PPP[slot_name_index] == 0 || name_to_task_ptr[PPP[slot_name_index]] == 0)
-            {
-                slot_task_finished = 1;
-            }
-            else
-            {
-                slot_task_finished = 0;
-            }
-        }
+     break;
     }
+   }
+   cur_task = dequeue(&rr_queue);
+  }else{
+   if(next_task_periodic->start == ticks_counter%20)
+   {
+    cur_task = next_task_periodic;
+    next_task_periodic = 0;
+    ticks_remaining = cur_task->period;
+   }else{
+    cur_task = dequeue(&rr_queue);
+   }
+  }
+ }
+ else if (ticks_remaining+cur_task->start > ticks_counter%100)
+ {
+  OS_Abort();
+ }
+# 931 ".././os.cpp"
 }
-
-
-
-
-
-static void check_PPP_names(void)
-{
-    uint8_t i;
-    uint8_t name;
-
-    for(i = 0; i < 2 * PT; i += 2)
-    {
-        name = PPP[i];
-
-
-        if(name <= 8)
-        {
-            name_in_PPP[name] = 1;
-        }
-        else
-        {
-            error_msg = ERR_1_PPP_NAME_OUT_OF_RANGE;
-            OS_Abort();
-        }
-    }
-}
-# 856 ".././os.cpp"
+# 980 ".././os.cpp"
 void OS_Init()
 {
     int i;
@@ -1274,18 +1318,7 @@ void OS_Init()
 
 
     (*(volatile uint8_t *)(0x81)) |= ((1 << (1)));
-
-
-
-
-
-    check_PPP_names();
-
-
-
-
-
-
+# 999 ".././os.cpp"
     for (i = 0; i < 8 - 1; i++)
     {
         task_desc[i].state = DEAD;
@@ -1310,14 +1343,7 @@ void OS_Init()
     cur_task = task_desc;
     cur_task->state = RUNNING;
     dequeue(&system_queue);
-
-
-    if(PT > 0)
-    {
-        ticks_remaining = PPP[1];
-    }
-
-
+# 1031 ".././os.cpp"
     (*(volatile uint8_t *)(0x6F)) |= (1 << (1));
     (*(volatile uint16_t *)(0x88)) = (*(volatile uint16_t *)(0x84)) + (((16000000L / 8) / 1000) * 5);
 
@@ -1343,6 +1369,7 @@ static void _delay_25ms(void)
 
     _delay_ms(25);
 }
+
 
 
 
@@ -1409,7 +1436,86 @@ void OS_Abort(void)
         }
     }
 }
-# 1016 ".././os.cpp"
+# 1150 ".././os.cpp"
+void Service_Subscribe( SERVICE *s, int16_t *v )
+{
+
+}
+# 1163 ".././os.cpp"
+void Service_Publish( SERVICE *s, int16_t v )
+{
+
+}
+# 1181 ".././os.cpp"
+int8_t Task_Create_System(void (*f)(void), int16_t arg)
+{
+     int8_t retval;
+     uint8_t sreg;
+
+     sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+     asm volatile ("cli"::);
+
+     kernel_request_create_args.f = (voidfuncvoid_ptr)f;
+     kernel_request_create_args.arg = arg;
+     kernel_request_create_args.level = (uint8_t)3;
+
+
+     kernel_request = TASK_CREATE;
+     enter_kernel();
+
+     retval = kernel_request_retval;
+     (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+     return retval;
+}
+
+int8_t Task_Create_RR(void (*f)(void), int16_t arg)
+{
+  int8_t retval;
+  uint8_t sreg;
+
+  sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+  asm volatile ("cli"::);
+
+  kernel_request_create_args.f = (voidfuncvoid_ptr)f;
+  kernel_request_create_args.arg = arg;
+  kernel_request_create_args.level = (uint8_t)1;
+
+
+  kernel_request = TASK_CREATE;
+  enter_kernel();
+
+  retval = kernel_request_retval;
+  (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+  return retval;
+}
+# 1240 ".././os.cpp"
+int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16_t wcet, uint16_t start)
+{
+ int8_t retval;
+ uint8_t sreg;
+
+ sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+ asm volatile ("cli"::);
+
+ kernel_request_create_args.f = (voidfuncvoid_ptr)f;
+ kernel_request_create_args.arg = arg;
+ kernel_request_create_args.level = (uint8_t)2;
+ kernel_request_create_args.period = period;
+ kernel_request_create_args.wcet = wcet;
+ kernel_request_create_args.start = start;
+
+
+ kernel_request = TASK_CREATE;
+ enter_kernel();
+
+ retval = kernel_request_retval;
+ (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+ return retval;
+}
+# 1281 ".././os.cpp"
 int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name)
 {
     int retval;
@@ -1421,7 +1527,7 @@ int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name)
     kernel_request_create_args.f = (voidfuncvoid_ptr)f;
     kernel_request_create_args.arg = arg;
     kernel_request_create_args.level = (uint8_t)level;
-    kernel_request_create_args.name = (uint8_t)name;
+
 
     kernel_request = TASK_CREATE;
     enter_kernel();

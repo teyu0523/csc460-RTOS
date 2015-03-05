@@ -228,10 +228,10 @@ typedef struct service SERVICE;
   *    G L O B A L S
   *================
   */
- extern const unsigned char PPP[];
+ //extern const unsigned char PPP[];
 
  /** PPP and PT defined in user application. */
- extern const unsigned int PT;
+ //extern const unsigned int PT;
   
   
 /*==================================================================  
@@ -306,6 +306,7 @@ void Task_Next();
   * \sa Task_Create(). 
   */
 int16_t Task_GetArg();          
+
 
 
   /*=====  Events API ===== */

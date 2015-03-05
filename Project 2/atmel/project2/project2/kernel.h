@@ -82,7 +82,11 @@ typedef struct
     /** Priority of the new task: RR, PERIODIC, SYSTEM */
     uint8_t level;
     /** If the new task is PERIODIC, this is its name in the PPP array. */
-    uint8_t name;
+    //uint8_t name;
+	
+	uint16_t period;
+	uint16_t wcet;
+	uint16_t start;
 }
 create_args_t;
 
@@ -97,8 +101,11 @@ struct td_struct
     uint8_t                         stack[WORKSPACE];
     /** A variable to save the hardware SP into when the task is suspended. */
     uint8_t*               volatile sp;   /* stack pointer into the "workSpace" */
-    /** PERIODIC tasks need a name in the PPP array. */
-    uint8_t                         name;
+    
+	uint16_t period;
+	uint16_t wcet;
+	uint16_t start;
+	
     /** The state of the task in this descriptor. */
     task_state_t                    state;
     /** The argument passed to Task_Create for this task. */
@@ -107,8 +114,16 @@ struct td_struct
     uint8_t                         level;
     /** A link to the next task descriptor in the queue holding this task. */
     task_descriptor_t*              next;
+	
+	task_descriptor_t*				prev;
 };
 
+typedef struct  
+{
+	task_descriptor_t* head;
+	task_descriptor_t* tail;
+}
+linkedlist_t;
 
 /**
  * @brief Contains pointers to head and tail of a linked list.

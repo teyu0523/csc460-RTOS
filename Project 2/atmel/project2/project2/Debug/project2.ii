@@ -1859,16 +1859,6 @@ extern "C" {
 extern "C" {
 # 224 ".././os.h"
 typedef struct service SERVICE;
-
-
-
-
-
-
- extern const unsigned char PPP[];
-
-
- extern const unsigned int PT;
 # 255 ".././os.h"
 void OS_Abort();
 # 273 ".././os.h"
@@ -1893,13 +1883,13 @@ void Task_Next();
 
 
 int16_t Task_GetArg();
-# 318 ".././os.h"
+# 319 ".././os.h"
 SERVICE *Service_Init();
-# 328 ".././os.h"
+# 329 ".././os.h"
 void Service_Subscribe( SERVICE *s, int16_t *v );
-# 338 ".././os.h"
+# 339 ".././os.h"
 void Service_Publish( SERVICE *s, int16_t v );
-# 358 ".././os.h"
+# 359 ".././os.h"
 uint16_t Now();
 
 
@@ -1947,7 +1937,11 @@ typedef struct
 
     uint8_t level;
 
-    uint8_t name;
+
+
+ uint16_t period;
+ uint16_t wcet;
+ uint16_t start;
 }
 create_args_t;
 
@@ -1963,7 +1957,10 @@ struct td_struct
 
     uint8_t* volatile sp;
 
-    uint8_t name;
+ uint16_t period;
+ uint16_t wcet;
+ uint16_t start;
+
 
     task_state_t state;
 
@@ -1972,8 +1969,16 @@ struct td_struct
     uint8_t level;
 
     task_descriptor_t* next;
+
+ task_descriptor_t* prev;
 };
 
+typedef struct
+{
+ task_descriptor_t* head;
+ task_descriptor_t* tail;
+}
+linkedlist_t;
 
 
 
@@ -1997,17 +2002,36 @@ const unsigned char PPP[2] = {1, 255};
 
 
 
+void p2()
+{
+ (*(volatile uint8_t *)((0x04) + 0x20)) = 1 << 7;
+ for(;;){
+  _delay_ms(5000);
+  (*(volatile uint8_t *)((0x05) + 0x20)) ^= 1 << 7;
+  Task_Next();
+ }
+}
+
 void p()
 {
  (*(volatile uint8_t *)((0x04) + 0x20)) = 1 << 7;
  for(;;){
-  _delay_ms(10);
-  (*(volatile uint8_t *)((0x05) + 0x20)) ^= 1 << 7;
+  _delay_ms(500);
+  for(;;) {
+
+
+
+
+
+  }
+  Task_Next();
  }
 }
 
 extern int r_main(void)
 {
- Task_Create(p, 0, 1, 0);
+
+
+ Task_Create_Periodic( p, 0, 20, 1, 2 );
  return 1;
 }

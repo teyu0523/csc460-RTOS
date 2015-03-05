@@ -13,7 +13,7 @@ __zero_reg__ = 1
 _ZL4idlev:
 .LFB6:
 	.file 1 ".././os.cpp"
-	.loc 1 112 0
+	.loc 1 123 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
@@ -28,15 +28,15 @@ _ZL4idlev:
 	.type	_ZL11exit_kernelv, @function
 _ZL11exit_kernelv:
 .LFB10:
-	.loc 1 413 0
+	.loc 1 428 0
 	.cfi_startproc
 /* prologue: naked */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 418 0
+	.loc 1 433 0
 /* #APP */
- ;  418 ".././os.cpp" 1
+ ;  433 ".././os.cpp" 1
 	push   r31             
 	in     r31,0X3C        
 	push   r31             
@@ -44,7 +44,7 @@ _ZL11exit_kernelv:
 	cli                    
 	
  ;  0 "" 2
- ;  418 ".././os.cpp" 1
+ ;  433 ".././os.cpp" 1
 	push   r31             
 	push   r30             
 	push   r29             
@@ -79,13 +79,13 @@ _ZL11exit_kernelv:
 	push   r0              
 	
  ;  0 "" 2
-	.loc 1 423 0
+	.loc 1 438 0
 /* #NOAPP */
 	in r24,__SP_L__
 	in r25,__SP_L__+1
 	sts _ZL9kernel_sp+1,r25
 	sts _ZL9kernel_sp,r24
-	.loc 1 428 0
+	.loc 1 443 0
 	lds r30,_ZL8cur_task
 	lds r31,_ZL8cur_task+1
 	inc r31
@@ -93,9 +93,9 @@ _ZL11exit_kernelv:
 	ldd r25,Z+1
 	out __SP_L__+1,r25
 	out __SP_L__,r24
-	.loc 1 433 0
+	.loc 1 448 0
 /* #APP */
- ;  433 ".././os.cpp" 1
+ ;  448 ".././os.cpp" 1
 	pop    r0                
 	pop    r1                
 	pop    r2                
@@ -129,7 +129,7 @@ _ZL11exit_kernelv:
 	pop    r30             
 	
  ;  0 "" 2
- ;  433 ".././os.cpp" 1
+ ;  448 ".././os.cpp" 1
 	pop    r31             
 	out    __SREG__, r31   
 	pop    r31             
@@ -137,13 +137,13 @@ _ZL11exit_kernelv:
 	pop    r31             
 	
  ;  0 "" 2
-	.loc 1 444 0
- ;  444 ".././os.cpp" 1
+	.loc 1 459 0
+ ;  459 ".././os.cpp" 1
 	ret
 
  ;  0 "" 2
 /* epilogue start */
-	.loc 1 445 0
+	.loc 1 460 0
 /* #NOAPP */
 	.cfi_endproc
 .LFE10:
@@ -152,15 +152,15 @@ _ZL11exit_kernelv:
 	.type	_ZL12enter_kernelv, @function
 _ZL12enter_kernelv:
 .LFB11:
-	.loc 1 458 0
+	.loc 1 473 0
 	.cfi_startproc
 /* prologue: naked */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 463 0
+	.loc 1 478 0
 /* #APP */
- ;  463 ".././os.cpp" 1
+ ;  478 ".././os.cpp" 1
 	push   r31             
 	in     r31,0X3C        
 	push   r31             
@@ -168,7 +168,7 @@ _ZL12enter_kernelv:
 	cli                    
 	
  ;  0 "" 2
- ;  463 ".././os.cpp" 1
+ ;  478 ".././os.cpp" 1
 	push   r31             
 	push   r30             
 	push   r29             
@@ -203,7 +203,7 @@ _ZL12enter_kernelv:
 	push   r0              
 	
  ;  0 "" 2
-	.loc 1 468 0
+	.loc 1 483 0
 /* #NOAPP */
 	lds r30,_ZL8cur_task
 	lds r31,_ZL8cur_task+1
@@ -212,14 +212,14 @@ _ZL12enter_kernelv:
 	inc r31
 	std Z+1,r25
 	st Z,r24
-	.loc 1 473 0
+	.loc 1 488 0
 	lds r24,_ZL9kernel_sp
 	lds r25,_ZL9kernel_sp+1
 	out __SP_L__+1,r25
 	out __SP_L__,r24
-	.loc 1 478 0
+	.loc 1 493 0
 /* #APP */
- ;  478 ".././os.cpp" 1
+ ;  493 ".././os.cpp" 1
 	pop    r0                
 	pop    r1                
 	pop    r2                
@@ -253,7 +253,7 @@ _ZL12enter_kernelv:
 	pop    r30             
 	
  ;  0 "" 2
- ;  478 ".././os.cpp" 1
+ ;  493 ".././os.cpp" 1
 	pop    r31             
 	out    __SREG__, r31   
 	pop    r31             
@@ -261,13 +261,13 @@ _ZL12enter_kernelv:
 	pop    r31             
 	
  ;  0 "" 2
-	.loc 1 486 0
- ;  486 ".././os.cpp" 1
+	.loc 1 501 0
+ ;  501 ".././os.cpp" 1
 	ret
 
  ;  0 "" 2
 /* epilogue start */
-	.loc 1 487 0
+	.loc 1 502 0
 /* #NOAPP */
 	.cfi_endproc
 .LFE11:
@@ -275,8 +275,8 @@ _ZL12enter_kernelv:
 	.section	.text._ZL7enqueueP7queue_tP9td_struct,"ax",@progbits
 	.type	_ZL7enqueueP7queue_tP9td_struct, @function
 _ZL7enqueueP7queue_tP9td_struct:
-.LFB15:
-	.loc 1 728 0
+.LFB18:
+	.loc 1 820 0
 	.cfi_startproc
 .LVL0:
 /* prologue: function */
@@ -284,44 +284,44 @@ _ZL7enqueueP7queue_tP9td_struct:
 /* stack size = 0 */
 .L__stack_usage = 0
 	movw r30,r24
-	.loc 1 729 0
+	.loc 1 821 0
 	movw r26,r22
-	subi r26,-7
+	subi r26,-12
 	sbci r27,-2
 	st X+,__zero_reg__
 	st X,__zero_reg__
-	.loc 1 731 0
+	.loc 1 823 0
 	ld r24,Z
 	ldd r25,Z+1
 .LVL1:
 	or r24,r25
 	brne .L6
-	.loc 1 734 0
+	.loc 1 826 0
 	std Z+1,r23
 	st Z,r22
 	rjmp .L8
 .L6:
-	.loc 1 740 0
+	.loc 1 832 0
 	ldd r26,Z+2
 	ldd r27,Z+3
-	subi r26,-7
+	subi r26,-12
 	sbci r27,-2
 	st X+,r22
 	st X,r23
 .L8:
-	.loc 1 741 0
+	.loc 1 833 0
 	std Z+3,r23
 	std Z+2,r22
 	ret
 	.cfi_endproc
-.LFE15:
+.LFE18:
 	.size	_ZL7enqueueP7queue_tP9td_struct, .-_ZL7enqueueP7queue_tP9td_struct
 	.section	.text.Task_Terminate,"ax",@progbits
 .global	Task_Terminate
 	.type	Task_Terminate, @function
 Task_Terminate:
-.LFB24:
-	.loc 1 1060 0
+.LFB31:
+	.loc 1 1325 0
 	.cfi_startproc
 	push r28
 .LCFI0:
@@ -331,47 +331,249 @@ Task_Terminate:
 /* frame size = 0 */
 /* stack size = 1 */
 .L__stack_usage = 1
-.LBB27:
-	.loc 1 1063 0
+.LBB29:
+	.loc 1 1328 0
 	in r28,__SREG__
 .LVL2:
-	.loc 1 1064 0
+	.loc 1 1329 0
 /* #APP */
- ;  1064 ".././os.cpp" 1
+ ;  1329 ".././os.cpp" 1
 	cli
  ;  0 "" 2
-	.loc 1 1066 0
+	.loc 1 1331 0
 /* #NOAPP */
 	ldi r24,lo8(3)
 	sts _ZL14kernel_request,r24
-	.loc 1 1067 0
+	.loc 1 1332 0
 	call _ZL12enter_kernelv
 .LVL3:
-	.loc 1 1069 0
+	.loc 1 1334 0
 	out __SREG__,r28
 /* epilogue start */
-.LBE27:
-	.loc 1 1070 0
+.LBE29:
+	.loc 1 1335 0
 	pop r28
 .LVL4:
 	ret
 	.cfi_endproc
-.LFE24:
+.LFE31:
 	.size	Task_Terminate, .-Task_Terminate
+	.section	.text._ZL7dequeueP7queue_t.isra.1,"ax",@progbits
+	.type	_ZL7dequeueP7queue_t.isra.1, @function
+_ZL7dequeueP7queue_t.isra.1:
+.LFB35:
+	.loc 1 844 0
+	.cfi_startproc
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 0 */
+.L__stack_usage = 0
+	movw r26,r24
+.LVL5:
+.LBB30:
+	.loc 1 846 0
+	ld r24,X+
+	ld r25,X
+	sbiw r26,1
+.LVL6:
+	.loc 1 848 0
+	sbiw r24,0
+	breq .L12
+	.loc 1 850 0
+	movw r30,r24
+	subi r30,-12
+	sbci r31,-2
+	ld r18,Z
+	ldd r19,Z+1
+	st X+,r18
+	st X,r19
+	.loc 1 851 0
+	std Z+1,__zero_reg__
+	st Z,__zero_reg__
+.L12:
+.LBE30:
+	.loc 1 855 0
+	ret
+	.cfi_endproc
+.LFE35:
+	.size	_ZL7dequeueP7queue_t.isra.1, .-_ZL7dequeueP7queue_t.isra.1
+	.section	.text._ZL18kernel_create_taskv,"ax",@progbits
+	.type	_ZL18kernel_create_taskv, @function
+_ZL18kernel_create_taskv:
+.LFB13:
+	.loc 1 592 0
+	.cfi_startproc
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 0 */
+.L__stack_usage = 0
+.LBB34:
+	.loc 1 598 0
+	lds r24,_ZL15dead_pool_queue
+	lds r25,_ZL15dead_pool_queue+1
+	or r24,r25
+	brne .+2
+	rjmp .L23
+	.loc 1 629 0
+	lds r24,_ZL26kernel_request_create_args+4
+	tst r24
+	breq .L24
+	.loc 1 636 0
+	ldi r24,lo8(_ZL15dead_pool_queue)
+	ldi r25,hi8(_ZL15dead_pool_queue)
+	call _ZL7dequeueP7queue_t.isra.1
+.LVL7:
+	movw r22,r24
+.LVL8:
+	rjmp .L18
+.LVL9:
+.L24:
+	.loc 1 631 0
+	ldi r22,lo8(_ZL9task_desc+2176)
+	ldi r23,hi8(_ZL9task_desc+2176)
+.L18:
+.LVL10:
+	.loc 1 657 0
+	movw r30,r22
+	subi r30,36
+	sbci r31,-1
+	st Z,__zero_reg__
+	.loc 1 659 0
+	ldi r24,lo8(-128)
+	adiw r30,30
+	st Z,r24
+	.loc 1 668 0
+	adiw r30,3
+	st Z,__zero_reg__
+	.loc 1 669 0
+	lds r24,_ZL26kernel_request_create_args
+	lds r25,_ZL26kernel_request_create_args+1
+	adiw r30,1
+	st Z,r25
+	.loc 1 670 0
+	lds r24,_ZL26kernel_request_create_args
+	lds r25,_ZL26kernel_request_create_args+1
+	adiw r30,1
+	st Z,r24
+	.loc 1 673 0
+	ldi r24,lo8(gs(Task_Terminate))
+	ldi r25,hi8(gs(Task_Terminate))
+	adiw r30,3
+	st Z,r24
+	.loc 1 684 0
+	movw r24,r22
+	subi r24,38
+	sbci r25,-1
+	sbiw r30,2
+	std Z+1,r25
+	st Z,r24
+	.loc 1 686 0
+	ldi r24,lo8(2)
+	adiw r30,8
+	st Z,r24
+	.loc 1 687 0
+	lds r24,_ZL26kernel_request_create_args+2
+	lds r25,_ZL26kernel_request_create_args+2+1
+	adiw r30,1
+	std Z+1,r25
+	st Z,r24
+	.loc 1 688 0
+	lds r24,_ZL26kernel_request_create_args+4
+	adiw r30,2
+	st Z,r24
+	.loc 1 691 0
+	lds r24,_ZL26kernel_request_create_args+4
+	cpi r24,lo8(2)
+	breq .L19
+	cpi r24,lo8(3)
+	breq .L20
+	cpi r24,lo8(1)
+	brne .L26
+	.loc 1 706 0
+	ldi r24,lo8(_ZL8rr_queue)
+	ldi r25,hi8(_ZL8rr_queue)
+	rjmp .L27
+.L19:
+.LVL11:
+.LBB35:
+.LBB36:
+	.loc 1 792 0
+	movw r30,r22
+	subi r30,-12
+	sbci r31,-2
+	std Z+1,__zero_reg__
+	st Z,__zero_reg__
+	.loc 1 793 0
+	lds r24,_ZL14periodic_queue
+	lds r25,_ZL14periodic_queue+1
+	adiw r30,2
+	or r24,r25
+	brne .L22
+	.loc 1 796 0
+	std Z+1,__zero_reg__
+	st Z,__zero_reg__
+	.loc 1 797 0
+	sts _ZL14periodic_queue+1,r23
+	sts _ZL14periodic_queue,r22
+	rjmp .L28
+.L22:
+	.loc 1 803 0
+	lds r24,_ZL14periodic_queue+2
+	lds r25,_ZL14periodic_queue+2+1
+	movw r26,r24
+	subi r26,-12
+	sbci r27,-2
+	st X+,r22
+	st X,r23
+	.loc 1 804 0
+	std Z+1,r25
+	st Z,r24
+.L28:
+	.loc 1 805 0
+	sts _ZL14periodic_queue+2+1,r23
+	sts _ZL14periodic_queue+2,r22
+	rjmp .L26
+.LVL12:
+.L20:
+.LBE36:
+.LBE35:
+	.loc 1 701 0
+	ldi r24,lo8(_ZL12system_queue)
+	ldi r25,hi8(_ZL12system_queue)
+.L27:
+	.loc 1 706 0
+	call _ZL7enqueueP7queue_tP9td_struct
+.LVL13:
+	rjmp .L26
+.L23:
+	.loc 1 601 0
+	ldi r24,0
+	ldi r25,0
+	ret
+.L26:
+	.loc 1 715 0
+	ldi r24,lo8(1)
+	ldi r25,0
+.LBE34:
+	.loc 1 716 0
+	ret
+	.cfi_endproc
+.LFE13:
+	.size	_ZL18kernel_create_taskv, .-_ZL18kernel_create_taskv
 	.section	.text.__vector_17,"ax",@progbits
 .global	__vector_17
 	.type	__vector_17, @function
 __vector_17:
 .LFB12:
-	.loc 1 505 0
+	.loc 1 520 0
 	.cfi_startproc
 /* prologue: naked */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 518 0
+	.loc 1 533 0
 /* #APP */
- ;  518 ".././os.cpp" 1
+ ;  533 ".././os.cpp" 1
 	push   r31             
 	in     r31,0X3C        
 	push   r31             
@@ -379,13 +581,13 @@ __vector_17:
 	cli                    
 	
  ;  0 "" 2
-	.loc 1 520 0
- ;  520 ".././os.cpp" 1
+	.loc 1 535 0
+ ;  535 ".././os.cpp" 1
 	ori    r31, 0x80        
 	
  ;  0 "" 2
-	.loc 1 522 0
- ;  522 ".././os.cpp" 1
+	.loc 1 537 0
+ ;  537 ".././os.cpp" 1
 	push   r31             
 	push   r30             
 	push   r29             
@@ -420,7 +622,7 @@ __vector_17:
 	push   r0              
 	
  ;  0 "" 2
-	.loc 1 524 0
+	.loc 1 539 0
 /* #NOAPP */
 	lds r30,_ZL8cur_task
 	lds r31,_ZL8cur_task+1
@@ -429,15 +631,15 @@ __vector_17:
 	inc r31
 	std Z+1,r25
 	st Z,r24
-	.loc 1 531 0
+	.loc 1 546 0
 	lds r24,_ZL9kernel_sp
 	lds r25,_ZL9kernel_sp+1
 	out __SP_L__+1,r25
 	out __SP_L__,r24
-	.loc 1 536 0
+	.loc 1 551 0
 	ldi r24,lo8(1)
 	sts _ZL14kernel_request,r24
-	.loc 1 541 0
+	.loc 1 556 0
 	ldi r30,lo8(-120)
 	ldi r31,0
 	ld r24,Z
@@ -446,14 +648,14 @@ __vector_17:
 	sbci r25,-40
 	std Z+1,r25
 	st Z,r24
-	.loc 1 546 0
+	.loc 1 561 0
 	lds r24,_ZL9kernel_sp
 	lds r25,_ZL9kernel_sp+1
 	out __SP_L__+1,r25
 	out __SP_L__,r24
-	.loc 1 551 0
+	.loc 1 566 0
 /* #APP */
- ;  551 ".././os.cpp" 1
+ ;  566 ".././os.cpp" 1
 	pop    r0                
 	pop    r1                
 	pop    r2                
@@ -487,7 +689,7 @@ __vector_17:
 	pop    r30             
 	
  ;  0 "" 2
- ;  551 ".././os.cpp" 1
+ ;  566 ".././os.cpp" 1
 	pop    r31             
 	out    __SREG__, r31   
 	pop    r31             
@@ -495,13 +697,13 @@ __vector_17:
 	pop    r31             
 	
  ;  0 "" 2
-	.loc 1 561 0
- ;  561 ".././os.cpp" 1
+	.loc 1 576 0
+ ;  576 ".././os.cpp" 1
 	ret
 
  ;  0 "" 2
 /* epilogue start */
-	.loc 1 562 0
+	.loc 1 577 0
 /* #NOAPP */
 	.cfi_endproc
 .LFE12:
@@ -510,56 +712,56 @@ __vector_17:
 .global	OS_Abort
 	.type	OS_Abort, @function
 OS_Abort:
-.LFB21:
-	.loc 1 937 0
+.LFB23:
+	.loc 1 1062 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-.LBB28:
-	.loc 1 941 0
+.LBB37:
+	.loc 1 1066 0
 /* #APP */
- ;  941 ".././os.cpp" 1
+ ;  1066 ".././os.cpp" 1
 	cli
  ;  0 "" 2
-	.loc 1 944 0
+	.loc 1 1069 0
 /* #NOAPP */
 	ldi r24,lo8(-16)
 	out 0xa,r24
-	.loc 1 946 0
+	.loc 1 1071 0
 	lds r24,_ZL9error_msg
 	cpi r24,lo8(6)
-	brsh .L13
-	.loc 1 948 0
+	brsh .L31
+	.loc 1 1073 0
 	lds r24,_ZL9error_msg
 	subi r24,lo8(-(1))
-.LVL5:
-	.loc 1 949 0
+.LVL14:
+	.loc 1 1074 0
 	ldi r19,lo8(96)
-	rjmp .L14
-.LVL6:
-.L13:
-	.loc 1 953 0
+	rjmp .L32
+.LVL15:
+.L31:
+	.loc 1 1078 0
 	lds r24,_ZL9error_msg
 	subi r24,lo8(-(-5))
-.LVL7:
-	.loc 1 954 0
+.LVL16:
+	.loc 1 1079 0
 	ldi r19,lo8(-112)
-.LVL8:
-.L14:
-	.loc 1 960 0
+.LVL17:
+.L32:
+	.loc 1 1085 0
 	ldi r20,lo8(-16)
-.L26:
-.LVL9:
+.L44:
+.LVL18:
 	out 0xb,r20
-.LVL10:
+.LVL19:
 	ldi r25,lo8(100)
-.LVL11:
-.L16:
-.LBB29:
-.LBB30:
-.LBB31:
+.LVL20:
+.L34:
+.LBB38:
+.LBB39:
+.LBB40:
 	.file 2 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h"
 	.loc 2 163 0
 	ldi r18,lo8(79999)
@@ -571,23 +773,23 @@ OS_Abort:
 	brne 1b
 	rjmp .
 	nop
-.LVL12:
+.LVL21:
 	subi r25,lo8(-(-1))
-.LVL13:
-.LBE31:
-.LBE30:
-.LBE29:
-	.loc 1 962 0
-	brne .L16
-	.loc 1 967 0
+.LVL22:
+.LBE40:
+.LBE39:
+.LBE38:
+	.loc 1 1087 0
+	brne .L34
+	.loc 1 1092 0
 	out 0xb,__zero_reg__
-.LVL14:
+.LVL23:
 	ldi r25,lo8(40)
-.LVL15:
-.L19:
-.LBB32:
-.LBB33:
-.LBB34:
+.LVL24:
+.L37:
+.LBB41:
+.LBB42:
+.LBB43:
 	.loc 2 163 0
 	ldi r23,lo8(79999)
 	ldi r18,hi8(79999)
@@ -598,85 +800,85 @@ OS_Abort:
 	brne 1b
 	rjmp .
 	nop
-.LVL16:
-	subi r25,lo8(-(-1))
-.LVL17:
-.LBE34:
-.LBE33:
-.LBE32:
-	.loc 1 969 0
-	brne .L19
-.LVL18:
-.L18:
-	.loc 1 975 0 discriminator 1
-	cp r25,r24
-	breq .L28
-	.loc 1 977 0
-	out 0xb,r19
-.LVL19:
-	ldi r18,lo8(10)
-.LVL20:
-.L21:
-.LBB35:
-.LBB36:
-.LBB37:
-	.loc 2 163 0
-	ldi r22,lo8(79999)
-	ldi r23,hi8(79999)
-	ldi r21,hlo8(79999)
-	1: subi r22,1
-	sbci r23,0
-	sbci r21,0
-	brne 1b
-	rjmp .
-	nop
-.LVL21:
-	subi r18,lo8(-(-1))
-.LVL22:
-.LBE37:
-.LBE36:
-.LBE35:
-	.loc 1 979 0
-	brne .L21
-	.loc 1 984 0
-	out 0xb,__zero_reg__
-.LVL23:
-	ldi r18,lo8(10)
-.LVL24:
-.L23:
-.LBB38:
-.LBB39:
-.LBB40:
-	.loc 2 163 0
-	ldi r22,lo8(79999)
-	ldi r23,hi8(79999)
-	ldi r21,hlo8(79999)
-	1: subi r22,1
-	sbci r23,0
-	sbci r21,0
-	brne 1b
-	rjmp .
-	nop
 .LVL25:
-	subi r18,lo8(-(-1))
+	subi r25,lo8(-(-1))
 .LVL26:
-.LBE40:
-.LBE39:
-.LBE38:
-	.loc 1 986 0
-	brne .L23
-	.loc 1 975 0
-	subi r25,lo8(-(1))
+.LBE43:
+.LBE42:
+.LBE41:
+	.loc 1 1094 0
+	brne .L37
 .LVL27:
-	rjmp .L18
+.L36:
+	.loc 1 1100 0 discriminator 1
+	cp r25,r24
+	breq .L46
+	.loc 1 1102 0
+	out 0xb,r19
 .LVL28:
-.L28:
-	ldi r25,lo8(20)
+	ldi r18,lo8(10)
 .LVL29:
-.L27:
-.LBB41:
-.LBB42:
-.LBB43:
+.L39:
+.LBB44:
+.LBB45:
+.LBB46:
+	.loc 2 163 0
+	ldi r22,lo8(79999)
+	ldi r23,hi8(79999)
+	ldi r21,hlo8(79999)
+	1: subi r22,1
+	sbci r23,0
+	sbci r21,0
+	brne 1b
+	rjmp .
+	nop
+.LVL30:
+	subi r18,lo8(-(-1))
+.LVL31:
+.LBE46:
+.LBE45:
+.LBE44:
+	.loc 1 1104 0
+	brne .L39
+	.loc 1 1109 0
+	out 0xb,__zero_reg__
+.LVL32:
+	ldi r18,lo8(10)
+.LVL33:
+.L41:
+.LBB47:
+.LBB48:
+.LBB49:
+	.loc 2 163 0
+	ldi r22,lo8(79999)
+	ldi r23,hi8(79999)
+	ldi r21,hlo8(79999)
+	1: subi r22,1
+	sbci r23,0
+	sbci r21,0
+	brne 1b
+	rjmp .
+	nop
+.LVL34:
+	subi r18,lo8(-(-1))
+.LVL35:
+.LBE49:
+.LBE48:
+.LBE47:
+	.loc 1 1111 0
+	brne .L41
+	.loc 1 1100 0
+	subi r25,lo8(-(1))
+.LVL36:
+	rjmp .L36
+.LVL37:
+.L46:
+	ldi r25,lo8(20)
+.LVL38:
+.L45:
+.LBB50:
+.LBB51:
+.LBB52:
 	.loc 2 163 0
 	ldi r22,lo8(79999)
 	ldi r23,hi8(79999)
@@ -687,232 +889,25 @@ OS_Abort:
 	brne 1b
 	rjmp .
 	nop
-.LVL30:
+.LVL39:
 	subi r25,lo8(-(-1))
-.LVL31:
-.LBE43:
-.LBE42:
-.LBE41:
-	.loc 1 992 0
-	brne .L27
-	rjmp .L26
-.LBE28:
-	.cfi_endproc
-.LFE21:
-	.size	OS_Abort, .-OS_Abort
-	.section	.text._ZL18kernel_create_taskv,"ax",@progbits
-	.type	_ZL18kernel_create_taskv, @function
-_ZL18kernel_create_taskv:
-.LFB13:
-	.loc 1 577 0
-	.cfi_startproc
-/* prologue: function */
-/* frame size = 0 */
-/* stack size = 0 */
-.L__stack_usage = 0
-.LBB48:
-	.loc 1 583 0
-	lds r22,_ZL15dead_pool_queue
-	lds r23,_ZL15dead_pool_queue+1
-	cp r22,__zero_reg__
-	cpc r23,__zero_reg__
-	breq .L44
-	.loc 1 589 0
-	lds r24,_ZL26kernel_request_create_args+4
-	cpi r24,lo8(2)
-	brne .L31
-	.loc 1 590 0 discriminator 1
-	lds r24,_ZL26kernel_request_create_args+5
-	.loc 1 589 0 discriminator 1
-	tst r24
-	breq .L32
-	.loc 1 591 0
-	lds r24,_ZL26kernel_request_create_args+5
-	.loc 1 590 0
-	cpi r24,lo8(9)
-	brsh .L32
-	rjmp .L31
-.L44:
-	.loc 1 586 0
-	ldi r24,0
-	ldi r25,0
-	ret
-.L32:
-	.loc 1 594 0
-	ldi r24,lo8(1)
-	rjmp .L53
-.L31:
-	.loc 1 598 0
-	lds r24,_ZL26kernel_request_create_args+4
-	cpi r24,lo8(2)
-	brne .L34
-	.loc 1 599 0 discriminator 1
-	lds r30,_ZL26kernel_request_create_args+5
-	ldi r31,0
-	subi r30,lo8(-(_ZL11name_in_PPP))
-	sbci r31,hi8(-(_ZL11name_in_PPP))
-	.loc 1 598 0 discriminator 1
-	ld r24,Z
-	tst r24
-	breq .L33
-.L34:
-	.loc 1 605 0
-	lds r24,_ZL26kernel_request_create_args+4
-	cpi r24,lo8(2)
-	brne .L36
-	.loc 1 606 0 discriminator 1
-	lds r30,_ZL26kernel_request_create_args+5
-	ldi r31,0
-	lsl r30
-	rol r31
-	subi r30,lo8(-(_ZL16name_to_task_ptr))
-	sbci r31,hi8(-(_ZL16name_to_task_ptr))
-	.loc 1 605 0 discriminator 1
-	ld r24,Z
-	ldd r25,Z+1
-	or r24,r25
-	breq .L36
-	.loc 1 609 0
-	ldi r24,lo8(3)
-	rjmp .L53
-.L33:
-	.loc 1 601 0
-	ldi r24,lo8(4)
-.L53:
-	.loc 1 609 0
-	sts _ZL9error_msg,r24
-	.loc 1 610 0
-	call OS_Abort
-.LVL32:
-.L36:
-	.loc 1 614 0
-	lds r24,_ZL26kernel_request_create_args+4
-	tst r24
-	breq .L46
-.LVL33:
-.LBB49:
-.LBB50:
-	.loc 1 758 0
-	movw r30,r22
-	subi r30,-7
-	sbci r31,-2
-	ld r24,Z
-	ldd r25,Z+1
-	sts _ZL15dead_pool_queue+1,r25
-	sts _ZL15dead_pool_queue,r24
-	.loc 1 759 0
-	std Z+1,__zero_reg__
-	st Z,__zero_reg__
-	rjmp .L42
-.LVL34:
-.L46:
+.LVL40:
+.LBE52:
+.LBE51:
 .LBE50:
-.LBE49:
-	.loc 1 616 0
-	ldi r22,lo8(_ZL9task_desc+2120)
-	ldi r23,hi8(_ZL9task_desc+2120)
-.L42:
-.LVL35:
-	.loc 1 642 0
-	movw r30,r22
-	subi r30,36
-	sbci r31,-1
-	st Z,__zero_reg__
-	.loc 1 644 0
-	ldi r24,lo8(-128)
-	adiw r30,30
-	st Z,r24
-	.loc 1 653 0
-	adiw r30,3
-	st Z,__zero_reg__
-	.loc 1 654 0
-	lds r24,_ZL26kernel_request_create_args
-	lds r25,_ZL26kernel_request_create_args+1
-	adiw r30,1
-	st Z,r25
-	.loc 1 655 0
-	lds r24,_ZL26kernel_request_create_args
-	lds r25,_ZL26kernel_request_create_args+1
-	adiw r30,1
-	st Z,r24
-	.loc 1 658 0
-	ldi r24,lo8(gs(Task_Terminate))
-	ldi r25,hi8(gs(Task_Terminate))
-	adiw r30,3
-	st Z,r24
-	.loc 1 669 0
-	movw r24,r22
-	subi r24,38
-	sbci r25,-1
-	movw r26,r22
-	inc r27
-	adiw r26,1
-	st X,r25
-	st -X,r24
-	.loc 1 671 0
-	ldi r24,lo8(2)
-	adiw r26,3
-	st X,r24
-	.loc 1 672 0
-	lds r24,_ZL26kernel_request_create_args+2
-	lds r25,_ZL26kernel_request_create_args+2+1
-	adiw r26,1
-	adiw r26,1
-	st X,r25
-	st -X,r24
-	.loc 1 673 0
-	lds r24,_ZL26kernel_request_create_args+4
-	adiw r26,2
-	st X,r24
-	.loc 1 674 0
-	lds r24,_ZL26kernel_request_create_args+5
-	st Z,r24
-	.loc 1 676 0
-	lds r24,_ZL26kernel_request_create_args+4
-	cpi r24,lo8(2)
-	breq .L37
-	cpi r24,lo8(3)
-	breq .L38
-	cpi r24,lo8(1)
-	brne .L50
-	.loc 1 690 0
-	ldi r24,lo8(_ZL8rr_queue)
-	ldi r25,hi8(_ZL8rr_queue)
-	rjmp .L54
-.L37:
-	.loc 1 680 0
-	lds r30,_ZL26kernel_request_create_args+5
-	ldi r31,0
-	lsl r30
-	rol r31
-	subi r30,lo8(-(_ZL16name_to_task_ptr))
-	sbci r31,hi8(-(_ZL16name_to_task_ptr))
-	std Z+1,r23
-	st Z,r22
-	rjmp .L50
-.L38:
-	.loc 1 685 0
-	ldi r24,lo8(_ZL12system_queue)
-	ldi r25,hi8(_ZL12system_queue)
-.L54:
-	.loc 1 690 0
-	call _ZL7enqueueP7queue_tP9td_struct
-.LVL36:
-.L50:
-	.loc 1 699 0
-	ldi r24,lo8(1)
-	ldi r25,0
-	ret
-.LBE48:
+	.loc 1 1117 0
+	brne .L45
+	rjmp .L44
+.LBE37:
 	.cfi_endproc
-.LFE13:
-	.size	_ZL18kernel_create_taskv, .-_ZL18kernel_create_taskv
+.LFE23:
+	.size	OS_Abort, .-OS_Abort
 	.section	.text._Z7OS_Initv,"ax",@progbits
 .global	_Z7OS_Initv
 	.type	_Z7OS_Initv, @function
 _Z7OS_Initv:
-.LFB19:
-	.loc 1 857 0
+.LFB21:
+	.loc 1 981 0
 	.cfi_startproc
 	push r28
 .LCFI1:
@@ -933,612 +928,702 @@ _Z7OS_Initv:
 /* frame size = 1 */
 /* stack size = 3 */
 .L__stack_usage = 3
-.LBB74:
-	.loc 1 862 0
+.LBB75:
+	.loc 1 986 0
 	lds r24,129
 	ori r24,lo8(2)
 	sts 129,r24
-.LVL37:
-.LBB75:
-.LBB76:
-	.loc 1 818 0
-	lds r16,PT
-	lds r17,PT+1
-	movw r18,r16
-	lsl r18
-	rol r19
-	ldi r20,0
-	.loc 1 825 0
-	ldi r21,lo8(1)
-.LVL38:
-.L56:
-	.loc 1 818 0
-	mov r24,r20
-	ldi r25,0
-	cp r24,r18
-	cpc r25,r19
-	brsh .L134
-	.loc 1 820 0
-	movw r30,r24
-	subi r30,lo8(-(PPP))
-	sbci r31,hi8(-(PPP))
-	ld r30,Z
-.LVL39:
-	.loc 1 823 0
-	cpi r30,lo8(9)
-	brsh .L57
-	.loc 1 825 0
-	ldi r31,0
-	subi r30,lo8(-(_ZL11name_in_PPP))
-	sbci r31,hi8(-(_ZL11name_in_PPP))
-.LVL40:
-	st Z,r21
-	.loc 1 818 0
-	subi r20,lo8(-(2))
 .LVL41:
-	rjmp .L56
-.LVL42:
-.L57:
-	.loc 1 829 0
-	sts _ZL9error_msg,__zero_reg__
-	rjmp .L131
-.LVL43:
-.L134:
-	ldi r30,lo8(_ZL9task_desc+259)
-	ldi r31,hi8(_ZL9task_desc+259)
+	ldi r30,lo8(_ZL9task_desc+264)
+	ldi r31,hi8(_ZL9task_desc+264)
 	ldi r26,lo8(_ZL16name_to_task_ptr)
 	ldi r27,hi8(_ZL16name_to_task_ptr)
-.L60:
-.LBE76:
-.LBE75:
-	.loc 1 877 0 discriminator 2
+.LVL42:
+.L49:
+	.loc 1 1001 0 discriminator 2
 	st Z,__zero_reg__
-	.loc 1 878 0 discriminator 2
+	.loc 1 1002 0 discriminator 2
 	st X+,__zero_reg__
 	st X+,__zero_reg__
 	movw r24,r30
-	adiw r24,6
-	.loc 1 879 0 discriminator 2
+	adiw r24,8
+	.loc 1 1003 0 discriminator 2
 	std Z+5,r25
 	std Z+4,r24
-.LVL44:
-	subi r30,-9
+	subi r30,-16
 	sbci r31,-2
-	.loc 1 875 0 discriminator 2
-	ldi r18,hi8(_ZL9task_desc+2114)
-	cpi r30,lo8(_ZL9task_desc+2114)
-	cpc r31,r18
-	brne .L60
-	.loc 1 881 0
-	sts _ZL9task_desc+2118+1,__zero_reg__
-	sts _ZL9task_desc+2118,__zero_reg__
-	.loc 1 882 0
-	ldi r30,lo8(_ZL9task_desc)
-	mov r14,r30
-	ldi r30,hi8(_ZL9task_desc)
-	mov r15,r30
-	sts _ZL15dead_pool_queue+1,r15
-	sts _ZL15dead_pool_queue,r14
-	.loc 1 883 0
-	ldi r24,lo8(_ZL9task_desc+1855)
-	ldi r25,hi8(_ZL9task_desc+1855)
+	.loc 1 999 0 discriminator 2
+	ldi r24,hi8(_ZL9task_desc+2168)
+	cpi r30,lo8(_ZL9task_desc+2168)
+	cpc r31,r24
+	brne .L49
+	.loc 1 1005 0
+	sts _ZL9task_desc+2172+1,__zero_reg__
+	sts _ZL9task_desc+2172,__zero_reg__
+	.loc 1 1006 0
+	ldi r16,lo8(_ZL9task_desc)
+	ldi r17,hi8(_ZL9task_desc)
+	sts _ZL15dead_pool_queue+1,r17
+	sts _ZL15dead_pool_queue,r16
+	.loc 1 1007 0
+	ldi r24,lo8(_ZL9task_desc+1904)
+	ldi r25,hi8(_ZL9task_desc+1904)
 	sts _ZL15dead_pool_queue+2+1,r25
 	sts _ZL15dead_pool_queue+2,r24
-	.loc 1 886 0
+	.loc 1 1010 0
 	ldi r24,lo8(gs(_ZL4idlev))
 	ldi r25,hi8(gs(_ZL4idlev))
 	sts _ZL26kernel_request_create_args+1,r25
 	sts _ZL26kernel_request_create_args,r24
-	.loc 1 887 0
+	.loc 1 1011 0
 	sts _ZL26kernel_request_create_args+4,__zero_reg__
-	.loc 1 888 0
+	.loc 1 1012 0
 	call _ZL18kernel_create_taskv
-.LVL45:
-	.loc 1 891 0
+.LVL43:
+	.loc 1 1015 0
 	ldi r24,lo8(gs(_Z6r_mainv))
 	ldi r25,hi8(gs(_Z6r_mainv))
 	sts _ZL26kernel_request_create_args+1,r25
 	sts _ZL26kernel_request_create_args,r24
-	.loc 1 892 0
+	.loc 1 1016 0
 	ldi r24,lo8(3)
 	sts _ZL26kernel_request_create_args+4,r24
-	.loc 1 893 0
+	.loc 1 1017 0
 	call _ZL18kernel_create_taskv
-.LVL46:
-	.loc 1 896 0
-	sts _ZL8cur_task+1,r15
-	sts _ZL8cur_task,r14
-	.loc 1 897 0
+.LVL44:
+	.loc 1 1020 0
+	sts _ZL8cur_task+1,r17
+	sts _ZL8cur_task,r16
+	.loc 1 1021 0
 	ldi r24,lo8(1)
-	sts _ZL9task_desc+259,r24
-.LVL47:
-.LBB77:
-.LBB78:
-	.loc 1 754 0
-	lds r30,_ZL12system_queue
-	lds r31,_ZL12system_queue+1
-.LVL48:
-	.loc 1 756 0
-	sbiw r30,0
-	breq .L61
-	.loc 1 758 0
-	subi r30,-7
-	sbci r31,-2
-.LVL49:
-	ld r24,Z
-	ldd r25,Z+1
-	sts _ZL12system_queue+1,r25
-	sts _ZL12system_queue,r24
-.LVL50:
-	.loc 1 759 0
-	std Z+1,__zero_reg__
-	st Z,__zero_reg__
-.LVL51:
-.L61:
-.LBE78:
-.LBE77:
-	.loc 1 901 0
-	cp r16,__zero_reg__
-	cpc r17,__zero_reg__
-	breq .L62
-	.loc 1 903 0
-	lds r24,PPP+1
-	sts _ZL15ticks_remaining,r24
-.L62:
-	.loc 1 907 0
+	sts _ZL9task_desc+264,r24
+	.loc 1 1022 0
+	ldi r24,lo8(_ZL12system_queue)
+	ldi r25,hi8(_ZL12system_queue)
+	call _ZL7dequeueP7queue_t.isra.1
+.LVL45:
+	.loc 1 1031 0
 	lds r24,111
 	ori r24,lo8(2)
 	sts 111,r24
-	.loc 1 908 0
+	.loc 1 1032 0
 	lds r24,132
 	lds r25,132+1
 	subi r24,-16
 	sbci r25,-40
 	sts 136+1,r25
 	sts 136,r24
-	.loc 1 910 0
+	.loc 1 1034 0
 	ldi r24,lo8(2)
 	out 0x16,r24
+.LBB76:
+.LBB77:
+.LBB78:
 .LBB79:
-.LBB80:
-.LBB81:
-.LBB82:
-	.loc 1 183 0
-	clr r11
-	inc r11
-	.loc 1 180 0
-	ldi r21,lo8(_ZL9task_desc+2120)
-	mov r14,r21
-	ldi r21,hi8(_ZL9task_desc+2120)
-	mov r15,r21
-.LBE82:
-.LBE81:
-.LBB88:
-.LBB89:
-	.loc 1 271 0
-	ldi r22,lo8(2)
-	mov r10,r22
-.LBB90:
-.LBB91:
-	.loc 1 790 0
-	movw r12,r16
-	lsl r12
-	rol r13
-.LVL52:
-.L95:
-.LBE91:
-.LBE90:
-.LBE89:
-.LBE88:
-.LBB97:
-.LBB87:
-	.loc 1 162 0
-	lds r24,_ZL8cur_task
-	lds r25,_ZL8cur_task+1
-	movw r30,r24
-	subi r30,-3
-	sbci r31,-2
-	ld r18,Z
-	cpi r18,lo8(1)
-	brne .L63
-	subi r24,lo8(_ZL9task_desc+2120)
-	sbci r25,hi8(_ZL9task_desc+2120)
-	breq .+2
-	rjmp .L64
-.L63:
-	.loc 1 164 0
-	lds r24,_ZL12system_queue
-	lds r25,_ZL12system_queue+1
-	sbiw r24,0
-	breq .L65
-.LVL53:
+	.loc 1 198 0
+	clr r15
+	inc r15
+	.loc 1 195 0
+	ldi r16,lo8(_ZL9task_desc+2176)
+	ldi r17,hi8(_ZL9task_desc+2176)
+.LBE79:
+.LBE78:
 .LBB83:
 .LBB84:
-	.loc 1 758 0
-	movw r30,r24
-	subi r30,-7
-	sbci r31,-2
-	ld r18,Z
-	ldd r19,Z+1
-	sts _ZL12system_queue+1,r19
-	sts _ZL12system_queue,r18
-	rjmp .L133
-.LVL54:
-.L65:
-.LBE84:
-.LBE83:
-	.loc 1 168 0
-	lds r24,_ZL18slot_task_finished
-	cpse r24,__zero_reg__
-	rjmp .L67
-	cp r16,__zero_reg__
-	cpc r17,__zero_reg__
-	breq .L67
-	lds r30,_ZL15slot_name_index
-	lds r31,_ZL15slot_name_index+1
-	subi r30,lo8(-(PPP))
-	sbci r31,hi8(-(PPP))
-	ld r30,Z
-	ldi r31,0
-	lsl r30
-	rol r31
-	subi r30,lo8(-(_ZL16name_to_task_ptr))
-	sbci r31,hi8(-(_ZL16name_to_task_ptr))
-	ld r24,Z
-	ldd r25,Z+1
-	sbiw r24,0
-	brne .L128
-.L67:
-	.loc 1 173 0
-	lds r24,_ZL8rr_queue
-	lds r25,_ZL8rr_queue+1
-	sbiw r24,0
-	breq .L68
-.LVL55:
+	.loc 1 287 0
+	ldi r24,lo8(2)
+	mov r14,r24
 .LBB85:
 .LBB86:
-	.loc 1 758 0
-	movw r30,r24
-	subi r30,-7
-	sbci r31,-2
-	ld r18,Z
-	ldd r19,Z+1
-	sts _ZL8rr_queue+1,r19
-	sts _ZL8rr_queue,r18
-.LVL56:
-.L133:
-	.loc 1 759 0
-	std Z+1,__zero_reg__
-	st Z,__zero_reg__
-.L128:
+	.loc 1 893 0
+	ldi r25,lo8(100)
+	mov r13,r25
+	.loc 1 883 0
+	ldi r18,lo8(20)
+	mov r12,r18
+.L89:
 .LBE86:
 .LBE85:
+.LBE84:
+.LBE83:
+.LBB96:
+.LBB82:
+	.loc 1 173 0
+	lds r20,_ZL8cur_task
+	lds r21,_ZL8cur_task+1
+	movw r30,r20
+	subi r30,-8
+	sbci r31,-2
+	ld r24,Z
+	cpi r24,lo8(1)
+	brne .L50
+	ldi r30,hi8(_ZL9task_desc+2176)
+	cpi r20,lo8(_ZL9task_desc+2176)
+	cpc r21,r30
+	breq .+2
+	rjmp .L51
+.L50:
 	.loc 1 175 0
+	lds r18,_ZL12system_queue
+	lds r19,_ZL12system_queue+1
+	cp r18,__zero_reg__
+	cpc r19,__zero_reg__
+	breq .L52
+	.loc 1 177 0
+	ldi r24,lo8(_ZL12system_queue)
+	ldi r25,hi8(_ZL12system_queue)
+	rjmp .L110
+.L52:
+	.loc 1 180 0
+	lds r24,_ZL14periodic_queue
+	lds r25,_ZL14periodic_queue+1
+	sbiw r24,0
+	breq .L54
+.LVL46:
+.LBB80:
+.LBB81:
+	.loc 1 771 0
+	cp r20,__zero_reg__
+	cpc r21,__zero_reg__
+	breq .L91
+.L57:
+.LVL47:
+	movw r30,r24
+	subi r30,-12
+	sbci r31,-2
+	.loc 1 778 0
+	cp r24,r20
+	cpc r25,r21
+	brne .L56
+	.loc 1 780 0
+	ld r18,Z
+	ldd r19,Z+1
+	rjmp .L55
+.L56:
+	.loc 1 782 0
+	ld r24,Z
+	ldd r25,Z+1
+.LVL48:
+	.loc 1 776 0
+	sbiw r24,0
+	brne .L57
+	rjmp .L55
+.LVL49:
+.L91:
+	.loc 1 771 0
+	movw r18,r24
+.L55:
+.LBE81:
+.LBE80:
+	.loc 1 185 0
+	sts _ZL8cur_task+1,r19
+	sts _ZL8cur_task,r18
+	.loc 1 186 0
+	movw r30,r18
+	subi r30,-2
+	sbci r31,-2
+	ld r24,Z
+	sts _ZL15ticks_remaining,r24
+	rjmp .L53
+.LVL50:
+.L54:
+	.loc 1 188 0
+	lds r24,_ZL8rr_queue
+	lds r25,_ZL8rr_queue+1
+	or r24,r25
+	breq .L58
+	.loc 1 190 0
+	ldi r24,lo8(_ZL8rr_queue)
+	ldi r25,hi8(_ZL8rr_queue)
+.L110:
+	call _ZL7dequeueP7queue_t.isra.1
+.LVL51:
 	sts _ZL8cur_task+1,r25
 	sts _ZL8cur_task,r24
-	rjmp .L66
-.L68:
-	.loc 1 180 0
-	sts _ZL8cur_task+1,r15
-	sts _ZL8cur_task,r14
-.L66:
-	.loc 1 183 0
+	rjmp .L53
+.L58:
+	.loc 1 195 0
+	sts _ZL8cur_task+1,r17
+	sts _ZL8cur_task,r16
+.L53:
+	.loc 1 198 0
 	lds r30,_ZL8cur_task
 	lds r31,_ZL8cur_task+1
-	subi r30,-3
+	subi r30,-8
 	sbci r31,-2
-	st Z,r11
-.L64:
-.LBE87:
-.LBE97:
-	.loc 1 138 0
+	st Z,r15
+.L51:
+.LBE82:
+.LBE96:
+	.loc 1 149 0
 	call _ZL11exit_kernelv
-.LVL57:
-.LBB98:
-.LBB96:
-	.loc 1 198 0
+.LVL52:
+.LBB97:
+.LBB95:
+	.loc 1 213 0
 	lds r18,_ZL14kernel_request
 	cpi r18,lo8(2)
 	brne .+2
-	rjmp .L70
-	lds r8,_ZL8cur_task
-	lds r9,_ZL8cur_task+1
-	cpi r18,lo8(3)
-	brsh .L71
+	rjmp .L60
+	brsh .L61
 	tst r18
 	brne .+2
-	rjmp .L72
+	rjmp .L62
 	cpi r18,lo8(1)
-	breq .L73
-	rjmp .L69
-.L71:
+	breq .L63
+	rjmp .L59
+.L61:
+	lds r10,_ZL8cur_task
+	lds r11,_ZL8cur_task+1
 	cpi r18,lo8(4)
 	brne .+2
-	rjmp .L74
+	rjmp .L64
 	brsh .+2
-	rjmp .L75
+	rjmp .L65
 	cpi r18,lo8(5)
 	brne .+2
-	rjmp .L72
-	rjmp .L69
-.L73:
-.LBB93:
-.LBB92:
-	.loc 1 775 0
-	cp r16,__zero_reg__
-	cpc r17,__zero_reg__
-	brne .+2
-	rjmp .L77
-	.loc 1 777 0
+	rjmp .L62
+	rjmp .L59
+.L63:
+.LBB88:
+.LBB87:
+	.loc 1 868 0
+	lds r24,_ZL13ticks_counter
+	subi r24,lo8(-(1))
+	sts _ZL13ticks_counter,r24
+	.loc 1 869 0
 	lds r24,_ZL15ticks_remaining
 	subi r24,lo8(-(-1))
 	sts _ZL15ticks_remaining,r24
-	.loc 1 779 0
+	.loc 1 870 0
 	lds r24,_ZL15ticks_remaining
 	cpse r24,__zero_reg__
-	rjmp .L77
-	.loc 1 782 0
-	cp r8,__zero_reg__
-	cpc r9,__zero_reg__
-	breq .L79
-	movw r30,r8
+	rjmp .L66
+	.loc 1 873 0
+	lds r18,_ZL18next_task_periodic
+	lds r19,_ZL18next_task_periodic+1
+	cp r18,__zero_reg__
+	cpc r19,__zero_reg__
+	brne .L67
+	sts _ZL18next_task_periodic+1,__zero_reg__
+	sts _ZL18next_task_periodic,__zero_reg__
+	rjmp .L69
+.L67:
+	.loc 1 883 0
+	lds r24,_ZL13ticks_counter
+	mov r22,r12
+	call __udivmodqi4
+	mov r24,r25
+	ldi r25,0
+	movw r30,r18
 	subi r30,-6
 	sbci r31,-2
+	ld r20,Z
+	ldd r21,Z+1
+	cp r20,r24
+	cpc r21,r25
+	brne .L69
+	.loc 1 885 0
+	sts _ZL8cur_task+1,r19
+	sts _ZL8cur_task,r18
+	.loc 1 886 0
+	sts _ZL18next_task_periodic+1,__zero_reg__
+	sts _ZL18next_task_periodic,__zero_reg__
+	.loc 1 887 0
+	sbiw r30,4
 	ld r24,Z
-	cpi r24,lo8(2)
-	brne .L79
-	lds r24,_ZL18slot_task_finished
-	cpse r24,__zero_reg__
-	rjmp .L79
-	.loc 1 785 0
-	ldi r24,lo8(8)
-.L132:
-	sts _ZL9error_msg,r24
-.L131:
-	.loc 1 786 0
-	call OS_Abort
-.LVL58:
-.L79:
-	.loc 1 789 0
-	lds r24,_ZL15slot_name_index
-	lds r25,_ZL15slot_name_index+1
-	adiw r24,2
-	.loc 1 790 0
-	cp r24,r12
-	cpc r25,r13
-	brsh .L80
-	.loc 1 789 0
-	sts _ZL15slot_name_index+1,r25
-	sts _ZL15slot_name_index,r24
-	rjmp .L81
-.L80:
-	.loc 1 792 0
-	sts _ZL15slot_name_index+1,__zero_reg__
-	sts _ZL15slot_name_index,__zero_reg__
-.L81:
-	.loc 1 795 0
-	lds r30,_ZL15slot_name_index
-	lds r31,_ZL15slot_name_index+1
-	subi r30,lo8(-(PPP))
-	sbci r31,hi8(-(PPP))
-	ldd r24,Z+1
 	sts _ZL15ticks_remaining,r24
-	.loc 1 797 0
-	ld r30,Z
-	tst r30
-	breq .L82
-	ldi r31,0
-	lsl r30
-	rol r31
-	subi r30,lo8(-(_ZL16name_to_task_ptr))
-	sbci r31,hi8(-(_ZL16name_to_task_ptr))
-	ld r24,Z
-	ldd r25,Z+1
-	or r24,r25
-	brne .L83
-.L82:
-	.loc 1 799 0
-	sts _ZL18slot_task_finished,r11
-	rjmp .L77
-.L83:
-	.loc 1 803 0
-	sts _ZL18slot_task_finished,__zero_reg__
-.L77:
-.LBE92:
-.LBE93:
-	.loc 1 208 0
-	movw r30,r8
+	rjmp .L68
+.L69:
+	.loc 1 889 0
+	ldi r24,lo8(_ZL8rr_queue)
+	ldi r25,hi8(_ZL8rr_queue)
+	call _ZL7dequeueP7queue_t.isra.1
+.LVL53:
+	sts _ZL8cur_task+1,r25
+	sts _ZL8cur_task,r24
+	rjmp .L68
+.L66:
+	.loc 1 893 0
+	lds r25,_ZL15ticks_remaining
+	lds r24,_ZL13ticks_counter
+	lds r30,_ZL8cur_task
+	lds r31,_ZL8cur_task+1
 	subi r30,-6
+	sbci r31,-2
+	ld r18,Z
+	ldd r19,Z+1
+	add r18,r25
+	adc r19,__zero_reg__
+	mov r22,r13
+	call __udivmodqi4
+	mov r24,r25
+	ldi r25,0
+	cp r24,r18
+	cpc r25,r19
+	brsh .+2
+	rjmp .L115
+.L68:
+.LBE87:
+.LBE88:
+	.loc 1 223 0
+	lds r22,_ZL8cur_task
+	lds r23,_ZL8cur_task+1
+	movw r30,r22
+	subi r30,-11
 	sbci r31,-2
 	ld r24,Z
 	cpi r24,lo8(1)
 	breq .+2
-	rjmp .L72
+	rjmp .L62
 	sbiw r30,3
 	ld r24,Z
 	cpi r24,lo8(1)
 	breq .+2
-	rjmp .L72
-	.loc 1 210 0
-	st Z,r10
-	.loc 1 211 0
-	movw r22,r8
-	rjmp .L96
-.L70:
-	.loc 1 216 0
+	rjmp .L62
+	.loc 1 225 0
+	st Z,r14
+	rjmp .L90
+.L60:
+	.loc 1 231 0
 	std Y+1,r18
 	call _ZL18kernel_create_taskv
-.LVL59:
+.LVL54:
 	sts _ZL21kernel_request_retval+1,r25
 	sts _ZL21kernel_request_retval,r24
-	.loc 1 221 0
+	.loc 1 236 0
 	lds r24,_ZL21kernel_request_retval
 	lds r25,_ZL21kernel_request_retval+1
 	ldd r18,Y+1
 	or r24,r25
 	brne .+2
-	rjmp .L72
-	.loc 1 224 0
-	lds r24,_ZL26kernel_request_create_args+4
+	rjmp .L62
+	.loc 1 239 0
+	lds r19,_ZL26kernel_request_create_args+4
 	lds r22,_ZL8cur_task
 	lds r23,_ZL8cur_task+1
-	cpi r24,lo8(3)
-	brne .L86
-	movw r30,r22
-	subi r30,-6
-	sbci r31,-2
-	ld r24,Z
-	cpi r24,lo8(3)
-	breq .+2
-	rjmp .L87
-.L86:
-	.loc 1 230 0
-	movw r30,r22
-	subi r30,-6
-	sbci r31,-2
-	.loc 1 231 0
-	ld r24,Z
-	cpi r24,lo8(1)
-	breq .+2
-	rjmp .L72
-	lds r24,_ZL26kernel_request_create_args+4
-	movw r26,r22
-	subi r26,-3
-	sbci r27,-2
-	.loc 1 230 0
-	cpi r24,lo8(2)
-	brne .L88
-	.loc 1 232 0
-	lds r25,_ZL26kernel_request_create_args+5
-	lds r30,_ZL15slot_name_index
-	lds r31,_ZL15slot_name_index+1
-	subi r30,lo8(-(PPP))
-	sbci r31,hi8(-(PPP))
-	.loc 1 231 0
-	ld r18,Z
-	cpse r18,r25
-	rjmp .L88
-	.loc 1 234 0
-	st X,r24
-.L88:
-	.loc 1 238 0
-	ld r24,X
-	cpi r24,lo8(2)
+	cpi r19,lo8(3)
 	brne .L72
-.L96:
-	.loc 1 240 0
+	movw r30,r22
+	subi r30,-11
+	sbci r31,-2
+	ld r19,Z
+	cpi r19,lo8(3)
+	breq .+2
+	rjmp .L73
+.L72:
+	.loc 1 245 0
+	movw r30,r22
+	subi r30,-11
+	sbci r31,-2
+	ld r18,Z
+	cpi r18,lo8(1)
+	breq .+2
+	rjmp .L62
+	.loc 1 246 0
+	lds r18,_ZL26kernel_request_create_args+4
+	sbiw r30,3
+	.loc 1 245 0
+	cpi r18,lo8(2)
+	brne .L75
+	.loc 1 249 0
+	st Z,r18
+.L75:
+	.loc 1 253 0
+	ld r18,Z
+	cpi r18,lo8(2)
+	breq .+2
+	rjmp .L62
+.L90:
+	.loc 1 255 0
 	ldi r24,lo8(_ZL8rr_queue)
 	ldi r25,hi8(_ZL8rr_queue)
-	rjmp .L130
-.L75:
-	.loc 1 246 0
-	ldi r31,lo8(_ZL9task_desc+2120)
-	cp r8,r31
-	ldi r31,hi8(_ZL9task_desc+2120)
-	cpc r9,r31
-	breq .L72
-.LBB94:
-.LBB95:
-	.loc 1 709 0
-	movw r30,r8
-	subi r30,-3
+	rjmp .L114
+.L65:
+	.loc 1 261 0
+	ldi r31,lo8(_ZL9task_desc+2176)
+	cp r10,r31
+	ldi r31,hi8(_ZL9task_desc+2176)
+	cpc r11,r31
+	brne .+2
+	rjmp .L62
+.LBB89:
+.LBB90:
+	.loc 1 725 0
+	movw r30,r10
+	subi r30,-8
 	sbci r31,-2
 	st Z,__zero_reg__
-	.loc 1 710 0
+	.loc 1 726 0
 	adiw r30,3
 	ld r24,Z
 	cpi r24,lo8(2)
-	brne .L90
-	.loc 1 712 0
-	sbiw r30,4
-	ld r30,Z
-	ldi r31,0
-	lsl r30
-	rol r31
-	subi r30,lo8(-(_ZL16name_to_task_ptr))
-	sbci r31,hi8(-(_ZL16name_to_task_ptr))
+	breq .+2
+	rjmp .L76
+.LVL55:
+.LBB91:
+.LBB92:
+	.loc 1 739 0
+	lds r24,_ZL14periodic_queue
+	lds r25,_ZL14periodic_queue+1
+	cp r24,r10
+	cpc r25,r11
+	brne .L77
+	adiw r30,1
+	ld r18,Z
+	ldd r19,Z+1
+	cp r18,__zero_reg__
+	cpc r19,__zero_reg__
+	breq .L77
+	.loc 1 741 0
+	sts _ZL14periodic_queue+1,r19
+	sts _ZL14periodic_queue,r18
+	.loc 1 742 0
+	movw r30,r18
+	subi r30,-14
+	sbci r31,-2
+	rjmp .L111
+.L77:
+	.loc 1 744 0
+	lds r18,_ZL14periodic_queue+2
+	lds r19,_ZL14periodic_queue+2+1
+	cp r18,r10
+	cpc r19,r11
+	brne .L81
+	movw r30,r10
+	subi r30,-14
+	sbci r31,-2
+	ld r18,Z
+	ldd r19,Z+1
+	cp r18,__zero_reg__
+	cpc r19,__zero_reg__
+	breq .L79
+	.loc 1 745 0
+	sts _ZL14periodic_queue+2+1,r19
+	sts _ZL14periodic_queue+2,r18
+	.loc 1 746 0
+	movw r30,r18
+	subi r30,-12
+	sbci r31,-2
+.L111:
 	std Z+1,__zero_reg__
 	st Z,__zero_reg__
-.L90:
-	.loc 1 714 0
-	movw r22,r8
+	rjmp .L76
+.L79:
+	.loc 1 748 0
+	cp r24,r10
+	cpc r25,r11
+	brne .L81
+	.loc 1 749 0
+	sts _ZL14periodic_queue+2+1,__zero_reg__
+	sts _ZL14periodic_queue+2,__zero_reg__
+	.loc 1 750 0
+	sts _ZL14periodic_queue+1,__zero_reg__
+	sts _ZL14periodic_queue,__zero_reg__
+	rjmp .L76
+.LVL56:
+.L82:
+	.loc 1 762 0
+	movw r30,r24
+	subi r30,-12
+	sbci r31,-2
+	ld r24,Z
+	ldd r25,Z+1
+.LVL57:
+.L81:
+	.loc 1 754 0
+	sbiw r24,0
+	breq .L76
+	.loc 1 756 0
+	cp r24,r10
+	cpc r25,r11
+	brne .L82
+	.loc 1 757 0
+	movw r30,r10
+	subi r30,-14
+	sbci r31,-2
+	ld r24,Z
+	ldd r25,Z+1
+.LVL58:
+	.loc 1 758 0
+	movw r30,r24
+	subi r30,-12
+	sbci r31,-2
+	ld r26,Z
+	ldd r27,Z+1
+	subi r26,-12
+	sbci r27,-2
+	ld r18,X+
+	ld r19,X
+	std Z+1,r19
+	st Z,r18
+	.loc 1 759 0
+	movw r30,r18
+	subi r30,-14
+	sbci r31,-2
+	std Z+1,r25
+	st Z,r24
+.LVL59:
+.L76:
+.LBE92:
+.LBE91:
+	.loc 1 730 0
+	movw r22,r10
 	ldi r24,lo8(_ZL15dead_pool_queue)
 	ldi r25,hi8(_ZL15dead_pool_queue)
-.L130:
+.L114:
 	call _ZL7enqueueP7queue_tP9td_struct
 .LVL60:
-	rjmp .L72
-.L74:
-.LBE95:
-.LBE94:
-	.loc 1 253 0
-	movw r30,r8
-	subi r30,-6
+	rjmp .L62
+.L64:
+.LBE90:
+.LBE89:
+	.loc 1 268 0
+	movw r30,r10
+	subi r30,-11
 	sbci r31,-2
 	ld r24,Z
 	cpi r24,lo8(2)
-	breq .L92
+	breq .L85
 	cpi r24,lo8(3)
-	breq .L93
+	breq .L86
 	cpi r24,lo8(1)
-	brne .L91
-	.loc 1 264 0
-	movw r22,r8
+	brne .L84
+	.loc 1 280 0
+	movw r22,r10
 	ldi r24,lo8(_ZL8rr_queue)
 	ldi r25,hi8(_ZL8rr_queue)
-	rjmp .L129
-.L93:
-	.loc 1 256 0
-	movw r22,r8
+	rjmp .L112
+.L86:
+	.loc 1 271 0
+	movw r22,r10
 	ldi r24,lo8(_ZL12system_queue)
 	ldi r25,hi8(_ZL12system_queue)
-	rjmp .L129
-.L92:
-	.loc 1 260 0
-	sts _ZL18slot_task_finished,r11
-	rjmp .L91
-.L129:
-	.loc 1 264 0
-	call _ZL7enqueueP7queue_tP9td_struct
+	rjmp .L112
+.L85:
+	.loc 1 275 0
+	sts _ZL18slot_task_finished,r15
 .LVL61:
-.L91:
-	.loc 1 271 0
-	movw r30,r8
-	subi r30,-3
+.LBB93:
+.LBB94:
+	.loc 1 792 0
+	movw r30,r10
+	subi r30,-12
 	sbci r31,-2
-	st Z,r10
-	rjmp .L72
-.L69:
+	std Z+1,__zero_reg__
+	st Z,__zero_reg__
+	.loc 1 793 0
+	lds r24,_ZL14periodic_queue
+	lds r25,_ZL14periodic_queue+1
+	adiw r30,2
+	or r24,r25
+	brne .L88
+	.loc 1 796 0
+	std Z+1,__zero_reg__
+	st Z,__zero_reg__
+	.loc 1 797 0
+	sts _ZL14periodic_queue+1,r11
+	sts _ZL14periodic_queue,r10
+	rjmp .L113
+.L88:
+	.loc 1 803 0
+	lds r24,_ZL14periodic_queue+2
+	lds r25,_ZL14periodic_queue+2+1
+	movw r26,r24
+	subi r26,-12
+	sbci r27,-2
+	st X+,r10
+	st X,r11
+	.loc 1 804 0
+	std Z+1,r25
+	st Z,r24
+.L113:
+	.loc 1 805 0
+	sts _ZL14periodic_queue+2+1,r11
+	sts _ZL14periodic_queue+2,r10
+	rjmp .L84
+.LVL62:
+.L112:
+.LBE94:
+.LBE93:
 	.loc 1 280 0
+	call _ZL7enqueueP7queue_tP9td_struct
+.LVL63:
+.L84:
+	.loc 1 287 0
+	movw r30,r10
+	subi r30,-8
+	sbci r31,-2
+	st Z,r14
+	rjmp .L62
+.L59:
+	.loc 1 296 0
 	ldi r24,lo8(-1)
-	rjmp .L132
-.L72:
-	.loc 1 285 0
+	sts _ZL9error_msg,r24
+.L115:
+	.loc 1 297 0
+	call OS_Abort
+.LVL64:
+.L62:
+	.loc 1 300 0
 	sts _ZL14kernel_request,__zero_reg__
-	rjmp .L95
-.L87:
-	.loc 1 226 0
+	rjmp .L89
+.L73:
+	.loc 1 241 0
 	movw r30,r22
-	subi r30,-3
+	subi r30,-8
 	sbci r31,-2
 	st Z,r18
-	rjmp .L86
-.LBE96:
-.LBE98:
-.LBE80:
-.LBE79:
-.LBE74:
+	rjmp .L72
+.LBE95:
+.LBE97:
+.LBE77:
+.LBE76:
+.LBE75:
 	.cfi_endproc
-.LFE19:
+.LFE21:
 	.size	_Z7OS_Initv, .-_Z7OS_Initv
-	.section	.text.Task_Create,"ax",@progbits
-.global	Task_Create
-	.type	Task_Create, @function
-Task_Create:
-.LFB22:
-	.loc 1 1017 0
+	.section	.text.Service_Subscribe,"ax",@progbits
+.global	Service_Subscribe
+	.type	Service_Subscribe, @function
+Service_Subscribe:
+.LFB24:
+	.loc 1 1151 0
 	.cfi_startproc
-.LVL62:
+.LVL65:
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 0 */
+.L__stack_usage = 0
+	ret
+	.cfi_endproc
+.LFE24:
+	.size	Service_Subscribe, .-Service_Subscribe
+	.section	.text.Service_Publish,"ax",@progbits
+.global	Service_Publish
+	.type	Service_Publish, @function
+Service_Publish:
+.LFB25:
+	.loc 1 1164 0
+	.cfi_startproc
+.LVL66:
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 0 */
+.L__stack_usage = 0
+	ret
+	.cfi_endproc
+.LFE25:
+	.size	Service_Publish, .-Service_Publish
+	.section	.text.Task_Create_System,"ax",@progbits
+.global	Task_Create_System
+	.type	Task_Create_System, @function
+Task_Create_System:
+.LFB26:
+	.loc 1 1182 0
+	.cfi_startproc
+.LVL67:
+	.loc 1 1182 0
 	push r28
 .LCFI5:
 	.cfi_def_cfa_offset 4
@@ -1547,181 +1632,364 @@ Task_Create:
 /* frame size = 0 */
 /* stack size = 1 */
 .L__stack_usage = 1
-.LBB99:
-	.loc 1 1021 0
+.LBB98:
+	.loc 1 1186 0
 	in r28,__SREG__
-.LVL63:
-	.loc 1 1022 0
+.LVL68:
+	.loc 1 1187 0
 /* #APP */
- ;  1022 ".././os.cpp" 1
+ ;  1187 ".././os.cpp" 1
 	cli
  ;  0 "" 2
-	.loc 1 1024 0
+	.loc 1 1189 0
 /* #NOAPP */
 	sts _ZL26kernel_request_create_args+1,r25
 	sts _ZL26kernel_request_create_args,r24
-	.loc 1 1025 0
+	.loc 1 1190 0
 	sts _ZL26kernel_request_create_args+2+1,r23
 	sts _ZL26kernel_request_create_args+2,r22
-	.loc 1 1026 0
-	sts _ZL26kernel_request_create_args+4,r20
-	.loc 1 1027 0
-	sts _ZL26kernel_request_create_args+5,r18
-	.loc 1 1029 0
+	.loc 1 1191 0
+	ldi r24,lo8(3)
+.LVL69:
+	sts _ZL26kernel_request_create_args+4,r24
+	.loc 1 1194 0
 	ldi r24,lo8(2)
-.LVL64:
 	sts _ZL14kernel_request,r24
-	.loc 1 1030 0
+	.loc 1 1195 0
 	call _ZL12enter_kernelv
-.LVL65:
-	.loc 1 1032 0
+.LVL70:
+	.loc 1 1197 0
 	lds r24,_ZL21kernel_request_retval
 	lds r25,_ZL21kernel_request_retval+1
-.LVL66:
-	.loc 1 1033 0
+.LVL71:
+	.loc 1 1198 0
+	out __SREG__,r28
+/* epilogue start */
+.LBE98:
+	.loc 1 1201 0
+	pop r28
+.LVL72:
+	ret
+	.cfi_endproc
+.LFE26:
+	.size	Task_Create_System, .-Task_Create_System
+	.section	.text.Task_Create_RR,"ax",@progbits
+.global	Task_Create_RR
+	.type	Task_Create_RR, @function
+Task_Create_RR:
+.LFB27:
+	.loc 1 1204 0
+	.cfi_startproc
+.LVL73:
+	push r28
+.LCFI6:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 28, -3
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 1 */
+.L__stack_usage = 1
+.LBB99:
+	.loc 1 1208 0
+	in r28,__SREG__
+.LVL74:
+	.loc 1 1209 0
+/* #APP */
+ ;  1209 ".././os.cpp" 1
+	cli
+ ;  0 "" 2
+	.loc 1 1211 0
+/* #NOAPP */
+	sts _ZL26kernel_request_create_args+1,r25
+	sts _ZL26kernel_request_create_args,r24
+	.loc 1 1212 0
+	sts _ZL26kernel_request_create_args+2+1,r23
+	sts _ZL26kernel_request_create_args+2,r22
+	.loc 1 1213 0
+	ldi r24,lo8(1)
+.LVL75:
+	sts _ZL26kernel_request_create_args+4,r24
+	.loc 1 1216 0
+	ldi r24,lo8(2)
+	sts _ZL14kernel_request,r24
+	.loc 1 1217 0
+	call _ZL12enter_kernelv
+.LVL76:
+	.loc 1 1219 0
+	lds r24,_ZL21kernel_request_retval
+	lds r25,_ZL21kernel_request_retval+1
+.LVL77:
+	.loc 1 1220 0
 	out __SREG__,r28
 /* epilogue start */
 .LBE99:
-	.loc 1 1036 0
+	.loc 1 1223 0
 	pop r28
-.LVL67:
+.LVL78:
 	ret
 	.cfi_endproc
-.LFE22:
+.LFE27:
+	.size	Task_Create_RR, .-Task_Create_RR
+	.section	.text.Task_Create_Periodic,"ax",@progbits
+.global	Task_Create_Periodic
+	.type	Task_Create_Periodic, @function
+Task_Create_Periodic:
+.LFB28:
+	.loc 1 1241 0
+	.cfi_startproc
+.LVL79:
+	push r16
+.LCFI7:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 16, -3
+	push r17
+.LCFI8:
+	.cfi_def_cfa_offset 5
+	.cfi_offset 17, -4
+	push r28
+.LCFI9:
+	.cfi_def_cfa_offset 6
+	.cfi_offset 28, -5
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 3 */
+.L__stack_usage = 3
+.LBB100:
+	.loc 1 1245 0
+	in r28,__SREG__
+.LVL80:
+	.loc 1 1246 0
+/* #APP */
+ ;  1246 ".././os.cpp" 1
+	cli
+ ;  0 "" 2
+	.loc 1 1248 0
+/* #NOAPP */
+	sts _ZL26kernel_request_create_args+1,r25
+	sts _ZL26kernel_request_create_args,r24
+	.loc 1 1249 0
+	sts _ZL26kernel_request_create_args+2+1,r23
+	sts _ZL26kernel_request_create_args+2,r22
+	.loc 1 1250 0
+	ldi r24,lo8(2)
+.LVL81:
+	sts _ZL26kernel_request_create_args+4,r24
+	.loc 1 1251 0
+	sts _ZL26kernel_request_create_args+5+1,r21
+	sts _ZL26kernel_request_create_args+5,r20
+	.loc 1 1252 0
+	sts _ZL26kernel_request_create_args+7+1,r19
+	sts _ZL26kernel_request_create_args+7,r18
+	.loc 1 1253 0
+	sts _ZL26kernel_request_create_args+9+1,r17
+	sts _ZL26kernel_request_create_args+9,r16
+	.loc 1 1256 0
+	sts _ZL14kernel_request,r24
+	.loc 1 1257 0
+	call _ZL12enter_kernelv
+.LVL82:
+	.loc 1 1259 0
+	lds r24,_ZL21kernel_request_retval
+	lds r25,_ZL21kernel_request_retval+1
+.LVL83:
+	.loc 1 1260 0
+	out __SREG__,r28
+/* epilogue start */
+.LBE100:
+	.loc 1 1263 0
+	pop r28
+.LVL84:
+	pop r17
+	pop r16
+.LVL85:
+	ret
+	.cfi_endproc
+.LFE28:
+	.size	Task_Create_Periodic, .-Task_Create_Periodic
+	.section	.text.Task_Create,"ax",@progbits
+.global	Task_Create
+	.type	Task_Create, @function
+Task_Create:
+.LFB29:
+	.loc 1 1282 0
+	.cfi_startproc
+.LVL86:
+	push r28
+.LCFI10:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 28, -3
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 1 */
+.L__stack_usage = 1
+.LBB101:
+	.loc 1 1286 0
+	in r28,__SREG__
+.LVL87:
+	.loc 1 1287 0
+/* #APP */
+ ;  1287 ".././os.cpp" 1
+	cli
+ ;  0 "" 2
+	.loc 1 1289 0
+/* #NOAPP */
+	sts _ZL26kernel_request_create_args+1,r25
+	sts _ZL26kernel_request_create_args,r24
+	.loc 1 1290 0
+	sts _ZL26kernel_request_create_args+2+1,r23
+	sts _ZL26kernel_request_create_args+2,r22
+	.loc 1 1291 0
+	sts _ZL26kernel_request_create_args+4,r20
+	.loc 1 1294 0
+	ldi r24,lo8(2)
+.LVL88:
+	sts _ZL14kernel_request,r24
+	.loc 1 1295 0
+	call _ZL12enter_kernelv
+.LVL89:
+	.loc 1 1297 0
+	lds r24,_ZL21kernel_request_retval
+	lds r25,_ZL21kernel_request_retval+1
+.LVL90:
+	.loc 1 1298 0
+	out __SREG__,r28
+/* epilogue start */
+.LBE101:
+	.loc 1 1301 0
+	pop r28
+.LVL91:
+	ret
+	.cfi_endproc
+.LFE29:
 	.size	Task_Create, .-Task_Create
 	.section	.text.Task_Next,"ax",@progbits
 .global	Task_Next
 	.type	Task_Next, @function
 Task_Next:
-.LFB23:
-	.loc 1 1043 0
+.LFB30:
+	.loc 1 1308 0
 	.cfi_startproc
 	push r28
-.LCFI6:
+.LCFI11:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 28, -3
 	push r29
-.LCFI7:
+.LCFI12:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 29, -4
 	push __zero_reg__
-.LCFI8:
+.LCFI13:
 	.cfi_def_cfa_offset 6
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI9:
+.LCFI14:
 	.cfi_def_cfa_register 28
 /* prologue: function */
 /* frame size = 1 */
 /* stack size = 3 */
 .L__stack_usage = 3
-.LBB100:
-	.loc 1 1046 0
+.LBB102:
+	.loc 1 1311 0
 	in r24,__SREG__
 	std Y+1,r24
-	.loc 1 1047 0
+	.loc 1 1312 0
 /* #APP */
- ;  1047 ".././os.cpp" 1
+ ;  1312 ".././os.cpp" 1
 	cli
  ;  0 "" 2
-	.loc 1 1049 0
+	.loc 1 1314 0
 /* #NOAPP */
 	ldi r24,lo8(4)
 	sts _ZL14kernel_request,r24
-	.loc 1 1050 0
+	.loc 1 1315 0
 	call _ZL12enter_kernelv
-.LVL68:
-	.loc 1 1052 0
+.LVL92:
+	.loc 1 1317 0
 	ldd r24,Y+1
 	out __SREG__,r24
 /* epilogue start */
-.LBE100:
-	.loc 1 1053 0
+.LBE102:
+	.loc 1 1318 0
 	pop __tmp_reg__
 	pop r29
 	pop r28
 	ret
 	.cfi_endproc
-.LFE23:
+.LFE30:
 	.size	Task_Next, .-Task_Next
 	.section	.text.Task_GetArg,"ax",@progbits
 .global	Task_GetArg
 	.type	Task_GetArg, @function
 Task_GetArg:
-.LFB25:
-	.loc 1 1076 0
+.LFB32:
+	.loc 1 1341 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-.LBB101:
-	.loc 1 1080 0
+.LBB103:
+	.loc 1 1345 0
 	in r18,__SREG__
-.LVL69:
-	.loc 1 1081 0
+.LVL93:
+	.loc 1 1346 0
 /* #APP */
- ;  1081 ".././os.cpp" 1
+ ;  1346 ".././os.cpp" 1
 	cli
  ;  0 "" 2
-	.loc 1 1083 0
+	.loc 1 1348 0
 /* #NOAPP */
 	lds r30,_ZL8cur_task
 	lds r31,_ZL8cur_task+1
-	subi r30,-4
+	subi r30,-9
 	sbci r31,-2
 	ld r24,Z
 	ldd r25,Z+1
-.LVL70:
-	.loc 1 1085 0
+.LVL94:
+	.loc 1 1350 0
 	out __SREG__,r18
-.LBE101:
-	.loc 1 1088 0
+.LBE103:
+	.loc 1 1353 0
 	ret
 	.cfi_endproc
-.LFE25:
+.LFE32:
 	.size	Task_GetArg, .-Task_GetArg
 	.section	.text.startup.main,"ax",@progbits
 .global	main
 	.type	main, @function
 main:
-.LFB26:
-	.loc 1 1094 0
+.LFB33:
+	.loc 1 1359 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 1095 0
+	.loc 1 1360 0
 	call _Z7OS_Initv
-.LVL71:
+.LVL95:
 	.cfi_endproc
-.LFE26:
+.LFE33:
 	.size	main, .-main
 	.section	.data._ZL9error_msg,"aw",@progbits
 	.type	_ZL9error_msg, @object
 	.size	_ZL9error_msg, 1
 _ZL9error_msg:
 	.byte	6
-	.section	.bss._ZL11name_in_PPP,"aw",@nobits
-	.type	_ZL11name_in_PPP, @object
-	.size	_ZL11name_in_PPP, 9
-_ZL11name_in_PPP:
-	.zero	9
 	.section	.bss._ZL16name_to_task_ptr,"aw",@nobits
 	.type	_ZL16name_to_task_ptr, @object
 	.size	_ZL16name_to_task_ptr, 18
 _ZL16name_to_task_ptr:
 	.zero	18
-	.section	.bss._ZL15slot_name_index,"aw",@nobits
-	.type	_ZL15slot_name_index, @object
-	.size	_ZL15slot_name_index, 2
-_ZL15slot_name_index:
-	.zero	2
 	.section	.bss._ZL18slot_task_finished,"aw",@nobits
 	.type	_ZL18slot_task_finished, @object
 	.size	_ZL18slot_task_finished, 1
 _ZL18slot_task_finished:
+	.zero	1
+	.section	.bss._ZL13ticks_counter,"aw",@nobits
+	.type	_ZL13ticks_counter, @object
+	.size	_ZL13ticks_counter, 1
+_ZL13ticks_counter:
 	.zero	1
 	.section	.bss._ZL15ticks_remaining,"aw",@nobits
 	.type	_ZL15ticks_remaining, @object
@@ -1732,6 +2000,11 @@ _ZL15ticks_remaining:
 	.type	_ZL12system_queue, @object
 	.size	_ZL12system_queue, 4
 _ZL12system_queue:
+	.zero	4
+	.section	.bss._ZL14periodic_queue,"aw",@nobits
+	.type	_ZL14periodic_queue, @object
+	.size	_ZL14periodic_queue, 4
+_ZL14periodic_queue:
 	.zero	4
 	.section	.bss._ZL8rr_queue,"aw",@nobits
 	.type	_ZL8rr_queue, @object
@@ -1750,9 +2023,9 @@ _ZL21kernel_request_retval:
 	.zero	2
 	.section	.bss._ZL26kernel_request_create_args,"aw",@nobits
 	.type	_ZL26kernel_request_create_args, @object
-	.size	_ZL26kernel_request_create_args, 6
+	.size	_ZL26kernel_request_create_args, 11
 _ZL26kernel_request_create_args:
-	.zero	6
+	.zero	11
 	.section	.bss._ZL14kernel_request,"aw",@nobits
 	.type	_ZL14kernel_request, @object
 	.size	_ZL14kernel_request, 1
@@ -1760,13 +2033,18 @@ _ZL14kernel_request:
 	.zero	1
 	.section	.bss._ZL9task_desc,"aw",@nobits
 	.type	_ZL9task_desc, @object
-	.size	_ZL9task_desc, 2385
+	.size	_ZL9task_desc, 2448
 _ZL9task_desc:
-	.zero	2385
+	.zero	2448
 	.section	.bss._ZL9kernel_sp,"aw",@nobits
 	.type	_ZL9kernel_sp, @object
 	.size	_ZL9kernel_sp, 2
 _ZL9kernel_sp:
+	.zero	2
+	.section	.bss._ZL18next_task_periodic,"aw",@nobits
+	.type	_ZL18next_task_periodic, @object
+	.size	_ZL18next_task_periodic, 2
+_ZL18next_task_periodic:
 	.zero	2
 	.section	.bss._ZL8cur_task,"aw",@nobits
 	.type	_ZL8cur_task, @object
@@ -1776,401 +2054,556 @@ _ZL8cur_task:
 	.text
 .Letext0:
 	.file 3 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h"
-	.file 4 ".././kernel.h"
-	.file 5 ".././os.h"
+	.file 4 ".././os.h"
+	.file 5 ".././kernel.h"
 	.file 6 ".././error_code.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0xae7
+	.long	0xe5e
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF96
+	.long	.LASF119
 	.byte	0x4
-	.long	.LASF97
-	.long	.LASF98
+	.long	.LASF120
+	.long	.LASF121
 	.long	.Ldebug_ranges0+0x48
 	.long	0
 	.long	0
 	.long	.Ldebug_line0
 	.uleb128 0x2
+	.long	.LASF0
+	.byte	0x3
+	.byte	0x79
+	.long	0x34
+	.uleb128 0x3
 	.byte	0x1
 	.byte	0x6
-	.long	.LASF0
-	.uleb128 0x3
 	.long	.LASF2
+	.uleb128 0x2
+	.long	.LASF1
 	.byte	0x3
 	.byte	0x7a
-	.long	0x3b
-	.uleb128 0x2
+	.long	0x46
+	.uleb128 0x3
 	.byte	0x1
 	.byte	0x8
-	.long	.LASF1
+	.long	.LASF3
+	.uleb128 0x2
+	.long	.LASF4
+	.byte	0x3
+	.byte	0x7b
+	.long	0x58
 	.uleb128 0x4
 	.byte	0x2
 	.byte	0x5
 	.string	"int"
-	.uleb128 0x3
-	.long	.LASF3
+	.uleb128 0x2
+	.long	.LASF5
 	.byte	0x3
 	.byte	0x7c
-	.long	0x54
-	.uleb128 0x2
+	.long	0x6a
+	.uleb128 0x3
 	.byte	0x2
 	.byte	0x7
-	.long	.LASF4
-	.uleb128 0x2
+	.long	.LASF6
+	.uleb128 0x3
 	.byte	0x4
 	.byte	0x5
-	.long	.LASF5
-	.uleb128 0x3
-	.long	.LASF6
-	.byte	0x3
-	.byte	0x7e
-	.long	0x6d
-	.uleb128 0x2
-	.byte	0x4
-	.byte	0x7
 	.long	.LASF7
 	.uleb128 0x2
-	.byte	0x8
-	.byte	0x5
 	.long	.LASF8
-	.uleb128 0x2
-	.byte	0x8
+	.byte	0x3
+	.byte	0x7e
+	.long	0x83
+	.uleb128 0x3
+	.byte	0x4
 	.byte	0x7
 	.long	.LASF9
 	.uleb128 0x3
+	.byte	0x8
+	.byte	0x5
 	.long	.LASF10
-	.byte	0x4
-	.byte	0x2c
-	.long	0x8d
-	.uleb128 0x5
-	.byte	0x2
-	.long	0x93
-	.uleb128 0x6
-	.uleb128 0x7
-	.byte	0x1
-	.byte	0x4
-	.byte	0x32
-	.long	.LASF16
-	.long	0xb9
-	.uleb128 0x8
+	.uleb128 0x3
+	.byte	0x8
+	.byte	0x7
 	.long	.LASF11
-	.sleb128 0
-	.uleb128 0x8
+	.uleb128 0x2
 	.long	.LASF12
-	.sleb128 1
-	.uleb128 0x8
+	.byte	0x4
+	.byte	0xe0
+	.long	0xa3
+	.uleb128 0x5
+	.long	.LASF122
+	.byte	0x1
+	.uleb128 0x2
 	.long	.LASF13
-	.sleb128 2
+	.byte	0x5
+	.byte	0x2c
+	.long	0xb4
+	.uleb128 0x6
+	.byte	0x2
+	.long	0xba
+	.uleb128 0x7
 	.uleb128 0x8
+	.byte	0x1
+	.byte	0x5
+	.byte	0x32
+	.long	.LASF19
+	.long	0xe0
+	.uleb128 0x9
 	.long	.LASF14
+	.sleb128 0
+	.uleb128 0x9
+	.long	.LASF15
+	.sleb128 1
+	.uleb128 0x9
+	.long	.LASF16
+	.sleb128 2
+	.uleb128 0x9
+	.long	.LASF17
 	.sleb128 3
 	.byte	0
-	.uleb128 0x3
-	.long	.LASF15
-	.byte	0x4
-	.byte	0x38
-	.long	0x94
-	.uleb128 0x7
-	.byte	0x1
-	.byte	0x4
-	.byte	0x3e
-	.long	.LASF17
-	.long	0xf5
-	.uleb128 0x8
+	.uleb128 0x2
 	.long	.LASF18
-	.sleb128 0
+	.byte	0x5
+	.byte	0x38
+	.long	0xbb
 	.uleb128 0x8
-	.long	.LASF19
-	.sleb128 1
-	.uleb128 0x8
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3e
 	.long	.LASF20
-	.sleb128 2
-	.uleb128 0x8
+	.long	0x11c
+	.uleb128 0x9
 	.long	.LASF21
-	.sleb128 3
-	.uleb128 0x8
+	.sleb128 0
+	.uleb128 0x9
 	.long	.LASF22
-	.sleb128 4
-	.uleb128 0x8
+	.sleb128 1
+	.uleb128 0x9
 	.long	.LASF23
+	.sleb128 2
+	.uleb128 0x9
+	.long	.LASF24
+	.sleb128 3
+	.uleb128 0x9
+	.long	.LASF25
+	.sleb128 4
+	.uleb128 0x9
+	.long	.LASF26
 	.sleb128 5
 	.byte	0
-	.uleb128 0x3
-	.long	.LASF24
-	.byte	0x4
+	.uleb128 0x2
+	.long	.LASF27
+	.byte	0x5
 	.byte	0x46
-	.long	0xc4
-	.uleb128 0x9
-	.byte	0x6
-	.byte	0x4
-	.byte	0x4d
-	.long	.LASF33
-	.long	0x143
+	.long	0xeb
 	.uleb128 0xa
+	.byte	0xb
+	.byte	0x5
+	.byte	0x4d
+	.long	.LASF39
+	.long	0x186
+	.uleb128 0xb
 	.string	"f"
-	.byte	0x4
+	.byte	0x5
 	.byte	0x4f
-	.long	0x82
+	.long	0xa9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
-	.uleb128 0xa
+	.uleb128 0xb
 	.string	"arg"
-	.byte	0x4
+	.byte	0x5
 	.byte	0x51
-	.long	0x42
+	.long	0x58
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
-	.uleb128 0xb
-	.long	.LASF25
-	.byte	0x4
+	.uleb128 0xc
+	.long	.LASF28
+	.byte	0x5
 	.byte	0x53
-	.long	0x30
+	.long	0x3b
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
-	.uleb128 0xb
-	.long	.LASF26
-	.byte	0x4
-	.byte	0x55
-	.long	0x30
+	.uleb128 0xc
+	.long	.LASF29
+	.byte	0x5
+	.byte	0x57
+	.long	0x5f
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.long	.LASF27
-	.byte	0x4
-	.byte	0x57
-	.long	0x100
-	.uleb128 0x3
-	.long	.LASF28
-	.byte	0x4
-	.byte	0x5a
-	.long	0x159
 	.uleb128 0xc
-	.long	.LASF99
-	.word	0x109
-	.byte	0x4
+	.long	.LASF30
+	.byte	0x5
+	.byte	0x58
+	.long	0x5f
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x7
+	.uleb128 0xc
+	.long	.LASF31
+	.byte	0x5
+	.byte	0x59
+	.long	0x5f
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x9
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF32
+	.byte	0x5
+	.byte	0x5b
+	.long	0x127
+	.uleb128 0x2
+	.long	.LASF33
+	.byte	0x5
 	.byte	0x5e
-	.long	0x1ce
-	.uleb128 0xb
-	.long	.LASF29
-	.byte	0x4
-	.byte	0x61
-	.long	0x1ce
+	.long	0x19c
+	.uleb128 0xd
+	.long	.LASF123
+	.word	0x110
+	.byte	0x5
+	.byte	0x62
+	.long	0x23e
+	.uleb128 0xc
+	.long	.LASF34
+	.byte	0x5
+	.byte	0x65
+	.long	0x23e
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
-	.uleb128 0xa
+	.uleb128 0xb
 	.string	"sp"
-	.byte	0x4
-	.byte	0x63
-	.long	0x1e5
+	.byte	0x5
+	.byte	0x67
+	.long	0x255
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x100
-	.uleb128 0xb
-	.long	.LASF26
-	.byte	0x4
-	.byte	0x65
-	.long	0x30
+	.uleb128 0xc
+	.long	.LASF29
+	.byte	0x5
+	.byte	0x69
+	.long	0x5f
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x102
-	.uleb128 0xb
+	.uleb128 0xc
 	.long	.LASF30
-	.byte	0x4
-	.byte	0x67
-	.long	0xb9
-	.byte	0x3
-	.byte	0x23
-	.uleb128 0x103
-	.uleb128 0xa
-	.string	"arg"
-	.byte	0x4
-	.byte	0x69
-	.long	0x42
+	.byte	0x5
+	.byte	0x6a
+	.long	0x5f
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x104
-	.uleb128 0xb
-	.long	.LASF25
-	.byte	0x4
+	.uleb128 0xc
+	.long	.LASF31
+	.byte	0x5
 	.byte	0x6b
-	.long	0x30
+	.long	0x5f
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x106
-	.uleb128 0xb
-	.long	.LASF31
-	.byte	0x4
-	.byte	0x6d
-	.long	0x1f0
+	.uleb128 0xc
+	.long	.LASF35
+	.byte	0x5
+	.byte	0x6e
+	.long	0xe0
 	.byte	0x3
 	.byte	0x23
-	.uleb128 0x107
-	.byte	0
-	.uleb128 0xd
+	.uleb128 0x108
+	.uleb128 0xb
+	.string	"arg"
+	.byte	0x5
+	.byte	0x70
+	.long	0x58
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0x109
+	.uleb128 0xc
+	.long	.LASF28
+	.byte	0x5
+	.byte	0x72
 	.long	0x3b
-	.long	0x1de
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0x10b
+	.uleb128 0xc
+	.long	.LASF36
+	.byte	0x5
+	.byte	0x74
+	.long	0x260
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0x10c
+	.uleb128 0xc
+	.long	.LASF37
+	.byte	0x5
+	.byte	0x76
+	.long	0x260
+	.byte	0x3
+	.byte	0x23
+	.uleb128 0x10e
+	.byte	0
 	.uleb128 0xe
-	.long	0x1de
+	.long	0x46
+	.long	0x24e
+	.uleb128 0xf
+	.long	0x24e
 	.byte	0xff
 	.byte	0
-	.uleb128 0x2
+	.uleb128 0x3
 	.byte	0x2
 	.byte	0x7
-	.long	.LASF32
-	.uleb128 0xf
-	.long	0x1ea
-	.uleb128 0x5
+	.long	.LASF38
+	.uleb128 0x10
+	.long	0x25a
+	.uleb128 0x6
 	.byte	0x2
-	.long	0x30
-	.uleb128 0x5
+	.long	0x3b
+	.uleb128 0x6
 	.byte	0x2
-	.long	0x14e
-	.uleb128 0x9
+	.long	0x191
+	.uleb128 0xa
 	.byte	0x4
-	.byte	0x4
-	.byte	0x75
-	.long	.LASF34
-	.long	0x21f
-	.uleb128 0xb
-	.long	.LASF35
-	.byte	0x4
-	.byte	0x77
-	.long	0x1f0
+	.byte	0x5
+	.byte	0x7a
+	.long	.LASF40
+	.long	0x28f
+	.uleb128 0xc
+	.long	.LASF41
+	.byte	0x5
+	.byte	0x7b
+	.long	0x260
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
-	.uleb128 0xb
-	.long	.LASF36
-	.byte	0x4
-	.byte	0x79
-	.long	0x1f0
+	.uleb128 0xc
+	.long	.LASF42
+	.byte	0x5
+	.byte	0x7c
+	.long	0x260
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
 	.byte	0
-	.uleb128 0x3
-	.long	.LASF37
+	.uleb128 0x2
+	.long	.LASF43
+	.byte	0x5
+	.byte	0x7e
+	.long	0x266
+	.uleb128 0xa
 	.byte	0x4
-	.byte	0x7b
-	.long	0x1f6
-	.uleb128 0x10
+	.byte	0x5
+	.byte	0x84
+	.long	.LASF44
+	.long	0x2c3
+	.uleb128 0xc
+	.long	.LASF41
+	.byte	0x5
+	.byte	0x86
+	.long	0x260
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0
+	.uleb128 0xc
+	.long	.LASF42
+	.byte	0x5
+	.byte	0x88
+	.long	0x260
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF45
+	.byte	0x5
+	.byte	0x8a
+	.long	0x29a
+	.uleb128 0x11
 	.byte	0x1
 	.byte	0x6
 	.byte	0x10
-	.long	0x275
-	.uleb128 0x8
-	.long	.LASF38
-	.sleb128 0
-	.uleb128 0x8
-	.long	.LASF39
-	.sleb128 1
-	.uleb128 0x8
-	.long	.LASF40
-	.sleb128 2
-	.uleb128 0x8
-	.long	.LASF41
-	.sleb128 3
-	.uleb128 0x8
-	.long	.LASF42
-	.sleb128 4
-	.uleb128 0x8
-	.long	.LASF43
-	.sleb128 5
-	.uleb128 0x8
-	.long	.LASF44
-	.sleb128 6
-	.uleb128 0x8
-	.long	.LASF45
-	.sleb128 7
-	.uleb128 0x8
+	.long	0x319
+	.uleb128 0x9
 	.long	.LASF46
-	.sleb128 8
-	.uleb128 0x8
+	.sleb128 0
+	.uleb128 0x9
 	.long	.LASF47
-	.sleb128 9
-	.uleb128 0x8
+	.sleb128 1
+	.uleb128 0x9
 	.long	.LASF48
+	.sleb128 2
+	.uleb128 0x9
+	.long	.LASF49
+	.sleb128 3
+	.uleb128 0x9
+	.long	.LASF50
+	.sleb128 4
+	.uleb128 0x9
+	.long	.LASF51
+	.sleb128 5
+	.uleb128 0x9
+	.long	.LASF52
+	.sleb128 6
+	.uleb128 0x9
+	.long	.LASF53
+	.sleb128 7
+	.uleb128 0x9
+	.long	.LASF54
+	.sleb128 8
+	.uleb128 0x9
+	.long	.LASF55
+	.sleb128 9
+	.uleb128 0x9
+	.long	.LASF56
 	.sleb128 10
 	.byte	0
-	.uleb128 0x11
-	.long	.LASF100
-	.byte	0x1
-	.word	0x2f0
-	.long	0x1f0
-	.byte	0x1
-	.long	0x2a1
 	.uleb128 0x12
-	.long	.LASF49
+	.long	.LASF59
 	.byte	0x1
-	.word	0x2f0
-	.long	0x2a1
+	.word	0x301
+	.long	0x260
+	.byte	0x1
+	.long	0x351
 	.uleb128 0x13
-	.uleb128 0x14
-	.long	.LASF51
+	.long	.LASF57
 	.byte	0x1
-	.word	0x2f2
-	.long	0x1f0
-	.byte	0
-	.byte	0
-	.uleb128 0x5
-	.byte	0x2
-	.long	0x21f
+	.word	0x301
+	.long	0x351
+	.uleb128 0x13
+	.long	.LASF58
+	.byte	0x1
+	.word	0x301
+	.long	0x260
+	.uleb128 0x14
 	.uleb128 0x15
-	.long	.LASF66
+	.long	.LASF62
+	.byte	0x1
+	.word	0x307
+	.long	0x260
+	.byte	0
+	.byte	0
+	.uleb128 0x6
+	.byte	0x2
+	.long	0x28f
+	.uleb128 0x12
+	.long	.LASF60
+	.byte	0x1
+	.word	0x34c
+	.long	0x260
+	.byte	0x1
+	.long	0x383
+	.uleb128 0x13
+	.long	.LASF61
+	.byte	0x1
+	.word	0x34c
+	.long	0x383
+	.uleb128 0x14
+	.uleb128 0x15
+	.long	.LASF63
+	.byte	0x1
+	.word	0x34e
+	.long	0x260
+	.byte	0
+	.byte	0
+	.uleb128 0x6
+	.byte	0x2
+	.long	0x2c3
+	.uleb128 0x16
+	.long	.LASF68
 	.byte	0x2
 	.byte	0x8e
 	.byte	0x3
-	.long	0x2e6
-	.uleb128 0x16
-	.long	.LASF50
+	.long	0x3c8
+	.uleb128 0x17
+	.long	.LASF64
 	.byte	0x2
 	.byte	0x8e
-	.long	0x2e6
-	.uleb128 0x13
-	.uleb128 0x17
-	.long	.LASF52
+	.long	0x3c8
+	.uleb128 0x14
+	.uleb128 0x18
+	.long	.LASF65
 	.byte	0x2
 	.byte	0x90
-	.long	0x2e6
-	.uleb128 0x17
-	.long	.LASF53
+	.long	0x3c8
+	.uleb128 0x18
+	.long	.LASF66
 	.byte	0x2
 	.byte	0x94
-	.long	0x62
-	.uleb128 0x18
+	.long	0x78
+	.uleb128 0x19
 	.byte	0x1
-	.long	.LASF101
+	.long	.LASF124
 	.byte	0x2
 	.byte	0x95
 	.byte	0x1
-	.uleb128 0x19
-	.long	0x6d
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x2
-	.byte	0x4
-	.byte	0x4
-	.long	.LASF54
 	.uleb128 0x1a
-	.long	.LASF68
-	.byte	0x1
-	.word	0x39c
-	.byte	0x1
+	.long	0x83
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x3
+	.byte	0x4
+	.byte	0x4
+	.long	.LASF67
 	.uleb128 0x1b
-	.long	.LASF55
+	.long	.LASF83
 	.byte	0x1
-	.byte	0x6f
+	.word	0x418
+	.byte	0x1
+	.uleb128 0x1c
+	.long	.LASF69
+	.byte	0x1
+	.word	0x316
+	.byte	0x1
+	.long	0x3fe
+	.uleb128 0x13
+	.long	.LASF57
+	.byte	0x1
+	.word	0x316
+	.long	0x351
+	.uleb128 0x13
+	.long	.LASF70
+	.byte	0x1
+	.word	0x316
+	.long	0x260
+	.byte	0
+	.uleb128 0x1c
+	.long	.LASF71
+	.byte	0x1
+	.word	0x2e0
+	.byte	0x1
+	.long	0x432
+	.uleb128 0x13
+	.long	.LASF57
+	.byte	0x1
+	.word	0x2e0
+	.long	0x351
+	.uleb128 0x13
+	.long	.LASF72
+	.byte	0x1
+	.word	0x2e0
+	.long	0x260
+	.uleb128 0x14
+	.uleb128 0x15
+	.long	.LASF62
+	.byte	0x1
+	.word	0x2f1
+	.long	0x260
+	.byte	0
+	.byte	0
+	.uleb128 0x1d
+	.long	.LASF73
+	.byte	0x1
+	.byte	0x7a
 	.long	.LFB6
 	.long	.LFE6
 	.byte	0x3
@@ -2178,10 +2611,10 @@ _ZL8cur_task:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.uleb128 0x1c
-	.long	.LASF56
+	.uleb128 0x1e
+	.long	.LASF74
 	.byte	0x1
-	.word	0x19c
+	.word	0x1ab
 	.long	.LFB10
 	.long	.LFE10
 	.byte	0x3
@@ -2189,10 +2622,10 @@ _ZL8cur_task:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.uleb128 0x1c
-	.long	.LASF57
+	.uleb128 0x1e
+	.long	.LASF75
 	.byte	0x1
-	.word	0x1c9
+	.word	0x1d8
 	.long	.LFB11
 	.long	.LFE11
 	.byte	0x3
@@ -2200,29 +2633,29 @@ _ZL8cur_task:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.uleb128 0x1d
-	.long	.LASF102
+	.uleb128 0x1f
+	.long	.LASF125
 	.byte	0x1
-	.word	0x2d7
-	.long	.LFB15
-	.long	.LFE15
+	.word	0x333
+	.long	.LFB18
+	.long	.LFE18
 	.byte	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x371
-	.uleb128 0x1e
-	.long	.LASF49
+	.long	0x4ad
+	.uleb128 0x20
+	.long	.LASF61
 	.byte	0x1
-	.word	0x2d7
-	.long	0x2a1
+	.word	0x333
+	.long	0x383
 	.long	.LLST0
-	.uleb128 0x1f
-	.long	.LASF58
+	.uleb128 0x21
+	.long	.LASF70
 	.byte	0x1
-	.word	0x2d7
-	.long	0x1f0
+	.word	0x333
+	.long	0x260
 	.byte	0x6
 	.byte	0x66
 	.byte	0x93
@@ -2231,241 +2664,65 @@ _ZL8cur_task:
 	.byte	0x93
 	.uleb128 0x1
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x22
 	.byte	0x1
-	.long	.LASF59
+	.long	.LASF79
 	.byte	0x1
-	.word	0x423
-	.long	.LFB24
-	.long	.LFE24
+	.word	0x52c
+	.long	.LFB31
+	.long	.LFE31
 	.long	.LLST1
 	.byte	0x1
-	.long	0x3af
-	.uleb128 0x21
-	.long	.LBB27
-	.long	.LBE27
-	.uleb128 0x22
-	.long	.LASF61
-	.byte	0x1
-	.word	0x425
-	.long	0x30
-	.long	.LLST2
+	.long	0x4eb
 	.uleb128 0x23
-	.long	.LVL3
-	.long	0x31f
-	.byte	0
-	.byte	0
-	.uleb128 0x24
-	.byte	0x1
-	.long	.LASF103
-	.byte	0x1
-	.word	0x1f8
-	.long	.LFB12
-	.long	.LFE12
-	.byte	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.byte	0x1
-	.uleb128 0x25
-	.byte	0x1
-	.long	.LASF60
-	.byte	0x1
-	.word	0x3a8
-	.long	.LFB21
-	.long	.LFE21
-	.byte	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.byte	0x1
-	.long	0x59f
-	.uleb128 0x21
-	.long	.LBB28
-	.long	.LBE28
-	.uleb128 0x26
-	.string	"i"
-	.byte	0x1
-	.word	0x3aa
-	.long	0x30
-	.long	.LLST3
-	.uleb128 0x26
-	.string	"j"
-	.byte	0x1
-	.word	0x3aa
-	.long	0x30
-	.long	.LLST4
-	.uleb128 0x22
-	.long	.LASF62
-	.byte	0x1
-	.word	0x3ab
-	.long	0x30
-	.long	.LLST5
-	.uleb128 0x22
-	.long	.LASF63
-	.byte	0x1
-	.word	0x3ab
-	.long	0x30
-	.long	.LLST6
-	.uleb128 0x27
-	.long	0x2ed
 	.long	.LBB29
 	.long	.LBE29
+	.uleb128 0x24
+	.long	.LASF76
 	.byte	0x1
-	.word	0x3c4
-	.long	0x471
-	.uleb128 0x28
-	.long	0x2a7
+	.word	0x52e
+	.long	0x3b
+	.long	.LLST2
+	.uleb128 0x25
+	.long	.LVL3
+	.long	0x45b
+	.byte	0
+	.byte	0
+	.uleb128 0x26
+	.long	0x357
+	.long	.LFB35
+	.long	.LFE35
+	.byte	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.byte	0x1
+	.long	0x524
+	.uleb128 0x27
+	.long	0x368
+	.byte	0x6
+	.byte	0xfa
+	.long	0x368
+	.byte	0x9f
+	.uleb128 0x23
 	.long	.LBB30
 	.long	.LBE30
-	.byte	0x1
-	.word	0x3a2
+	.uleb128 0x28
+	.long	0x375
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0
+	.byte	0
 	.uleb128 0x29
-	.long	0x2b3
-	.byte	0x4
-	.long	0x41c80000
-	.uleb128 0x21
-	.long	.LBB31
-	.long	.LBE31
-	.uleb128 0x2a
-	.long	0x2bf
-	.byte	0x4
-	.long	0x48c35000
-	.uleb128 0x2b
-	.long	0x2ca
-	.long	0x61a80
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x27
-	.long	0x2ed
-	.long	.LBB32
-	.long	.LBE32
+	.long	.LASF126
 	.byte	0x1
-	.word	0x3cb
-	.long	0x4be
-	.uleb128 0x28
-	.long	0x2a7
-	.long	.LBB33
-	.long	.LBE33
-	.byte	0x1
-	.word	0x3a2
-	.uleb128 0x29
-	.long	0x2b3
-	.byte	0x4
-	.long	0x41c80000
-	.uleb128 0x21
-	.long	.LBB34
-	.long	.LBE34
-	.uleb128 0x2a
-	.long	0x2bf
-	.byte	0x4
-	.long	0x48c35000
-	.uleb128 0x2b
-	.long	0x2ca
-	.long	0x61a80
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x27
-	.long	0x2ed
-	.long	.LBB35
-	.long	.LBE35
-	.byte	0x1
-	.word	0x3d5
-	.long	0x509
-	.uleb128 0x28
-	.long	0x2a7
-	.long	.LBB36
-	.long	.LBE36
-	.byte	0x1
-	.word	0x3a2
-	.uleb128 0x2c
-	.long	0x2b3
-	.long	.LLST7
-	.uleb128 0x21
-	.long	.LBB37
-	.long	.LBE37
-	.uleb128 0x2d
-	.long	0x2bf
-	.long	.LLST8
-	.uleb128 0x2d
-	.long	0x2ca
-	.long	.LLST9
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x27
-	.long	0x2ed
-	.long	.LBB38
-	.long	.LBE38
-	.byte	0x1
-	.word	0x3dc
-	.long	0x554
-	.uleb128 0x28
-	.long	0x2a7
-	.long	.LBB39
-	.long	.LBE39
-	.byte	0x1
-	.word	0x3a2
-	.uleb128 0x2c
-	.long	0x2b3
-	.long	.LLST10
-	.uleb128 0x21
-	.long	.LBB40
-	.long	.LBE40
-	.uleb128 0x2d
-	.long	0x2bf
-	.long	.LLST11
-	.uleb128 0x2d
-	.long	0x2ca
-	.long	.LLST12
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x28
-	.long	0x2ed
-	.long	.LBB41
-	.long	.LBE41
-	.byte	0x1
-	.word	0x3e2
-	.uleb128 0x28
-	.long	0x2a7
-	.long	.LBB42
-	.long	.LBE42
-	.byte	0x1
-	.word	0x3a2
-	.uleb128 0x29
-	.long	0x2b3
-	.byte	0x4
-	.long	0x41c80000
-	.uleb128 0x21
-	.long	.LBB43
-	.long	.LBE43
-	.uleb128 0x2a
-	.long	0x2bf
-	.byte	0x4
-	.long	0x48c35000
-	.uleb128 0x2b
-	.long	0x2ca
-	.long	0x61a80
-	.byte	0
-	.byte	0
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x2e
-	.long	0x2d5
-	.byte	0
-	.long	0x5af
-	.uleb128 0x19
-	.long	0x6d
-	.byte	0
-	.uleb128 0x2f
-	.long	.LASF104
-	.byte	0x1
-	.word	0x240
-	.long	0x42
+	.word	0x24f
+	.long	0x58
 	.long	.LFB13
 	.long	.LFE13
 	.byte	0x3
@@ -2473,27 +2730,27 @@ _ZL8cur_task:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x647
-	.uleb128 0x21
-	.long	.LBB48
-	.long	.LBE48
-	.uleb128 0x26
+	.long	0x5d0
+	.uleb128 0x23
+	.long	.LBB34
+	.long	.LBE34
+	.uleb128 0x2a
 	.string	"p"
 	.byte	0x1
-	.word	0x243
-	.long	0x1f0
-	.long	.LLST13
-	.uleb128 0x22
-	.long	.LASF64
+	.word	0x252
+	.long	0x260
+	.long	.LLST3
+	.uleb128 0x24
+	.long	.LASF77
 	.byte	0x1
-	.word	0x244
-	.long	0x1ea
-	.long	.LLST14
-	.uleb128 0x30
-	.long	.LASF65
+	.word	0x253
+	.long	0x25a
+	.long	.LLST4
+	.uleb128 0x2b
+	.long	.LASF78
 	.byte	0x1
-	.word	0x27b
-	.long	0x1ea
+	.word	0x28a
+	.long	0x25a
 	.byte	0x6
 	.byte	0x68
 	.byte	0x93
@@ -2501,268 +2758,352 @@ _ZL8cur_task:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.uleb128 0x27
-	.long	0x275
-	.long	.LBB49
-	.long	.LBE49
+	.uleb128 0x2c
+	.long	0x3d8
+	.long	.LBB35
+	.long	.LBE35
 	.byte	0x1
-	.word	0x26d
-	.long	0x633
-	.uleb128 0x31
-	.long	0x286
-	.uleb128 0x21
-	.long	.LBB50
-	.long	.LBE50
+	.word	0x2b8
+	.long	0x59e
 	.uleb128 0x2d
-	.long	0x293
-	.long	.LLST15
+	.long	0x3e5
+	.uleb128 0x2e
+	.long	0x3f1
+	.long	.LLST5
 	.byte	0
+	.uleb128 0x2f
+	.long	.LVL7
+	.long	0x4eb
+	.long	0x5c5
+	.uleb128 0x30
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL15dead_pool_queue
+	.uleb128 0x31
+	.long	0x368
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL15dead_pool_queue
 	.byte	0
-	.uleb128 0x23
-	.long	.LVL32
-	.long	0x3c5
-	.uleb128 0x23
-	.long	.LVL36
-	.long	0x334
+	.uleb128 0x25
+	.long	.LVL13
+	.long	0x470
 	.byte	0
 	.byte	0
 	.uleb128 0x32
-	.long	.LASF67
 	.byte	0x1
-	.word	0x32d
+	.long	.LASF127
 	.byte	0x1
-	.long	0x66d
-	.uleb128 0x13
+	.word	0x207
+	.long	.LFB12
+	.long	.LFE12
+	.byte	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.byte	0x1
 	.uleb128 0x33
+	.byte	0x1
+	.long	.LASF80
+	.byte	0x1
+	.word	0x425
+	.long	.LFB23
+	.long	.LFE23
+	.byte	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.byte	0x1
+	.long	0x7c0
+	.uleb128 0x23
+	.long	.LBB37
+	.long	.LBE37
+	.uleb128 0x2a
 	.string	"i"
 	.byte	0x1
-	.word	0x32f
-	.long	0x30
-	.uleb128 0x14
-	.long	.LASF26
+	.word	0x427
+	.long	0x3b
+	.long	.LLST6
+	.uleb128 0x2a
+	.string	"j"
 	.byte	0x1
-	.word	0x330
-	.long	0x30
-	.byte	0
-	.byte	0
+	.word	0x427
+	.long	0x3b
+	.long	.LLST7
+	.uleb128 0x24
+	.long	.LASF81
+	.byte	0x1
+	.word	0x428
+	.long	0x3b
+	.long	.LLST8
+	.uleb128 0x24
+	.long	.LASF82
+	.byte	0x1
+	.word	0x428
+	.long	0x3b
+	.long	.LLST9
+	.uleb128 0x2c
+	.long	0x3cf
+	.long	.LBB38
+	.long	.LBE38
+	.byte	0x1
+	.word	0x441
+	.long	0x692
 	.uleb128 0x34
-	.long	.LASF69
+	.long	0x389
+	.long	.LBB39
+	.long	.LBE39
 	.byte	0x1
-	.byte	0x84
-	.byte	0x1
-	.uleb128 0x34
-	.long	.LASF70
-	.byte	0x1
-	.byte	0x9c
-	.byte	0x1
-	.uleb128 0x34
-	.long	.LASF71
-	.byte	0x1
-	.byte	0xc4
-	.byte	0x1
-	.uleb128 0x1a
-	.long	.LASF72
-	.byte	0x1
-	.word	0x303
-	.byte	0x1
-	.uleb128 0x1a
-	.long	.LASF73
-	.byte	0x1
-	.word	0x2c2
-	.byte	0x1
+	.word	0x41e
 	.uleb128 0x35
-	.byte	0x1
-	.long	.LASF74
-	.byte	0x1
-	.word	0x358
-	.long	.LASF105
-	.long	.LFB19
-	.long	.LFE19
-	.long	.LLST16
-	.byte	0x1
-	.long	0x820
-	.uleb128 0x21
-	.long	.LBB74
-	.long	.LBE74
-	.uleb128 0x33
-	.string	"i"
-	.byte	0x1
-	.word	0x35a
-	.long	0x42
-	.uleb128 0x27
-	.long	0x647
-	.long	.LBB75
-	.long	.LBE75
-	.byte	0x1
-	.word	0x364
-	.long	0x6f9
-	.uleb128 0x21
-	.long	.LBB76
-	.long	.LBE76
-	.uleb128 0x2d
-	.long	0x655
-	.long	.LLST17
-	.uleb128 0x2d
-	.long	0x65f
-	.long	.LLST18
-	.byte	0
-	.byte	0
-	.uleb128 0x27
-	.long	0x275
-	.long	.LBB77
-	.long	.LBE77
-	.byte	0x1
-	.word	0x382
-	.long	0x726
-	.uleb128 0x31
-	.long	0x286
-	.uleb128 0x21
-	.long	.LBB78
-	.long	.LBE78
-	.uleb128 0x2d
-	.long	0x293
-	.long	.LLST19
-	.byte	0
-	.byte	0
-	.uleb128 0x27
-	.long	0x66d
-	.long	.LBB79
-	.long	.LBE79
-	.byte	0x1
-	.word	0x393
-	.long	0x80c
+	.long	0x395
+	.byte	0x4
+	.long	0x41c80000
+	.uleb128 0x23
+	.long	.LBB40
+	.long	.LBE40
 	.uleb128 0x36
-	.long	0x675
-	.long	.LBB81
-	.long	.Ldebug_ranges0+0
-	.byte	0x1
-	.byte	0x88
-	.long	0x7a2
+	.long	0x3a1
+	.byte	0x4
+	.long	0x48c35000
 	.uleb128 0x37
-	.long	0x275
-	.long	.LBB83
-	.long	.LBE83
+	.long	0x3ac
+	.long	0x61a80
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x2c
+	.long	0x3cf
+	.long	.LBB41
+	.long	.LBE41
 	.byte	0x1
-	.byte	0xa6
-	.long	0x779
-	.uleb128 0x31
-	.long	0x286
-	.uleb128 0x21
-	.long	.LBB84
-	.long	.LBE84
-	.uleb128 0x2d
-	.long	0x293
-	.long	.LLST20
+	.word	0x448
+	.long	0x6df
+	.uleb128 0x34
+	.long	0x389
+	.long	.LBB42
+	.long	.LBE42
+	.byte	0x1
+	.word	0x41e
+	.uleb128 0x35
+	.long	0x395
+	.byte	0x4
+	.long	0x41c80000
+	.uleb128 0x23
+	.long	.LBB43
+	.long	.LBE43
+	.uleb128 0x36
+	.long	0x3a1
+	.byte	0x4
+	.long	0x48c35000
+	.uleb128 0x37
+	.long	0x3ac
+	.long	0x61a80
 	.byte	0
 	.byte	0
+	.byte	0
+	.uleb128 0x2c
+	.long	0x3cf
+	.long	.LBB44
+	.long	.LBE44
+	.byte	0x1
+	.word	0x452
+	.long	0x72a
+	.uleb128 0x34
+	.long	0x389
+	.long	.LBB45
+	.long	.LBE45
+	.byte	0x1
+	.word	0x41e
+	.uleb128 0x2e
+	.long	0x395
+	.long	.LLST10
+	.uleb128 0x23
+	.long	.LBB46
+	.long	.LBE46
 	.uleb128 0x38
-	.long	0x275
-	.long	.LBB85
-	.long	.LBE85
-	.byte	0x1
-	.byte	0xaf
-	.uleb128 0x31
-	.long	0x286
-	.uleb128 0x21
-	.long	.LBB86
-	.long	.LBE86
-	.uleb128 0x2d
-	.long	0x293
-	.long	.LLST21
+	.long	0x3a1
+	.long	.LLST11
+	.uleb128 0x38
+	.long	0x3ac
+	.long	.LLST12
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x36
-	.long	0x67d
-	.long	.LBB88
-	.long	.Ldebug_ranges0+0x18
+	.uleb128 0x2c
+	.long	0x3cf
+	.long	.LBB47
+	.long	.LBE47
 	.byte	0x1
-	.byte	0x8f
-	.long	0x802
-	.uleb128 0x36
-	.long	0x685
-	.long	.LBB90
-	.long	.Ldebug_ranges0+0x30
+	.word	0x459
+	.long	0x775
+	.uleb128 0x34
+	.long	0x389
+	.long	.LBB48
+	.long	.LBE48
 	.byte	0x1
-	.byte	0xcd
-	.long	0x7d2
+	.word	0x41e
+	.uleb128 0x2e
+	.long	0x395
+	.long	.LLST13
 	.uleb128 0x23
-	.long	.LVL58
-	.long	0x3c5
+	.long	.LBB49
+	.long	.LBE49
+	.uleb128 0x38
+	.long	0x3a1
+	.long	.LLST14
+	.uleb128 0x38
+	.long	0x3ac
+	.long	.LLST15
 	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x34
+	.long	0x3cf
+	.long	.LBB50
+	.long	.LBE50
+	.byte	0x1
+	.word	0x45f
+	.uleb128 0x34
+	.long	0x389
+	.long	.LBB51
+	.long	.LBE51
+	.byte	0x1
+	.word	0x41e
+	.uleb128 0x35
+	.long	0x395
+	.byte	0x4
+	.long	0x41c80000
+	.uleb128 0x23
+	.long	.LBB52
+	.long	.LBE52
+	.uleb128 0x36
+	.long	0x3a1
+	.byte	0x4
+	.long	0x48c35000
 	.uleb128 0x37
-	.long	0x68e
-	.long	.LBB94
-	.long	.LBE94
-	.byte	0x1
-	.byte	0xf8
-	.long	0x7ef
-	.uleb128 0x23
-	.long	.LVL60
-	.long	0x334
+	.long	0x3ac
+	.long	0x61a80
 	.byte	0
-	.uleb128 0x23
-	.long	.LVL59
-	.long	0x5af
-	.uleb128 0x23
-	.long	.LVL61
-	.long	0x334
 	.byte	0
-	.uleb128 0x23
-	.long	.LVL57
-	.long	0x30a
 	.byte	0
-	.uleb128 0x23
-	.long	.LVL45
-	.long	0x5af
-	.uleb128 0x23
-	.long	.LVL46
-	.long	0x5af
 	.byte	0
 	.byte	0
 	.uleb128 0x39
-	.byte	0x1
-	.long	.LASF75
-	.byte	0x1
-	.word	0x3f8
-	.long	0x42
-	.long	.LFB22
-	.long	.LFE22
-	.long	.LLST22
-	.byte	0x1
-	.long	0x8b3
+	.long	0x3b7
+	.byte	0
+	.long	0x7d0
+	.uleb128 0x1a
+	.long	0x83
+	.byte	0
 	.uleb128 0x3a
-	.string	"f"
+	.long	.LASF84
 	.byte	0x1
-	.word	0x3f8
-	.long	0x8d
-	.long	.LLST23
+	.byte	0x8f
+	.byte	0x1
 	.uleb128 0x3a
-	.string	"arg"
+	.long	.LASF85
 	.byte	0x1
-	.word	0x3f8
-	.long	0x42
-	.long	.LLST24
-	.uleb128 0x1e
-	.long	.LASF25
+	.byte	0xa7
 	.byte	0x1
-	.word	0x3f8
-	.long	0x54
-	.long	.LLST25
-	.uleb128 0x1e
-	.long	.LASF26
+	.uleb128 0x3a
+	.long	.LASF86
 	.byte	0x1
-	.word	0x3f8
-	.long	0x54
-	.long	.LLST26
-	.uleb128 0x21
-	.long	.LBB99
-	.long	.LBE99
+	.byte	0xd3
+	.byte	0x1
+	.uleb128 0x1b
+	.long	.LASF87
+	.byte	0x1
+	.word	0x35f
+	.byte	0x1
+	.uleb128 0x1b
+	.long	.LASF88
+	.byte	0x1
+	.word	0x2d2
+	.byte	0x1
+	.uleb128 0x3b
+	.byte	0x1
+	.long	.LASF91
+	.byte	0x1
+	.word	0x3d4
+	.long	.LASF128
+	.long	.LFB21
+	.long	.LFE21
+	.long	.LLST16
+	.byte	0x1
+	.long	0x9b3
+	.uleb128 0x23
+	.long	.LBB75
+	.long	.LBE75
+	.uleb128 0x2a
+	.string	"i"
+	.byte	0x1
+	.word	0x3d6
+	.long	0x58
+	.long	.LLST17
+	.uleb128 0x2c
+	.long	0x7d0
+	.long	.LBB76
+	.long	.LBE76
+	.byte	0x1
+	.word	0x40f
+	.long	0x97c
+	.uleb128 0x3c
+	.long	0x7d8
+	.long	.LBB78
+	.long	.Ldebug_ranges0+0
+	.byte	0x1
+	.byte	0x93
+	.long	0x895
+	.uleb128 0x3d
+	.long	0x319
+	.long	.LBB80
+	.long	.LBE80
+	.byte	0x1
+	.byte	0xb9
+	.long	0x88b
+	.uleb128 0x2d
+	.long	0x32a
+	.uleb128 0x2e
+	.long	0x336
+	.long	.LLST18
+	.uleb128 0x23
+	.long	.LBB81
+	.long	.LBE81
+	.uleb128 0x38
+	.long	0x343
+	.long	.LLST19
+	.byte	0
+	.byte	0
+	.uleb128 0x25
+	.long	.LVL51
+	.long	0x4eb
+	.byte	0
+	.uleb128 0x3c
+	.long	0x7e0
+	.long	.LBB83
+	.long	.Ldebug_ranges0+0x18
+	.byte	0x1
+	.byte	0x9a
+	.long	0x972
+	.uleb128 0x3c
+	.long	0x7e8
+	.long	.LBB85
+	.long	.Ldebug_ranges0+0x30
+	.byte	0x1
+	.byte	0xdc
+	.long	0x8df
+	.uleb128 0x3e
+	.long	.LVL53
+	.long	0x4eb
 	.uleb128 0x30
-	.long	.LASF76
-	.byte	0x1
-	.word	0x3fa
-	.long	0x42
 	.byte	0x6
 	.byte	0x68
 	.byte	0x93
@@ -2770,51 +3111,151 @@ _ZL8cur_task:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.uleb128 0x22
-	.long	.LASF61
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL8rr_queue
+	.uleb128 0x31
+	.long	0x368
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL8rr_queue
+	.byte	0
+	.byte	0
+	.uleb128 0x2c
+	.long	0x7f1
+	.long	.LBB89
+	.long	.LBE89
 	.byte	0x1
-	.word	0x3fb
-	.long	0x30
-	.long	.LLST27
+	.word	0x107
+	.long	0x933
+	.uleb128 0x2c
+	.long	0x3fe
+	.long	.LBB91
+	.long	.LBE91
+	.byte	0x1
+	.word	0x2d8
+	.long	0x929
+	.uleb128 0x2d
+	.long	0x40b
+	.uleb128 0x2e
+	.long	0x417
+	.long	.LLST20
 	.uleb128 0x23
-	.long	.LVL65
-	.long	0x31f
+	.long	.LBB92
+	.long	.LBE92
+	.uleb128 0x38
+	.long	0x424
+	.long	.LLST21
 	.byte	0
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x25
+	.long	.LVL60
+	.long	0x470
+	.byte	0
+	.uleb128 0x2c
+	.long	0x3d8
+	.long	.LBB93
+	.long	.LBE93
 	.byte	0x1
-	.long	.LASF77
-	.byte	0x1
-	.word	0x412
-	.long	.LFB23
-	.long	.LFE23
-	.long	.LLST28
-	.byte	0x1
-	.long	0x8f0
-	.uleb128 0x21
-	.long	.LBB100
-	.long	.LBE100
+	.word	0x114
+	.long	0x956
+	.uleb128 0x2d
+	.long	0x3e5
+	.uleb128 0x2e
+	.long	0x3f1
+	.long	.LLST22
+	.byte	0
+	.uleb128 0x25
+	.long	.LVL54
+	.long	0x524
+	.uleb128 0x25
+	.long	.LVL63
+	.long	0x470
+	.uleb128 0x25
+	.long	.LVL64
+	.long	0x5e6
+	.byte	0
+	.uleb128 0x25
+	.long	.LVL52
+	.long	0x446
+	.byte	0
+	.uleb128 0x25
+	.long	.LVL43
+	.long	0x524
+	.uleb128 0x25
+	.long	.LVL44
+	.long	0x524
+	.uleb128 0x3e
+	.long	.LVL45
+	.long	0x4eb
 	.uleb128 0x30
-	.long	.LASF61
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL12system_queue
+	.uleb128 0x31
+	.long	0x368
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL12system_queue
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x33
 	.byte	0x1
-	.word	0x414
-	.long	0x8f0
+	.long	.LASF89
+	.byte	0x1
+	.word	0x47e
+	.long	.LFB24
+	.long	.LFE24
+	.byte	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.byte	0x1
+	.long	0x9f0
+	.uleb128 0x3f
+	.string	"s"
+	.byte	0x1
+	.word	0x47e
+	.long	0x9f0
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.uleb128 0x3f
+	.string	"v"
+	.byte	0x1
+	.word	0x47e
+	.long	0x9f6
+	.byte	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0
+	.uleb128 0x6
 	.byte	0x2
-	.byte	0x8c
-	.sleb128 1
-	.uleb128 0x23
-	.long	.LVL68
-	.long	0x31f
-	.byte	0
-	.byte	0
-	.uleb128 0xf
-	.long	0x30
-	.uleb128 0x3b
+	.long	0x98
+	.uleb128 0x6
+	.byte	0x2
+	.long	0x4d
+	.uleb128 0x33
 	.byte	0x1
-	.long	.LASF78
+	.long	.LASF90
 	.byte	0x1
-	.word	0x433
-	.long	0x42
+	.word	0x48b
 	.long	.LFB25
 	.long	.LFE25
 	.byte	0x3
@@ -2822,15 +3263,12 @@ _ZL8cur_task:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x93f
-	.uleb128 0x21
-	.long	.LBB101
-	.long	.LBE101
-	.uleb128 0x3c
-	.string	"arg"
+	.long	0xa39
+	.uleb128 0x3f
+	.string	"s"
 	.byte	0x1
-	.word	0x435
-	.long	0x42
+	.word	0x48b
+	.long	0x9f0
 	.byte	0x6
 	.byte	0x68
 	.byte	0x93
@@ -2838,211 +3276,478 @@ _ZL8cur_task:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.uleb128 0x30
-	.long	.LASF61
+	.uleb128 0x3f
+	.string	"v"
 	.byte	0x1
-	.word	0x436
-	.long	0x30
-	.byte	0x1
-	.byte	0x62
+	.word	0x48b
+	.long	0x4d
+	.byte	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
 	.byte	0
-	.byte	0
-	.uleb128 0x3b
+	.uleb128 0x40
 	.byte	0x1
-	.long	.LASF79
+	.long	.LASF92
 	.byte	0x1
-	.word	0x445
-	.long	0x42
+	.word	0x49d
+	.long	0x29
 	.long	.LFB26
 	.long	.LFE26
+	.long	.LLST23
+	.byte	0x1
+	.long	0xaa7
+	.uleb128 0x41
+	.string	"f"
+	.byte	0x1
+	.word	0x49d
+	.long	0xb4
+	.long	.LLST24
+	.uleb128 0x41
+	.string	"arg"
+	.byte	0x1
+	.word	0x49d
+	.long	0x4d
+	.long	.LLST25
+	.uleb128 0x23
+	.long	.LBB98
+	.long	.LBE98
+	.uleb128 0x2b
+	.long	.LASF93
+	.byte	0x1
+	.word	0x49f
+	.long	0x29
+	.byte	0x1
+	.byte	0x68
+	.uleb128 0x24
+	.long	.LASF76
+	.byte	0x1
+	.word	0x4a0
+	.long	0x3b
+	.long	.LLST26
+	.uleb128 0x25
+	.long	.LVL70
+	.long	0x45b
+	.byte	0
+	.byte	0
+	.uleb128 0x40
+	.byte	0x1
+	.long	.LASF94
+	.byte	0x1
+	.word	0x4b3
+	.long	0x29
+	.long	.LFB27
+	.long	.LFE27
+	.long	.LLST27
+	.byte	0x1
+	.long	0xb15
+	.uleb128 0x41
+	.string	"f"
+	.byte	0x1
+	.word	0x4b3
+	.long	0xb4
+	.long	.LLST28
+	.uleb128 0x41
+	.string	"arg"
+	.byte	0x1
+	.word	0x4b3
+	.long	0x4d
+	.long	.LLST29
+	.uleb128 0x23
+	.long	.LBB99
+	.long	.LBE99
+	.uleb128 0x2b
+	.long	.LASF93
+	.byte	0x1
+	.word	0x4b5
+	.long	0x29
+	.byte	0x1
+	.byte	0x68
+	.uleb128 0x24
+	.long	.LASF76
+	.byte	0x1
+	.word	0x4b6
+	.long	0x3b
+	.long	.LLST30
+	.uleb128 0x25
+	.long	.LVL76
+	.long	0x45b
+	.byte	0
+	.byte	0
+	.uleb128 0x40
+	.byte	0x1
+	.long	.LASF95
+	.byte	0x1
+	.word	0x4d8
+	.long	0x29
+	.long	.LFB28
+	.long	.LFE28
+	.long	.LLST31
+	.byte	0x1
+	.long	0xbb3
+	.uleb128 0x41
+	.string	"f"
+	.byte	0x1
+	.word	0x4d8
+	.long	0xb4
+	.long	.LLST32
+	.uleb128 0x41
+	.string	"arg"
+	.byte	0x1
+	.word	0x4d8
+	.long	0x4d
+	.long	.LLST33
+	.uleb128 0x20
+	.long	.LASF29
+	.byte	0x1
+	.word	0x4d8
+	.long	0x5f
+	.long	.LLST34
+	.uleb128 0x20
+	.long	.LASF30
+	.byte	0x1
+	.word	0x4d8
+	.long	0x5f
+	.long	.LLST35
+	.uleb128 0x20
+	.long	.LASF31
+	.byte	0x1
+	.word	0x4d8
+	.long	0x5f
+	.long	.LLST36
+	.uleb128 0x23
+	.long	.LBB100
+	.long	.LBE100
+	.uleb128 0x2b
+	.long	.LASF93
+	.byte	0x1
+	.word	0x4da
+	.long	0x29
+	.byte	0x1
+	.byte	0x68
+	.uleb128 0x24
+	.long	.LASF76
+	.byte	0x1
+	.word	0x4db
+	.long	0x3b
+	.long	.LLST37
+	.uleb128 0x25
+	.long	.LVL82
+	.long	0x45b
+	.byte	0
+	.byte	0
+	.uleb128 0x40
+	.byte	0x1
+	.long	.LASF96
+	.byte	0x1
+	.word	0x501
+	.long	0x58
+	.long	.LFB29
+	.long	.LFE29
+	.long	.LLST38
+	.byte	0x1
+	.long	0xc46
+	.uleb128 0x41
+	.string	"f"
+	.byte	0x1
+	.word	0x501
+	.long	0xb4
+	.long	.LLST39
+	.uleb128 0x41
+	.string	"arg"
+	.byte	0x1
+	.word	0x501
+	.long	0x58
+	.long	.LLST40
+	.uleb128 0x20
+	.long	.LASF28
+	.byte	0x1
+	.word	0x501
+	.long	0x6a
+	.long	.LLST41
+	.uleb128 0x20
+	.long	.LASF97
+	.byte	0x1
+	.word	0x501
+	.long	0x6a
+	.long	.LLST42
+	.uleb128 0x23
+	.long	.LBB101
+	.long	.LBE101
+	.uleb128 0x2b
+	.long	.LASF93
+	.byte	0x1
+	.word	0x503
+	.long	0x58
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.uleb128 0x24
+	.long	.LASF76
+	.byte	0x1
+	.word	0x504
+	.long	0x3b
+	.long	.LLST43
+	.uleb128 0x25
+	.long	.LVL89
+	.long	0x45b
+	.byte	0
+	.byte	0
+	.uleb128 0x22
+	.byte	0x1
+	.long	.LASF98
+	.byte	0x1
+	.word	0x51b
+	.long	.LFB30
+	.long	.LFE30
+	.long	.LLST44
+	.byte	0x1
+	.long	0xc83
+	.uleb128 0x23
+	.long	.LBB102
+	.long	.LBE102
+	.uleb128 0x2b
+	.long	.LASF76
+	.byte	0x1
+	.word	0x51d
+	.long	0xc83
+	.byte	0x2
+	.byte	0x8c
+	.sleb128 1
+	.uleb128 0x25
+	.long	.LVL92
+	.long	0x45b
+	.byte	0
+	.byte	0
+	.uleb128 0x10
+	.long	0x3b
+	.uleb128 0x42
+	.byte	0x1
+	.long	.LASF99
+	.byte	0x1
+	.word	0x53c
+	.long	0x58
+	.long	.LFB32
+	.long	.LFE32
 	.byte	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x967
+	.long	0xcd2
 	.uleb128 0x23
-	.long	.LVL71
-	.long	0x697
-	.byte	0
-	.uleb128 0xd
+	.long	.LBB103
+	.long	.LBE103
+	.uleb128 0x43
+	.string	"arg"
+	.byte	0x1
+	.word	0x53e
+	.long	0x58
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.uleb128 0x2b
+	.long	.LASF76
+	.byte	0x1
+	.word	0x53f
 	.long	0x3b
-	.long	0x972
-	.uleb128 0x3d
+	.byte	0x1
+	.byte	0x62
 	.byte	0
-	.uleb128 0x3e
-	.string	"PPP"
-	.byte	0x5
-	.byte	0xe7
-	.long	0x967
+	.byte	0
+	.uleb128 0x42
 	.byte	0x1
+	.long	.LASF100
 	.byte	0x1
-	.uleb128 0x3e
-	.string	"PT"
-	.byte	0x5
-	.byte	0xea
-	.long	0x98b
+	.word	0x54e
+	.long	0x58
+	.long	.LFB33
+	.long	.LFE33
+	.byte	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
 	.byte	0x1
+	.long	0xcfa
+	.uleb128 0x25
+	.long	.LVL95
+	.long	0x7fa
+	.byte	0
+	.uleb128 0x44
+	.long	.LASF101
 	.byte	0x1
-	.uleb128 0x3f
-	.long	0x54
-	.uleb128 0x40
-	.long	.LASF80
-	.byte	0x1
-	.byte	0x23
-	.long	0x1f0
+	.byte	0x24
+	.long	0x260
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL8cur_task
-	.uleb128 0x40
-	.long	.LASF81
+	.uleb128 0x44
+	.long	.LASF102
 	.byte	0x1
-	.byte	0x26
-	.long	0x9b2
+	.byte	0x27
+	.long	0x260
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL18next_task_periodic
+	.uleb128 0x44
+	.long	.LASF103
+	.byte	0x1
+	.byte	0x2a
+	.long	0xd2d
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL9kernel_sp
-	.uleb128 0xf
-	.long	0x49
-	.uleb128 0xd
-	.long	0x159
-	.long	0x9c7
+	.uleb128 0x10
+	.long	0x5f
 	.uleb128 0xe
-	.long	0x1de
+	.long	0x19c
+	.long	0xd42
+	.uleb128 0xf
+	.long	0x24e
 	.byte	0x8
 	.byte	0
-	.uleb128 0x40
-	.long	.LASF82
+	.uleb128 0x44
+	.long	.LASF104
 	.byte	0x1
-	.byte	0x29
-	.long	0x9b7
+	.byte	0x2d
+	.long	0xd32
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL9task_desc
-	.uleb128 0x40
-	.long	.LASF83
+	.uleb128 0x44
+	.long	.LASF105
 	.byte	0x1
-	.byte	0x2c
-	.long	0x9ea
+	.byte	0x30
+	.long	0xd65
 	.byte	0x6
 	.byte	0x3
-	.long	_ZL9task_desc+2120
+	.long	_ZL9task_desc+2176
 	.byte	0x9f
-	.uleb128 0x3f
-	.long	0x1f0
-	.uleb128 0x40
-	.long	.LASF84
+	.uleb128 0x45
+	.long	0x260
+	.uleb128 0x44
+	.long	.LASF106
 	.byte	0x1
-	.byte	0x2f
-	.long	0xa00
+	.byte	0x33
+	.long	0xd7b
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL14kernel_request
-	.uleb128 0xf
-	.long	0xf5
-	.uleb128 0x40
-	.long	.LASF85
+	.uleb128 0x10
+	.long	0x11c
+	.uleb128 0x44
+	.long	.LASF107
 	.byte	0x1
-	.byte	0x32
-	.long	0xa16
+	.byte	0x36
+	.long	0xd91
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL26kernel_request_create_args
-	.uleb128 0xf
-	.long	0x143
-	.uleb128 0x40
-	.long	.LASF86
+	.uleb128 0x10
+	.long	0x186
+	.uleb128 0x44
+	.long	.LASF108
 	.byte	0x1
-	.byte	0x35
-	.long	0xa2c
+	.byte	0x39
+	.long	0xda7
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL21kernel_request_retval
-	.uleb128 0xf
-	.long	0x42
-	.uleb128 0x40
-	.long	.LASF87
+	.uleb128 0x10
+	.long	0x58
+	.uleb128 0x44
+	.long	.LASF109
 	.byte	0x1
-	.byte	0x38
-	.long	0x21f
+	.byte	0x3c
+	.long	0x2c3
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL15dead_pool_queue
-	.uleb128 0x40
-	.long	.LASF88
+	.uleb128 0x44
+	.long	.LASF110
 	.byte	0x1
-	.byte	0x3b
-	.long	0x21f
+	.byte	0x3f
+	.long	0x2c3
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL8rr_queue
-	.uleb128 0x40
-	.long	.LASF89
+	.uleb128 0x44
+	.long	.LASF111
 	.byte	0x1
-	.byte	0x3e
-	.long	0x21f
+	.byte	0x42
+	.long	0x28f
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL14periodic_queue
+	.uleb128 0x44
+	.long	.LASF112
+	.byte	0x1
+	.byte	0x45
+	.long	0x2c3
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL12system_queue
-	.uleb128 0x40
-	.long	.LASF90
+	.uleb128 0x44
+	.long	.LASF113
 	.byte	0x1
-	.byte	0x41
-	.long	0x8f0
+	.byte	0x48
+	.long	0xc83
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL15ticks_remaining
-	.uleb128 0x40
-	.long	.LASF91
+	.uleb128 0x44
+	.long	.LASF114
 	.byte	0x1
-	.byte	0x44
-	.long	0x30
+	.byte	0x49
+	.long	0xc83
+	.byte	0x5
+	.byte	0x3
+	.long	_ZL13ticks_counter
+	.uleb128 0x44
+	.long	.LASF115
+	.byte	0x1
+	.byte	0x4b
+	.long	0x3b
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL18slot_task_finished
-	.uleb128 0x40
-	.long	.LASF92
+	.uleb128 0x46
+	.long	.LASF116
 	.byte	0x1
-	.byte	0x47
-	.long	0x54
-	.byte	0x5
-	.byte	0x3
-	.long	_ZL15slot_name_index
-	.uleb128 0xd
-	.long	0x1f0
-	.long	0xaa7
+	.byte	0x4e
+	.long	0x6a
+	.byte	0
 	.uleb128 0xe
-	.long	0x1de
+	.long	0x260
+	.long	0xe3f
+	.uleb128 0xf
+	.long	0x24e
 	.byte	0x8
 	.byte	0
-	.uleb128 0x40
-	.long	.LASF93
+	.uleb128 0x44
+	.long	.LASF117
 	.byte	0x1
-	.byte	0x4a
-	.long	0xa97
+	.byte	0x51
+	.long	0xe2f
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL16name_to_task_ptr
-	.uleb128 0xd
-	.long	0x3b
-	.long	0xac8
-	.uleb128 0xe
-	.long	0x1de
-	.byte	0x8
-	.byte	0
-	.uleb128 0x40
-	.long	.LASF94
+	.uleb128 0x44
+	.long	.LASF118
 	.byte	0x1
-	.byte	0x4d
-	.long	0xab8
-	.byte	0x5
-	.byte	0x3
-	.long	_ZL11name_in_PPP
-	.uleb128 0x40
-	.long	.LASF95
-	.byte	0x1
-	.byte	0x50
-	.long	0x8f0
+	.byte	0x57
+	.long	0xc83
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL9error_msg
@@ -3071,17 +3776,6 @@ _ZL8cur_task:
 	.byte	0
 	.byte	0
 	.uleb128 0x2
-	.uleb128 0x24
-	.byte	0
-	.uleb128 0xb
-	.uleb128 0xb
-	.uleb128 0x3e
-	.uleb128 0xb
-	.uleb128 0x3
-	.uleb128 0xe
-	.byte	0
-	.byte	0
-	.uleb128 0x3
 	.uleb128 0x16
 	.byte	0
 	.uleb128 0x3
@@ -3092,6 +3786,17 @@ _ZL8cur_task:
 	.uleb128 0xb
 	.uleb128 0x49
 	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x24
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3e
+	.uleb128 0xb
+	.uleb128 0x3
+	.uleb128 0xe
 	.byte	0
 	.byte	0
 	.uleb128 0x4
@@ -3106,6 +3811,15 @@ _ZL8cur_task:
 	.byte	0
 	.byte	0
 	.uleb128 0x5
+	.uleb128 0x13
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3c
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x6
 	.uleb128 0xf
 	.byte	0
 	.uleb128 0xb
@@ -3114,12 +3828,12 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x6
+	.uleb128 0x7
 	.uleb128 0x15
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x7
+	.uleb128 0x8
 	.uleb128 0x4
 	.byte	0x1
 	.uleb128 0xb
@@ -3134,7 +3848,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x8
+	.uleb128 0x9
 	.uleb128 0x28
 	.byte	0
 	.uleb128 0x3
@@ -3143,7 +3857,7 @@ _ZL8cur_task:
 	.uleb128 0xd
 	.byte	0
 	.byte	0
-	.uleb128 0x9
+	.uleb128 0xa
 	.uleb128 0x13
 	.byte	0x1
 	.uleb128 0xb
@@ -3158,26 +3872,11 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xa
+	.uleb128 0xb
 	.uleb128 0xd
 	.byte	0
 	.uleb128 0x3
 	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x38
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0xb
-	.uleb128 0xd
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -3189,6 +3888,21 @@ _ZL8cur_task:
 	.byte	0
 	.byte	0
 	.uleb128 0xc
+	.uleb128 0xd
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x38
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0xd
 	.uleb128 0x13
 	.byte	0x1
 	.uleb128 0x3
@@ -3203,7 +3917,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xd
+	.uleb128 0xe
 	.uleb128 0x1
 	.byte	0x1
 	.uleb128 0x49
@@ -3212,7 +3926,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xe
+	.uleb128 0xf
 	.uleb128 0x21
 	.byte	0
 	.uleb128 0x49
@@ -3221,14 +3935,14 @@ _ZL8cur_task:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0xf
+	.uleb128 0x10
 	.uleb128 0x35
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x10
+	.uleb128 0x11
 	.uleb128 0x4
 	.byte	0x1
 	.uleb128 0xb
@@ -3241,7 +3955,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x11
+	.uleb128 0x12
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3
@@ -3258,7 +3972,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x12
+	.uleb128 0x13
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -3271,12 +3985,12 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x13
+	.uleb128 0x14
 	.uleb128 0xb
 	.byte	0x1
 	.byte	0
 	.byte	0
-	.uleb128 0x14
+	.uleb128 0x15
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -3286,39 +4000,26 @@ _ZL8cur_task:
 	.uleb128 0x3b
 	.uleb128 0x5
 	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x15
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x20
-	.uleb128 0xb
-	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x16
-	.uleb128 0x5
-	.byte	0
+	.uleb128 0x2e
+	.byte	0x1
 	.uleb128 0x3
 	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
-	.uleb128 0x49
+	.uleb128 0x20
+	.uleb128 0xb
+	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x17
-	.uleb128 0x34
+	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
@@ -3331,6 +4032,19 @@ _ZL8cur_task:
 	.byte	0
 	.byte	0
 	.uleb128 0x18
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x19
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -3345,24 +4059,11 @@ _ZL8cur_task:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x19
+	.uleb128 0x1a
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x1a
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x20
-	.uleb128 0xb
 	.byte	0
 	.byte	0
 	.uleb128 0x1b
@@ -3373,6 +4074,34 @@ _ZL8cur_task:
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x20
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x1c
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x20
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x1d
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
 	.uleb128 0xb
 	.uleb128 0x11
 	.uleb128 0x1
@@ -3384,7 +4113,7 @@ _ZL8cur_task:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1e
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3
@@ -3403,7 +4132,7 @@ _ZL8cur_task:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
+	.uleb128 0x1f
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3
@@ -3424,7 +4153,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x1e
+	.uleb128 0x20
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -3439,7 +4168,7 @@ _ZL8cur_task:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x1f
+	.uleb128 0x21
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -3454,7 +4183,7 @@ _ZL8cur_task:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x22
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -3477,7 +4206,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x21
+	.uleb128 0x23
 	.uleb128 0xb
 	.byte	0x1
 	.uleb128 0x11
@@ -3486,7 +4215,7 @@ _ZL8cur_task:
 	.uleb128 0x1
 	.byte	0
 	.byte	0
-	.uleb128 0x22
+	.uleb128 0x24
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -3501,7 +4230,7 @@ _ZL8cur_task:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x23
+	.uleb128 0x25
 	.uleb128 0x4109
 	.byte	0
 	.uleb128 0x11
@@ -3510,38 +4239,11 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x24
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x25
+	.uleb128 0x26
 	.uleb128 0x2e
 	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
+	.uleb128 0x31
+	.uleb128 0x13
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
@@ -3554,7 +4256,48 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x26
+	.uleb128 0x27
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x28
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x29
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x2a
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -3569,66 +4312,46 @@ _ZL8cur_task:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x27
-	.uleb128 0x1d
-	.byte	0x1
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x58
-	.uleb128 0xb
-	.uleb128 0x59
-	.uleb128 0x5
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x28
-	.uleb128 0x1d
-	.byte	0x1
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x58
-	.uleb128 0xb
-	.uleb128 0x59
-	.uleb128 0x5
-	.byte	0
-	.byte	0
-	.uleb128 0x29
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x1c
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x2a
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x1c
-	.uleb128 0xa
-	.byte	0
-	.byte	0
 	.uleb128 0x2b
 	.uleb128 0x34
 	.byte	0
-	.uleb128 0x31
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x1c
-	.uleb128 0x6
+	.uleb128 0x2
+	.uleb128 0xa
 	.byte	0
 	.byte	0
 	.uleb128 0x2c
+	.uleb128 0x1d
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x58
+	.uleb128 0xb
+	.uleb128 0x59
+	.uleb128 0x5
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x2d
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x2e
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x31
@@ -3637,7 +4360,122 @@ _ZL8cur_task:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x2d
+	.uleb128 0x2f
+	.uleb128 0x4109
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x30
+	.uleb128 0x410a
+	.byte	0
+	.uleb128 0x2
+	.uleb128 0xa
+	.uleb128 0x2111
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x410a
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x2111
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x32
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x33
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x34
+	.uleb128 0x1d
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x58
+	.uleb128 0xb
+	.uleb128 0x59
+	.uleb128 0x5
+	.byte	0
+	.byte	0
+	.uleb128 0x35
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x1c
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x36
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x1c
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x37
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x1c
+	.uleb128 0x6
+	.byte	0
+	.byte	0
+	.uleb128 0x38
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x31
@@ -3646,7 +4484,7 @@ _ZL8cur_task:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x2e
+	.uleb128 0x39
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x47
@@ -3657,80 +4495,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x2f
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3
-	.uleb128 0xe
 	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x30
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x31
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x31
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x32
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x20
-	.uleb128 0xb
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x33
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x34
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3
@@ -3743,7 +4508,7 @@ _ZL8cur_task:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x35
+	.uleb128 0x3b
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -3768,7 +4533,7 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x36
+	.uleb128 0x3c
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -3785,124 +4550,113 @@ _ZL8cur_task:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x37
-	.uleb128 0x1d
-	.byte	0x1
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x58
-	.uleb128 0xb
-	.uleb128 0x59
-	.uleb128 0xb
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x38
-	.uleb128 0x1d
-	.byte	0x1
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x58
-	.uleb128 0xb
-	.uleb128 0x59
-	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x39
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0x6
-	.uleb128 0x2117
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x3a
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x6
-	.byte	0
-	.byte	0
-	.uleb128 0x3b
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x3c
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
 	.uleb128 0x3d
-	.uleb128 0x21
-	.byte	0
+	.uleb128 0x1d
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x58
+	.uleb128 0xb
+	.uleb128 0x59
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x3e
+	.uleb128 0x4109
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x40
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0x6
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x41
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x6
+	.byte	0
+	.byte	0
+	.uleb128 0x42
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x43
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -3910,23 +4664,36 @@ _ZL8cur_task:
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x44
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
 	.uleb128 0xb
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
+	.uleb128 0x2
+	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x3f
+	.uleb128 0x45
 	.uleb128 0x26
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x40
+	.uleb128 0x46
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -3937,8 +4704,8 @@ _ZL8cur_task:
 	.uleb128 0xb
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
+	.uleb128 0x1c
+	.uleb128 0xb
 	.byte	0
 	.byte	0
 	.byte	0
@@ -3955,7 +4722,7 @@ _ZL8cur_task:
 	.byte	0x93
 	.uleb128 0x1
 	.long	.LVL1
-	.long	.LFE15
+	.long	.LFE18
 	.word	0x6
 	.byte	0x6e
 	.byte	0x93
@@ -3966,14 +4733,14 @@ _ZL8cur_task:
 	.long	0
 	.long	0
 .LLST1:
-	.long	.LFB24
+	.long	.LFB31
 	.long	.LCFI0
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
 	.long	.LCFI0
-	.long	.LFE24
+	.long	.LFE31
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
@@ -3986,77 +4753,55 @@ _ZL8cur_task:
 	.word	0x1
 	.byte	0x6c
 	.long	.LVL4
-	.long	.LFE24
+	.long	.LFE31
 	.word	0x2
 	.byte	0x8
 	.byte	0x5f
 	.long	0
 	.long	0
 .LLST3:
+	.long	.LVL8
+	.long	.LVL9
+	.word	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
 	.long	.LVL10
-	.long	.LVL11
-	.word	0x2
-	.byte	0x30
+	.long	.LVL13-1
+	.word	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.long	0
+	.long	0
+.LLST4:
+	.long	.LVL10
+	.long	.LVL13-1
+	.word	0x4
+	.byte	0x86
+	.sleb128 255
 	.byte	0x9f
+	.long	0
+	.long	0
+.LLST5:
 	.long	.LVL11
 	.long	.LVL12
 	.word	0x6
-	.byte	0x8
-	.byte	0x64
-	.byte	0x89
-	.sleb128 0
-	.byte	0x1c
-	.byte	0x9f
-	.long	.LVL12
-	.long	.LVL13
-	.word	0x6
-	.byte	0x8
-	.byte	0x65
-	.byte	0x89
-	.sleb128 0
-	.byte	0x1c
-	.byte	0x9f
-	.long	.LVL13
-	.long	.LVL14
-	.word	0x6
-	.byte	0x8
-	.byte	0x64
-	.byte	0x89
-	.sleb128 0
-	.byte	0x1c
-	.byte	0x9f
-	.long	.LVL14
-	.long	.LVL15
-	.word	0x2
-	.byte	0x30
-	.byte	0x9f
-	.long	.LVL15
-	.long	.LVL16
-	.word	0x6
-	.byte	0x8
-	.byte	0x28
-	.byte	0x89
-	.sleb128 0
-	.byte	0x1c
-	.byte	0x9f
-	.long	.LVL16
-	.long	.LVL17
-	.word	0x6
-	.byte	0x8
-	.byte	0x29
-	.byte	0x89
-	.sleb128 0
-	.byte	0x1c
-	.byte	0x9f
-	.long	.LVL17
-	.long	.LVL18
-	.word	0x6
-	.byte	0x8
-	.byte	0x28
-	.byte	0x89
-	.sleb128 0
-	.byte	0x1c
-	.byte	0x9f
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.long	0
+	.long	0
+.LLST6:
 	.long	.LVL19
 	.long	.LVL20
 	.word	0x2
@@ -4064,25 +4809,28 @@ _ZL8cur_task:
 	.byte	0x9f
 	.long	.LVL20
 	.long	.LVL21
-	.word	0x5
-	.byte	0x3a
-	.byte	0x82
+	.word	0x6
+	.byte	0x8
+	.byte	0x64
+	.byte	0x89
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
 	.long	.LVL21
 	.long	.LVL22
-	.word	0x5
-	.byte	0x3b
-	.byte	0x82
+	.word	0x6
+	.byte	0x8
+	.byte	0x65
+	.byte	0x89
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
 	.long	.LVL22
 	.long	.LVL23
-	.word	0x5
-	.byte	0x3a
-	.byte	0x82
+	.word	0x6
+	.byte	0x8
+	.byte	0x64
+	.byte	0x89
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
@@ -4093,46 +4841,107 @@ _ZL8cur_task:
 	.byte	0x9f
 	.long	.LVL24
 	.long	.LVL25
+	.word	0x6
+	.byte	0x8
+	.byte	0x28
+	.byte	0x89
+	.sleb128 0
+	.byte	0x1c
+	.byte	0x9f
+	.long	.LVL25
+	.long	.LVL26
+	.word	0x6
+	.byte	0x8
+	.byte	0x29
+	.byte	0x89
+	.sleb128 0
+	.byte	0x1c
+	.byte	0x9f
+	.long	.LVL26
+	.long	.LVL27
+	.word	0x6
+	.byte	0x8
+	.byte	0x28
+	.byte	0x89
+	.sleb128 0
+	.byte	0x1c
+	.byte	0x9f
+	.long	.LVL28
+	.long	.LVL29
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	.LVL29
+	.long	.LVL30
 	.word	0x5
 	.byte	0x3a
 	.byte	0x82
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
-	.long	.LVL25
-	.long	.LVL26
+	.long	.LVL30
+	.long	.LVL31
 	.word	0x5
 	.byte	0x3b
 	.byte	0x82
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
-	.long	.LVL26
-	.long	.LVL28
+	.long	.LVL31
+	.long	.LVL32
 	.word	0x5
 	.byte	0x3a
 	.byte	0x82
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
-	.long	.LVL29
-	.long	.LVL30
+	.long	.LVL32
+	.long	.LVL33
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	.LVL33
+	.long	.LVL34
+	.word	0x5
+	.byte	0x3a
+	.byte	0x82
+	.sleb128 0
+	.byte	0x1c
+	.byte	0x9f
+	.long	.LVL34
+	.long	.LVL35
+	.word	0x5
+	.byte	0x3b
+	.byte	0x82
+	.sleb128 0
+	.byte	0x1c
+	.byte	0x9f
+	.long	.LVL35
+	.long	.LVL37
+	.word	0x5
+	.byte	0x3a
+	.byte	0x82
+	.sleb128 0
+	.byte	0x1c
+	.byte	0x9f
+	.long	.LVL38
+	.long	.LVL39
 	.word	0x5
 	.byte	0x44
 	.byte	0x89
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
-	.long	.LVL30
-	.long	.LVL31
+	.long	.LVL39
+	.long	.LVL40
 	.word	0x5
 	.byte	0x45
 	.byte	0x89
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
-	.long	.LVL31
-	.long	.LFE21
+	.long	.LVL40
+	.long	.LFE23
 	.word	0x5
 	.byte	0x44
 	.byte	0x89
@@ -4141,73 +4950,46 @@ _ZL8cur_task:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST4:
-	.long	.LVL18
-	.long	.LVL29
+.LLST7:
+	.long	.LVL27
+	.long	.LVL38
 	.word	0x1
 	.byte	0x69
 	.long	0
 	.long	0
-.LLST5:
-	.long	.LVL5
-	.long	.LVL6
+.LLST8:
+	.long	.LVL14
+	.long	.LVL15
 	.word	0x1
 	.byte	0x68
-	.long	.LVL7
-	.long	.LFE21
+	.long	.LVL16
+	.long	.LFE23
 	.word	0x1
 	.byte	0x68
 	.long	0
 	.long	0
-.LLST6:
-	.long	.LVL5
-	.long	.LVL6
+.LLST9:
+	.long	.LVL14
+	.long	.LVL15
 	.word	0x3
 	.byte	0x8
 	.byte	0x60
 	.byte	0x9f
-	.long	.LVL7
-	.long	.LVL8
+	.long	.LVL16
+	.long	.LVL17
 	.word	0x3
 	.byte	0x9
 	.byte	0x90
 	.byte	0x9f
-	.long	.LVL9
-	.long	.LFE21
+	.long	.LVL18
+	.long	.LFE23
 	.word	0x1
 	.byte	0x63
 	.long	0
 	.long	0
-.LLST7:
-	.long	.LVL20
-	.long	.LVL28
-	.word	0x6
-	.byte	0x9e
-	.uleb128 0x4
-	.long	0x41c80000
-	.long	0
-	.long	0
-.LLST8:
-	.long	.LVL20
-	.long	.LVL28
-	.word	0x6
-	.byte	0x9e
-	.uleb128 0x4
-	.long	0x48c35000
-	.long	0
-	.long	0
-.LLST9:
-	.long	.LVL20
-	.long	.LVL28
-	.word	0x6
-	.byte	0xc
-	.long	0x61a80
-	.byte	0x9f
-	.long	0
-	.long	0
 .LLST10:
-	.long	.LVL24
-	.long	.LVL28
+	.long	.LVL29
+	.long	.LVL37
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
@@ -4215,8 +4997,8 @@ _ZL8cur_task:
 	.long	0
 	.long	0
 .LLST11:
-	.long	.LVL24
-	.long	.LVL28
+	.long	.LVL29
+	.long	.LVL37
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
@@ -4224,8 +5006,8 @@ _ZL8cur_task:
 	.long	0
 	.long	0
 .LLST12:
-	.long	.LVL24
-	.long	.LVL28
+	.long	.LVL29
+	.long	.LVL37
 	.word	0x6
 	.byte	0xc
 	.long	0x61a80
@@ -4233,40 +5015,34 @@ _ZL8cur_task:
 	.long	0
 	.long	0
 .LLST13:
-	.long	.LVL35
-	.long	.LVL36-1
+	.long	.LVL33
+	.long	.LVL37
 	.word	0x6
-	.byte	0x66
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x67
-	.byte	0x93
-	.uleb128 0x1
+	.byte	0x9e
+	.uleb128 0x4
+	.long	0x41c80000
 	.long	0
 	.long	0
 .LLST14:
-	.long	.LVL35
-	.long	.LVL36-1
-	.word	0x4
-	.byte	0x86
-	.sleb128 255
-	.byte	0x9f
+	.long	.LVL33
+	.long	.LVL37
+	.word	0x6
+	.byte	0x9e
+	.uleb128 0x4
+	.long	0x48c35000
 	.long	0
 	.long	0
 .LLST15:
 	.long	.LVL33
-	.long	.LVL34
+	.long	.LVL37
 	.word	0x6
-	.byte	0x66
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x67
-	.byte	0x93
-	.uleb128 0x1
+	.byte	0xc
+	.long	0x61a80
+	.byte	0x9f
 	.long	0
 	.long	0
 .LLST16:
-	.long	.LFB19
+	.long	.LFB21
 	.long	.LCFI1
 	.word	0x3
 	.byte	0x92
@@ -4291,66 +5067,35 @@ _ZL8cur_task:
 	.uleb128 0x20
 	.sleb128 6
 	.long	.LCFI4
-	.long	.LFE19
+	.long	.LFE21
 	.word	0x2
 	.byte	0x8c
 	.sleb128 6
 	.long	0
 	.long	0
 .LLST17:
-	.long	.LVL37
-	.long	.LVL38
+	.long	.LVL41
+	.long	.LVL42
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
-	.long	.LVL38
-	.long	.LVL45-1
-	.word	0x1
-	.byte	0x64
 	.long	0
 	.long	0
 .LLST18:
-	.long	.LVL39
-	.long	.LVL40
-	.word	0x1
-	.byte	0x6e
-	.long	.LVL40
-	.long	.LVL42
-	.word	0x2
-	.byte	0x88
-	.sleb128 0
-	.long	.LVL42
-	.long	.LVL43
-	.word	0x1
-	.byte	0x6e
+	.long	.LVL46
+	.long	.LVL50
+	.word	0x6
+	.byte	0x64
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x65
+	.byte	0x93
+	.uleb128 0x1
 	.long	0
 	.long	0
 .LLST19:
-	.long	.LVL48
+	.long	.LVL47
 	.long	.LVL49
-	.word	0x6
-	.byte	0x6e
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x6f
-	.byte	0x93
-	.uleb128 0x1
-	.long	.LVL49
-	.long	.LVL50
-	.word	0x5
-	.byte	0x3
-	.long	_ZL12system_queue
-	.long	.LVL50
-	.long	.LVL51
-	.word	0x4
-	.byte	0x8e
-	.sleb128 -263
-	.byte	0x9f
-	.long	0
-	.long	0
-.LLST20:
-	.long	.LVL53
-	.long	.LVL54
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -4360,9 +5105,21 @@ _ZL8cur_task:
 	.uleb128 0x1
 	.long	0
 	.long	0
-.LLST21:
+.LLST20:
 	.long	.LVL55
+	.long	.LVL59
+	.word	0x6
+	.byte	0x5a
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5b
+	.byte	0x93
+	.uleb128 0x1
+	.long	0
+	.long	0
+.LLST21:
 	.long	.LVL56
+	.long	.LVL59
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -4373,23 +5130,35 @@ _ZL8cur_task:
 	.long	0
 	.long	0
 .LLST22:
-	.long	.LFB22
+	.long	.LVL61
+	.long	.LVL62
+	.word	0x6
+	.byte	0x5a
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5b
+	.byte	0x93
+	.uleb128 0x1
+	.long	0
+	.long	0
+.LLST23:
+	.long	.LFB26
 	.long	.LCFI5
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
 	.long	.LCFI5
-	.long	.LFE22
+	.long	.LFE26
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 4
 	.long	0
 	.long	0
-.LLST23:
-	.long	.LVL62
-	.long	.LVL64
+.LLST24:
+	.long	.LVL67
+	.long	.LVL69
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -4397,8 +5166,8 @@ _ZL8cur_task:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL64
-	.long	.LFE22
+	.long	.LVL69
+	.long	.LFE26
 	.word	0x4
 	.byte	0xf3
 	.uleb128 0x1
@@ -4406,9 +5175,9 @@ _ZL8cur_task:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST24:
-	.long	.LVL62
-	.long	.LVL65-1
+.LLST25:
+	.long	.LVL67
+	.long	.LVL70-1
 	.word	0x6
 	.byte	0x66
 	.byte	0x93
@@ -4416,8 +5185,8 @@ _ZL8cur_task:
 	.byte	0x67
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL65-1
-	.long	.LFE22
+	.long	.LVL70-1
+	.long	.LFE26
 	.word	0x4
 	.byte	0xf3
 	.uleb128 0x1
@@ -4425,9 +5194,151 @@ _ZL8cur_task:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST25:
-	.long	.LVL62
-	.long	.LVL65-1
+.LLST26:
+	.long	.LVL68
+	.long	.LVL72
+	.word	0x1
+	.byte	0x6c
+	.long	.LVL72
+	.long	.LFE26
+	.word	0x2
+	.byte	0x8
+	.byte	0x5f
+	.long	0
+	.long	0
+.LLST27:
+	.long	.LFB27
+	.long	.LCFI6
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI6
+	.long	.LFE27
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	0
+	.long	0
+.LLST28:
+	.long	.LVL73
+	.long	.LVL75
+	.word	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL75
+	.long	.LFE27
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x68
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST29:
+	.long	.LVL73
+	.long	.LVL76-1
+	.word	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL76-1
+	.long	.LFE27
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x66
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST30:
+	.long	.LVL74
+	.long	.LVL78
+	.word	0x1
+	.byte	0x6c
+	.long	.LVL78
+	.long	.LFE27
+	.word	0x2
+	.byte	0x8
+	.byte	0x5f
+	.long	0
+	.long	0
+.LLST31:
+	.long	.LFB28
+	.long	.LCFI7
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI7
+	.long	.LCFI8
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI8
+	.long	.LCFI9
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 5
+	.long	.LCFI9
+	.long	.LFE28
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 6
+	.long	0
+	.long	0
+.LLST32:
+	.long	.LVL79
+	.long	.LVL81
+	.word	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL81
+	.long	.LFE28
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x68
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST33:
+	.long	.LVL79
+	.long	.LVL82-1
+	.word	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL82-1
+	.long	.LFE28
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x66
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST34:
+	.long	.LVL79
+	.long	.LVL82-1
 	.word	0x6
 	.byte	0x64
 	.byte	0x93
@@ -4435,8 +5346,8 @@ _ZL8cur_task:
 	.byte	0x65
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL65-1
-	.long	.LFE22
+	.long	.LVL82-1
+	.long	.LFE28
 	.word	0x4
 	.byte	0xf3
 	.uleb128 0x1
@@ -4444,9 +5355,9 @@ _ZL8cur_task:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST26:
-	.long	.LVL62
-	.long	.LVL65-1
+.LLST35:
+	.long	.LVL79
+	.long	.LVL82-1
 	.word	0x6
 	.byte	0x62
 	.byte	0x93
@@ -4454,8 +5365,8 @@ _ZL8cur_task:
 	.byte	0x63
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL65-1
-	.long	.LFE22
+	.long	.LVL82-1
+	.long	.LFE28
 	.word	0x4
 	.byte	0xf3
 	.uleb128 0x1
@@ -4463,52 +5374,174 @@ _ZL8cur_task:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST27:
-	.long	.LVL63
-	.long	.LVL67
+.LLST36:
+	.long	.LVL79
+	.long	.LVL85
+	.word	0x6
+	.byte	0x60
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x61
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL85
+	.long	.LFE28
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x60
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST37:
+	.long	.LVL80
+	.long	.LVL84
 	.word	0x1
 	.byte	0x6c
-	.long	.LVL67
-	.long	.LFE22
+	.long	.LVL84
+	.long	.LFE28
 	.word	0x2
 	.byte	0x8
 	.byte	0x5f
 	.long	0
 	.long	0
-.LLST28:
-	.long	.LFB23
-	.long	.LCFI6
+.LLST38:
+	.long	.LFB29
+	.long	.LCFI10
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
-	.long	.LCFI6
-	.long	.LCFI7
+	.long	.LCFI10
+	.long	.LFE29
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 4
-	.long	.LCFI7
-	.long	.LCFI8
+	.long	0
+	.long	0
+.LLST39:
+	.long	.LVL86
+	.long	.LVL88
+	.word	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL88
+	.long	.LFE29
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x68
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST40:
+	.long	.LVL86
+	.long	.LVL89-1
+	.word	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL89-1
+	.long	.LFE29
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x66
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST41:
+	.long	.LVL86
+	.long	.LVL89-1
+	.word	0x6
+	.byte	0x64
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x65
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL89-1
+	.long	.LFE29
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x64
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST42:
+	.long	.LVL86
+	.long	.LVL89-1
+	.word	0x6
+	.byte	0x62
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x63
+	.byte	0x93
+	.uleb128 0x1
+	.long	.LVL89-1
+	.long	.LFE29
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x62
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST43:
+	.long	.LVL87
+	.long	.LVL91
+	.word	0x1
+	.byte	0x6c
+	.long	.LVL91
+	.long	.LFE29
+	.word	0x2
+	.byte	0x8
+	.byte	0x5f
+	.long	0
+	.long	0
+.LLST44:
+	.long	.LFB30
+	.long	.LCFI11
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI11
+	.long	.LCFI12
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI12
+	.long	.LCFI13
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 5
-	.long	.LCFI8
-	.long	.LCFI9
+	.long	.LCFI13
+	.long	.LCFI14
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 6
-	.long	.LCFI9
-	.long	.LFE23
+	.long	.LCFI14
+	.long	.LFE30
 	.word	0x2
 	.byte	0x8c
 	.sleb128 6
 	.long	0
 	.long	0
 	.section	.debug_aranges,"",@progbits
-	.long	0x7c
+	.long	0xac
 	.word	0x2
 	.long	.Ldebug_info0
 	.byte	0x4
@@ -4521,46 +5554,58 @@ _ZL8cur_task:
 	.long	.LFE10-.LFB10
 	.long	.LFB11
 	.long	.LFE11-.LFB11
-	.long	.LFB15
-	.long	.LFE15-.LFB15
-	.long	.LFB24
-	.long	.LFE24-.LFB24
-	.long	.LFB12
-	.long	.LFE12-.LFB12
-	.long	.LFB21
-	.long	.LFE21-.LFB21
+	.long	.LFB18
+	.long	.LFE18-.LFB18
+	.long	.LFB31
+	.long	.LFE31-.LFB31
+	.long	.LFB35
+	.long	.LFE35-.LFB35
 	.long	.LFB13
 	.long	.LFE13-.LFB13
-	.long	.LFB19
-	.long	.LFE19-.LFB19
-	.long	.LFB22
-	.long	.LFE22-.LFB22
+	.long	.LFB12
+	.long	.LFE12-.LFB12
 	.long	.LFB23
 	.long	.LFE23-.LFB23
+	.long	.LFB21
+	.long	.LFE21-.LFB21
+	.long	.LFB24
+	.long	.LFE24-.LFB24
 	.long	.LFB25
 	.long	.LFE25-.LFB25
 	.long	.LFB26
 	.long	.LFE26-.LFB26
+	.long	.LFB27
+	.long	.LFE27-.LFB27
+	.long	.LFB28
+	.long	.LFE28-.LFB28
+	.long	.LFB29
+	.long	.LFE29-.LFB29
+	.long	.LFB30
+	.long	.LFE30-.LFB30
+	.long	.LFB32
+	.long	.LFE32-.LFB32
+	.long	.LFB33
+	.long	.LFE33-.LFB33
 	.long	0
 	.long	0
 	.section	.debug_ranges,"",@progbits
 .Ldebug_ranges0:
-	.long	.LBB81
-	.long	.LBE81
+	.long	.LBB78
+	.long	.LBE78
+	.long	.LBB96
+	.long	.LBE96
+	.long	0
+	.long	0
+	.long	.LBB83
+	.long	.LBE83
 	.long	.LBB97
 	.long	.LBE97
 	.long	0
 	.long	0
+	.long	.LBB85
+	.long	.LBE85
 	.long	.LBB88
 	.long	.LBE88
-	.long	.LBB98
-	.long	.LBE98
-	.long	0
-	.long	0
-	.long	.LBB90
-	.long	.LBE90
-	.long	.LBB93
-	.long	.LBE93
 	.long	0
 	.long	0
 	.long	.LFB6
@@ -4569,242 +5614,300 @@ _ZL8cur_task:
 	.long	.LFE10
 	.long	.LFB11
 	.long	.LFE11
-	.long	.LFB15
-	.long	.LFE15
-	.long	.LFB24
-	.long	.LFE24
-	.long	.LFB12
-	.long	.LFE12
-	.long	.LFB21
-	.long	.LFE21
+	.long	.LFB18
+	.long	.LFE18
+	.long	.LFB31
+	.long	.LFE31
+	.long	.LFB35
+	.long	.LFE35
 	.long	.LFB13
 	.long	.LFE13
-	.long	.LFB19
-	.long	.LFE19
-	.long	.LFB22
-	.long	.LFE22
+	.long	.LFB12
+	.long	.LFE12
 	.long	.LFB23
 	.long	.LFE23
+	.long	.LFB21
+	.long	.LFE21
+	.long	.LFB24
+	.long	.LFE24
 	.long	.LFB25
 	.long	.LFE25
 	.long	.LFB26
 	.long	.LFE26
+	.long	.LFB27
+	.long	.LFE27
+	.long	.LFB28
+	.long	.LFE28
+	.long	.LFB29
+	.long	.LFE29
+	.long	.LFB30
+	.long	.LFE30
+	.long	.LFB32
+	.long	.LFE32
+	.long	.LFB33
+	.long	.LFE33
 	.long	0
 	.long	0
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF50:
-	.string	"__ms"
-.LASF92:
-	.string	"slot_name_index"
-.LASF73:
-	.string	"kernel_terminate_task"
-.LASF45:
-	.string	"ERR_RUN_2_TOO_MANY_TASKS"
-.LASF69:
-	.string	"kernel_main_loop"
-.LASF10:
-	.string	"voidfuncvoid_ptr"
-.LASF97:
-	.string	".././os.cpp"
-.LASF80:
-	.string	"cur_task"
-.LASF78:
-	.string	"Task_GetArg"
-.LASF30:
-	.string	"state"
-.LASF27:
-	.string	"create_args_t"
-.LASF56:
-	.string	"exit_kernel"
-.LASF52:
-	.string	"__tmp"
-.LASF32:
-	.string	"sizetype"
-.LASF33:
-	.string	"13create_args_t"
-.LASF87:
-	.string	"dead_pool_queue"
-.LASF79:
-	.string	"main"
-.LASF102:
-	.string	"enqueue"
-.LASF29:
-	.string	"stack"
-.LASF38:
-	.string	"ERR_1_PPP_NAME_OUT_OF_RANGE"
-.LASF39:
-	.string	"ERR_2_CREATE_NAME_OUT_OF_RANGE"
-.LASF76:
-	.string	"retval"
-.LASF41:
-	.string	"ERR_4_PERIODIC_NAME_IN_USE"
-.LASF35:
-	.string	"head"
-.LASF2:
-	.string	"uint8_t"
+.LASF98:
+	.string	"Task_Next"
+.LASF58:
+	.string	"task_to_find_before"
 .LASF88:
-	.string	"rr_queue"
-.LASF67:
-	.string	"check_PPP_names"
+	.string	"kernel_terminate_task"
+.LASF53:
+	.string	"ERR_RUN_2_TOO_MANY_TASKS"
+.LASF84:
+	.string	"kernel_main_loop"
+.LASF13:
+	.string	"voidfuncvoid_ptr"
+.LASF120:
+	.string	".././os.cpp"
+.LASF101:
+	.string	"cur_task"
+.LASF99:
+	.string	"Task_GetArg"
+.LASF35:
+	.string	"state"
+.LASF32:
+	.string	"create_args_t"
+.LASF72:
+	.string	"task_to_delete"
+.LASF65:
+	.string	"__tmp"
+.LASF43:
+	.string	"linkedlist_t"
+.LASF38:
+	.string	"sizetype"
+.LASF39:
+	.string	"13create_args_t"
+.LASF40:
+	.string	"12linkedlist_t"
+.LASF100:
+	.string	"main"
+.LASF0:
+	.string	"int8_t"
+.LASF109:
+	.string	"dead_pool_queue"
+.LASF71:
+	.string	"delete_task"
+.LASF125:
+	.string	"enqueue"
+.LASF34:
+	.string	"stack"
 .LASF46:
-	.string	"ERR_RUN_3_PERIODIC_TOOK_TOO_LONG"
-.LASF91:
-	.string	"slot_task_finished"
-.LASF48:
-	.string	"ERR_RUN_5_RTOS_INTERNAL_ERROR"
-.LASF20:
-	.string	"TASK_CREATE"
-.LASF14:
-	.string	"WAITING"
+	.string	"ERR_1_PPP_NAME_OUT_OF_RANGE"
 .LASF64:
+	.string	"__ms"
+.LASF47:
+	.string	"ERR_2_CREATE_NAME_OUT_OF_RANGE"
+.LASF93:
+	.string	"retval"
+.LASF111:
+	.string	"periodic_queue"
+.LASF49:
+	.string	"ERR_4_PERIODIC_NAME_IN_USE"
+.LASF41:
+	.string	"head"
+.LASF1:
+	.string	"uint8_t"
+.LASF128:
+	.string	"_Z7OS_Initv"
+.LASF54:
+	.string	"ERR_RUN_3_PERIODIC_TOOK_TOO_LONG"
+.LASF102:
+	.string	"next_task_periodic"
+.LASF115:
+	.string	"slot_task_finished"
+.LASF56:
+	.string	"ERR_RUN_5_RTOS_INTERNAL_ERROR"
+.LASF23:
+	.string	"TASK_CREATE"
+.LASF17:
+	.string	"WAITING"
+.LASF77:
 	.string	"stack_bottom"
 .LASF74:
-	.string	"OS_Init"
-.LASF72:
+	.string	"exit_kernel"
+.LASF87:
 	.string	"kernel_update_ticker"
-.LASF81:
-	.string	"kernel_sp"
-.LASF8:
-	.string	"long long int"
-.LASF70:
-	.string	"kernel_dispatch"
-.LASF55:
-	.string	"idle"
-.LASF22:
-	.string	"TASK_NEXT"
-.LASF5:
-	.string	"long int"
-.LASF16:
-	.string	"12task_state_t"
-.LASF66:
-	.string	"_delay_ms"
-.LASF84:
-	.string	"kernel_request"
 .LASF89:
-	.string	"system_queue"
-.LASF85:
-	.string	"kernel_request_create_args"
-.LASF40:
-	.string	"ERR_3_PERIODIC_NAMED_IDLE"
-.LASF83:
-	.string	"idle_task"
-.LASF51:
-	.string	"task_ptr"
-.LASF19:
-	.string	"TIMER_EXPIRED"
-.LASF36:
-	.string	"tail"
-.LASF99:
-	.string	"td_struct"
-.LASF101:
-	.string	"__builtin_avr_delay_cycles"
-.LASF1:
-	.string	"unsigned char"
-.LASF71:
-	.string	"kernel_handle_request"
-.LASF105:
-	.string	"_Z7OS_Initv"
-.LASF0:
-	.string	"signed char"
-.LASF9:
-	.string	"long long unsigned int"
-.LASF6:
-	.string	"uint32_t"
-.LASF94:
-	.string	"name_in_PPP"
-.LASF4:
-	.string	"unsigned int"
-.LASF93:
-	.string	"name_to_task_ptr"
-.LASF3:
-	.string	"uint16_t"
-.LASF86:
-	.string	"kernel_request_retval"
-.LASF95:
-	.string	"error_msg"
-.LASF12:
-	.string	"RUNNING"
-.LASF21:
-	.string	"TASK_TERMINATE"
-.LASF13:
-	.string	"READY"
-.LASF61:
-	.string	"sreg"
-.LASF77:
-	.string	"Task_Next"
-.LASF34:
-	.string	"7queue_t"
-.LASF58:
-	.string	"task_to_add"
-.LASF28:
-	.string	"task_descriptor_t"
-.LASF104:
-	.string	"kernel_create_task"
-.LASF7:
-	.string	"long unsigned int"
-.LASF54:
-	.string	"double"
-.LASF43:
-	.string	"ERR_6_TIME_INTERVAL_IN_PPP_0"
-.LASF75:
-	.string	"Task_Create"
-.LASF59:
-	.string	"Task_Terminate"
-.LASF23:
-	.string	"TASK_GET_ARG"
-.LASF62:
-	.string	"flashes"
-.LASF25:
-	.string	"level"
-.LASF18:
-	.string	"NONE"
-.LASF47:
-	.string	"ERR_RUN_4_ILLEGAL_ISR_KERNEL_REQUEST"
-.LASF42:
-	.string	"ERR_5_NAME_NOT_IN_PPP"
-.LASF24:
-	.string	"kernel_request_t"
-.LASF65:
-	.string	"stack_top"
-.LASF26:
-	.string	"name"
-.LASF15:
-	.string	"task_state_t"
-.LASF53:
-	.string	"__ticks_dc"
-.LASF68:
-	.string	"_delay_25ms"
-.LASF49:
-	.string	"queue_ptr"
-.LASF37:
-	.string	"queue_t"
-.LASF57:
-	.string	"enter_kernel"
-.LASF82:
-	.string	"task_desc"
-.LASF90:
-	.string	"ticks_remaining"
+	.string	"Service_Subscribe"
 .LASF103:
-	.string	"__vector_17"
-.LASF11:
-	.string	"DEAD"
-.LASF98:
-	.string	"E:\\\\Google Drive\\\\Course\\\\csc460\\\\lab\\\\CSC460\\\\csc460-RTOS\\\\Project 2\\\\atmel\\\\project2\\\\project2\\\\Debug"
-.LASF60:
-	.string	"OS_Abort"
-.LASF100:
-	.string	"dequeue"
-.LASF31:
-	.string	"next"
-.LASF44:
-	.string	"ERR_RUN_1_USER_CALLED_OS_ABORT"
+	.string	"kernel_sp"
+.LASF62:
+	.string	"temp"
+.LASF10:
+	.string	"long long int"
+.LASF91:
+	.string	"OS_Init"
+.LASF85:
+	.string	"kernel_dispatch"
+.LASF12:
+	.string	"SERVICE"
+.LASF73:
+	.string	"idle"
+.LASF25:
+	.string	"TASK_NEXT"
+.LASF7:
+	.string	"long int"
+.LASF19:
+	.string	"12task_state_t"
+.LASF29:
+	.string	"period"
+.LASF106:
+	.string	"kernel_request"
+.LASF112:
+	.string	"system_queue"
+.LASF107:
+	.string	"kernel_request_create_args"
+.LASF48:
+	.string	"ERR_3_PERIODIC_NAMED_IDLE"
+.LASF105:
+	.string	"idle_task"
 .LASF63:
-	.string	"mask"
-.LASF17:
-	.string	"16kernel_request_t"
+	.string	"task_ptr"
+.LASF22:
+	.string	"TIMER_EXPIRED"
+.LASF42:
+	.string	"tail"
+.LASF123:
+	.string	"td_struct"
+.LASF124:
+	.string	"__builtin_avr_delay_cycles"
+.LASF3:
+	.string	"unsigned char"
+.LASF90:
+	.string	"Service_Publish"
+.LASF86:
+	.string	"kernel_handle_request"
+.LASF110:
+	.string	"rr_queue"
+.LASF69:
+	.string	"addlist"
+.LASF2:
+	.string	"signed char"
+.LASF11:
+	.string	"long long unsigned int"
+.LASF8:
+	.string	"uint32_t"
+.LASF6:
+	.string	"unsigned int"
+.LASF117:
+	.string	"name_to_task_ptr"
+.LASF5:
+	.string	"uint16_t"
+.LASF108:
+	.string	"kernel_request_retval"
+.LASF68:
+	.string	"_delay_ms"
+.LASF31:
+	.string	"start"
+.LASF118:
+	.string	"error_msg"
+.LASF36:
+	.string	"next"
+.LASF122:
+	.string	"service"
+.LASF15:
+	.string	"RUNNING"
+.LASF24:
+	.string	"TASK_TERMINATE"
+.LASF116:
+	.string	"slot_name_index"
+.LASF16:
+	.string	"READY"
+.LASF95:
+	.string	"Task_Create_Periodic"
+.LASF4:
+	.string	"int16_t"
+.LASF114:
+	.string	"ticks_counter"
+.LASF76:
+	.string	"sreg"
+.LASF59:
+	.string	"get_next"
+.LASF44:
+	.string	"7queue_t"
+.LASF70:
+	.string	"task_to_add"
+.LASF33:
+	.string	"task_descriptor_t"
+.LASF126:
+	.string	"kernel_create_task"
+.LASF9:
+	.string	"long unsigned int"
+.LASF67:
+	.string	"double"
+.LASF51:
+	.string	"ERR_6_TIME_INTERVAL_IN_PPP_0"
 .LASF96:
+	.string	"Task_Create"
+.LASF94:
+	.string	"Task_Create_RR"
+.LASF79:
+	.string	"Task_Terminate"
+.LASF26:
+	.string	"TASK_GET_ARG"
+.LASF81:
+	.string	"flashes"
+.LASF28:
+	.string	"level"
+.LASF21:
+	.string	"NONE"
+.LASF55:
+	.string	"ERR_RUN_4_ILLEGAL_ISR_KERNEL_REQUEST"
+.LASF50:
+	.string	"ERR_5_NAME_NOT_IN_PPP"
+.LASF27:
+	.string	"kernel_request_t"
+.LASF78:
+	.string	"stack_top"
+.LASF97:
+	.string	"name"
+.LASF18:
+	.string	"task_state_t"
+.LASF66:
+	.string	"__ticks_dc"
+.LASF83:
+	.string	"_delay_25ms"
+.LASF61:
+	.string	"queue_ptr"
+.LASF45:
+	.string	"queue_t"
+.LASF92:
+	.string	"Task_Create_System"
+.LASF75:
+	.string	"enter_kernel"
+.LASF57:
+	.string	"linkedlist_ptr"
+.LASF104:
+	.string	"task_desc"
+.LASF113:
+	.string	"ticks_remaining"
+.LASF127:
+	.string	"__vector_17"
+.LASF14:
+	.string	"DEAD"
+.LASF37:
+	.string	"prev"
+.LASF121:
+	.string	"E:\\\\Google Drive\\\\Course\\\\csc460\\\\lab\\\\CSC460\\\\csc460-RTOS\\\\Project 2\\\\atmel\\\\project2\\\\project2\\\\Debug"
+.LASF80:
+	.string	"OS_Abort"
+.LASF60:
+	.string	"dequeue"
+.LASF30:
+	.string	"wcet"
+.LASF52:
+	.string	"ERR_RUN_1_USER_CALLED_OS_ABORT"
+.LASF82:
+	.string	"mask"
+.LASF20:
+	.string	"16kernel_request_t"
+.LASF119:
 	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"
 .global __do_copy_data
