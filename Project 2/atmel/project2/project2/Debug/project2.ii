@@ -1998,13 +1998,15 @@ queue_t;
 
 
 const unsigned int PT = 1;
-const unsigned char PPP[2] = {1, 255};
+const unsigned char PPP[2] = {"a"};
 
 
 
 void p2()
 {
- (*(volatile uint8_t *)((0x04) + 0x20)) = 1 << 7;
+# 24 ".././project2.cpp"
+ (*(volatile uint8_t *)((0x04) + 0x20)) = (uint8_t)((1 << (7)) | (1 << (6)));
+
  for(;;){
   _delay_ms(5000);
   (*(volatile uint8_t *)((0x05) + 0x20)) ^= 1 << 7;
@@ -2016,15 +2018,11 @@ void p()
 {
  (*(volatile uint8_t *)((0x04) + 0x20)) = 1 << 7;
  for(;;){
-  _delay_ms(500);
-  for(;;) {
 
+  _delay_ms(10);
 
+  (*(volatile uint8_t *)((0x05) + 0x20)) ^= (uint8_t)((1 << (7)) | (1 << (6)));
 
-
-
-  }
-  Task_Next();
  }
 }
 

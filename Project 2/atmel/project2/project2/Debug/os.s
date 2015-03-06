@@ -727,8 +727,8 @@ OS_Abort:
  ;  0 "" 2
 	.loc 1 1069 0
 /* #NOAPP */
-	ldi r24,lo8(-16)
-	out 0xa,r24
+	ldi r24,lo8(96)
+	sts 257,r24
 	.loc 1 1071 0
 	lds r24,_ZL9error_msg
 	cpi r24,lo8(6)
@@ -738,7 +738,7 @@ OS_Abort:
 	subi r24,lo8(-(1))
 .LVL14:
 	.loc 1 1074 0
-	ldi r19,lo8(96)
+	ldi r19,lo8(64)
 	rjmp .L32
 .LVL15:
 .L31:
@@ -747,14 +747,14 @@ OS_Abort:
 	subi r24,lo8(-(-5))
 .LVL16:
 	.loc 1 1079 0
-	ldi r19,lo8(-112)
+	ldi r19,lo8(32)
 .LVL17:
 .L32:
 	.loc 1 1085 0
-	ldi r20,lo8(-16)
+	ldi r20,lo8(96)
 .L44:
 .LVL18:
-	out 0xb,r20
+	sts 258,r20
 .LVL19:
 	ldi r25,lo8(100)
 .LVL20:
@@ -782,7 +782,7 @@ OS_Abort:
 	.loc 1 1087 0
 	brne .L34
 	.loc 1 1092 0
-	out 0xb,__zero_reg__
+	sts 258,__zero_reg__
 .LVL23:
 	ldi r25,lo8(40)
 .LVL24:
@@ -814,7 +814,7 @@ OS_Abort:
 	cp r25,r24
 	breq .L46
 	.loc 1 1102 0
-	out 0xb,r19
+	sts 258,r19
 .LVL28:
 	ldi r18,lo8(10)
 .LVL29:
@@ -841,7 +841,7 @@ OS_Abort:
 	.loc 1 1104 0
 	brne .L39
 	.loc 1 1109 0
-	out 0xb,__zero_reg__
+	sts 258,__zero_reg__
 .LVL32:
 	ldi r18,lo8(10)
 .LVL33:
@@ -4973,13 +4973,13 @@ _ZL8cur_task:
 	.long	.LVL15
 	.word	0x3
 	.byte	0x8
-	.byte	0x60
+	.byte	0x40
 	.byte	0x9f
 	.long	.LVL16
 	.long	.LVL17
 	.word	0x3
-	.byte	0x9
-	.byte	0x90
+	.byte	0x8
+	.byte	0x20
 	.byte	0x9f
 	.long	.LVL18
 	.long	.LFE23

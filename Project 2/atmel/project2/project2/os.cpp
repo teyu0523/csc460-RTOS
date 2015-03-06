@@ -26,10 +26,10 @@ int r_main();
 
 
 /** PPP and PT defined in user application. *///extern const unsigned char PPP[];
-//extern const unsigned char PPP[];
+extern const unsigned char PPP[];
 
 /** PPP and PT defined in user application. */
-//extern const unsigned int PT;
+extern const unsigned int PT;
 
 
 /** The task descriptor of the currently RUNNING task. */
@@ -1066,7 +1066,7 @@ void OS_Abort(void)
     Disable_Interrupt();
 
     /* Initialize port for output */
-    DDRD = LED_RED_MASK | LED_GREEN_MASK;
+    DDRH = LED_RED_MASK | LED_GREEN_MASK;
 
     if(error_msg < ERR_RUN_1_USER_CALLED_OS_ABORT)
     {
@@ -1082,14 +1082,14 @@ void OS_Abort(void)
 
     for(;;)
     {
-        PORTD = (uint8_t)(LED_RED_MASK | LED_GREEN_MASK);
+        PORTH = (uint8_t)(LED_RED_MASK | LED_GREEN_MASK);
 
         for(i = 0; i < 100; ++i)
         {
                _delay_25ms();
         }
 
-        PORTD = (uint8_t) 0;
+        PORTH = (uint8_t) 0;
 
         for(i = 0; i < 40; ++i)
         {
@@ -1099,14 +1099,14 @@ void OS_Abort(void)
 
         for(j = 0; j < flashes; ++j)
         {
-            PORTD = mask;
+            PORTH = mask;
 
             for(i = 0; i < 10; ++i)
             {
                 _delay_25ms();
             }
 
-            PORTD = (uint8_t) 0;
+            PORTH = (uint8_t) 0;
 
             for(i = 0; i < 10; ++i)
             {

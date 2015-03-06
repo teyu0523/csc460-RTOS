@@ -14,33 +14,36 @@ __zero_reg__ = 1
 _Z1pv:
 .LFB95:
 	.file 1 ".././project2.cpp"
-	.loc 1 24 0
+	.loc 1 34 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 25 0
+	.loc 1 35 0
 	ldi r24,lo8(-128)
 	out 0x4,r24
+	.loc 1 40 0
+	ldi r25,lo8(-64)
+.L2:
 .LVL0:
 .LBB8:
 .LBB9:
 	.file 2 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h"
-	.loc 2 163 0
-	ldi r18,lo8(1599999)
-	ldi r24,hi8(1599999)
-	ldi r25,hlo8(1599999)
-	1: subi r18,1
-	sbci r24,0
-	sbci r25,0
+	.loc 2 163 0 discriminator 1
+	ldi r30,lo8(-25537)
+	ldi r31,hi8(-25537)
+	1: sbiw r30,1
 	brne 1b
 	rjmp .
 	nop
-.L2:
-	rjmp .L2
 .LBE9:
 .LBE8:
+	.loc 1 40 0 discriminator 1
+	in r24,0x5
+	eor r24,r25
+	out 0x5,r24
+	rjmp .L2
 	.cfi_endproc
 .LFE95:
 	.size	_Z1pv, .-_Z1pv
@@ -55,8 +58,8 @@ _Z2p2v:
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 15 0
-	ldi r24,lo8(-128)
+	.loc 1 24 0
+	ldi r24,lo8(-64)
 	out 0x4,r24
 .L5:
 .LVL1:
@@ -74,11 +77,11 @@ _Z2p2v:
 	nop
 .LBE11:
 .LBE10:
-	.loc 1 18 0 discriminator 1
+	.loc 1 28 0 discriminator 1
 	in r24,0x5
 	subi r24,lo8(-(-128))
 	out 0x5,r24
-	.loc 1 19 0 discriminator 1
+	.loc 1 29 0 discriminator 1
 	call Task_Next
 .LVL2:
 	rjmp .L5
@@ -90,7 +93,7 @@ _Z2p2v:
 	.type	_Z6r_mainv, @function
 _Z6r_mainv:
 .LFB96:
-	.loc 1 40 0
+	.loc 1 46 0
 	.cfi_startproc
 	push r16
 .LCFI0:
@@ -104,7 +107,7 @@ _Z6r_mainv:
 /* frame size = 0 */
 /* stack size = 2 */
 .L__stack_usage = 2
-	.loc 1 43 0
+	.loc 1 49 0
 	ldi r16,lo8(2)
 	ldi r17,0
 	ldi r18,lo8(1)
@@ -117,7 +120,7 @@ _Z6r_mainv:
 	ldi r25,hi8(gs(_Z1pv))
 	call Task_Create_Periodic
 .LVL3:
-	.loc 1 45 0
+	.loc 1 51 0
 	ldi r24,lo8(1)
 	ldi r25,0
 /* epilogue start */
@@ -265,7 +268,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.string	"p"
 	.byte	0x1
-	.byte	0x17
+	.byte	0x21
 	.long	.LASF19
 	.long	.LFB95
 	.long	.LFE95
@@ -280,21 +283,21 @@ _Z6r_mainv:
 	.long	.LBB8
 	.long	.LBE8
 	.byte	0x1
-	.byte	0x1b
+	.byte	0x26
 	.uleb128 0xf
 	.long	0xce
 	.byte	0x4
-	.long	0x43fa0000
+	.long	0x41200000
 	.uleb128 0x10
 	.long	.LBB9
 	.long	.LBE9
 	.uleb128 0x11
 	.long	0xda
 	.byte	0x4
-	.long	0x4af42400
+	.long	0x481c4000
 	.uleb128 0x12
 	.long	0xe5
-	.long	0x7a1200
+	.long	0x27100
 	.byte	0
 	.byte	0
 	.byte	0
@@ -324,7 +327,7 @@ _Z6r_mainv:
 	.long	.LBB10
 	.long	.LBE10
 	.byte	0x1
-	.byte	0x11
+	.byte	0x1b
 	.long	0x1bb
 	.uleb128 0xf
 	.long	0xce
@@ -350,7 +353,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF29
 	.byte	0x1
-	.byte	0x27
+	.byte	0x2d
 	.long	.LASF30
 	.long	0x58
 	.long	.LFB96
