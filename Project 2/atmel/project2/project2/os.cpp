@@ -1139,8 +1139,16 @@ void OS_Abort(void)
  */
 SERVICE *Service_Init()
 {
+    uint8_t sreg;
+
+    sreg = SREG;
+    Disable_Interrupt();
+
     SERVICE* newService = new SERVICE;
     newService -> counter = 0;
+    
+    SREG = sreg; 
+
 	return newService;
 }
 
@@ -1154,6 +1162,11 @@ SERVICE *Service_Init()
   */
 void Service_Subscribe( SERVICE *s, int16_t *v )
 {
+    uint8_t sreg;
+
+    sreg = SREG;
+    Disable_Interrupt();
+
     //if the call task is periodic, return an error
     if(cur_task -> level == PERIODIC){
         error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
@@ -1174,6 +1187,8 @@ void Service_Subscribe( SERVICE *s, int16_t *v )
 	   error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
         OS_Abort();	
 	}
+
+    SREG = sreg; 
 	
 }
 
@@ -1187,11 +1202,16 @@ void Service_Subscribe( SERVICE *s, int16_t *v )
   */
 void Service_Publish( SERVICE *s, int16_t v )
 {
+    uint8_t sreg;
+
+    sreg = SREG;
+    Disable_Interrupt();
+
     //set the new valve v the SERVICE s's value property
     s -> value = v;
 
     //for every task subcribed to this service
-    for(int i = 0; i <= s -> counter; i++){
+    for(int i = 0; i < s -> counter; i++){
         //write the SERVICE s's value to task
         *(s -> valueLocations[i]) = v;
         s -> valueLocations[i] = NULL;
@@ -1199,7 +1219,10 @@ void Service_Publish( SERVICE *s, int16_t v )
         (s -> tasks[i]) -> state = READY;
         s-> tasks[i] = NULL;
     }
-    //unsubcribe all tasks from SERVICE s  
+
+    counter = 0;
+    
+    SREG = sreg; 
 	
 }
 
