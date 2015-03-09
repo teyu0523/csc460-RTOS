@@ -21,28 +21,30 @@ void s()
 	add_to_trace(1);
 	Service_Subscribe(serviceTest, &value);
 	
-	add_to_trace(1);
+	add_to_trace(4);
 	
 }
 
 void s2()
 {
 	int16_t value = 5;
-	add_to_trace(0);
-	print_trace();
+	add_to_trace(2);
 	Service_Publish(serviceTest, value);
+	add_to_trace(3);
+
+	print_trace();
 }
 
 
 int r_main(void)
 {
-	//serviceTest = Service_Init(); 
+	serviceTest = Service_Init(); 
 	
 	uart_init();
 	set_trace_test(1);
 	add_to_trace(0);
 	Task_Create_System(s, 0);
-	Task_Create_System(s2, 0);
+	Task_Create_RR(s2, 0);
 	add_to_trace(0);
 	return 1;
 }
