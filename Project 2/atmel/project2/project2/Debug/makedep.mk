@@ -6,6 +6,12 @@ os.cpp
 
 project2.cpp
 
+tests\test0.cpp
+
+trace\trace.cpp
+
+uart\uart.cpp
+
 src\ASF\mega\boards\stk600\rcx_x\init.c
 
 src\main.c

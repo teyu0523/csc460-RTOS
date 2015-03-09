@@ -33,6 +33,7 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
+../tests \
 ../src/ \
 ../src/ASF/ \
 ../src/ASF/common/ \
@@ -47,13 +48,18 @@ SUBDIRS :=  \
 ../src/ASF/mega/utils/ \
 ../src/ASF/mega/utils/assembler/ \
 ../src/ASF/mega/utils/preprocessor/ \
-../src/config/
+../src/config/ \
+../trace/ \
+../uart/
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../os.cpp \
 ../project2.cpp \
+../tests/test0.cpp \
+../trace/trace.cpp \
+../uart/uart.cpp \
 ../src/ASF/mega/boards/stk600/rcx_x/init.c \
 ../src/main.c
 
@@ -67,24 +73,36 @@ ASM_SRCS +=
 OBJS +=  \
 os.o \
 project2.o \
+tests/test0.o \
+trace/trace.o \
+uart/uart.o \
 src/ASF/mega/boards/stk600/rcx_x/init.o \
 src/main.o
 
 OBJS_AS_ARGS +=  \
 os.o \
 project2.o \
+tests/test0.o \
+trace/trace.o \
+uart/uart.o \
 src/ASF/mega/boards/stk600/rcx_x/init.o \
 src/main.o
 
 C_DEPS +=  \
 os.d \
 project2.d \
+tests/test0.d \
+trace/trace.d \
+uart/uart.d \
 src/ASF/mega/boards/stk600/rcx_x/init.d \
 src/main.d
 
 C_DEPS_AS_ARGS +=  \
 os.d \
 project2.d \
+tests/test0.d \
+trace/trace.d \
+uart/uart.d \
 src/ASF/mega/boards/stk600/rcx_x/init.d \
 src/main.d
 
@@ -112,7 +130,34 @@ LINKER_SCRIPT_DEP+=
 
 
 
+
+
+
+
+
+
 ./%.o: .././%.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 4.8.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1061\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DF_CPU=16000000L -DARDUINO=106 -DDEBUG -DBOARD=STK600_MEGA  -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" -I"../common/applications/user_application/atmega2560_stk600-mega/config" -I"../src/config" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/utils/preprocessor" -I"../src"  -Os -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -c -fno-exceptions -v -ansi -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+tests/%.o: ../tests/%.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 4.8.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1061\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DF_CPU=16000000L -DARDUINO=106 -DDEBUG -DBOARD=STK600_MEGA  -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" -I"../common/applications/user_application/atmega2560_stk600-mega/config" -I"../src/config" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/utils/preprocessor" -I"../src"  -Os -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -c -fno-exceptions -v -ansi -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+trace/%.o: ../trace/%.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 4.8.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1061\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DF_CPU=16000000L -DARDUINO=106 -DDEBUG -DBOARD=STK600_MEGA  -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" -I"../common/applications/user_application/atmega2560_stk600-mega/config" -I"../src/config" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/utils/preprocessor" -I"../src"  -Os -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -c -fno-exceptions -v -ansi -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+uart/%.o: ../uart/%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 4.8.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1061\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DF_CPU=16000000L -DARDUINO=106 -DDEBUG -DBOARD=STK600_MEGA  -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" -I"../common/applications/user_application/atmega2560_stk600-mega/config" -I"../src/config" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/utils/preprocessor" -I"../src"  -Os -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -c -fno-exceptions -v -ansi -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -32,7 +32,8 @@ project2.d project2.o: .././project2.cpp \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\variants\standard/pins_arduino.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- .././kernel.h .././os.h
+ .././kernel.h .././os.h .././uart/uart.h .././trace/trace.h \
+ .././tests/test0.cpp .././tests/../trace/trace.h
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -103,3 +104,11 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 .././kernel.h:
 
 .././os.h:
+
+.././uart/uart.h:
+
+.././trace/trace.h:
+
+.././tests/test0.cpp:
+
+.././tests/../trace/trace.h:

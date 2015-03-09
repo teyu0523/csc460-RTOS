@@ -4,48 +4,60 @@
 #include <util/delay.h>
 #include "kernel.h"
 #include "os.h"
+#include "uart/uart.h"
+#include "trace/trace.h"
 
-const unsigned int PT = 1;
-const unsigned char PPP[2] = {"a"};
 
+#define USE_TEST_000
+
+#include "tests/test0.cpp"
+#ifdef _USE_MAIN_
 //EVENT* print_event;
 
-void p2()
+//void p2()
+//{
+	//// // 1 -> output, 0 -> input
+	//// // DDRB defines the direction of the pin in B section  
+	//// DDRB = 1 << PB7;
+	//// for(;;){
+	//// 	_delay_ms(10);
+	//// 	//turns on/off the pin by xoring registor back and forth
+	//// 	PORTB ^= 1 << PB7;
+	//// }
+//
+	//DDRH = (uint8_t)(_BV(PB7) | _BV(PB6));
+//
+	//for(;;){
+		//_delay_ms(1);
+		//PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		////Task_Next();
+	//}
+//}
+//
+//void p()
+//{
+	//DDRB = 1 << PB7;
+	//int i;
+	//for(i=0;i<10;i++){
+		//add_to_trace(1);
+		//PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		//_delay_ms(20);
+		//PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		//_delay_ms(20);
+		//PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		//_delay_ms(20);
+		//PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		//_delay_ms(20);
+		////turns on/off the pin by xoring registor back and forth
+		//
+		////PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		//add_to_trace(2);
+		//Task_Next();
+	//}
+//}
+
+int r_main(void)
 {
-	// // 1 -> output, 0 -> input
-	// // DDRB defines the direction of the pin in B section  
-	// DDRB = 1 << PB7;
-	// for(;;){
-	// 	_delay_ms(10);
-	// 	//turns on/off the pin by xoring registor back and forth
-	// 	PORTB ^= 1 << PB7;
-	// }
-
-	DDRB = (uint8_t)(_BV(PB7) | _BV(PB6));
-
-	for(;;){
-		_delay_ms(5000);
-		PORTB ^= 1 << PB7;
-		Task_Next();
-	}
-}
-
-void p()
-{
-	DDRB = 1 << PB7;
-	for(;;){
-
-		_delay_ms(10);
-		//turns on/off the pin by xoring registor back and forth
-		PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
-
-	}
-}
-
-extern int r_main(void)
-{
-	//Task_Create_RR(p2, 0);
-	//Task_Create_System(p, 0);
-	Task_Create_Periodic( p, 0, 20, 1, 2 );
 	return 1;
 }
+#endif

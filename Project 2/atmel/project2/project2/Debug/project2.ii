@@ -1938,6 +1938,9 @@ typedef struct
     uint8_t level;
 
 
+ uint16_t counter;
+
+    uint16_t remaining_wcet;
 
  uint16_t period;
  uint16_t wcet;
@@ -1957,9 +1960,13 @@ struct td_struct
 
     uint8_t* volatile sp;
 
+    uint16_t remaining_wcet;
+
+ int16_t counter;
  uint16_t period;
  uint16_t wcet;
  uint16_t start;
+
 
 
     task_state_t state;
@@ -1996,40 +2003,51 @@ queue_t;
 }
 # 6 ".././project2.cpp" 2
 
+# 1 ".././uart/uart.h" 1
+# 17 ".././uart/uart.h"
+void uart_init();
+void uart_putchar(char c);
+char uart_getchar(int index);
+void uart_putstr(char *s);
+int uart_write(uint8_t* const str, int len);
 
-const unsigned int PT = 1;
-const unsigned char PPP[2] = {"a"};
+uint8_t uart_bytes_recv(void);
+void uart_reset_recv(void);
+# 8 ".././project2.cpp" 2
+# 1 ".././trace/trace.h" 1
+# 27 ".././trace/trace.h"
+void print_trace(void);
+void add_to_trace(uint16_t number);
+void set_trace_test(uint8_t number);
+int is_trace_full();
+void reset_trace();
+# 9 ".././project2.cpp" 2
 
 
 
-void p2()
-{
-# 24 ".././project2.cpp"
- (*(volatile uint8_t *)((0x04) + 0x20)) = (uint8_t)((1 << (7)) | (1 << (6)));
 
- for(;;){
-  _delay_ms(5000);
-  (*(volatile uint8_t *)((0x05) + 0x20)) ^= 1 << 7;
-  Task_Next();
- }
-}
-
+# 1 ".././tests/test0.cpp" 1
+# 12 ".././tests/test0.cpp"
+# 1 ".././tests/../trace/trace.h" 1
+# 13 ".././tests/test0.cpp" 2
 void p()
 {
- (*(volatile uint8_t *)((0x04) + 0x20)) = 1 << 7;
- for(;;){
-
-  _delay_ms(10);
-
-  (*(volatile uint8_t *)((0x05) + 0x20)) ^= (uint8_t)((1 << (7)) | (1 << (6)));
-
- }
+ (*(volatile uint8_t *)((0x04) + 0x20)) = 1 << 6;
+ (*(volatile uint8_t *)((0x05) + 0x20)) ^= (uint8_t)(1 << (6));
+ add_to_trace(1);
+ print_trace();
 }
 
-extern int r_main(void)
+
+int r_main(void)
 {
+ uart_init();
+ set_trace_test(0);
+ add_to_trace(2);
+ Task_Create_Periodic(p, 0, 50, 2, 1);
+ Task_Create_Periodic(p, 0, 50, 5, 25);
+ add_to_trace(3);
 
-
- Task_Create_Periodic( p, 0, 20, 1, 2 );
  return 1;
 }
+# 14 ".././project2.cpp" 2
