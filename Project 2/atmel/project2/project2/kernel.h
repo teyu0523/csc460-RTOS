@@ -40,6 +40,8 @@ extern "C" {
 /** LEDs for OS_Abort() */
 #define LED_GREEN_MASK    (uint8_t)(_BV(PH6))
 
+#define MAXSERVICES 10
+
 
 /* Typedefs and data structures. */
 
