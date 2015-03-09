@@ -4,11 +4,22 @@
 #include <util/delay.h>
 #include "kernel.h"
 #include "os.h"
+#include "uart/uart.h"
+#include "trace/trace.h"
 
-const unsigned int PT = 1;
-const unsigned char PPP[2] = {"a"};
 
-//EVENT* print_event;
+#define USE_TEST_00444
+
+#include "tests/test1.cpp"
+#include "tests/test0_now.cpp"
+#include "tests/test1_system.cpp"
+#include "tests/test2_rr.cpp"
+#include "tests/test3_system_rr.cpp"
+#include "tests/test4_periodic.cpp"
+#include "tests/test5_periodic_two.cpp"
+
+#ifdef _USE_MAIN_
+EVENT* print_event;
 
 void p2()
 {
@@ -21,31 +32,39 @@ void p2()
 	// 	PORTB ^= 1 << PB7;
 	// }
 
-	DDRB = (uint8_t)(_BV(PB7) | _BV(PB6));
+	DDRH = (uint8_t)(_BV(PB7) | _BV(PB6));
 
 	for(;;){
-		_delay_ms(5000);
-		PORTB ^= 1 << PB7;
-		Task_Next();
+		_delay_ms(1);
+		PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		//Task_Next();
 	}
 }
 
 void p()
 {
 	DDRB = 1 << PB7;
-	for(;;){
-
-		_delay_ms(10);
-		//turns on/off the pin by xoring registor back and forth
+	int i;
+	for(i=0;i<10;i++){
+		add_to_trace(1);
 		PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
-
+		_delay_ms(20);
+		PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		_delay_ms(20);
+		PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		_delay_ms(20);
+		PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		_delay_ms(20);
+		//turns on/off the pin by xoring registor back and forth
+		
+		//PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
+		add_to_trace(2);
+		Task_Next();
 	}
 }
 
-extern int r_main(void)
+int r_main(void)
 {
-	//Task_Create_RR(p2, 0);
-	//Task_Create_System(p, 0);
-	Task_Create_Periodic( p, 0, 20, 1, 2 );
 	return 1;
 }
+#endif

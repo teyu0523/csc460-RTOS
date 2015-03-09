@@ -16,13 +16,14 @@
 #include "os.h"
 #include "kernel.h"
 #include "error_code.h"
-
+#include "uart/uart.h"
+#include "trace/trace.h"
 
 /* Needed for memset */
 /* #include <string.h> */
 
 /** @brief main function provided by user application. The first task to run. */
-int r_main();
+extern int r_main();
 
 
 /** PPP and PT defined in user application. *///extern const unsigned char PPP[];
@@ -36,7 +37,7 @@ extern const unsigned int PT;
 static task_descriptor_t* cur_task = NULL;
 
 /** the task descripter of the next periodic task that will be run */
-static task_descriptor_t* next_task_periodic = NULL;
+//static task_descriptor_t* temp_periodic_task = NULL;
 
 /** Since this is a "full-served" model, the kernel is executing using its own stack. */
 static volatile uint16_t kernel_sp;
@@ -68,11 +69,11 @@ static linkedlist_t periodic_queue;
 /** The ready queue for SYSTEM tasks. Their scheduling is first come, first served. */
 static queue_t system_queue;
 
-/** time remaining in current slot */
-static volatile uint8_t ticks_remaining = 0;
+/** time counter in ticks */
 static volatile uint8_t ticks_counter = 0;
+
 /** Indicates if periodic task in this slot has already run this time */
-static uint8_t slot_task_finished = 0;
+//static uint8_t slot_task_finished = 0;
 
 /** Index of name of task in current slot in PPP array. An even number from 0 to 2*(PT-1). */
 //static unsigned int slot_name_index = 0;
@@ -101,9 +102,9 @@ static int kernel_create_task();
 static void kernel_terminate_task(void);
 /* linkedlist */
 static void addlist(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_add);
-static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_find_before);
+static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr);//, task_descriptor_t* task_to_find_before);
 static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_delete);
-
+static void update_all_ticks(linkedlist_t* linkedlist_ptr);
 /* queues */
 static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add);
 static task_descriptor_t* dequeue(queue_t* queue_ptr);
@@ -172,7 +173,8 @@ static void kernel_dispatch(void)
     /* If the current state is RUNNING, then select it to run again.
      * kernel_handle_request() has already determined it should be selected.
      */
-
+	
+	
     if(cur_task->state != RUNNING || cur_task == idle_task)
     {
 		if(system_queue.head != NULL)
@@ -180,14 +182,26 @@ static void kernel_dispatch(void)
             cur_task = dequeue(&system_queue);
         }
         //else if(!slot_task_finished && PT > 0 && name_to_task_ptr[PPP[slot_name_index]] != NULL)
-        else if(periodic_queue.head != NULL)
+        else if(periodic_queue.head !=NULL)
         {
             /* Keep running the current PERIODIC task. */
-            //cur_task = name_to_task_ptr[PPP[slot_name_index]];
-			
-            cur_task = get_next(&periodic_queue, cur_task); //************************* make sure this make sense 
-			ticks_remaining = cur_task->period;
-        }
+			task_descriptor_t* temp = get_next(&periodic_queue);
+			if(temp != NULL)
+			{
+				
+				cur_task = temp;
+
+			}
+			else if(rr_queue.head != NULL)
+			{
+				cur_task = dequeue(&rr_queue);
+			}
+			else
+			{
+				/* No task available, so idle. */
+				cur_task = idle_task;
+			}
+		}
         else if(rr_queue.head != NULL)
         {
             cur_task = dequeue(&rr_queue);
@@ -213,6 +227,7 @@ static void kernel_dispatch(void)
  */
 static void kernel_handle_request(void)
 {
+
    switch(kernel_request)
     {
     case NONE:
@@ -239,24 +254,18 @@ static void kernel_handle_request(void)
         if(kernel_request_retval)
         {
             /* If new task is SYSTEM and cur is not, then don't run old one */
-            if(kernel_request_create_args.level == SYSTEM && cur_task->level != SYSTEM)
+			
+            if(cur_task->level != SYSTEM && kernel_request_create_args.level == SYSTEM )
             {
-                cur_task->state = READY;
-            }
-
-            /* If cur is RR, it might be pre-empted by a new PERIODIC. */
-            if(cur_task->level == RR &&
-               kernel_request_create_args.level == PERIODIC)// &&
-              //PPP[slot_name_index] == kernel_request_create_args.name)
-            {
-                cur_task->state = READY;
-            }
-
-            /* enqueue READY RR tasks. */
-            if(cur_task->level == RR && cur_task->state == READY)
-            {
-                enqueue(&rr_queue, cur_task);
-            }
+				cur_task->state = READY;
+				if(cur_task->level == RR){
+					enqueue(&rr_queue, cur_task);
+				}
+			} else if(cur_task->level == RR && kernel_request_create_args.level == PERIODIC )
+			{	
+				cur_task->state = READY;
+				enqueue(&rr_queue, cur_task);
+			}           
         }
         break;
 
@@ -275,8 +284,7 @@ static void kernel_handle_request(void)
 			break;
 
 	    case PERIODIC:
-	        slot_task_finished = 1;
-            addlist(&periodic_queue, cur_task);
+			
 	        break;
 
 	    case RR:
@@ -650,7 +658,7 @@ static int kernel_create_task()
      *   the stored SREG, and
      *   registers 30 to 0.
      */
-    uint8_t* stack_top = stack_bottom - (32 + 1 + 2 + 2);
+    uint8_t* stack_top = stack_bottom - (32 + 1 + 1 + 3 + 3); //modified to mega2560
 
     /* Not necessary to clear the task descriptor. */
     /* memset(p,0,sizeof(task_descriptor_t)); */
@@ -689,21 +697,25 @@ static int kernel_create_task()
     p->state = READY;
     p->arg = kernel_request_create_args.arg;
     p->level = kernel_request_create_args.level;
+	p->period = kernel_request_create_args.period;
+	p->wcet = kernel_request_create_args.wcet;
+	p->start = kernel_request_create_args.start;
+	p->counter = kernel_request_create_args.counter;
+    //p->remaining_start = kernel_request_create_args.remaining_start;
+    p->remaining_wcet = kernel_request_create_args.remaining_wcet;
     //p->name = kernel_request_create_args.name;
 
 	switch(kernel_request_create_args.level)
 	{
-	case PERIODIC:
-		/* Put this newly created PPP task into the PPP lookup array */
-        //name_to_task_ptr[kernel_request_create_args.name] = p;
-		addlist(&periodic_queue, p);
-        break;
-
     case SYSTEM:
     	/* Put SYSTEM and Round Robin tasks on a queue. */
         enqueue(&system_queue, p);
 		break;
-
+	case PERIODIC:
+		/* Put this newly created PPP task into the PPP lookup array */
+		//name_to_task_ptr[kernel_request_create_args.name] = p;
+		addlist(&periodic_queue, p);
+		break;
     case RR:
 		/* Put SYSTEM and Round Robin tasks on a queue. */
         enqueue(&rr_queue, p);
@@ -736,9 +748,19 @@ static void kernel_terminate_task(void)
 /*
  * Linkedlist manipulation
  */
+static void update_all_ticks(linkedlist_t* linkedlist_ptr)
+{
+	task_descriptor_t* temp = linkedlist_ptr->head;
+	while(temp != NULL)
+	{
+		temp->counter--;
+		temp = temp->next;
+	}
+}
+
+
 static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_delete)
 {
-
 	if(linkedlist_ptr->head == task_to_delete && linkedlist_ptr->head->next != NULL)
 	{
 		linkedlist_ptr->head = linkedlist_ptr->head->next;
@@ -769,22 +791,29 @@ static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to
 /**
  *	get the next in the list of task_to_find_before
  */
-static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_find_before)
+static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr)//, task_descriptor_t* task_to_find_before)
 {	
-	if(task_to_find_before == NULL)
-	{
-		return linkedlist_ptr->head;
-	}
 	task_descriptor_t* temp = linkedlist_ptr->head;
+	task_descriptor_t* found = NULL;
+	int collision_counter = 0;
+	/** logic for checking collision **/
 	while(temp!=NULL)
 	{
-		if(temp == task_to_find_before)
+		if(temp->counter <= 0)
+		{			
+			temp->counter = temp->period; 
+			temp->remaining_wcet = temp->wcet;
+			found = temp;
+			++collision_counter;
+		}
+		if(collision_counter >= 2)
 		{
-			return temp->next;
+			error_msg = ERR_RUN_6_PERIODIC_COLLISION;
+			OS_Abort();
 		}
 		temp = temp->next;
 	}	
-	return NULL;
+	return found;
 }
 /**
  * @brief add task to end of linkedlist
@@ -802,7 +831,7 @@ static void addlist(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_add
 	 }
 	 else
 	 {
-		 /* put task at the back of the queue */
+		 /* put task at the back of the linkedlist */
 		 linkedlist_ptr->tail->next = task_to_add;
 		 task_to_add->prev = linkedlist_ptr->tail;
 		 linkedlist_ptr->tail = task_to_add;
@@ -865,99 +894,23 @@ static task_descriptor_t* dequeue(queue_t* queue_ptr)
  */
 static void kernel_update_ticker(void) // runs by interrupt 
 {
-	
-	
     /* PORTD ^= LED_D5_RED; */
 	++ticks_counter;
-	--ticks_remaining;
-	if(ticks_remaining == 0)
+	if(cur_task->level == PERIODIC && cur_task->state == RUNNING)
 	{
-		/*********************** need to add wct *************************************/
-		if(next_task_periodic == NULL){
-			while(next_task_periodic!=NULL){
-				next_task_periodic = get_next(&periodic_queue, cur_task);
-				if(next_task_periodic->start > ticks_counter%20)
-				{
-					break;
-				}
-			}
-			cur_task = dequeue(&rr_queue);
-		}else{
-			if(next_task_periodic->start == ticks_counter%20)
-			{
-				cur_task = next_task_periodic;
-				next_task_periodic = NULL;
-				ticks_remaining = cur_task->period;
-			}else{
-				cur_task = dequeue(&rr_queue);
-			}
+		--cur_task->remaining_wcet;
+		if(cur_task->wcet <= 0) //
+		{
+			error_msg = ERR_RUN_3_PERIODIC_TOOK_TOO_LONG;
+			OS_Abort();
 		}
-	} 
-	else if (ticks_remaining+cur_task->start > ticks_counter%100) 
-	{
-		OS_Abort();
 	}
-
-	//
-    //if(PT > 0)
-    //{
-        //--ticks_remaining;
-//
-        //if(ticks_remaining == 0)
-        //{
-            ///* If Periodic task still running then error */
-            //if(cur_task != NULL && cur_task->level == PERIODIC && slot_task_finished == 0)
-            //{
-                ///* error handling */
-                //error_msg = ERR_RUN_3_PERIODIC_TOOK_TOO_LONG;
-                //OS_Abort();
-            //}
-//
-            //slot_name_index += 2;
-            //if(slot_name_index >= 2 * PT)
-            //{
-                //slot_name_index = 0;
-            //}
-//
-            //ticks_remaining = PPP[slot_name_index + 1];
-			///*This is where the tasks get determined if finished*/
-            //if(PPP[slot_name_index] == IDLE || name_to_task_ptr[PPP[slot_name_index]] == NULL) 
-            //{
-                //slot_task_finished = 1;
-            //}
-            //else
-            //{
-                //slot_task_finished = 0;
-            //}
-        //}
-    //}
+	//if(cur_task->period == 0){
+		//error_msg = ERR_RUN_3_PERIODIC_TOOK_TOO_LONG;
+		//OS_Abort();
+	//}
+	update_all_ticks(&periodic_queue);
 }
-
-
-/**
- * @brief Validate the PPP array.
- */
-//static void check_PPP_names(void)
-//{
-    //uint8_t i;
-    //uint8_t name;
-//
-    //for(i = 0; i < 2 * PT; i += 2)
-    //{
-        //name = PPP[i];
-//
-        ///* name == IDLE or 0 < name <= MAXNAME */
-        //if(name <= MAXNAME)
-        //{
-            //name_in_PPP[name] = 1;
-        //}
-        //else
-        //{
-            //error_msg = ERR_1_PPP_NAME_OUT_OF_RANGE;
-            //OS_Abort();
-        //}
-    //}
-//}
 
 #undef SLOW_CLOCK
 
@@ -1151,7 +1104,7 @@ uint16_t Now()
  *
  *  Initialize a new, non-NULL SERVICE descriptor.
  */
-SERVICE *Service_Init()
+SERVICE* Service_Init()
 {
     uint8_t sreg;
 
@@ -1159,7 +1112,7 @@ SERVICE *Service_Init()
     Disable_Interrupt();
 
     SERVICE* newService = new SERVICE;
-    newService -> counter = 0;
+    newService->counter = 0;
     
     SREG = sreg; 
 
@@ -1195,6 +1148,7 @@ void Service_Subscribe( SERVICE *s, int16_t *v )
         s -> counter++;
         //set to task to WAITING (Do I block task here? or handled elsewhere?)
         cur_task -> state = WAITING;
+		enter_kernel();
     }
 	// service has reached max subscribing limit
 	else{
@@ -1234,7 +1188,11 @@ void Service_Publish( SERVICE *s, int16_t v )
         s-> tasks[i] = NULL;
     }
 
+<<<<<<< HEAD
     s -> counter = 0;
+=======
+    s->counter = 0;
+>>>>>>> 175cb671ddfc8047585abb8df519bc5cec04bf4d
     
     SREG = sreg; 
 	
@@ -1325,7 +1283,11 @@ int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16
 	kernel_request_create_args.level = (uint8_t)PERIODIC;
 	kernel_request_create_args.period = period;
 	kernel_request_create_args.wcet = wcet;
-	kernel_request_create_args.start = start;
+	kernel_request_create_args.start = start; // add together to determine the next start time
+	kernel_request_create_args.counter = start; //period;
+    kernel_request_create_args.remaining_wcet = wcet;
+    //kernel_request_create_args.remaining_start = start;
+	
 	//kernel_request_create_args.name = (uint8_t)name;
 
 	kernel_request = TASK_CREATE;

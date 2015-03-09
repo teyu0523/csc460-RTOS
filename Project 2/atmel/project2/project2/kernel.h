@@ -83,7 +83,10 @@ typedef struct
     uint8_t level;
     /** If the new task is PERIODIC, this is its name in the PPP array. */
     //uint8_t name;
-	
+	uint16_t counter;
+    //uint16_t remaining_start;
+    uint16_t remaining_wcet;
+	//uint16_t remaining_period;
 	uint16_t period;
 	uint16_t wcet;
 	uint16_t start;
@@ -101,10 +104,14 @@ struct td_struct
     uint8_t                         stack[WORKSPACE];
     /** A variable to save the hardware SP into when the task is suspended. */
     uint8_t*               volatile sp;   /* stack pointer into the "workSpace" */
-    
+    //uint16_t remaining_start;
+    uint16_t remaining_wcet;
+    //uint16_t remaining_period;
+	int16_t counter;
 	uint16_t period;
 	uint16_t wcet;
 	uint16_t start;
+
 	
     /** The state of the task in this descriptor. */
     task_state_t                    state;
@@ -138,10 +145,15 @@ typedef struct
 queue_t;
 
 struct service{
-    task_descriptor_t* tasks[4];
-    int16_t* valueLocations[4];
+    task_descriptor_t* tasks[3];
+    int16_t* valueLocations[3];
     int16_t value;
     int16_t counter;
+	service(){
+		counter = 0;
+		value = 0;
+		
+	}
 };
 
 #ifdef __cplusplus
