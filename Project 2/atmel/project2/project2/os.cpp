@@ -1152,6 +1152,7 @@ void Service_Subscribe( SERVICE *s, int16_t *v )
         s -> counter++;
         //set to task to WAITING (Do I block task here? or handled elsewhere?)
         cur_task -> state = WAITING;
+        SREG = sreg; 
 		enter_kernel();
     }
 	// service has reached max subscribing limit
@@ -1180,21 +1181,30 @@ void Service_Publish( SERVICE *s, int16_t v )
     Disable_Interrupt();
 
     //set the new valve v the SERVICE s's value property
-    s -> value = v;
+    s->value = v;
 
     //for every task subcribed to this service
-    for(int i = 0; i < s -> counter; i++){
+    for(int i = 0; i < s->counter; i++){
         //write the SERVICE s's value to task
-        *(s -> valueLocations[i]) = v;
-        s -> valueLocations[i] = NULL;
+        *(s->valueLocations[i]) = v;
+        s->valueLocations[i] = NULL;
         //set the task to READY state (do I have add them the ready queue here? or is that handled elsewhere?)
-        (s -> tasks[i]) -> state = READY;
-        s-> tasks[i] = NULL;
+        (s->tasks[i]) -> state = READY;
+        s->tasks[i] = NULL;
+
+        if((s->tasks[i]) -> level == SYSTEM){
+            enqueue(&system_queue, s->tasks[i]);
+        } 
+        if((s->tasks[i])->level == RR){
+            enqueue(&rr_queue, s->tasks[i]);
+        }
+        if((s->tasks[i])->level == PERIODIC){
+            addlist(&periodic_queue, s->tasks[i]);
+        }
     }
 
     s->counter = 0;
-
-    
+    enter_kernel();
     SREG = sreg; 
 	
 }
