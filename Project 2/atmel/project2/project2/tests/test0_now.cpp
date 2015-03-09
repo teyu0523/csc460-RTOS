@@ -10,22 +10,19 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include "../trace/trace.h"
-void p()
-{
-	DDRB = 1 << PB6;
-	PORTB ^= (uint8_t)_BV(PB6);
-	add_to_trace(1);
-	print_trace();
-}
-
 
 int r_main(void)
 {
 	uart_init();
 	set_trace_test(0);
-	Task_Create_Periodic(p, 0, 50, 2, 1);
-	Task_Create_Periodic(p, 0, 50, 5, 25);
-	return 1;
+	add_to_trace(0);
+	int i;
+	for (i=0; i<10; i++)
+	{
+		add_to_trace(Now());
+	}
+	add_to_trace(0);
+	return 0;
 }
 
 #endif

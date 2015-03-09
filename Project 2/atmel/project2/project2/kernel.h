@@ -145,10 +145,15 @@ typedef struct
 queue_t;
 
 struct service{
-    task_descriptor_t* tasks[4];
-    int16_t* valueLocations[4];
+    task_descriptor_t* tasks[3];
+    int16_t* valueLocations[3];
     int16_t value;
     int16_t counter;
+	service(){
+		counter = 0;
+		value = 0;
+		
+	}
 };
 
 #ifdef __cplusplus

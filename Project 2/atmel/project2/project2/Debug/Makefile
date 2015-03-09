@@ -57,7 +57,11 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../os.cpp \
 ../project2.cpp \
-../tests/test0.cpp \
+../tests/test0_now.cpp \
+../tests/test1.cpp \
+../tests/test1_system.cpp \
+../tests/test2_rr.cpp \
+../tests/test3_system_rr.cpp \
 ../trace/trace.cpp \
 ../uart/uart.cpp \
 ../src/ASF/mega/boards/stk600/rcx_x/init.c \
@@ -73,7 +77,11 @@ ASM_SRCS +=
 OBJS +=  \
 os.o \
 project2.o \
-tests/test0.o \
+tests/test0_now.o \
+tests/test1.o \
+tests/test1_system.o \
+tests/test2_rr.o \
+tests/test3_system_rr.o \
 trace/trace.o \
 uart/uart.o \
 src/ASF/mega/boards/stk600/rcx_x/init.o \
@@ -82,7 +90,11 @@ src/main.o
 OBJS_AS_ARGS +=  \
 os.o \
 project2.o \
-tests/test0.o \
+tests/test0_now.o \
+tests/test1.o \
+tests/test1_system.o \
+tests/test2_rr.o \
+tests/test3_system_rr.o \
 trace/trace.o \
 uart/uart.o \
 src/ASF/mega/boards/stk600/rcx_x/init.o \
@@ -91,7 +103,11 @@ src/main.o
 C_DEPS +=  \
 os.d \
 project2.d \
-tests/test0.d \
+tests/test0_now.d \
+tests/test1.d \
+tests/test1_system.d \
+tests/test2_rr.d \
+tests/test3_system_rr.d \
 trace/trace.d \
 uart/uart.d \
 src/ASF/mega/boards/stk600/rcx_x/init.d \
@@ -100,7 +116,11 @@ src/main.d
 C_DEPS_AS_ARGS +=  \
 os.d \
 project2.d \
-tests/test0.d \
+tests/test0_now.d \
+tests/test1.d \
+tests/test1_system.d \
+tests/test2_rr.d \
+tests/test3_system_rr.d \
 trace/trace.d \
 uart/uart.d \
 src/ASF/mega/boards/stk600/rcx_x/init.d \
@@ -115,12 +135,20 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 LIB_DEP+=  \
-C:/Users/Mikko/Documents/Atmel\ Studio/arduinoCore/libcore.a
+C:/Users/Allen/Documents/Atmel\ Studio/arduinoCore/libcore.a
 
 LINKER_SCRIPT_DEP+= 
 
 
 # AVR32/GNU C Compiler
+
+
+
+
+
+
+
+
 
 
 

@@ -271,7 +271,19 @@
     <Compile Include="project2.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tests\test0.cpp">
+    <Compile Include="tests\test0_now.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tests\test1.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tests\test1_system.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tests\test2_rr.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tests\test3_system_rr.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="trace\trace.cpp">

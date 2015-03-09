@@ -188,6 +188,7 @@ static void kernel_dispatch(void)
 			task_descriptor_t* temp = get_next(&periodic_queue);
 			if(temp != NULL)
 			{
+				
 				cur_task = temp;
 
 			}
@@ -260,8 +261,7 @@ static void kernel_handle_request(void)
 				if(cur_task->level == RR){
 					enqueue(&rr_queue, cur_task);
 				}
-			} else if(cur_task->level == RR &&
-				kernel_request_create_args.level == PERIODIC )
+			} else if(cur_task->level == RR && kernel_request_create_args.level == PERIODIC )
 			{	
 				cur_task->state = READY;
 				enqueue(&rr_queue, cur_task);
@@ -284,11 +284,7 @@ static void kernel_handle_request(void)
 			break;
 
 	    case PERIODIC:
-	        
-			// list still have the task
-			//cur_task->remaining_period = cur_task->period;
-			//cur_task->remaining_start = ticks_counter + cur_task->start;
-			//cur_task->remaining_wcet = cur_task->wcet;
+			
 	        break;
 
 	    case RR:
@@ -1094,7 +1090,7 @@ void OS_Abort(void)
  *
  *  Initialize a new, non-NULL SERVICE descriptor.
  */
-SERVICE *Service_Init()
+SERVICE* Service_Init()
 {
     uint8_t sreg;
 
@@ -1102,7 +1098,7 @@ SERVICE *Service_Init()
     Disable_Interrupt();
 
     SERVICE* newService = new SERVICE;
-    newService -> counter = 0;
+    newService->counter = 0;
     
     SREG = sreg; 
 
@@ -1138,6 +1134,7 @@ void Service_Subscribe( SERVICE *s, int16_t *v )
         s -> counter++;
         //set to task to WAITING (Do I block task here? or handled elsewhere?)
         cur_task -> state = WAITING;
+		enter_kernel();
     }
 	// service has reached max subscribing limit
 	else{
@@ -1177,7 +1174,7 @@ void Service_Publish( SERVICE *s, int16_t v )
         s-> tasks[i] = NULL;
     }
 
-    counter = 0;
+    s->counter = 0;
     
     SREG = sreg; 
 	

@@ -1,5 +1,5 @@
 # 1 ".././project2.cpp"
-# 1 "C:\\Users\\Mikko\\Documents\\CSC460\\Project\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
+# 1 "E:\\Google Drive\\Course\\csc460\\lab\\CSC460\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
 # 1 "<command-line>"
 # 1 ".././project2.cpp"
 
@@ -2000,10 +2000,15 @@ typedef struct
 queue_t;
 
 struct service{
-    task_descriptor_t* tasks[4];
-    int16_t* valueLocations[4];
+    task_descriptor_t* tasks[3];
+    int16_t* valueLocations[3];
     int16_t value;
     int16_t counter;
+ service(){
+  counter = 0;
+  value = 0;
+
+ }
 };
 
 
@@ -2033,28 +2038,50 @@ void reset_trace();
 
 
 
-# 1 ".././tests/test0.cpp" 1
-# 12 ".././tests/test0.cpp"
+# 1 ".././tests/test1.cpp" 1
+# 12 ".././tests/test1.cpp"
 # 1 ".././tests/../trace/trace.h" 1
-# 13 ".././tests/test0.cpp" 2
+# 13 ".././tests/test1.cpp" 2
+
+SERVICE* serviceTest;
+# 40 ".././tests/test1.cpp"
 void p()
 {
- (*(volatile uint8_t *)((0x04) + 0x20)) = 1 << 6;
- (*(volatile uint8_t *)((0x05) + 0x20)) ^= (uint8_t)(1 << (6));
+ int16_t value = 1;
  add_to_trace(1);
+ Service_Subscribe(serviceTest, &value);
+
+ add_to_trace(1);
+
+}
+
+void p2()
+{
+ int16_t value = 5;
+ add_to_trace(0);
  print_trace();
+ Service_Publish(serviceTest, value);
 }
 
 
 int r_main(void)
 {
- uart_init();
- set_trace_test(0);
- add_to_trace(2);
- Task_Create_Periodic(p, 0, 50, 2, 1);
- Task_Create_Periodic(p, 0, 50, 5, 25);
- add_to_trace(3);
 
+
+ uart_init();
+ set_trace_test(1);
+ add_to_trace(0);
+ Task_Create_System(p, 0);
+ Task_Create_System(p2, 0);
+ add_to_trace(0);
  return 1;
 }
 # 14 ".././project2.cpp" 2
+# 1 ".././tests/test0_now.cpp" 1
+# 15 ".././project2.cpp" 2
+# 1 ".././tests/test1_system.cpp" 1
+# 16 ".././project2.cpp" 2
+# 1 ".././tests/test2_rr.cpp" 1
+# 17 ".././project2.cpp" 2
+# 1 ".././tests/test3_system_rr.cpp" 1
+# 18 ".././project2.cpp" 2

@@ -33,7 +33,9 @@ project2.d project2.o: .././project2.cpp \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  .././kernel.h .././os.h .././uart/uart.h .././trace/trace.h \
- .././tests/test0.cpp .././tests/../trace/trace.h
+ .././tests/test1.cpp .././tests/../trace/trace.h \
+ .././tests/test0_now.cpp .././tests/test1_system.cpp \
+ .././tests/test2_rr.cpp .././tests/test3_system_rr.cpp
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -109,6 +111,14 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 
 .././trace/trace.h:
 
-.././tests/test0.cpp:
+.././tests/test1.cpp:
 
 .././tests/../trace/trace.h:
+
+.././tests/test0_now.cpp:
+
+.././tests/test1_system.cpp:
+
+.././tests/test2_rr.cpp:
+
+.././tests/test3_system_rr.cpp:
