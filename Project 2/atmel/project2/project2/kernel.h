@@ -29,8 +29,10 @@ extern "C" {
 /** The RTOS timer's prescaler divisor */
 #define TIMER_PRESCALER 8
 
+#define CYCLE_SCALE ((F_CPU / TIMER_PRESCALER) / 1000) 
+
 /** The number of clock cycles in one "tick" or 5 ms */
-#define TICK_CYCLES     (((F_CPU / TIMER_PRESCALER) / 1000) * TICK)
+#define TICK_CYCLES     (CYCLE_SCALE * TICK)
 
 /** LEDs for OS_Abort() */
 #define LED_RED_MASK    (uint8_t)(_BV(PH5))
@@ -149,11 +151,10 @@ struct service{
     int16_t* valueLocations[3];
     int16_t value;
     int16_t counter;
-	service(){
-		counter = 0;
-		value = 0;
-		
-	}
+	//service(){
+		//counter = 0;
+		//value = 0;
+	//}
 };
 
 #ifdef __cplusplus

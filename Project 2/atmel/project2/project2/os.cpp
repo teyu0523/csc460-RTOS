@@ -71,7 +71,7 @@ static queue_t system_queue;
 
 /** time counter in ticks */
 static volatile uint8_t ticks_counter = 0;
-
+static uint16_t volatile time_before_interrupt = 0;
 /** Indicates if periodic task in this slot has already run this time */
 //static uint8_t slot_task_finished = 0;
 
@@ -899,6 +899,7 @@ static task_descriptor_t* dequeue(queue_t* queue_ptr)
 static void kernel_update_ticker(void) // runs by interrupt 
 {
     /* PORTD ^= LED_D5_RED; */
+	time_before_interrupt = TCNT1;
 	++ticks_counter;
 	if(cur_task->level == PERIODIC && cur_task->state == RUNNING)
 	{
@@ -1096,8 +1097,8 @@ uint16_t Now()
     sreg = SREG;
     Disable_Interrupt();
 	
-    ret_val = ticks_counter*TICK + (TCNT1 + HALF_MS) / (CYCLES_PER_MS);
-
+    //ret_val = ticks_counter*TICK + (TCNT1 + HALF_MS) / (CYCLES_PER_MS);
+	ret_val = ticks_counter*TICK + ((TCNT1 - time_before_interrupt)/CYCLE_SCALE);
     SREG = sreg;
 	
 	return ret_val; 
@@ -1187,10 +1188,10 @@ void Service_Publish( SERVICE *s, int16_t v )
     for(int i = 0; i < s->counter; i++){
         //write the SERVICE s's value to task
         *(s->valueLocations[i]) = v;
-        s->valueLocations[i] = NULL;
+        //s->valueLocations[i] = NULL;
         //set the task to READY state (do I have add them the ready queue here? or is that handled elsewhere?)
         (s->tasks[i]) -> state = READY;
-        s->tasks[i] = NULL;
+
 
         if((s->tasks[i]) -> level == SYSTEM){
             enqueue(&system_queue, s->tasks[i]);
@@ -1201,6 +1202,7 @@ void Service_Publish( SERVICE *s, int16_t v )
         if((s->tasks[i])->level == PERIODIC){
             addlist(&periodic_queue, s->tasks[i]);
         }
+		//s->tasks[i] = NULL;
     }
 
     s->counter = 0;
