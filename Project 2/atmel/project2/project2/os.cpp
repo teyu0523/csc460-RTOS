@@ -1096,7 +1096,7 @@ uint16_t Now()
     sreg = SREG;
     Disable_Interrupt();
 	
-    ret_val = ticks_counter*TICK + (TCNT1 + HALF_MS) / (CYCLES_PER_MS);
+    ret_val = ticks_counter*TICK; //+ (TCNT1 + HALF_MS) / (CYCLES_PER_MS);
 
     SREG = sreg;
 	
