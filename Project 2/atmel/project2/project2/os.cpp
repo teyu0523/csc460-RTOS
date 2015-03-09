@@ -1192,11 +1192,8 @@ void Service_Publish( SERVICE *s, int16_t v )
         s-> tasks[i] = NULL;
     }
 
-<<<<<<< HEAD
-    s -> counter = 0;
-=======
     s->counter = 0;
->>>>>>> 175cb671ddfc8047585abb8df519bc5cec04bf4d
+
     
     SREG = sreg; 
 	
