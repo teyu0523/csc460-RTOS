@@ -1,5 +1,5 @@
 # 1 ".././project2.cpp"
-# 1 "E:\\Google Drive\\Course\\csc460\\lab\\CSC460\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
+# 1 "C:\\Users\\Mikko\\Documents\\CSC460\\Project\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
 # 1 "<command-line>"
 # 1 ".././project2.cpp"
 
@@ -1859,13 +1859,13 @@ extern "C" {
 extern "C" {
 # 224 ".././os.h"
 typedef struct service SERVICE;
-# 255 ".././os.h"
+# 254 ".././os.h"
 void OS_Abort();
-# 273 ".././os.h"
+# 272 ".././os.h"
 int8_t Task_Create_System(void (*f)(void), int16_t arg);
 int8_t Task_Create_RR( void (*f)(void), int16_t arg);
 int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name);
-# 292 ".././os.h"
+# 291 ".././os.h"
 int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16_t wcet, uint16_t start);
 
 
@@ -1883,13 +1883,13 @@ void Task_Next();
 
 
 int16_t Task_GetArg();
-# 319 ".././os.h"
+# 318 ".././os.h"
 SERVICE *Service_Init();
-# 329 ".././os.h"
+# 328 ".././os.h"
 void Service_Subscribe( SERVICE *s, int16_t *v );
-# 339 ".././os.h"
+# 338 ".././os.h"
 void Service_Publish( SERVICE *s, int16_t v );
-# 359 ".././os.h"
+# 358 ".././os.h"
 uint16_t Now();
 
 
@@ -1998,6 +1998,13 @@ typedef struct
     task_descriptor_t* tail;
 }
 queue_t;
+
+struct service{
+    task_descriptor_t* tasks[4];
+    int16_t* valueLocations[4];
+    int16_t value;
+    int16_t counter;
+};
 
 
 }

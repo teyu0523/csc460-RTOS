@@ -223,7 +223,6 @@ extern "C" {
  */
 typedef struct service SERVICE;  
 
-
 /*================
   *    G L O B A L S
   *================

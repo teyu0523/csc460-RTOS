@@ -144,6 +144,13 @@ typedef struct
 }
 queue_t;
 
+struct service{
+    task_descriptor_t* tasks[4];
+    int16_t* valueLocations[4];
+    int16_t value;
+    int16_t counter;
+};
+
 #ifdef __cplusplus
 }
 #endif

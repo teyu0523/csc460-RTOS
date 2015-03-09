@@ -521,8 +521,12 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF19
 	.byte	0x5
+<<<<<<< HEAD
 	.byte	0x11
 	.long	.LASF21
+=======
+	.word	0x12e
+>>>>>>> origin/master
 	.byte	0x1
 	.uleb128 0x11
 	.byte	0x1
@@ -538,8 +542,13 @@ _Z6r_mainv:
 	.uleb128 0x14
 	.byte	0x1
 	.long	.LASF32
+<<<<<<< HEAD
 	.byte	0x6
 	.word	0x124
+=======
+	.byte	0x5
+	.word	0x123
+>>>>>>> origin/master
 	.long	0x29
 	.byte	0x1
 	.uleb128 0x12
@@ -899,6 +908,7 @@ _Z6r_mainv:
 	.string	"Task_Create_Periodic"
 .LASF13:
 	.string	"double"
+<<<<<<< HEAD
 .LASF25:
 	.string	"_Z14set_trace_testh"
 .LASF17:
@@ -906,6 +916,11 @@ _Z6r_mainv:
 .LASF28:
 	.string	"E:\\\\Google Drive\\\\Course\\\\csc460\\\\lab\\\\CSC460\\\\csc460-RTOS\\\\Project 2\\\\atmel\\\\project2\\\\project2\\\\Debug"
 .LASF16:
+=======
+.LASF22:
+	.string	"MISO"
+.LASF21:
+>>>>>>> origin/master
 	.string	"MOSI"
 .LASF6:
 	.string	"unsigned int"
@@ -937,6 +952,13 @@ _Z6r_mainv:
 	.string	"long int"
 .LASF2:
 	.string	"signed char"
+<<<<<<< HEAD
 .LASF23:
 	.string	"set_trace_test"
+=======
+.LASF27:
+	.string	"__ms"
+.LASF25:
+	.string	"C:\\\\Users\\\\Mikko\\\\Documents\\\\CSC460\\\\Project\\\\csc460-RTOS\\\\Project 2\\\\atmel\\\\project2\\\\project2\\\\Debug"
+>>>>>>> origin/master
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"

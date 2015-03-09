@@ -115,7 +115,7 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 LIB_DEP+=  \
-C:/Users/Allen/Documents/Atmel\ Studio/arduinoCore/libcore.a
+C:/Users/Mikko/Documents/Atmel\ Studio/arduinoCore/libcore.a
 
 LINKER_SCRIPT_DEP+= 
 
