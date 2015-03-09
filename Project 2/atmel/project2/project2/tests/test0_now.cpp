@@ -19,9 +19,11 @@ int r_main(void)
 	int i;
 	for (i=0; i<10; i++)
 	{
+		_delay_ms(25);
 		add_to_trace(Now());
 	}
 	add_to_trace(0);
+	print_trace();
 	return 0;
 }
 

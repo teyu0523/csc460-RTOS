@@ -292,6 +292,9 @@
     <Compile Include="tests\test5_periodic_two.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="tests\test6_periodic_complex.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="trace\trace.cpp">
       <SubType>compile</SubType>
     </Compile>
