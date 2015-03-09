@@ -774,19 +774,23 @@ static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to
 		linkedlist_ptr->tail = NULL;
 		linkedlist_ptr->head = NULL;
 		return;
+	} else {
+		task_to_delete = task_to_delete->prev;
+		task_to_delete->next = task_to_delete->next->next;
+		task_to_delete->next->prev = task_to_delete;
 	}
-	task_descriptor_t* temp = linkedlist_ptr->head;
-	while(temp!=NULL)
-	{
-		if (temp == task_to_delete){
-			temp = temp->prev;
-			temp->next = temp->next->next;
-			temp->next->prev = temp;
-			return;
-		}
-		temp = temp->next;
-	}
-	/****************************** need error message *****************************************/
+	//task_descriptor_t* temp = linkedlist_ptr->head;
+	//while(temp!=NULL)
+	//{
+		//if (temp == task_to_delete){
+			//temp = temp->prev;
+			//temp->next = temp->next->next;
+			//temp->next->prev = temp;
+			//return;
+		//}
+		//temp = temp->next;
+	//}
+	
 }
 /**
  *	get the next in the list of task_to_find_before
