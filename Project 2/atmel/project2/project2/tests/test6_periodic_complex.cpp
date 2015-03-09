@@ -6,7 +6,7 @@
  *
  *  Author: Allen
  */ 
-#ifdef USE_TEST_005
+#ifdef USE_TEST_006
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -39,6 +39,7 @@ int r_main(void)
 	add_to_trace(0);
 	Task_Create_Periodic(p1, 0, 20, 5, 2); 
 	Task_Create_Periodic(p2, 0, 20, 5, 3);
+	Task_Create_Periodic(p2, 0, 20, 5, 4);
 	add_to_trace(0);
 	return 0;
 }

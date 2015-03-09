@@ -7,8 +7,7 @@
 #include "uart/uart.h"
 #include "trace/trace.h"
 
-
-#define USE_TEST_00444
+#define USE_TEST_006
 
 #include "tests/test1.cpp"
 #include "tests/test0_now.cpp"
@@ -17,6 +16,7 @@
 #include "tests/test3_system_rr.cpp"
 #include "tests/test4_periodic.cpp"
 #include "tests/test5_periodic_two.cpp"
+#include "tests/test6_periodic_complex.cpp"
 
 #ifdef _USE_MAIN_
 EVENT* print_event;
