@@ -1032,7 +1032,9 @@ void OS_Init()
 
     /* Set up Timer 1 Output Compare interrupt,the TICK clock. */
     TIMSK1 |= _BV(OCIE1A);
-    OCR1A = TCNT1 + TICK_CYCLES;
+    //OCR1A = TCNT1 + TICK_CYCLES;
+	OCR1A = TICK_CYCLES;
+	TCNT1 = 0;
     /* Clear flag. */
     TIFR1 = _BV(OCF1A);
 
@@ -1127,10 +1129,22 @@ void OS_Abort(void)
 /**
  * return current time.
  */
-//uint8_t Now()
-//{
-	//
-//}
+#define CYCLES_PER_MS TICK_CYCLES/TICK
+#define HALF_MS TICK_CYCLES / (TICK << 1)
+uint16_t Now()
+{
+    uint16_t ret_val;
+    uint8_t sreg;
+
+    sreg = SREG;
+    Disable_Interrupt();
+	
+    ret_val = ticks_counter*TICK + (TCNT1 + HALF_MS) / (CYCLES_PER_MS);
+
+    SREG = sreg;
+	
+	return ret_val; 
+}
 
 /**
  * \return a non-NULL SERVICE descriptor if successful; NULL otherwise.
@@ -1220,7 +1234,7 @@ void Service_Publish( SERVICE *s, int16_t v )
         s-> tasks[i] = NULL;
     }
 
-    counter = 0;
+    s -> counter = 0;
     
     SREG = sreg; 
 	
