@@ -75,7 +75,7 @@ static volatile uint8_t ticks_counter = 0;
 static uint8_t slot_task_finished = 0;
 
 /** Index of name of task in current slot in PPP array. An even number from 0 to 2*(PT-1). */
-static unsigned int slot_name_index = 0;
+//static unsigned int slot_name_index = 0;
 
 /** The task descriptor for index "name of task" */
 static task_descriptor_t* name_to_task_ptr[MAXNAME + 1];
@@ -112,6 +112,9 @@ static void kernel_update_ticker(void);
 //static void check_PPP_names(void);
 static void idle (void);
 static void _delay_25ms(void);
+
+
+
 
 /*
  * FUNCTIONS
@@ -1134,10 +1137,12 @@ void OS_Abort(void)
  *
  *  Initialize a new, non-NULL SERVICE descriptor.
  */
-//SERVICE *Service_Init()
-//{
-	//return new SERVICE;
-//}
+SERVICE *Service_Init()
+{
+    SERVICE* newService = new SERVICE;
+    newService -> counter = 0;
+	return newService;
+}
 
 /**  
   * \param s an Service descriptor
@@ -1149,6 +1154,26 @@ void OS_Abort(void)
   */
 void Service_Subscribe( SERVICE *s, int16_t *v )
 {
+    //if the call task is periodic, return an error
+    if(cur_task -> level == PERIODIC){
+        error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
+        OS_Abort();
+    }
+    //else subscribe task to service 
+    if(s -> counter < 3) {
+        //store pointer of task in SERVICE s
+        s -> tasks[s -> counter] = cur_task;
+        //store pointer of where recieved value v will be written
+        s -> valueLocations[s -> counter] = v;
+        s -> counter++;
+        //set to task to WAITING (Do I block task here? or handled elsewhere?)
+        cur_task -> state = WAITING;
+    }
+	// service has reached max subscribing limit
+	else{
+	   error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
+        OS_Abort();	
+	}
 	
 }
 
@@ -1162,6 +1187,19 @@ void Service_Subscribe( SERVICE *s, int16_t *v )
   */
 void Service_Publish( SERVICE *s, int16_t v )
 {
+    //set the new valve v the SERVICE s's value property
+    s -> value = v;
+
+    //for every task subcribed to this service
+    for(int i = 0; i <= s -> counter; i++){
+        //write the SERVICE s's value to task
+        *(s -> valueLocations[i]) = v;
+        s -> valueLocations[i] = NULL;
+        //set the task to READY state (do I have add them the ready queue here? or is that handled elsewhere?)
+        (s -> tasks[i]) -> state = READY;
+        s-> tasks[i] = NULL;
+    }
+    //unsubcribe all tasks from SERVICE s  
 	
 }
 

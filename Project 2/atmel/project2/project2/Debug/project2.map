@@ -1,5 +1,9 @@
 Archive member included because of file (symbol)
 
+C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+                              os.o (_Znwj)
+C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+                              C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o) (malloc)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_udivmodqi4.o)
                               os.o (__udivmodqi4)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_exit.o)
@@ -9,6 +13,12 @@ c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-t
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_clear_bss.o)
                               os.o (__do_clear_bss)
 
+Allocating common symbols
+Common symbol       size              file
+
+__brkval            0x2               C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+__flp               0x2               C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+
 Discarded input sections
 
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr6/crtm2560.o
@@ -16,10 +26,12 @@ Discarded input sections
  .text          0x00000000        0x0 os.o
  .data          0x00000000        0x0 os.o
  .bss           0x00000000        0x0 os.o
+ .text.Service_Init
+                0x00000000       0x10 os.o
  .text.Service_Subscribe
-                0x00000000        0x2 os.o
+                0x00000000       0x52 os.o
  .text.Service_Publish
-                0x00000000        0x2 os.o
+                0x00000000       0x48 os.o
  .text.Task_Create_System
                 0x00000000       0x34 os.o
  .text.Task_Create_RR
@@ -164,6 +176,55 @@ Discarded input sections
  .debug_line    0x00000000      0x318 src/main.o
  .debug_str     0x00000000    0x11085 src/main.o
  .comment       0x00000000       0x31 src/main.o
+ .text          0x00000000        0x0 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .data          0x00000000        0x0 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .bss           0x00000000        0x0 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_abbrev  0x00000000       0xf7 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_info    0x00000000      0x195 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_line    0x00000000      0x220 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text.__cxa_guard_acquire
+                0x00000000       0x14 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text.__cxa_guard_release
+                0x00000000        0x8 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text.__cxa_guard_abort
+                0x00000000        0x2 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text.__cxa_pure_virtual
+                0x00000000        0x2 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text._ZdaPv   0x00000000        0x6 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text._ZdlPv   0x00000000        0x6 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text._Znaj    0x00000000        0x6 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text._Znwj    0x00000000        0x6 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_frame   0x00000000       0x90 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_loc     0x00000000       0xb0 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_pubnames
+                0x00000000       0xbf C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_aranges
+                0x00000000       0x58 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_ranges  0x00000000       0x50 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .debug_str     0x00000000      0x133 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(new.cpp.o)
+ .text          0x00000000        0x0 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .data          0x00000000        0x0 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .bss           0x00000000        0x0 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_abbrev  0x00000000      0x10d C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_info    0x00000000      0x229 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_line    0x00000000      0x348 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .text.avr-libc
+                0x00000000      0x26a C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .data.__malloc_margin
+                0x00000000        0x2 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .data.__malloc_heap_start
+                0x00000000        0x2 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .data.__malloc_heap_end
+                0x00000000        0x2 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_frame   0x00000000       0x30 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_loc     0x00000000      0x358 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_pubnames
+                0x00000000       0x7f C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_aranges
+                0x00000000       0x28 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_ranges  0x00000000       0x20 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ .debug_str     0x00000000      0x15f C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
+ COMMON         0x00000000        0x4 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(malloc.c.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_udivmodqi4.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_udivmodqi4.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_udivmodqi4.o)
@@ -249,7 +310,7 @@ LOAD src/ASF/mega/boards/stk600/rcx_x/init.o
 LOAD src/main.o
 START GROUP
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr6\libm.a
-LOAD C:\Users\Allen\Documents\Atmel Studio\arduinoCore\libcore.a
+LOAD C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a
 END GROUP
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr6\libm.a
@@ -647,47 +708,47 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xe0
+.debug_aranges  0x00000000       0xe8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0xb0 os.o
+                0x00000000       0xb8 os.o
  .debug_aranges
-                0x000000b0       0x30 project2.o
+                0x000000b8       0x30 project2.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1191
+.debug_info     0x00000000     0x126b
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0xe62 os.o
- .debug_info    0x00000e62      0x32f project2.o
+ .debug_info    0x00000000      0xf3c os.o
+ .debug_info    0x00000f3c      0x32f project2.o
 
-.debug_abbrev   0x00000000      0x56d
+.debug_abbrev   0x00000000      0x57f
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x3d5 os.o
- .debug_abbrev  0x000003d5      0x198 project2.o
+ .debug_abbrev  0x00000000      0x3e7 os.o
+ .debug_abbrev  0x000003e7      0x198 project2.o
 
-.debug_line     0x00000000      0xa7c
+.debug_line     0x00000000      0xb1d
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x87f os.o
- .debug_line    0x0000087f      0x1fd project2.o
+ .debug_line    0x00000000      0x920 os.o
+ .debug_line    0x00000920      0x1fd project2.o
 
-.debug_frame    0x00000000      0x1e4
+.debug_frame    0x00000000      0x1fc
  *(.debug_frame)
- .debug_frame   0x00000000      0x194 os.o
- .debug_frame   0x00000194       0x50 project2.o
+ .debug_frame   0x00000000      0x1ac os.o
+ .debug_frame   0x000001ac       0x50 project2.o
 
-.debug_str      0x00000000      0x789
+.debug_str      0x00000000      0x7be
  *(.debug_str)
- .debug_str     0x00000000      0x743 os.o
-                                0x7e1 (size before relaxing)
- .debug_str     0x00000743       0x46 project2.o
-                                0x286 (size before relaxing)
+ .debug_str     0x00000000      0x778 os.o
+                                0x81e (size before relaxing)
+ .debug_str     0x00000778       0x46 project2.o
+                                0x285 (size before relaxing)
 
-.debug_loc      0x00000000      0x723
+.debug_loc      0x00000000      0x7d3
  *(.debug_loc)
- .debug_loc     0x00000000      0x6f4 os.o
- .debug_loc     0x000006f4       0x2f project2.o
+ .debug_loc     0x00000000      0x7a4 os.o
+ .debug_loc     0x000007a4       0x2f project2.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -707,10 +768,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x108
+.debug_ranges   0x00000000      0x110
  *(.debug_ranges)
- .debug_ranges  0x00000000       0xe8 os.o
- .debug_ranges  0x000000e8       0x20 project2.o
+ .debug_ranges  0x00000000       0xf0 os.o
+ .debug_ranges  0x000000f0       0x20 project2.o
 
 .debug_macro
  *(.debug_macro)

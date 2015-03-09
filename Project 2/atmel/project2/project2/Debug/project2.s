@@ -530,13 +530,13 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF31
 	.byte	0x5
-	.word	0x12f
+	.word	0x12e
 	.byte	0x1
 	.uleb128 0x20
 	.byte	0x1
 	.long	.LASF32
 	.byte	0x5
-	.word	0x124
+	.word	0x123
 	.long	0x29
 	.byte	0x1
 	.uleb128 0xc
@@ -1032,8 +1032,6 @@ _Z6r_mainv:
 	.string	"double"
 .LASF22:
 	.string	"MISO"
-.LASF25:
-	.string	"E:\\\\Google Drive\\\\Course\\\\csc460\\\\lab\\\\CSC460\\\\csc460-RTOS\\\\Project 2\\\\atmel\\\\project2\\\\project2\\\\Debug"
 .LASF21:
 	.string	"MOSI"
 .LASF6:
@@ -1068,4 +1066,6 @@ _Z6r_mainv:
 	.string	"signed char"
 .LASF27:
 	.string	"__ms"
+.LASF25:
+	.string	"C:\\\\Users\\\\Mikko\\\\Documents\\\\CSC460\\\\Project\\\\csc460-RTOS\\\\Project 2\\\\atmel\\\\project2\\\\project2\\\\Debug"
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"
