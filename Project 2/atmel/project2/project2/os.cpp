@@ -69,7 +69,7 @@ static linkedlist_t periodic_queue;
 /** The ready queue for SYSTEM tasks. Their scheduling is first come, first served. */
 static queue_t system_queue;
 
-static SERVICE* service_list[MAXSERVICES];
+static SERVICE service_list[MAXSERVICES];
 static uint8_t num_services = 0;
 
 /** time counter in ticks */
@@ -1119,11 +1119,9 @@ SERVICE* Service_Init()
     Disable_Interrupt();
 
     if(num_services < MAXSERVICES){
-        service_list[num_services]= new SERVICE;
-        service_list[num_services] -> counter = 0;
+        service_list[num_services].counter = 0;
         num_services++;
     }
-
     else{
         error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
         OS_Abort();
@@ -1131,7 +1129,7 @@ SERVICE* Service_Init()
     
     SREG = sreg; 
 
-	return service_list[num_services - 1];
+	return &service_list[num_services - 1];
 }
 
 /**  
