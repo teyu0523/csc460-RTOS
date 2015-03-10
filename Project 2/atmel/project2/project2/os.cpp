@@ -1416,6 +1416,10 @@ int Task_GetArg(void)
  */
 int main()
 {
+    DDRB = (uint8_t)(_BV(PB5)
+
+    PORTB ^= (uint8_t)(_BV(PB5)
 	OS_Init();
+    PORTB ^= (uint8_t)(_BV(PB5)
 	return 0;
 }
