@@ -1251,7 +1251,6 @@ int8_t Task_Create_System(void (*f)(void), int16_t arg)
 	    kernel_request_create_args.f = (voidfuncvoid_ptr)f;
 	    kernel_request_create_args.arg = arg;
 	    kernel_request_create_args.level = (uint8_t)SYSTEM;
-	    //kernel_request_create_args.name = (uint8_t)name;
 
 	    kernel_request = TASK_CREATE;
 	    enter_kernel();
@@ -1273,7 +1272,6 @@ int8_t Task_Create_RR(void (*f)(void), int16_t arg)
 		kernel_request_create_args.f = (voidfuncvoid_ptr)f;
 		kernel_request_create_args.arg = arg;
 		kernel_request_create_args.level = (uint8_t)RR;
-		//kernel_request_create_args.name = (uint8_t)name;
 
 		kernel_request = TASK_CREATE;
 		enter_kernel();
