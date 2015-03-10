@@ -1,12 +1,17 @@
 ﻿/*
- * test1.cpp
+ * test10_service_system_multiple.cpp
  *
- * T000;0;25;50;75;100;125;150;175;200;225;250;0;
+ * Expected result:
+ *	T010;0;0;1;1;1;2;2;5;5;5;
+ *
+ *		1 is the initial value in subscribe
+ *		5 is the changed value in subscribe 
+ *		2 is when it gets to other system task to perform publish
  *
  * Created: 2015/3/8 下午 09:20:04
  *  Author: Allen
  */ 
-#ifdef USE_TEST_00444
+#ifdef USE_TEST_010
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -18,10 +23,9 @@ SERVICE* serviceTest;
 void s()
 {
 	int16_t value = 1;
-	add_to_trace(1);
+	add_to_trace(value); //1
 	Service_Subscribe(serviceTest, &value);
-	
-	add_to_trace(4);
+	add_to_trace(value); //5
 	
 }
 
@@ -30,21 +34,26 @@ void s2()
 	int16_t value = 5;
 	add_to_trace(2);
 	Service_Publish(serviceTest, value);
-	add_to_trace(3);
+	add_to_trace(2);
 
-	print_trace();
 }
 
+void terminate(){
+	print_trace();
+}
 
 int r_main(void)
 {
 	serviceTest = Service_Init(); 
 	
 	uart_init();
-	set_trace_test(1);
+	set_trace_test(10);
 	add_to_trace(0);
 	Task_Create_System(s, 0);
-	Task_Create_RR(s2, 0);
+	Task_Create_System(s, 0);
+	Task_Create_System(s, 0);
+	Task_Create_System(s2, 0);
+	Task_Create_RR(terminate,0);
 	add_to_trace(0);
 	return 1;
 }

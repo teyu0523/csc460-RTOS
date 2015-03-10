@@ -7,9 +7,8 @@
 #include "uart/uart.h"
 #include "trace/trace.h"
 
-#define USE_TEST_006
+#define USE_TEST_013
 
-#include "tests/test1.cpp"
 #include "tests/test0_now.cpp"
 #include "tests/test1_system.cpp"
 #include "tests/test2_rr.cpp"
@@ -17,13 +16,22 @@
 #include "tests/test4_periodic.cpp"
 #include "tests/test5_periodic_two.cpp"
 #include "tests/test6_periodic_complex.cpp"
+#include "tests/test7_tasks_all.cpp"
+#include "tests/test8_service_system.cpp"
+#include "tests/test9_service_rr.cpp"
+#include "tests/test10_service_system_multiple.cpp"
+#include "tests/test11_service_system_rr.cpp"
+#include "tests/test12_service_system_periodic.cpp"
+#include "tests/test13_service_subscribe_error.cpp"
+#include "tests/test14_service_periodic_error.cpp"
+
 
 #ifdef _USE_MAIN_
 EVENT* print_event;
 
 void p2()
 {
-	// // 1 -> output, 0 -> input
+	// // 1->output, 0->input
 	// // DDRB defines the direction of the pin in B section  
 	// DDRB = 1 << PB7;
 	// for(;;){

@@ -175,16 +175,13 @@ static void kernel_dispatch(void)
 {
     /* If the current state is RUNNING, then select it to run again.
      * kernel_handle_request() has already determined it should be selected.
-     */
-	
-	
+     */	
     if(cur_task->state != RUNNING || cur_task == idle_task)
     {
 		if(system_queue.head != NULL)
         {
             cur_task = dequeue(&system_queue);
         }
-        //else if(!slot_task_finished && PT > 0 && name_to_task_ptr[PPP[slot_name_index]] != NULL)
         else if(periodic_queue.head !=NULL)
         {
             /* Keep running the current PERIODIC task. */
@@ -269,7 +266,10 @@ static void kernel_handle_request(void)
 				cur_task->state = READY;
 				enqueue(&rr_queue, cur_task);
 			}           
-        }
+        } else {
+			error_msg = ERR_RUN_2_TOO_MANY_TASKS;
+			OS_Abort();
+		}
         break;
 
     case TASK_TERMINATE:
@@ -614,30 +614,21 @@ static int kernel_create_task()
         /* Too many tasks! */
         return 0;
     }
-	/***********************************************************************************************************************************/
-    //if(kernel_request_create_args.level == PERIODIC &&
-        //(kernel_request_create_args.name == IDLE ||
-         //kernel_request_create_args.name > MAXNAME))
-    //{
-        ///* PERIODIC name is out of range [1 .. MAXNAME] */
-        //error_msg = ERR_2_CREATE_NAME_OUT_OF_RANGE;
-        //OS_Abort();
-    //}
+	if(kernel_request_create_args.level == PERIODIC){
+		if(kernel_request_create_args.wcet <= 0 || 
+		kernel_request_create_args.period <= 0 || 
+		kernel_request_create_args.start < 0)
+		{
+			error_msg = ERR_5_PERIODIC_INVALID_INPUT;
+			OS_Abort();
+		}
+		if(kernel_request_create_args.wcet > kernel_request_create_args.period)
+		{
+			error_msg = ERR_4_PERIODIC_WCET_GREATER_THAN_PERIOD;
+			OS_Abort();
+		}
 
-    //if(kernel_request_create_args.level == PERIODIC &&
-        //name_in_PPP[kernel_request_create_args.name] == 0)
-    //{
-        //error_msg = ERR_5_NAME_NOT_IN_PPP;
-        //OS_Abort();
-    //}
-
-    //if(kernel_request_create_args.level == PERIODIC &&
-		//name_to_task_ptr[kernel_request_create_args.name] != NULL)
-    //{
-        ///* PERIODIC name already used */
-        //error_msg = ERR_4_PERIODIC_NAME_IN_USE;
-        //OS_Abort();
-    //}
+	}
 
 	/* idling "task" goes in last descriptor. */
 	if(kernel_request_create_args.level == NULL)
@@ -943,7 +934,7 @@ static void kernel_slow_clock(void)
  */
 void OS_Init()
 {
-    toggleProfilePulse();
+    //toggleProfilePulse();
 
     int i;
 
@@ -1001,12 +992,13 @@ void OS_Init()
     /* Clear flag. */
     TIFR1 = _BV(OCF1A);
 
-    toggleProfilePulse();
+    
 
     /*
      * The main loop of the RTOS kernel.
      */
     kernel_main_loop();
+	//toggleProfilePulse();
 }
 
 
@@ -1105,7 +1097,7 @@ uint16_t Now()
     Disable_Interrupt();
 	
     //ret_val = ticks_counter*TICK + (TCNT1 + HALF_MS) / (CYCLES_PER_MS);
-	ret_val = ticks_counter*TICK + ((TCNT1 - time_before_interrupt)/CYCLE_SCALE);
+	ret_val = ticks_counter*TICK + ((TCNT1 - time_before_interrupt)/((F_CPU / TIMER_PRESCALER) / 1000));
     SREG = sreg;
 	
 	return ret_val; 
@@ -1128,7 +1120,7 @@ SERVICE* Service_Init()
         num_services++;
     }
     else{
-        error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
+        error_msg = ERR_RUN_9_SERVICE_MAX_SERVICES_REACH; //need a new error
         OS_Abort();
     }
     
@@ -1153,25 +1145,25 @@ void Service_Subscribe( SERVICE *s, int16_t *v )
     Disable_Interrupt();
 
     //if the call task is periodic, return an error
-    if(cur_task -> level == PERIODIC){
-        error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
+    if(cur_task->level == PERIODIC){
+        error_msg =  ERR_RUN_8_SUBSCRIBE_PERIODIC_TASK; //need a new error
         OS_Abort();
     }
     //else subscribe task to service 
-    if(s -> counter < 3) {
+    if(s->counter < 3) {
         //store pointer of task in SERVICE s
-        s -> tasks[s -> counter] = cur_task;
+        s->tasks[s->counter] = cur_task;
         //store pointer of where recieved value v will be written
-        s -> valueLocations[s -> counter] = v;
-        s -> counter++;
+        s->valueLocations[s->counter] = v;
+        s->counter++;
         //set to task to WAITING (Do I block task here? or handled elsewhere?)
-        cur_task -> state = WAITING;
-        SREG = sreg; 
+        cur_task->state = WAITING;
+        SREG = sreg; 		
 		enter_kernel();
     }
 	// service has reached max subscribing limit
 	else{
-	   error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
+	   error_msg =  ERR_RUN_7_SUBSCRIBE_MAX_SUBSCRIBERS_REACHED; //need a new error
         OS_Abort();	
 	}
 
@@ -1203,18 +1195,29 @@ void Service_Publish( SERVICE *s, int16_t v )
         *(s->valueLocations[i]) = v;
         //s->valueLocations[i] = NULL;
         //set the task to READY state (do I have add them the ready queue here? or is that handled elsewhere?)
-        (s->tasks[i]) -> state = READY;
+        (s->tasks[i])->state = READY;
 
 
-        if((s->tasks[i]) -> level == SYSTEM){
+        if((s->tasks[i])->level == SYSTEM){
             enqueue(&system_queue, s->tasks[i]);
+			if(cur_task->level == RR){
+				cur_task->state = READY;
+				enqueue(&rr_queue, cur_task);
+			} else if (cur_task->level == PERIODIC) {
+				cur_task->state = READY;	
+			}
         } 
-        if((s->tasks[i])->level == RR){
+		else if((s->tasks[i])->level == PERIODIC){
+			error_msg =  ERR_RUN_5_RTOS_INTERNAL_ERROR; //need a new error
+			OS_Abort();
+		}
+        else if((s->tasks[i])->level == RR){
             enqueue(&rr_queue, s->tasks[i]);
         }
-        if((s->tasks[i])->level == PERIODIC){
-            addlist(&periodic_queue, s->tasks[i]);
-        }
+
+		//else if(cur_task->level == PERIODIC && s->tasks[i]->level == SYSTEM){
+			//
+		//}
 		//s->tasks[i] = NULL;
     }
 
@@ -1416,7 +1419,7 @@ int Task_GetArg(void)
 }
 
 void toggleProfilePulse(){
-    PORTB ^= (uint8_t)(_BV(PB5);
+    PORTB ^= (_BV(PB5));
 }
 
 /**
@@ -1424,7 +1427,8 @@ void toggleProfilePulse(){
  */
 int main()
 {
-    DDRB = (uint8_t)(_BV(PB5)
+    //DDRB = (_BV(PB5));
+	//PORTB &= ~_BV(PB5);
 
 	OS_Init();
 

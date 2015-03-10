@@ -23,14 +23,14 @@ ERR_1_PPP_NAME_OUT_OF_RANGE,
 /** PERIODIC name is out of range [1 .. MAXNAME] */
 ERR_2_CREATE_NAME_OUT_OF_RANGE,
 
-/** PERIODIC task assigned name IDLE */
-ERR_3_PERIODIC_NAMED_IDLE,
+/** PERIODIC start time below current ticks */
+ERR_3_PERIODIC_START_TIME_BELOW_CURRENT_TICK,
 
-/** PERIODIC name already used */
-ERR_4_PERIODIC_NAME_IN_USE,
+/** PERIODIC worst case greater than period*/
+ERR_4_PERIODIC_WCET_GREATER_THAN_PERIOD,
 
-/** PERIODIC name not in PPP array */
-ERR_5_NAME_NOT_IN_PPP,
+/** PERIODIC invalid input ex wcet <= 0 or period <= 0 */
+ERR_5_PERIODIC_INVALID_INPUT,
 
 /** Time interval 0 in PPP array */
 ERR_6_TIME_INTERVAL_IN_PPP_0,
@@ -54,7 +54,16 @@ ERR_RUN_4_ILLEGAL_ISR_KERNEL_REQUEST,
 ERR_RUN_5_RTOS_INTERNAL_ERROR,
 
 /** PERIODIC task running at same time */
-ERR_RUN_6_PERIODIC_COLLISION
+ERR_RUN_6_PERIODIC_COLLISION,
+
+/** Subscribers over number of tasks */
+ERR_RUN_7_SUBSCRIBE_MAX_SUBSCRIBERS_REACHED,
+
+/** Subscriber is called in periodic task */
+ERR_RUN_8_SUBSCRIBE_PERIODIC_TASK,
+
+/** Max servcices */
+ERR_RUN_9_SERVICE_MAX_SERVICES_REACH
 };
 
 

@@ -6,9 +6,9 @@
  *								33 is before 22 because it is enqueued to the back 
  *								of rr queue
  *	------------------------------------
- *	rr1:1,1, , , , , ,1,1,  ,
- *	rr2:_,_,2,_,2,_,2,_,_,__,22
- *	rr3:_,_,_,3,_,3,_,_,_,33,  
+ *	t1:1,1, , , , , ,1,1,  ,
+ *	t2:_,_,2,_,2,_,2,_,_,__,22
+ *	t3:_,_,_,3,_,3,_,_,_,33,  
  *	------------------------------------
  *  Author: Allen
  */ 
@@ -34,7 +34,7 @@ void t2(){
 	Task_Next();
 	add_to_trace(2);
 	Task_Create_System(t1,0);
-	Task_Next();
+	Task_Next();  // goes to 33
 	add_to_trace(22);
 	Task_Next();
 	print_trace();
