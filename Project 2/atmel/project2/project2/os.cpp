@@ -116,7 +116,7 @@ static void kernel_update_ticker(void);
 //static void check_PPP_names(void);
 static void idle (void);
 static void _delay_25ms(void);
-
+static void toggleProfilePulse(void);
 
 
 
@@ -943,6 +943,8 @@ static void kernel_slow_clock(void)
  */
 void OS_Init()
 {
+    toggleProfilePulse();
+
     int i;
 
     /* Set up the clocks */
@@ -998,6 +1000,8 @@ void OS_Init()
 	TCNT1 = 0;
     /* Clear flag. */
     TIFR1 = _BV(OCF1A);
+
+    toggleProfilePulse();
 
     /*
      * The main loop of the RTOS kernel.
@@ -1411,6 +1415,10 @@ int Task_GetArg(void)
     return arg;
 }
 
+void toggleProfilePulse(){
+    PORTB ^= (uint8_t)(_BV(PB5);
+}
+
 /**
  * Runtime entry point into the program; just start the RTOS.  The application layer must define r_main() for its entry point.
  */
@@ -1418,8 +1426,7 @@ int main()
 {
     DDRB = (uint8_t)(_BV(PB5)
 
-    PORTB ^= (uint8_t)(_BV(PB5)
 	OS_Init();
-    PORTB ^= (uint8_t)(_BV(PB5)
+
 	return 0;
 }
