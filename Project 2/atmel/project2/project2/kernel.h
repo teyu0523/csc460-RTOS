@@ -114,19 +114,19 @@ struct td_struct
     uint8_t                         stack[WORKSPACE];
     /** A variable to save the hardware SP into when the task is suspended. */
     uint8_t*               volatile sp;   /* stack pointer into the "workSpace" */
-	/** counts the remaining ticks until it can be run */
+	/** counts the remaining ticks until it can be run for PERIODIC task*/
 	uint16_t counter;
 
-	/** remaining worst case*/
+	/** remaining worst case of PERIODIC task*/
 	uint16_t remaining_wcet;
 
-	/** period of the task*/
+	/** period of the PERIODIC task*/
 	uint16_t period;
 	
-	/** wcet of the task*/
+	/** worst case of the PERIODIC task*/
 	uint16_t wcet;
 	
-	/** start time of task*/
+	/** start time of PERIODIC task*/
 	uint16_t start;
 
     /** The state of the task in this descriptor. */

@@ -104,9 +104,13 @@ extern "C" void TIMER1_COMPA_vect(void) __attribute__ ((signal, naked));
 static int kernel_create_task();
 static void kernel_terminate_task(void);
 /* linkedlist */
+/**Add created task to linkedlist*/
 static void addlist(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_add);
-static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr);//, task_descriptor_t* task_to_find_before);
+/**Get the next task in the linked list that has counter at 0*/
+static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr);
+/**Delete the current task in the linked list*/
 static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_delete);
+/** decrement all counter in the linked list by 1 */
 static void update_all_ticks(linkedlist_t* linkedlist_ptr);
 /* queues */
 static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add);
@@ -178,30 +182,29 @@ static void kernel_dispatch(void)
      */	
     if(cur_task->state != RUNNING || cur_task == idle_task)
     {
-		if(system_queue.head != NULL)
+        if(system_queue.head != NULL)
         {
             cur_task = dequeue(&system_queue);
         }
         else if(periodic_queue.head !=NULL)
         {
             /* Keep running the current PERIODIC task. */
-			task_descriptor_t* temp = get_next(&periodic_queue);
-			if(temp != NULL)
-			{
-				
-				cur_task = temp;
+            task_descriptor_t* temp = get_next(&periodic_queue);
+            if(temp != NULL)
+            {
+                cur_task = temp;
 
-			}
-			else if(rr_queue.head != NULL)
-			{
-				cur_task = dequeue(&rr_queue);
-			}
-			else
-			{
-				/* No task available, so idle. */
-				cur_task = idle_task;
-			}
-		}
+            }
+            else if(rr_queue.head != NULL)
+            {
+                cur_task = dequeue(&rr_queue);
+            }
+            else
+            {
+                /* No task available, so idle. */
+                cur_task = idle_task;
+            }
+        }
         else if(rr_queue.head != NULL)
         {
             cur_task = dequeue(&rr_queue);
@@ -772,22 +775,10 @@ static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to
 		task_to_delete = task_to_delete->prev;
 		task_to_delete->next = task_to_delete->next->next;
 		task_to_delete->next->prev = task_to_delete;
-	}
-	//task_descriptor_t* temp = linkedlist_ptr->head;
-	//while(temp!=NULL)
-	//{
-		//if (temp == task_to_delete){
-			//temp = temp->prev;
-			//temp->next = temp->next->next;
-			//temp->next->prev = temp;
-			//return;
-		//}
-		//temp = temp->next;
-	//}
-	
+	}	
 }
 /**
- *	get the next in the list of task_to_find_before
+ *	get the next available task in the list
  */
 static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr)//, task_descriptor_t* task_to_find_before)
 {	
@@ -888,7 +879,8 @@ static task_descriptor_t* dequeue(queue_t* queue_ptr)
 /**
  * @brief Update the current time.
  * 
- * Perhaps move to the next time slot of the PPP.
+ * Update the global total ticker time as well as 
+ * updating all periodic task counter by decrementing by 1
  */
 static void kernel_update_ticker(void) // runs by interrupt 
 {
@@ -904,10 +896,6 @@ static void kernel_update_ticker(void) // runs by interrupt
 			OS_Abort();
 		}
 	}
-	//if(cur_task->period == 0){
-		//error_msg = ERR_RUN_3_PERIODIC_TOOK_TOO_LONG;
-		//OS_Abort();
-	//}
 	update_all_ticks(&periodic_queue);
 }
 
@@ -1310,7 +1298,7 @@ int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16
 	kernel_request_create_args.level = (uint8_t)PERIODIC;
 	kernel_request_create_args.period = period;
 	kernel_request_create_args.wcet = wcet;
-	kernel_request_create_args.start = start; // add together to determine the next start time
+	kernel_request_create_args.start = start; 
 	kernel_request_create_args.counter = start; //period;
     kernel_request_create_args.remaining_wcet = wcet;
     //kernel_request_create_args.remaining_start = start;
