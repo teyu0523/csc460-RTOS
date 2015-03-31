@@ -33,6 +33,8 @@ project2.d project2.o: .././project2.cpp \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  .././kernel.h .././os.h .././uart/uart.h .././trace/trace.h \
+ .././radio/radio.h .././radio/nRF24L01.h .././radio/packet.h \
+ .././radio/sensor_struct.h .././radio/spi.h .././radio/packet.h \
  .././tests/test0_now.cpp .././tests/test1_system.cpp \
  .././tests/test2_rr.cpp .././tests/test3_system_rr.cpp \
  .././tests/test4_periodic.cpp .././tests/test5_periodic_two.cpp \
@@ -117,6 +119,18 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 .././uart/uart.h:
 
 .././trace/trace.h:
+
+.././radio/radio.h:
+
+.././radio/nRF24L01.h:
+
+.././radio/packet.h:
+
+.././radio/sensor_struct.h:
+
+.././radio/spi.h:
+
+.././radio/packet.h:
 
 .././tests/test0_now.cpp:
 

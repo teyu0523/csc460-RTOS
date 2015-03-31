@@ -1643,129 +1643,129 @@ serviceTest:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF25:
-	.string	"service"
-.LASF47:
-	.string	"_Z11print_tracev"
-.LASF35:
-	.string	"prev"
 .LASF46:
 	.string	"uart_init"
-.LASF29:
-	.string	"period"
-.LASF10:
-	.string	"long long unsigned int"
-.LASF24:
-	.string	"task_descriptor_t"
-.LASF21:
-	.string	"READY"
-.LASF34:
-	.string	"next"
-.LASF19:
-	.string	"DEAD"
-.LASF4:
-	.string	"int16_t"
-.LASF51:
-	.string	"_Z12add_to_tracej"
-.LASF9:
-	.string	"long long int"
-.LASF2:
-	.string	"signed char"
-.LASF23:
-	.string	"task_state_t"
+.LASF0:
+	.string	"int8_t"
 .LASF32:
 	.string	"state"
-.LASF7:
-	.string	"long int"
-.LASF22:
-	.string	"WAITING"
-.LASF5:
-	.string	"uint16_t"
-.LASF13:
-	.string	"double"
-.LASF57:
-	.string	"D:\\\\Google Drive\\\\Course\\\\csc460\\\\lab\\\\CSC460\\\\csc460-RTOS\\\\Project 2\\\\atmel\\\\project2\\\\project2\\\\Debug"
-.LASF30:
-	.string	"wcet"
-.LASF42:
-	.string	"Service_Subscribe"
-.LASF44:
-	.string	"print_trace"
-.LASF17:
-	.string	"value"
-.LASF48:
-	.string	"_Z9uart_initv"
-.LASF6:
-	.string	"unsigned int"
-.LASF60:
-	.string	"_Z6r_mainv"
-.LASF8:
-	.string	"long unsigned int"
-.LASF58:
-	.string	"12task_state_t"
-.LASF33:
-	.string	"level"
-.LASF39:
-	.string	"_Z2rrv"
-.LASF37:
-	.string	"bool"
-.LASF49:
-	.string	"add_to_trace"
-.LASF53:
-	.string	"Task_Create_System"
-.LASF28:
-	.string	"remaining_wcet"
-.LASF56:
-	.string	".././project2.cpp"
 .LASF15:
 	.string	"tasks"
 .LASF36:
 	.string	"sizetype"
-.LASF45:
-	.string	"Service_Init"
-.LASF12:
-	.string	"float"
-.LASF3:
-	.string	"unsigned char"
-.LASF26:
-	.string	"td_struct"
-.LASF18:
-	.string	"counter"
-.LASF20:
-	.string	"RUNNING"
-.LASF59:
-	.string	"r_main"
-.LASF55:
-	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
-.LASF52:
-	.string	"_Z14set_trace_testh"
 .LASF38:
 	.string	"_Z1sv"
-.LASF11:
-	.string	"char"
-.LASF40:
-	.string	"MOSI"
-.LASF43:
-	.string	"Service_Publish"
-.LASF16:
-	.string	"valueLocations"
+.LASF47:
+	.string	"_Z11print_tracev"
+.LASF17:
+	.string	"value"
 .LASF61:
 	.string	"serviceTest"
-.LASF0:
-	.string	"int8_t"
-.LASF41:
-	.string	"MISO"
+.LASF57:
+	.string	"D:\\\\Google Drive\\\\Course\\\\csc460\\\\lab\\\\CSC460\\\\csc460-RTOS\\\\project3\\\\project3\\\\project2\\\\Debug"
 .LASF1:
 	.string	"uint8_t"
-.LASF50:
-	.string	"set_trace_test"
+.LASF37:
+	.string	"bool"
+.LASF22:
+	.string	"WAITING"
+.LASF12:
+	.string	"float"
+.LASF42:
+	.string	"Service_Subscribe"
+.LASF9:
+	.string	"long long int"
+.LASF10:
+	.string	"long long unsigned int"
 .LASF14:
 	.string	"SERVICE"
-.LASF54:
-	.string	"Task_Create_Periodic"
 .LASF31:
 	.string	"start"
+.LASF7:
+	.string	"long int"
+.LASF58:
+	.string	"12task_state_t"
+.LASF29:
+	.string	"period"
+.LASF49:
+	.string	"add_to_trace"
+.LASF26:
+	.string	"td_struct"
+.LASF19:
+	.string	"DEAD"
+.LASF3:
+	.string	"unsigned char"
+.LASF18:
+	.string	"counter"
+.LASF43:
+	.string	"Service_Publish"
+.LASF51:
+	.string	"_Z12add_to_tracej"
+.LASF2:
+	.string	"signed char"
+.LASF6:
+	.string	"unsigned int"
+.LASF5:
+	.string	"uint16_t"
 .LASF27:
 	.string	"stack"
+.LASF8:
+	.string	"long unsigned int"
+.LASF40:
+	.string	"MOSI"
+.LASF28:
+	.string	"remaining_wcet"
+.LASF52:
+	.string	"_Z14set_trace_testh"
+.LASF48:
+	.string	"_Z9uart_initv"
+.LASF16:
+	.string	"valueLocations"
+.LASF11:
+	.string	"char"
+.LASF41:
+	.string	"MISO"
+.LASF20:
+	.string	"RUNNING"
+.LASF21:
+	.string	"READY"
+.LASF30:
+	.string	"wcet"
+.LASF4:
+	.string	"int16_t"
+.LASF53:
+	.string	"Task_Create_System"
+.LASF45:
+	.string	"Service_Init"
+.LASF13:
+	.string	"double"
+.LASF44:
+	.string	"print_trace"
+.LASF56:
+	.string	".././project2.cpp"
+.LASF54:
+	.string	"Task_Create_Periodic"
+.LASF33:
+	.string	"level"
+.LASF59:
+	.string	"r_main"
+.LASF23:
+	.string	"task_state_t"
+.LASF39:
+	.string	"_Z2rrv"
+.LASF60:
+	.string	"_Z6r_mainv"
+.LASF24:
+	.string	"task_descriptor_t"
+.LASF35:
+	.string	"prev"
+.LASF25:
+	.string	"service"
+.LASF50:
+	.string	"set_trace_test"
+.LASF34:
+	.string	"next"
+.LASF55:
+	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"
 .global __do_clear_bss

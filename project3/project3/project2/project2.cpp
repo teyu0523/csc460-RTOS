@@ -8,7 +8,6 @@
 #include "trace/trace.h"
 #include "radio/radio.h"
 #include "radio/packet.h"
-#include "radio/"
 
 #define USE_TEST_013
 
@@ -31,26 +30,6 @@
 
 #ifdef _USE_MAIN_
 EVENT* print_event;
-
-void p2()
-{
-	// // 1->output, 0->input
-	// // DDRB defines the direction of the pin in B section  
-	// DDRB = 1 << PB7;
-	// for(;;){
-	// 	_delay_ms(10);
-	// 	//turns on/off the pin by xoring registor back and forth
-	// 	PORTB ^= 1 << PB7;
-	// }
-
-	DDRH = (uint8_t)(_BV(PB7) | _BV(PB6));
-
-	for(;;){
-		_delay_ms(1);
-		PORTB ^= (uint8_t)(_BV(PB7) | _BV(PB6));
-		//Task_Next();
-	}
-}
 
 /*void p()
 {
@@ -97,6 +76,7 @@ void send_radio(){
 int r_main(void)
 {
 	
+	Task_Create_Periodic(send_radio().0.10,4.5);
 	return 1;
 }
 #endif

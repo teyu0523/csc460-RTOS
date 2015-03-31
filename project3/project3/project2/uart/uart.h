@@ -1,25 +1,33 @@
-#ifndef __UART_H__
-#define __UART_H__
-#include <stdint.h>
+/*
+ * uart.h
+ *
+ * Created: 25/01/2015 12:53:55 PM
+ *  Author: Daniel
+ */ 
+
+
+#ifndef UART_H_
+#define UART_H_
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-/** modifications
-	- moved the volatile uint8_t uart_rx variable from the h file to the c file
-	- renamed to cpp file
-	- changed the cli() and sei() functoins to Disable_interrupts() and Enable_Interrupts()
-	- included the "commons.h" filed
-	- removed UART_BPS code and hard-coded it to be 9600 baud
-*/
+#define UART_BUFFER_SIZE    32
 
-#define UART_BUFFER_SIZE 100			// size of Rx ring buffer.
+void Roomba_Send_Byte(uint8_t data_out);
 
-void uart_init();
-void uart_putchar(char c);
-char uart_getchar(int index);
-void uart_putstr(char *s);
-int uart_write(uint8_t* const str, int len);
+typedef enum _uart_bps
+{
+	UART_19200,
+	UART_38400,
+	UART_57600,
+	UART_115200,
+	UART_DEFAULT,
+} UART_BPS;
 
-uint8_t uart_bytes_recv(void);
-void uart_reset_recv(void);
-#endif
+void Roomba_UART_Init(UART_BPS baud);
+uint8_t uart_bytes_received(void);
+void uart_reset_receive(void);
+uint8_t uart_get_byte(int index);
+
+#endif /* UART_H_ */
