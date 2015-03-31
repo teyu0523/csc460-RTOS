@@ -53,6 +53,16 @@ EVENT* print_event;
 	}
 }*/
 
+void ir_rxhandler() {
+
+}
+
+void handleIRPackets(){
+	
+
+}
+
+
 void recieve_radio(){
 
 }
