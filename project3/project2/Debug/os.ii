@@ -1,0 +1,2338 @@
+# 1 ".././os.cpp"
+# 1 "D:\\Google Drive\\Course\\csc460\\lab\\CSC460\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
+# 1 "<command-line>"
+# 1 ".././os.cpp"
+# 12 ".././os.cpp"
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 1 3
+# 99 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\sfr_defs.h" 1 3
+# 126 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\sfr_defs.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\inttypes.h" 1 3
+# 37 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\inttypes.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdint.h" 1 3 4
+# 9 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdint.h" 3 4
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 1 3 4
+# 121 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef signed int int8_t __attribute__((__mode__(__QI__)));
+typedef unsigned int uint8_t __attribute__((__mode__(__QI__)));
+typedef signed int int16_t __attribute__ ((__mode__ (__HI__)));
+typedef unsigned int uint16_t __attribute__ ((__mode__ (__HI__)));
+typedef signed int int32_t __attribute__ ((__mode__ (__SI__)));
+typedef unsigned int uint32_t __attribute__ ((__mode__ (__SI__)));
+
+typedef signed int int64_t __attribute__((__mode__(__DI__)));
+typedef unsigned int uint64_t __attribute__((__mode__(__DI__)));
+# 142 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+# 159 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef int8_t int_least8_t;
+
+
+
+
+typedef uint8_t uint_least8_t;
+
+
+
+
+typedef int16_t int_least16_t;
+
+
+
+
+typedef uint16_t uint_least16_t;
+
+
+
+
+typedef int32_t int_least32_t;
+
+
+
+
+typedef uint32_t uint_least32_t;
+
+
+
+
+
+
+
+typedef int64_t int_least64_t;
+
+
+
+
+
+
+typedef uint64_t uint_least64_t;
+# 213 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef int8_t int_fast8_t;
+
+
+
+
+typedef uint8_t uint_fast8_t;
+
+
+
+
+typedef int16_t int_fast16_t;
+
+
+
+
+typedef uint16_t uint_fast16_t;
+
+
+
+
+typedef int32_t int_fast32_t;
+
+
+
+
+typedef uint32_t uint_fast32_t;
+
+
+
+
+
+
+
+typedef int64_t int_fast64_t;
+
+
+
+
+
+
+typedef uint64_t uint_fast64_t;
+# 273 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef int64_t intmax_t;
+
+
+
+
+typedef uint64_t uintmax_t;
+# 10 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdint.h" 2 3 4
+# 38 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\inttypes.h" 2 3
+# 77 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\inttypes.h" 3
+typedef int32_t int_farptr_t;
+
+
+
+typedef uint32_t uint_farptr_t;
+# 127 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\sfr_defs.h" 2 3
+# 100 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+# 174 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iom2560.h" 1 3
+# 38 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iom2560.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iomxx0_1.h" 1 3
+# 1613 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iomxx0_1.h" 3
+       
+# 1614 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iomxx0_1.h" 3
+
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+# 39 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iom2560.h" 2 3
+# 175 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+# 616 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\portpins.h" 1 3
+# 617 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\common.h" 1 3
+# 619 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\version.h" 1 3
+# 621 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+
+
+
+
+
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\fuse.h" 1 3
+# 239 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\fuse.h" 3
+typedef struct
+{
+    unsigned char low;
+    unsigned char high;
+    unsigned char extended;
+} __fuse_t;
+# 628 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\lock.h" 1 3
+# 631 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+# 13 ".././os.cpp" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\interrupt.h" 1 3
+# 14 ".././os.cpp" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 1 3
+# 43 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 1 3
+# 40 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
+static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
+# 80 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+void
+_delay_loop_1(uint8_t __count)
+{
+ __asm__ volatile (
+  "1: dec %0" "\n\t"
+  "brne 1b"
+  : "=r" (__count)
+  : "0" (__count)
+ );
+}
+# 102 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+void
+_delay_loop_2(uint16_t __count)
+{
+ __asm__ volatile (
+  "1: sbiw %0,1" "\n\t"
+  "brne 1b"
+  : "=w" (__count)
+  : "0" (__count)
+ );
+}
+# 44 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 2 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 1 3
+# 121 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern "C" {
+
+
+
+
+
+extern double cos(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double sin(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double tan(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double fabs(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double fmod(double __x, double __y) __attribute__((__const__));
+# 168 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double modf(double __x, double *__iptr);
+
+
+
+extern float modff (float __x, float *__iptr);
+
+
+
+
+extern double sqrt(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double cbrt(double __x) __attribute__((__const__));
+# 194 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double hypot (double __x, double __y) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double square(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double floor(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double ceil(double __x) __attribute__((__const__));
+# 234 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double frexp(double __x, int *__pexp);
+
+
+
+
+
+
+
+extern double ldexp(double __x, int __exp) __attribute__((__const__));
+
+
+
+
+
+extern double exp(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double cosh(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double sinh(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double tanh(double __x) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double acos(double __x) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double asin(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double atan(double __x) __attribute__((__const__));
+# 298 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double atan2(double __y, double __x) __attribute__((__const__));
+
+
+
+
+
+extern double log(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double log10(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double pow(double __x, double __y) __attribute__((__const__));
+
+
+
+
+
+
+extern int isnan(double __x) __attribute__((__const__));
+# 333 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern int isinf(double __x) __attribute__((__const__));
+
+
+
+
+
+
+__attribute__((__const__)) static inline int isfinite (double __x)
+{
+    unsigned char __exp;
+    __asm__ (
+ "mov	%0, %C1		\n\t"
+ "lsl	%0		\n\t"
+ "mov	%0, %D1		\n\t"
+ "rol	%0		"
+ : "=r" (__exp)
+ : "r" (__x) );
+    return __exp != 0xff;
+}
+
+
+
+
+
+
+__attribute__((__const__)) static inline double copysign (double __x, double __y)
+{
+    __asm__ (
+ "bst	%D2, 7	\n\t"
+ "bld	%D0, 7	"
+ : "=r" (__x)
+ : "0" (__x), "r" (__y) );
+    return __x;
+}
+# 376 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern int signbit (double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double fdim (double __x, double __y) __attribute__((__const__));
+# 392 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double fma (double __x, double __y, double __z) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double fmax (double __x, double __y) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double fmin (double __x, double __y) __attribute__((__const__));
+
+
+
+
+
+
+extern double trunc (double __x) __attribute__((__const__));
+# 426 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double round (double __x) __attribute__((__const__));
+# 439 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern long lround (double __x) __attribute__((__const__));
+# 453 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern long lrint (double __x) __attribute__((__const__));
+
+
+
+}
+# 45 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 2 3
+# 84 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+static inline void _delay_us(double __us) __attribute__((always_inline));
+static inline void _delay_ms(double __ms) __attribute__((always_inline));
+# 141 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+void
+_delay_ms(double __ms)
+{
+ double __tmp ;
+
+
+
+ uint32_t __ticks_dc;
+ extern void __builtin_avr_delay_cycles(unsigned long);
+ __tmp = ((16000000L) / 1e3) * __ms;
+# 160 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+  __ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+
+
+ __builtin_avr_delay_cycles(__ticks_dc);
+# 186 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+}
+# 223 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+void
+_delay_us(double __us)
+{
+ double __tmp ;
+
+
+
+ uint32_t __ticks_dc;
+ extern void __builtin_avr_delay_cycles(unsigned long);
+ __tmp = ((16000000L) / 1e6) * __us;
+# 242 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+  __ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+
+
+ __builtin_avr_delay_cycles(__ticks_dc);
+# 268 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+}
+# 15 ".././os.cpp" 2
+
+# 1 ".././os.h" 1
+
+
+
+
+extern "C" {
+# 224 ".././os.h"
+typedef struct service SERVICE;
+# 254 ".././os.h"
+void OS_Abort();
+# 272 ".././os.h"
+int8_t Task_Create_System(void (*f)(void), int16_t arg);
+int8_t Task_Create_RR( void (*f)(void), int16_t arg);
+int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name);
+# 291 ".././os.h"
+int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16_t wcet, uint16_t start);
+
+
+
+
+
+
+
+void Task_Terminate();
+
+
+void Task_Next();
+
+
+
+
+int16_t Task_GetArg();
+# 318 ".././os.h"
+SERVICE *Service_Init();
+# 328 ".././os.h"
+void Service_Subscribe( SERVICE *s, int16_t *v );
+# 338 ".././os.h"
+void Service_Publish( SERVICE *s, int16_t v );
+# 358 ".././os.h"
+uint16_t Now();
+
+
+}
+# 17 ".././os.cpp" 2
+# 1 ".././kernel.h" 1
+# 15 ".././kernel.h"
+extern "C" {
+# 48 ".././kernel.h"
+typedef void (*voidfuncvoid_ptr) (void);
+
+
+
+
+typedef enum
+{
+    DEAD = 0,
+    RUNNING,
+    READY,
+    WAITING
+}
+task_state_t;
+
+
+
+
+typedef enum
+{
+    NONE = 0,
+    TIMER_EXPIRED,
+    TASK_CREATE,
+    TASK_TERMINATE,
+    TASK_NEXT,
+    TASK_GET_ARG,
+}
+kernel_request_t;
+
+
+
+
+
+typedef struct
+{
+
+    voidfuncvoid_ptr f;
+
+    int arg;
+
+    uint8_t level;
+
+
+ uint16_t counter;
+
+
+    uint16_t remaining_wcet;
+
+
+ uint16_t period;
+
+
+ uint16_t wcet;
+
+
+ uint16_t start;
+}
+create_args_t;
+
+
+typedef struct td_struct task_descriptor_t;
+
+
+
+struct td_struct
+{
+
+    uint8_t stack[256];
+
+    uint8_t* volatile sp;
+
+ uint16_t counter;
+
+
+ uint16_t remaining_wcet;
+
+
+ uint16_t period;
+
+
+ uint16_t wcet;
+
+
+ uint16_t start;
+
+
+    task_state_t state;
+
+    int arg;
+
+    uint8_t level;
+
+    task_descriptor_t* next;
+
+ task_descriptor_t* prev;
+};
+
+typedef struct
+{
+ task_descriptor_t* head;
+ task_descriptor_t* tail;
+}
+linkedlist_t;
+
+
+
+
+typedef struct
+{
+
+    task_descriptor_t* head;
+
+    task_descriptor_t* tail;
+}
+queue_t;
+
+struct service{
+    task_descriptor_t* tasks[3];
+    int16_t* valueLocations[3];
+    int16_t value;
+    int16_t counter;
+
+
+
+
+};
+
+
+}
+# 18 ".././os.cpp" 2
+# 1 ".././error_code.h" 1
+# 16 ".././error_code.h"
+enum {
+
+
+
+
+ERR_1_PPP_NAME_OUT_OF_RANGE,
+
+
+ERR_2_CREATE_NAME_OUT_OF_RANGE,
+
+
+ERR_3_PERIODIC_START_TIME_BELOW_CURRENT_TICK,
+
+
+ERR_4_PERIODIC_WCET_GREATER_THAN_PERIOD,
+
+
+ERR_5_PERIODIC_INVALID_INPUT,
+
+
+ERR_6_TIME_INTERVAL_IN_PPP_0,
+
+
+
+
+
+ERR_RUN_1_USER_CALLED_OS_ABORT,
+
+
+ERR_RUN_2_TOO_MANY_TASKS,
+
+
+ERR_RUN_3_PERIODIC_TOOK_TOO_LONG,
+
+
+ERR_RUN_4_ILLEGAL_ISR_KERNEL_REQUEST,
+
+
+ERR_RUN_5_RTOS_INTERNAL_ERROR,
+
+
+ERR_RUN_6_PERIODIC_COLLISION,
+
+
+ERR_RUN_7_SUBSCRIBE_MAX_SUBSCRIBERS_REACHED,
+
+
+ERR_RUN_8_SUBSCRIBE_PERIODIC_TASK,
+
+
+ERR_RUN_9_SERVICE_MAX_SERVICES_REACH
+};
+# 19 ".././os.cpp" 2
+# 1 ".././uart/uart.h" 1
+# 17 ".././uart/uart.h"
+void uart_init();
+void uart_putchar(char c);
+char uart_getchar(int index);
+void uart_putstr(char *s);
+int uart_write(uint8_t* const str, int len);
+
+uint8_t uart_bytes_recv(void);
+void uart_reset_recv(void);
+# 20 ".././os.cpp" 2
+# 1 ".././trace/trace.h" 1
+# 19 ".././trace/trace.h"
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 1 3
+# 45 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 1 3 4
+# 212 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 3 4
+typedef unsigned int size_t;
+# 46 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 2 3
+# 56 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 3
+extern "C" {
+# 111 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 3
+extern int ffs (int __val) __attribute__((__const__));
+extern int ffsl (long __val) __attribute__((__const__));
+extern int ffsll (long long __val) __attribute__((__const__));
+extern void *memccpy(void *, const void *, int, size_t);
+extern void *memchr(const void *, int, size_t) __attribute__((__pure__));
+extern int memcmp(const void *, const void *, size_t) __attribute__((__pure__));
+extern void *memcpy(void *, const void *, size_t);
+extern void *memmem(const void *, size_t, const void *, size_t) __attribute__((__pure__));
+extern void *memmove(void *, const void *, size_t);
+extern void *memrchr(const void *, int, size_t) __attribute__((__pure__));
+extern void *memset(void *, int, size_t);
+extern char *strcat(char *, const char *);
+extern char *strchr(const char *, int) __attribute__((__pure__));
+extern char *strchrnul(const char *, int) __attribute__((__pure__));
+extern int strcmp(const char *, const char *) __attribute__((__pure__));
+extern char *strcpy(char *, const char *);
+extern int strcasecmp(const char *, const char *) __attribute__((__pure__));
+extern char *strcasestr(const char *, const char *) __attribute__((__pure__));
+extern size_t strcspn(const char *__s, const char *__reject) __attribute__((__pure__));
+extern char *strdup(const char *s1);
+extern size_t strlcat(char *, const char *, size_t);
+extern size_t strlcpy(char *, const char *, size_t);
+extern size_t strlen(const char *) __attribute__((__pure__));
+extern char *strlwr(char *);
+extern char *strncat(char *, const char *, size_t);
+extern int strncmp(const char *, const char *, size_t) __attribute__((__pure__));
+extern char *strncpy(char *, const char *, size_t);
+extern int strncasecmp(const char *, const char *, size_t) __attribute__((__pure__));
+extern size_t strnlen(const char *, size_t) __attribute__((__pure__));
+extern char *strpbrk(const char *__s, const char *__accept) __attribute__((__pure__));
+extern char *strrchr(const char *, int) __attribute__((__pure__));
+extern char *strrev(char *);
+extern char *strsep(char **, const char *);
+extern size_t strspn(const char *__s, const char *__accept) __attribute__((__pure__));
+extern char *strstr(const char *, const char *) __attribute__((__pure__));
+extern char *strtok(char *, const char *);
+extern char *strtok_r(char *, const char *, char **);
+extern char *strupr(char *);
+
+
+}
+# 20 ".././trace/trace.h" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 1 3
+# 47 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 1 3 4
+# 48 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 2 3
+
+
+
+
+
+
+extern "C" {
+# 68 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+typedef struct {
+ int quot;
+ int rem;
+} div_t;
+
+
+typedef struct {
+ long quot;
+ long rem;
+} ldiv_t;
+
+
+typedef int (*__compar_fn_t)(const void *, const void *);
+# 114 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void abort(void) __attribute__((__noreturn__));
+
+
+
+
+extern int abs(int __i) __attribute__((__const__));
+# 128 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern long labs(long __i) __attribute__((__const__));
+# 151 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void *bsearch(const void *__key, const void *__base, size_t __nmemb,
+       size_t __size, int (*__compar)(const void *, const void *));
+
+
+
+
+
+
+
+extern div_t div(int __num, int __denom) __asm__("__divmodhi4") __attribute__((__const__));
+
+
+
+
+
+extern ldiv_t ldiv(long __num, long __denom) __asm__("__divmodsi4") __attribute__((__const__));
+# 183 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void qsort(void *__base, size_t __nmemb, size_t __size,
+    __compar_fn_t __compar);
+# 216 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern long strtol(const char *__nptr, char **__endptr, int __base);
+# 250 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern unsigned long strtoul(const char *__nptr, char **__endptr, int __base);
+# 262 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern long atol(const char *__s) __attribute__((__pure__));
+# 274 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern int atoi(const char *__s) __attribute__((__pure__));
+# 286 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void exit(int __status) __attribute__((__noreturn__));
+# 298 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void *malloc(size_t __size) __attribute__((__malloc__));
+
+
+
+
+
+
+extern void free(void *__ptr);
+
+
+
+
+extern size_t __malloc_margin;
+
+
+
+
+extern char *__malloc_heap_start;
+
+
+
+
+extern char *__malloc_heap_end;
+
+
+
+
+
+
+extern void *calloc(size_t __nele, size_t __size) __attribute__((__malloc__));
+# 346 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void *realloc(void *__ptr, size_t __size) __attribute__((__malloc__));
+
+extern double strtod(const char *__nptr, char **__endptr);
+
+extern double atof(const char *__nptr);
+# 372 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern int rand(void);
+
+
+
+extern void srand(unsigned int __seed);
+
+
+
+
+
+
+extern int rand_r(unsigned long *__ctx);
+# 417 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern __inline__
+char *itoa (int __val, char *__s, int __radix)
+{
+    if (!__builtin_constant_p (__radix)) {
+ extern char *__itoa (int, char *, int);
+ return __itoa (__val, __s, __radix);
+    } else if (__radix < 2 || __radix > 36) {
+ *__s = 0;
+ return __s;
+    } else {
+ extern char *__itoa_ncheck (int, char *, unsigned char);
+ return __itoa_ncheck (__val, __s, __radix);
+    }
+}
+# 462 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern __inline__
+char *ltoa (long __val, char *__s, int __radix)
+{
+    if (!__builtin_constant_p (__radix)) {
+ extern char *__ltoa (long, char *, int);
+ return __ltoa (__val, __s, __radix);
+    } else if (__radix < 2 || __radix > 36) {
+ *__s = 0;
+ return __s;
+    } else {
+ extern char *__ltoa_ncheck (long, char *, unsigned char);
+ return __ltoa_ncheck (__val, __s, __radix);
+    }
+}
+# 505 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern __inline__
+char *utoa (unsigned int __val, char *__s, int __radix)
+{
+    if (!__builtin_constant_p (__radix)) {
+ extern char *__utoa (unsigned int, char *, int);
+ return __utoa (__val, __s, __radix);
+    } else if (__radix < 2 || __radix > 36) {
+ *__s = 0;
+ return __s;
+    } else {
+ extern char *__utoa_ncheck (unsigned int, char *, unsigned char);
+ return __utoa_ncheck (__val, __s, __radix);
+    }
+}
+# 547 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern __inline__
+char *ultoa (unsigned long __val, char *__s, int __radix)
+{
+    if (!__builtin_constant_p (__radix)) {
+ extern char *__ultoa (unsigned long, char *, int);
+ return __ultoa (__val, __s, __radix);
+    } else if (__radix < 2 || __radix > 36) {
+ *__s = 0;
+ return __s;
+    } else {
+ extern char *__ultoa_ncheck (unsigned long, char *, unsigned char);
+ return __ultoa_ncheck (__val, __s, __radix);
+    }
+}
+# 579 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern long random(void);
+
+
+
+
+extern void srandom(unsigned long __seed);
+
+
+
+
+
+
+
+extern long random_r(unsigned long *__ctx);
+# 638 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern char *dtostre(double __val, char *__s, unsigned char __prec,
+       unsigned char __flags);
+# 655 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern char *dtostrf(double __val, signed char __width,
+                     unsigned char __prec, char *__s);
+# 677 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+}
+# 21 ".././trace/trace.h" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 1 3
+# 45 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdarg.h" 1 3 4
+# 40 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 98 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdarg.h" 3 4
+typedef __gnuc_va_list va_list;
+# 46 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 2 3
+
+
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 1 3 4
+# 50 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 2 3
+# 242 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+struct __file {
+ char *buf;
+ unsigned char unget;
+ uint8_t flags;
+# 261 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+ int size;
+ int len;
+ int (*put)(char, struct __file *);
+ int (*get)(struct __file *);
+ void *udata;
+};
+# 397 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern "C" {
+
+
+
+
+
+
+
+extern struct __file *__iob[];
+# 417 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern struct __file *fdevopen(int (*__put)(char, struct __file*), int (*__get)(struct __file*));
+# 434 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int fclose(struct __file *__stream);
+# 608 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int vfprintf(struct __file *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+extern int vfprintf_P(struct __file *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+
+extern int fputc(int __c, struct __file *__stream);
+
+
+
+
+extern int putc(int __c, struct __file *__stream);
+
+
+extern int putchar(int __c);
+# 649 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int printf(const char *__fmt, ...);
+
+
+
+
+
+extern int printf_P(const char *__fmt, ...);
+
+
+
+
+
+
+
+extern int vprintf(const char *__fmt, va_list __ap);
+
+
+
+
+
+extern int sprintf(char *__s, const char *__fmt, ...);
+
+
+
+
+
+extern int sprintf_P(char *__s, const char *__fmt, ...);
+# 685 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int snprintf(char *__s, size_t __n, const char *__fmt, ...);
+
+
+
+
+
+extern int snprintf_P(char *__s, size_t __n, const char *__fmt, ...);
+
+
+
+
+
+extern int vsprintf(char *__s, const char *__fmt, va_list ap);
+
+
+
+
+
+extern int vsprintf_P(char *__s, const char *__fmt, va_list ap);
+# 713 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int vsnprintf(char *__s, size_t __n, const char *__fmt, va_list ap);
+
+
+
+
+
+extern int vsnprintf_P(char *__s, size_t __n, const char *__fmt, va_list ap);
+
+
+
+
+extern int fprintf(struct __file *__stream, const char *__fmt, ...);
+
+
+
+
+
+extern int fprintf_P(struct __file *__stream, const char *__fmt, ...);
+
+
+
+
+
+
+extern int fputs(const char *__str, struct __file *__stream);
+
+
+
+
+extern int fputs_P(const char *__str, struct __file *__stream);
+
+
+
+
+
+extern int puts(const char *__str);
+
+
+
+
+extern int puts_P(const char *__str);
+# 762 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern size_t fwrite(const void *__ptr, size_t __size, size_t __nmemb,
+         struct __file *__stream);
+
+
+
+
+
+
+
+extern int fgetc(struct __file *__stream);
+
+
+
+
+extern int getc(struct __file *__stream);
+
+
+extern int getchar(void);
+# 810 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int ungetc(int __c, struct __file *__stream);
+# 822 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern char *fgets(char *__str, int __size, struct __file *__stream);
+
+
+
+
+
+
+extern char *gets(char *__str);
+# 840 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern size_t fread(void *__ptr, size_t __size, size_t __nmemb,
+        struct __file *__stream);
+
+
+
+
+extern void clearerr(struct __file *__stream);
+# 857 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int feof(struct __file *__stream);
+# 868 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int ferror(struct __file *__stream);
+
+
+
+
+
+
+extern int vfscanf(struct __file *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+extern int vfscanf_P(struct __file *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+
+
+extern int fscanf(struct __file *__stream, const char *__fmt, ...);
+
+
+
+
+extern int fscanf_P(struct __file *__stream, const char *__fmt, ...);
+
+
+
+
+
+
+extern int scanf(const char *__fmt, ...);
+
+
+
+
+extern int scanf_P(const char *__fmt, ...);
+
+
+
+
+
+
+
+extern int vscanf(const char *__fmt, va_list __ap);
+
+
+
+
+
+
+
+extern int sscanf(const char *__buf, const char *__fmt, ...);
+
+
+
+
+extern int sscanf_P(const char *__buf, const char *__fmt, ...);
+# 938 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+static __inline__ int fflush(struct __file *stream __attribute__((unused)))
+{
+ return 0;
+}
+
+
+
+}
+# 22 ".././trace/trace.h" 2
+
+
+
+
+
+void print_trace(void);
+void add_to_trace(uint16_t number);
+void set_trace_test(uint8_t number);
+int is_trace_full();
+void reset_trace();
+# 21 ".././os.cpp" 2
+
+
+
+
+
+extern int r_main();
+
+
+
+extern const unsigned char PPP[];
+
+
+extern const unsigned int PT;
+
+
+
+static task_descriptor_t* cur_task = __null;
+
+
+
+
+
+static volatile uint16_t kernel_sp;
+
+
+static task_descriptor_t task_desc[8 + 1];
+
+
+static task_descriptor_t* idle_task = &task_desc[8];
+
+
+static volatile kernel_request_t kernel_request;
+
+
+static volatile create_args_t kernel_request_create_args;
+
+
+static volatile int kernel_request_retval;
+
+
+static queue_t dead_pool_queue;
+
+
+static queue_t rr_queue;
+
+
+static linkedlist_t periodic_queue;
+
+
+static queue_t system_queue;
+
+static SERVICE service_list[10];
+static uint8_t num_services = 0;
+
+
+static volatile uint8_t ticks_counter = 0;
+static uint16_t volatile time_before_interrupt = 0;
+
+
+
+
+
+
+
+static task_descriptor_t* name_to_task_ptr[8 + 1];
+
+
+
+
+
+static uint8_t volatile error_msg = ERR_RUN_1_USER_CALLED_OS_ABORT;
+
+
+
+
+static void kernel_main_loop(void);
+static void kernel_dispatch(void);
+static void kernel_handle_request(void);
+
+static void exit_kernel(void) __attribute((noinline, naked));
+static void enter_kernel(void) __attribute((noinline, naked));
+extern "C" void __vector_17(void) __attribute__ ((signal, naked));
+
+static int kernel_create_task();
+static void kernel_terminate_task(void);
+
+static void addlist(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_add);
+static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr);
+static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_delete);
+static void update_all_ticks(linkedlist_t* linkedlist_ptr);
+
+static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add);
+static task_descriptor_t* dequeue(queue_t* queue_ptr);
+
+static void kernel_update_ticker(void);
+
+static void idle (void);
+static void _delay_25ms(void);
+static void toggleProfilePulse(void);
+# 129 ".././os.cpp"
+static void idle (void)
+{
+    for(;;)
+    {};
+}
+# 150 ".././os.cpp"
+static void kernel_main_loop(void)
+{
+    for(;;)
+    {
+        kernel_dispatch();
+
+        exit_kernel();
+
+
+
+
+        kernel_handle_request();
+    }
+}
+# 174 ".././os.cpp"
+static void kernel_dispatch(void)
+{
+
+
+
+    if(cur_task->state != RUNNING || cur_task == idle_task)
+    {
+  if(system_queue.head != __null)
+        {
+            cur_task = dequeue(&system_queue);
+        }
+        else if(periodic_queue.head !=__null)
+        {
+
+   task_descriptor_t* temp = get_next(&periodic_queue);
+   if(temp != __null)
+   {
+
+    cur_task = temp;
+
+   }
+   else if(rr_queue.head != __null)
+   {
+    cur_task = dequeue(&rr_queue);
+   }
+   else
+   {
+
+    cur_task = idle_task;
+   }
+  }
+        else if(rr_queue.head != __null)
+        {
+            cur_task = dequeue(&rr_queue);
+        }
+        else
+        {
+
+            cur_task = idle_task;
+        }
+
+        cur_task->state = RUNNING;
+    }
+}
+# 228 ".././os.cpp"
+static void kernel_handle_request(void)
+{
+
+   switch(kernel_request)
+    {
+    case NONE:
+
+        break;
+
+    case TIMER_EXPIRED:
+        kernel_update_ticker();
+
+
+        if(cur_task->level == 1 && cur_task->state == RUNNING)
+        {
+            cur_task->state = READY;
+            enqueue(&rr_queue, cur_task);
+        }
+        break;
+
+    case TASK_CREATE:
+        kernel_request_retval = kernel_create_task();
+
+
+
+
+        if(kernel_request_retval)
+        {
+
+
+            if(cur_task->level != 3 && kernel_request_create_args.level == 3 )
+            {
+    cur_task->state = READY;
+    if(cur_task->level == 1){
+     enqueue(&rr_queue, cur_task);
+    }
+   } else if(cur_task->level == 1 && kernel_request_create_args.level == 2 )
+   {
+    cur_task->state = READY;
+    enqueue(&rr_queue, cur_task);
+   }
+        } else {
+   error_msg = ERR_RUN_2_TOO_MANY_TASKS;
+   OS_Abort();
+  }
+        break;
+
+    case TASK_TERMINATE:
+  if(cur_task != idle_task)
+  {
+         kernel_terminate_task();
+  }
+        break;
+
+    case TASK_NEXT:
+  switch(cur_task->level)
+  {
+     case 3:
+         enqueue(&system_queue, cur_task);
+   break;
+
+     case 2:
+
+         break;
+
+     case 1:
+         enqueue(&rr_queue, cur_task);
+         break;
+
+     default:
+   break;
+  }
+
+  cur_task->state = READY;
+        break;
+
+    case TASK_GET_ARG:
+
+        break;
+
+    default:
+
+        error_msg = -1;
+        OS_Abort();
+        break;
+    }
+    kernel_request = NONE;
+}
+# 441 ".././os.cpp"
+static void exit_kernel(void)
+{
+
+
+
+
+     asm volatile ( "push   r31             \n\t" "in     r31,0X3C        \n\t" "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;asm volatile ( "push   r31             \n\t" "push   r30             \n\t" "push   r29             \n\t" "push   r28             \n\t" "push   r27             \n\t" "push   r26             \n\t" "push   r25             \n\t" "push   r24             \n\t" "push   r23             \n\t" "push   r22             \n\t" "push   r21             \n\t" "push   r20             \n\t" "push   r19             \n\t" "push   r18             \n\t" "push   r17             \n\t" "push   r16             \n\t" "push   r15             \n\t" "push   r14             \n\t" "push   r13             \n\t" "push   r12             \n\t" "push   r11             \n\t" "push   r10             \n\t" "push   r9              \n\t" "push   r8              \n\t" "push   r7              \n\t" "push   r6              \n\t" "push   r5              \n\t" "push   r4              \n\t" "push   r3              \n\t" "push   r2              \n\t" "push   r1              \n\t" "push   r0              \n\t"::);;;
+
+
+
+
+    kernel_sp = (*(volatile uint16_t *)((0x3D) + 0x20));
+
+
+
+
+    (*(volatile uint16_t *)((0x3D) + 0x20)) = (uint16_t)(cur_task->sp);
+
+
+
+
+    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t"::);;asm volatile ( "pop    r31             \n\t" "out    __SREG__, r31   \n\t" "pop    r31             \n\t" "out    0X3C, r31       \n\t" "pop    r31             \n\t"::);;;
+# 473 ".././os.cpp"
+    asm volatile ("ret\n"::);
+}
+# 486 ".././os.cpp"
+static void enter_kernel(void)
+{
+
+
+
+
+    asm volatile ( "push   r31             \n\t" "in     r31,0X3C        \n\t" "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;asm volatile ( "push   r31             \n\t" "push   r30             \n\t" "push   r29             \n\t" "push   r28             \n\t" "push   r27             \n\t" "push   r26             \n\t" "push   r25             \n\t" "push   r24             \n\t" "push   r23             \n\t" "push   r22             \n\t" "push   r21             \n\t" "push   r20             \n\t" "push   r19             \n\t" "push   r18             \n\t" "push   r17             \n\t" "push   r16             \n\t" "push   r15             \n\t" "push   r14             \n\t" "push   r13             \n\t" "push   r12             \n\t" "push   r11             \n\t" "push   r10             \n\t" "push   r9              \n\t" "push   r8              \n\t" "push   r7              \n\t" "push   r6              \n\t" "push   r5              \n\t" "push   r4              \n\t" "push   r3              \n\t" "push   r2              \n\t" "push   r1              \n\t" "push   r0              \n\t"::);;;
+
+
+
+
+    cur_task->sp = (uint8_t*)(*(volatile uint16_t *)((0x3D) + 0x20));
+
+
+
+
+    (*(volatile uint16_t *)((0x3D) + 0x20)) = kernel_sp;
+
+
+
+
+    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t"::);;asm volatile ( "pop    r31             \n\t" "out    __SREG__, r31   \n\t" "pop    r31             \n\t" "out    0X3C, r31       \n\t" "pop    r31             \n\t"::);;;
+
+
+
+
+
+
+
+    asm volatile ("ret\n"::);
+}
+# 533 ".././os.cpp"
+void __vector_17(void)
+{
+# 547 ".././os.cpp"
+    asm volatile ( "push   r31             \n\t" "in     r31,0X3C        \n\t" "push   r31             \n\t" "in     r31,__SREG__    \n\t" "cli                    \n\t"::);;
+
+    asm volatile ( "ori    r31, 0x80        \n\t"::);;
+
+    asm volatile ( "push   r31             \n\t" "push   r30             \n\t" "push   r29             \n\t" "push   r28             \n\t" "push   r27             \n\t" "push   r26             \n\t" "push   r25             \n\t" "push   r24             \n\t" "push   r23             \n\t" "push   r22             \n\t" "push   r21             \n\t" "push   r20             \n\t" "push   r19             \n\t" "push   r18             \n\t" "push   r17             \n\t" "push   r16             \n\t" "push   r15             \n\t" "push   r14             \n\t" "push   r13             \n\t" "push   r12             \n\t" "push   r11             \n\t" "push   r10             \n\t" "push   r9              \n\t" "push   r8              \n\t" "push   r7              \n\t" "push   r6              \n\t" "push   r5              \n\t" "push   r4              \n\t" "push   r3              \n\t" "push   r2              \n\t" "push   r1              \n\t" "push   r0              \n\t"::);;
+
+    cur_task->sp = (uint8_t*)(*(volatile uint16_t *)((0x3D) + 0x20));
+
+
+
+
+
+
+    (*(volatile uint16_t *)((0x3D) + 0x20)) = kernel_sp;
+
+
+
+
+    kernel_request = TIMER_EXPIRED;
+
+
+
+
+    (*(volatile uint16_t *)(0x88)) += (((16000000L / 8) / 1000) * 5);
+
+
+
+
+    (*(volatile uint16_t *)((0x3D) + 0x20)) = kernel_sp;
+
+
+
+
+    asm volatile ( "pop    r0                \n\t" "pop    r1                \n\t" "pop    r2                \n\t" "pop    r3                \n\t" "pop    r4                \n\t" "pop    r5                \n\t" "pop    r6                \n\t" "pop    r7                \n\t" "pop    r8                \n\t" "pop    r9                \n\t" "pop    r10             \n\t" "pop    r11             \n\t" "pop    r12             \n\t" "pop    r13             \n\t" "pop    r14             \n\t" "pop    r15             \n\t" "pop    r16             \n\t" "pop    r17             \n\t" "pop    r18             \n\t" "pop    r19             \n\t" "pop    r20             \n\t" "pop    r21             \n\t" "pop    r22             \n\t" "pop    r23             \n\t" "pop    r24             \n\t" "pop    r25             \n\t" "pop    r26             \n\t" "pop    r27             \n\t" "pop    r28             \n\t" "pop    r29             \n\t" "pop    r30             \n\t"::);;asm volatile ( "pop    r31             \n\t" "out    __SREG__, r31   \n\t" "pop    r31             \n\t" "out    0X3C, r31       \n\t" "pop    r31             \n\t"::);;;
+# 590 ".././os.cpp"
+    asm volatile ("ret\n"::);
+}
+# 605 ".././os.cpp"
+static int kernel_create_task()
+{
+
+    task_descriptor_t *p;
+    uint8_t* stack_bottom;
+
+
+    if (dead_pool_queue.head == __null)
+    {
+
+        return 0;
+    }
+ if(kernel_request_create_args.level == 2){
+  if(kernel_request_create_args.wcet <= 0 ||
+  kernel_request_create_args.period <= 0 ||
+  kernel_request_create_args.start < 0)
+  {
+   error_msg = ERR_5_PERIODIC_INVALID_INPUT;
+   OS_Abort();
+  }
+  if(kernel_request_create_args.wcet > kernel_request_create_args.period)
+  {
+   error_msg = ERR_4_PERIODIC_WCET_GREATER_THAN_PERIOD;
+   OS_Abort();
+  }
+
+ }
+
+
+ if(kernel_request_create_args.level == __null)
+ {
+  p = &task_desc[8];
+ }
+
+ else
+ {
+     p = dequeue(&dead_pool_queue);
+ }
+
+    stack_bottom = &(p->stack[256 -1]);
+# 655 ".././os.cpp"
+    uint8_t* stack_top = stack_bottom - (32 + 1 + 1 + 3 + 3);
+
+
+
+
+
+
+    stack_top[2] = (uint8_t) 0;
+
+    stack_top[32] = (uint8_t) (1 << ((7)));
+# 673 ".././os.cpp"
+  stack_top[35] = (uint8_t)(0);
+  stack_top[36] = (uint8_t)((uint16_t)(kernel_request_create_args.f) >> 8);
+  stack_top[37] = (uint8_t)(uint16_t)(kernel_request_create_args.f);
+  stack_top[38] = (uint8_t)(0);
+  stack_top[39] = (uint8_t)((uint16_t)Task_Terminate >> 8);
+  stack_top[40] = (uint8_t)(uint16_t)Task_Terminate;
+# 689 ".././os.cpp"
+    p->sp = stack_top;
+
+    p->state = READY;
+    p->arg = kernel_request_create_args.arg;
+    p->level = kernel_request_create_args.level;
+ p->period = kernel_request_create_args.period;
+ p->wcet = kernel_request_create_args.wcet;
+ p->start = kernel_request_create_args.start;
+ p->counter = kernel_request_create_args.counter;
+
+    p->remaining_wcet = kernel_request_create_args.remaining_wcet;
+
+
+ switch(kernel_request_create_args.level)
+ {
+    case 3:
+
+        enqueue(&system_queue, p);
+  break;
+ case 2:
+
+
+  addlist(&periodic_queue, p);
+  break;
+    case 1:
+
+        enqueue(&rr_queue, p);
+  break;
+
+ default:
+
+  break;
+ }
+
+
+    return 1;
+}
+
+
+
+
+
+static void kernel_terminate_task(void)
+{
+
+    cur_task->state = DEAD;
+    if(cur_task->level == 2)
+    {
+        delete_task(&periodic_queue, cur_task);
+    }
+    enqueue(&dead_pool_queue, cur_task);
+}
+
+
+
+
+static void update_all_ticks(linkedlist_t* linkedlist_ptr)
+{
+ task_descriptor_t* temp = linkedlist_ptr->head;
+ while(temp != __null)
+ {
+  temp->counter--;
+  temp = temp->next;
+ }
+}
+
+
+static void delete_task(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_delete)
+{
+ if(linkedlist_ptr->head == task_to_delete && linkedlist_ptr->head->next != __null)
+ {
+  linkedlist_ptr->head = linkedlist_ptr->head->next;
+  linkedlist_ptr->head->prev = __null;
+  return;
+ } else if (linkedlist_ptr->tail == task_to_delete && linkedlist_ptr->tail->prev != __null) {
+  linkedlist_ptr->tail = linkedlist_ptr->tail->prev;
+  linkedlist_ptr->tail->next = __null;
+  return;
+ } else if (linkedlist_ptr->tail == task_to_delete && linkedlist_ptr->head == task_to_delete) {
+  linkedlist_ptr->tail = __null;
+  linkedlist_ptr->head = __null;
+  return;
+ } else {
+  task_to_delete = task_to_delete->prev;
+  task_to_delete->next = task_to_delete->next->next;
+  task_to_delete->next->prev = task_to_delete;
+ }
+# 788 ".././os.cpp"
+}
+
+
+
+static task_descriptor_t* get_next(linkedlist_t* linkedlist_ptr)
+{
+ task_descriptor_t* temp = linkedlist_ptr->head;
+ task_descriptor_t* found = __null;
+ int collision_counter = 0;
+
+ while(temp!=__null)
+ {
+  if(temp->counter <= 0)
+  {
+   temp->counter = temp->period;
+   temp->remaining_wcet = temp->wcet;
+   found = temp;
+   ++collision_counter;
+  }
+  if(collision_counter >= 2)
+  {
+   error_msg = ERR_RUN_6_PERIODIC_COLLISION;
+   OS_Abort();
+  }
+  temp = temp->next;
+ }
+ return found;
+}
+
+
+
+
+static void addlist(linkedlist_t* linkedlist_ptr, task_descriptor_t* task_to_add)
+{
+ task_to_add->next = __null;
+  if(linkedlist_ptr->head == __null)
+  {
+
+   task_to_add->prev = __null;
+   linkedlist_ptr->head = task_to_add;
+   linkedlist_ptr->tail = task_to_add;
+  }
+  else
+  {
+
+   linkedlist_ptr->tail->next = task_to_add;
+   task_to_add->prev = linkedlist_ptr->tail;
+   linkedlist_ptr->tail = task_to_add;
+  }
+}
+# 849 ".././os.cpp"
+static void enqueue(queue_t* queue_ptr, task_descriptor_t* task_to_add)
+{
+    task_to_add->next = __null;
+
+    if(queue_ptr->head == __null)
+    {
+
+        queue_ptr->head = task_to_add;
+        queue_ptr->tail = task_to_add;
+    }
+    else
+    {
+
+        queue_ptr->tail->next = task_to_add;
+        queue_ptr->tail = task_to_add;
+    }
+}
+# 874 ".././os.cpp"
+static task_descriptor_t* dequeue(queue_t* queue_ptr)
+{
+    task_descriptor_t* task_ptr = queue_ptr->head;
+
+    if(queue_ptr->head != __null)
+    {
+        queue_ptr->head = queue_ptr->head->next;
+        task_ptr->next = __null;
+    }
+
+    return task_ptr;
+}
+
+
+
+
+
+
+
+static void kernel_update_ticker(void)
+{
+
+ time_before_interrupt = (*(volatile uint16_t *)(0x84));
+ ++ticks_counter;
+ if(cur_task->level == 2 && cur_task->state == RUNNING)
+ {
+  --cur_task->remaining_wcet;
+  if(cur_task->wcet <= 0)
+  {
+   error_msg = ERR_RUN_3_PERIODIC_TOOK_TOO_LONG;
+   OS_Abort();
+  }
+ }
+
+
+
+
+ update_all_ticks(&periodic_queue);
+}
+# 935 ".././os.cpp"
+void OS_Init()
+{
+
+
+    int i;
+
+
+
+    (*(volatile uint8_t *)(0x81)) |= ((1 << (1)));
+# 956 ".././os.cpp"
+    for (i = 0; i < 8 - 1; i++)
+    {
+        task_desc[i].state = DEAD;
+        name_to_task_ptr[i] = __null;
+        task_desc[i].next = &task_desc[i + 1];
+    }
+    task_desc[8 - 1].next = __null;
+    dead_pool_queue.head = &task_desc[0];
+    dead_pool_queue.tail = &task_desc[8 - 1];
+
+
+    kernel_request_create_args.f = (voidfuncvoid_ptr)idle;
+    kernel_request_create_args.level = __null;
+    kernel_create_task();
+
+
+    kernel_request_create_args.f = (voidfuncvoid_ptr)r_main;
+    kernel_request_create_args.level = 3;
+    kernel_create_task();
+
+
+    cur_task = task_desc;
+    cur_task->state = RUNNING;
+    dequeue(&system_queue);
+# 988 ".././os.cpp"
+    (*(volatile uint8_t *)(0x6F)) |= (1 << (1));
+
+ (*(volatile uint16_t *)(0x88)) = (((16000000L / 8) / 1000) * 5);
+ (*(volatile uint16_t *)(0x84)) = 0;
+
+    (*(volatile uint8_t *)((0x16) + 0x20)) = (1 << (1));
+
+
+
+
+
+
+    kernel_main_loop();
+
+}
+
+
+
+
+
+
+
+static void _delay_25ms(void)
+{
+
+
+
+
+    _delay_ms(25);
+}
+
+
+
+
+
+void OS_Abort(void)
+{
+    uint8_t i, j;
+    uint8_t flashes, mask;
+
+    asm volatile ("cli"::);
+
+
+    (*(volatile uint8_t *)(0x101)) = (uint8_t)((1 << (5))) | (uint8_t)((1 << (6)));
+
+    if(error_msg < ERR_RUN_1_USER_CALLED_OS_ABORT)
+    {
+        flashes = error_msg + 1;
+        mask = (uint8_t)((1 << (6)));
+    }
+    else
+    {
+        flashes = error_msg + 1 - ERR_RUN_1_USER_CALLED_OS_ABORT;
+        mask = (uint8_t)((1 << (5)));
+    }
+
+
+    for(;;)
+    {
+        (*(volatile uint8_t *)(0x102)) = (uint8_t)((uint8_t)((1 << (5))) | (uint8_t)((1 << (6))));
+
+        for(i = 0; i < 100; ++i)
+        {
+               _delay_25ms();
+        }
+
+        (*(volatile uint8_t *)(0x102)) = (uint8_t) 0;
+
+        for(i = 0; i < 40; ++i)
+        {
+               _delay_25ms();
+        }
+
+
+        for(j = 0; j < flashes; ++j)
+        {
+            (*(volatile uint8_t *)(0x102)) = mask;
+
+            for(i = 0; i < 10; ++i)
+            {
+                _delay_25ms();
+            }
+
+            (*(volatile uint8_t *)(0x102)) = (uint8_t) 0;
+
+            for(i = 0; i < 10; ++i)
+            {
+                _delay_25ms();
+            }
+        }
+
+        for(i = 0; i < 20; ++i)
+        {
+            _delay_25ms();
+        }
+    }
+}
+
+
+
+
+
+
+uint16_t Now()
+{
+    uint16_t ret_val;
+    uint8_t sreg;
+
+    sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+    asm volatile ("cli"::);
+
+
+ ret_val = ticks_counter*5 + (((*(volatile uint16_t *)(0x84)) - time_before_interrupt)/((16000000L / 8) / 1000));
+    (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+ return ret_val;
+}
+
+
+
+
+
+
+SERVICE* Service_Init()
+{
+    uint8_t sreg;
+
+    sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+    asm volatile ("cli"::);
+
+    if(num_services < 10){
+        service_list[num_services].counter = 0;
+        num_services++;
+    }
+    else{
+        error_msg = ERR_RUN_9_SERVICE_MAX_SERVICES_REACH;
+        OS_Abort();
+    }
+
+    (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+ return &service_list[num_services - 1];
+}
+# 1140 ".././os.cpp"
+void Service_Subscribe( SERVICE *s, int16_t *v )
+{
+    uint8_t sreg;
+
+    sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+    asm volatile ("cli"::);
+
+
+    if(cur_task->level == 2){
+        error_msg = ERR_RUN_8_SUBSCRIBE_PERIODIC_TASK;
+        OS_Abort();
+    }
+
+    if(s->counter < 3) {
+
+        s->tasks[s->counter] = cur_task;
+
+        s->valueLocations[s->counter] = v;
+        s->counter++;
+
+        cur_task->state = WAITING;
+        (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+  enter_kernel();
+    }
+
+ else{
+    error_msg = ERR_RUN_7_SUBSCRIBE_MAX_SUBSCRIBERS_REACHED;
+        OS_Abort();
+ }
+
+    (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+}
+# 1182 ".././os.cpp"
+void Service_Publish( SERVICE *s, int16_t v )
+{
+    uint8_t sreg;
+
+    sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+    asm volatile ("cli"::);
+
+
+    s->value = v;
+
+
+    for(int i = 0; i < s->counter; i++){
+
+        *(s->valueLocations[i]) = v;
+
+
+        (s->tasks[i])->state = READY;
+
+
+        if((s->tasks[i])->level == 3){
+            enqueue(&system_queue, s->tasks[i]);
+   if(cur_task->level == 1){
+    cur_task->state = READY;
+    enqueue(&rr_queue, cur_task);
+   } else if (cur_task->level == 2) {
+    cur_task->state = READY;
+   }
+        }
+  else if((s->tasks[i])->level == 2){
+   error_msg = ERR_RUN_5_RTOS_INTERNAL_ERROR;
+   OS_Abort();
+  }
+        else if((s->tasks[i])->level == 1){
+            enqueue(&rr_queue, s->tasks[i]);
+        }
+
+
+
+
+
+    }
+
+    s->counter = 0;
+    enter_kernel();
+    (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+}
+# 1243 ".././os.cpp"
+int8_t Task_Create_System(void (*f)(void), int16_t arg)
+{
+     int8_t retval;
+     uint8_t sreg;
+
+     sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+     asm volatile ("cli"::);
+
+     kernel_request_create_args.f = (voidfuncvoid_ptr)f;
+     kernel_request_create_args.arg = arg;
+     kernel_request_create_args.level = (uint8_t)3;
+
+     kernel_request = TASK_CREATE;
+     enter_kernel();
+
+     retval = kernel_request_retval;
+     (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+     return retval;
+}
+
+int8_t Task_Create_RR(void (*f)(void), int16_t arg)
+{
+  int8_t retval;
+  uint8_t sreg;
+
+  sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+  asm volatile ("cli"::);
+
+  kernel_request_create_args.f = (voidfuncvoid_ptr)f;
+  kernel_request_create_args.arg = arg;
+  kernel_request_create_args.level = (uint8_t)1;
+
+  kernel_request = TASK_CREATE;
+  enter_kernel();
+
+  retval = kernel_request_retval;
+  (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+  return retval;
+}
+# 1300 ".././os.cpp"
+int8_t Task_Create_Periodic(void(*f)(void), int16_t arg, uint16_t period, uint16_t wcet, uint16_t start)
+{
+ int8_t retval;
+ uint8_t sreg;
+
+ sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+ asm volatile ("cli"::);
+
+ kernel_request_create_args.f = (voidfuncvoid_ptr)f;
+ kernel_request_create_args.arg = arg;
+ kernel_request_create_args.level = (uint8_t)2;
+ kernel_request_create_args.period = period;
+ kernel_request_create_args.wcet = wcet;
+ kernel_request_create_args.start = start;
+ kernel_request_create_args.counter = start;
+    kernel_request_create_args.remaining_wcet = wcet;
+
+
+
+
+ kernel_request = TASK_CREATE;
+ enter_kernel();
+
+ retval = kernel_request_retval;
+ (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+ return retval;
+}
+# 1345 ".././os.cpp"
+int Task_Create(void (*f)(void), int arg, unsigned int level, unsigned int name)
+{
+    int retval;
+    uint8_t sreg;
+
+    sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+    asm volatile ("cli"::);
+
+    kernel_request_create_args.f = (voidfuncvoid_ptr)f;
+    kernel_request_create_args.arg = arg;
+    kernel_request_create_args.level = (uint8_t)level;
+
+
+    kernel_request = TASK_CREATE;
+    enter_kernel();
+
+    retval = kernel_request_retval;
+    (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+    return retval;
+}
+
+
+
+
+
+void Task_Next()
+{
+    uint8_t volatile sreg;
+
+    sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+    asm volatile ("cli"::);
+
+    kernel_request = TASK_NEXT;
+    enter_kernel();
+
+    (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+}
+
+
+
+
+
+void Task_Terminate()
+{
+    uint8_t sreg;
+
+    sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+    asm volatile ("cli"::);
+
+    kernel_request = TASK_TERMINATE;
+    enter_kernel();
+
+    (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+}
+
+
+
+
+int Task_GetArg(void)
+{
+    int arg;
+    uint8_t sreg;
+
+    sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+    asm volatile ("cli"::);
+
+    arg = cur_task->arg;
+
+    (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+
+    return arg;
+}
+
+void toggleProfilePulse(){
+    (*(volatile uint8_t *)((0x05) + 0x20)) ^= ((1 << (5)));
+}
+
+
+
+
+int main()
+{
+
+
+
+ OS_Init();
+
+ return 0;
+}
