@@ -6,6 +6,9 @@
 #include "os.h"
 #include "uart/uart.h"
 #include "trace/trace.h"
+#include "radio/packet.h"
+#include "radio/radio.h"
+#include "radio/cops_and_robbers.h"
 
 #define USE_TEST_013
 
