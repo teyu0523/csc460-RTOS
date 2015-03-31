@@ -309,49 +309,16 @@
     <Compile Include="radio\spi.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tests\test0_now.cpp">
+    <Compile Include="roomba\roomba.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tests\test10_service_system_multiple.cpp">
+    <Compile Include="roomba\roomba.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tests\test11_service_system_rr.cpp">
+    <Compile Include="roomba\roomba_sci.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tests\test12_service_system_periodic.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test13_service_subscribe_error.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test14_service_periodic_error.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test1_system.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test2_rr.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test3_system_rr.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test4_periodic.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test5_periodic_two.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test6_periodic_complex.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test7_tasks_all.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test8_service_system.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tests\test9_service_rr.cpp">
+    <Compile Include="roomba\sensor_struct.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="trace\trace.cpp">
@@ -429,7 +396,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="radio\" />
-    <Folder Include="tests" />
+    <Folder Include="roomba\" />
     <Folder Include="src\" />
     <Folder Include="src\ASF\" />
     <Folder Include="src\ASF\common\" />

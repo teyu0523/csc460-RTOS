@@ -58,10 +58,20 @@ C_SRCS +=  \
 ../os.cpp \
 ../project2.cpp \
 ../tests/test0_now.cpp \
-../tests/test1.cpp \
+../tests/test10_service_system_multiple.cpp \
+../tests/test11_service_system_rr.cpp \
+../tests/test12_service_system_periodic.cpp \
+../tests/test13_service_subscribe_error.cpp \
+../tests/test14_service_periodic_error.cpp \
 ../tests/test1_system.cpp \
 ../tests/test2_rr.cpp \
 ../tests/test3_system_rr.cpp \
+../tests/test4_periodic.cpp \
+../tests/test5_periodic_two.cpp \
+../tests/test6_periodic_complex.cpp \
+../tests/test7_tasks_all.cpp \
+../tests/test8_service_system.cpp \
+../tests/test9_service_rr.cpp \
 ../trace/trace.cpp \
 ../uart/uart.cpp \
 ../src/ASF/mega/boards/stk600/rcx_x/init.c \
@@ -78,10 +88,20 @@ OBJS +=  \
 os.o \
 project2.o \
 tests/test0_now.o \
-tests/test1.o \
+tests/test10_service_system_multiple.o \
+tests/test11_service_system_rr.o \
+tests/test12_service_system_periodic.o \
+tests/test13_service_subscribe_error.o \
+tests/test14_service_periodic_error.o \
 tests/test1_system.o \
 tests/test2_rr.o \
 tests/test3_system_rr.o \
+tests/test4_periodic.o \
+tests/test5_periodic_two.o \
+tests/test6_periodic_complex.o \
+tests/test7_tasks_all.o \
+tests/test8_service_system.o \
+tests/test9_service_rr.o \
 trace/trace.o \
 uart/uart.o \
 src/ASF/mega/boards/stk600/rcx_x/init.o \
@@ -91,10 +111,20 @@ OBJS_AS_ARGS +=  \
 os.o \
 project2.o \
 tests/test0_now.o \
-tests/test1.o \
+tests/test10_service_system_multiple.o \
+tests/test11_service_system_rr.o \
+tests/test12_service_system_periodic.o \
+tests/test13_service_subscribe_error.o \
+tests/test14_service_periodic_error.o \
 tests/test1_system.o \
 tests/test2_rr.o \
 tests/test3_system_rr.o \
+tests/test4_periodic.o \
+tests/test5_periodic_two.o \
+tests/test6_periodic_complex.o \
+tests/test7_tasks_all.o \
+tests/test8_service_system.o \
+tests/test9_service_rr.o \
 trace/trace.o \
 uart/uart.o \
 src/ASF/mega/boards/stk600/rcx_x/init.o \
@@ -104,10 +134,20 @@ C_DEPS +=  \
 os.d \
 project2.d \
 tests/test0_now.d \
-tests/test1.d \
+tests/test10_service_system_multiple.d \
+tests/test11_service_system_rr.d \
+tests/test12_service_system_periodic.d \
+tests/test13_service_subscribe_error.d \
+tests/test14_service_periodic_error.d \
 tests/test1_system.d \
 tests/test2_rr.d \
 tests/test3_system_rr.d \
+tests/test4_periodic.d \
+tests/test5_periodic_two.d \
+tests/test6_periodic_complex.d \
+tests/test7_tasks_all.d \
+tests/test8_service_system.d \
+tests/test9_service_rr.d \
 trace/trace.d \
 uart/uart.d \
 src/ASF/mega/boards/stk600/rcx_x/init.d \
@@ -117,10 +157,20 @@ C_DEPS_AS_ARGS +=  \
 os.d \
 project2.d \
 tests/test0_now.d \
-tests/test1.d \
+tests/test10_service_system_multiple.d \
+tests/test11_service_system_rr.d \
+tests/test12_service_system_periodic.d \
+tests/test13_service_subscribe_error.d \
+tests/test14_service_periodic_error.d \
 tests/test1_system.d \
 tests/test2_rr.d \
 tests/test3_system_rr.d \
+tests/test4_periodic.d \
+tests/test5_periodic_two.d \
+tests/test6_periodic_complex.d \
+tests/test7_tasks_all.d \
+tests/test8_service_system.d \
+tests/test9_service_rr.d \
 trace/trace.d \
 uart/uart.d \
 src/ASF/mega/boards/stk600/rcx_x/init.d \
@@ -135,12 +185,32 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 LIB_DEP+=  \
-C:/Users/Allen/Documents/Atmel\ Studio/arduinoCore/libcore.a
+C:/Users/Mikko/Documents/Atmel\ Studio/arduinoCore/libcore.a
 
 LINKER_SCRIPT_DEP+= 
 
 
 # AVR32/GNU C Compiler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

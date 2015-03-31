@@ -84,13 +84,6 @@ _Z11print_tracev:
 	.cfi_def_cfa_offset 17
 	call sprintf
 .LVL0:
-	.loc 1 50 0
-	movw r22,r24
-	ldi r24,lo8(trace_buffer)
-	ldi r25,hi8(trace_buffer)
-.LVL1:
-	call _Z10uart_writePhi
-.LVL2:
 	ldi r28,lo8(trace_array)
 	ldi r29,hi8(trace_array)
 	.loc 1 54 0
@@ -113,7 +106,7 @@ _Z11print_tracev:
 	mov r12,r25
 	ldi r25,hi8(trace_buffer)
 	mov r13,r25
-.LVL3:
+.LVL1:
 .L2:
 	.loc 1 54 0 discriminator 1
 	lds r24,trace_counter
@@ -144,18 +137,11 @@ _Z11print_tracev:
 .LCFI20:
 	.cfi_def_cfa_offset 17
 	call sprintf
-.LVL4:
-	.loc 1 57 0 discriminator 2
-	movw r22,r24
-	ldi r24,lo8(trace_buffer)
-	ldi r25,hi8(trace_buffer)
-.LVL5:
-	call _Z10uart_writePhi
-.LVL6:
+.LVL2:
 	.loc 1 54 0 discriminator 2
 	subi r16,-1
 	sbci r17,-1
-.LVL7:
+.LVL3:
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop __tmp_reg__
@@ -179,7 +165,7 @@ _Z11print_tracev:
 	pop r28
 	pop r17
 	pop r16
-.LVL8:
+.LVL4:
 	pop r15
 	pop r14
 	pop r13
@@ -195,7 +181,7 @@ _Z12add_to_tracej:
 .LFB12:
 	.loc 1 72 0
 	.cfi_startproc
-.LVL9:
+.LVL5:
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
@@ -219,11 +205,11 @@ _Z12add_to_tracej:
 	.loc 1 76 0
 	lds r24,trace_counter
 	lds r25,trace_counter+1
-.LVL10:
+.LVL6:
 	adiw r24,1
 	sts trace_counter+1,r25
 	sts trace_counter,r24
-.LVL11:
+.LVL7:
 .L6:
 	ret
 	.cfi_endproc
@@ -236,7 +222,7 @@ _Z14set_trace_testh:
 .LFB13:
 	.loc 1 86 0
 	.cfi_startproc
-.LVL12:
+.LVL8:
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
@@ -326,18 +312,17 @@ trace_number:
 .Letext0:
 	.file 2 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h"
 	.file 3 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h"
-	.file 4 "../trace/../uart/uart.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x26b
+	.long	0x210
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF24
+	.long	.LASF23
 	.byte	0x4
+	.long	.LASF24
 	.long	.LASF25
-	.long	.LASF26
 	.long	.Ldebug_ranges0+0
 	.long	0
 	.long	0
@@ -393,15 +378,15 @@ trace_number:
 	.long	.LASF9
 	.uleb128 0x6
 	.byte	0x1
-	.long	.LASF11
+	.long	.LASF10
 	.byte	0x1
 	.byte	0x29
-	.long	.LASF13
+	.long	.LASF12
 	.long	.LFB11
 	.long	.LFE11
 	.long	.LLST0
 	.byte	0x1
-	.long	0x10b
+	.long	0xd6
 	.uleb128 0x7
 	.long	.LBB2
 	.long	.LBE2
@@ -412,56 +397,24 @@ trace_number:
 	.long	0x30
 	.long	.LLST1
 	.uleb128 0x9
-	.long	.LASF10
+	.long	.LASF26
 	.byte	0x1
 	.byte	0x2c
 	.long	0x30
-	.long	.LLST2
 	.uleb128 0xa
 	.long	.LVL0
-	.long	0x21f
-	.uleb128 0xb
-	.long	.LVL2
-	.long	0x248
-	.long	0xeb
-	.uleb128 0xc
-	.byte	0x6
-	.byte	0x68
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x69
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x5
-	.byte	0x3
-	.long	trace_buffer
-	.byte	0
+	.long	0x1ea
 	.uleb128 0xa
-	.long	.LVL4
-	.long	0x21f
-	.uleb128 0xd
-	.long	.LVL6
-	.long	0x248
-	.uleb128 0xc
-	.byte	0x6
-	.byte	0x68
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x69
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x2
-	.byte	0x7c
-	.sleb128 0
+	.long	.LVL2
+	.long	0x1ea
 	.byte	0
 	.byte	0
-	.byte	0
-	.uleb128 0xe
+	.uleb128 0xb
 	.byte	0x1
-	.long	.LASF12
+	.long	.LASF11
 	.byte	0x1
 	.byte	0x47
-	.long	.LASF14
+	.long	.LASF13
 	.long	.LFB12
 	.long	.LFE12
 	.byte	0x3
@@ -469,20 +422,20 @@ trace_number:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x138
-	.uleb128 0xf
-	.long	.LASF17
+	.long	0x103
+	.uleb128 0xc
+	.long	.LASF16
 	.byte	0x1
 	.byte	0x47
 	.long	0x57
-	.long	.LLST3
+	.long	.LLST2
 	.byte	0
-	.uleb128 0xe
+	.uleb128 0xb
 	.byte	0x1
-	.long	.LASF15
+	.long	.LASF14
 	.byte	0x1
 	.byte	0x55
-	.long	.LASF16
+	.long	.LASF15
 	.long	.LFB13
 	.long	.LFE13
 	.byte	0x3
@@ -490,16 +443,16 @@ trace_number:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x163
-	.uleb128 0x10
-	.long	.LASF17
+	.long	0x12e
+	.uleb128 0xd
+	.long	.LASF16
 	.byte	0x1
 	.byte	0x55
 	.long	0x45
 	.byte	0x1
 	.byte	0x68
 	.byte	0
-	.uleb128 0x11
+	.uleb128 0xe
 	.byte	0x1
 	.long	.LASF27
 	.byte	0x1
@@ -513,7 +466,7 @@ trace_number:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.uleb128 0x12
+	.uleb128 0xf
 	.byte	0x1
 	.long	.LASF29
 	.byte	0x1
@@ -526,8 +479,8 @@ trace_number:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.uleb128 0x13
-	.long	.LASF18
+	.uleb128 0x10
+	.long	.LASF17
 	.byte	0x1
 	.byte	0x14
 	.long	0x45
@@ -535,8 +488,8 @@ trace_number:
 	.byte	0x5
 	.byte	0x3
 	.long	trace_number
-	.uleb128 0x13
-	.long	.LASF19
+	.uleb128 0x10
+	.long	.LASF18
 	.byte	0x1
 	.byte	0x17
 	.long	0x45
@@ -544,89 +497,72 @@ trace_number:
 	.byte	0x5
 	.byte	0x3
 	.long	trace_printed
-	.uleb128 0x14
+	.uleb128 0x11
 	.long	0x29
-	.long	0x1cd
-	.uleb128 0x15
-	.long	0x1cd
+	.long	0x198
+	.uleb128 0x12
+	.long	0x198
 	.byte	0xff
 	.byte	0
 	.uleb128 0x2
 	.byte	0x2
 	.byte	0x7
+	.long	.LASF19
+	.uleb128 0x10
 	.long	.LASF20
-	.uleb128 0x13
-	.long	.LASF21
 	.byte	0x1
 	.byte	0x1a
-	.long	0x1bd
+	.long	0x188
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	trace_array
-	.uleb128 0x13
-	.long	.LASF22
+	.uleb128 0x10
+	.long	.LASF21
 	.byte	0x1
 	.byte	0x1d
-	.long	0x1f8
+	.long	0x1c3
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	trace_counter
-	.uleb128 0x16
+	.uleb128 0x13
 	.long	0x57
-	.uleb128 0x14
+	.uleb128 0x11
 	.long	0x7d
-	.long	0x20d
-	.uleb128 0x15
-	.long	0x1cd
+	.long	0x1d8
+	.uleb128 0x12
+	.long	0x198
 	.byte	0x1f
 	.byte	0
-	.uleb128 0x13
-	.long	.LASF23
+	.uleb128 0x10
+	.long	.LASF22
 	.byte	0x1
 	.byte	0x20
-	.long	0x1fd
+	.long	0x1c8
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	trace_buffer
-	.uleb128 0x17
+	.uleb128 0x14
 	.byte	0x1
 	.long	.LASF31
 	.byte	0x3
 	.word	0x29d
 	.long	0x30
 	.byte	0x1
-	.long	0x23d
-	.uleb128 0x18
+	.long	0x208
+	.uleb128 0x15
 	.long	0x77
-	.uleb128 0x18
-	.long	0x23d
-	.uleb128 0x19
+	.uleb128 0x15
+	.long	0x208
+	.uleb128 0x16
 	.byte	0
 	.uleb128 0x5
 	.byte	0x2
-	.long	0x243
-	.uleb128 0x1a
+	.long	0x20e
+	.uleb128 0x17
 	.long	0x7d
-	.uleb128 0x1b
-	.byte	0x1
-	.long	.LASF32
-	.byte	0x4
-	.byte	0x15
-	.long	.LASF33
-	.long	0x30
-	.byte	0x1
-	.long	0x268
-	.uleb128 0x18
-	.long	0x268
-	.uleb128 0x18
-	.long	0x30
-	.byte	0
-	.uleb128 0x5
-	.byte	0x2
-	.long	0x45
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
 .Ldebug_abbrev0:
@@ -755,8 +691,6 @@ trace_number:
 	.uleb128 0xb
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x6
 	.byte	0
 	.byte	0
 	.uleb128 0xa
@@ -769,37 +703,63 @@ trace_number:
 	.byte	0
 	.byte	0
 	.uleb128 0xb
-	.uleb128 0x4109
+	.uleb128 0x2e
 	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x2007
+	.uleb128 0xe
 	.uleb128 0x11
 	.uleb128 0x1
-	.uleb128 0x31
-	.uleb128 0x13
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
 	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0xc
-	.uleb128 0x410a
+	.uleb128 0x5
 	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
 	.uleb128 0x2
-	.uleb128 0xa
-	.uleb128 0x2111
-	.uleb128 0xa
+	.uleb128 0x6
 	.byte	0
 	.byte	0
 	.uleb128 0xd
-	.uleb128 0x4109
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x31
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
 	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
 	.byte	0
 	.byte	0
 	.uleb128 0xe
 	.uleb128 0x2e
-	.byte	0x1
+	.byte	0
 	.uleb128 0x3f
 	.uleb128 0xc
 	.uleb128 0x3
@@ -810,6 +770,8 @@ trace_number:
 	.uleb128 0xb
 	.uleb128 0x2007
 	.uleb128 0xe
+	.uleb128 0x49
+	.uleb128 0x13
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
@@ -818,89 +780,32 @@ trace_number:
 	.uleb128 0xa
 	.uleb128 0x2117
 	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0xf
-	.uleb128 0x5
+	.uleb128 0x2e
 	.byte	0
+	.uleb128 0x3f
+	.uleb128 0xc
 	.uleb128 0x3
 	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x6
+	.uleb128 0x2007
+	.uleb128 0xe
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
 	.byte	0
 	.byte	0
 	.uleb128 0x10
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x11
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x2007
-	.uleb128 0xe
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x12
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x2007
-	.uleb128 0xe
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x13
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -917,7 +822,7 @@ trace_number:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x14
+	.uleb128 0x11
 	.uleb128 0x1
 	.byte	0x1
 	.uleb128 0x49
@@ -926,7 +831,7 @@ trace_number:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x15
+	.uleb128 0x12
 	.uleb128 0x21
 	.byte	0
 	.uleb128 0x49
@@ -935,14 +840,14 @@ trace_number:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x16
+	.uleb128 0x13
 	.uleb128 0x35
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x17
+	.uleb128 0x14
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -961,43 +866,22 @@ trace_number:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x18
+	.uleb128 0x15
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x19
+	.uleb128 0x16
 	.uleb128 0x18
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.uleb128 0x17
 	.uleb128 0x26
 	.byte	0
 	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x1b
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x2007
-	.uleb128 0xe
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
 	.byte	0
@@ -1146,13 +1030,13 @@ trace_number:
 	.long	0
 	.long	0
 .LLST1:
-	.long	.LVL2
-	.long	.LVL3
+	.long	.LVL0
+	.long	.LVL1
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
-	.long	.LVL3
-	.long	.LVL8
+	.long	.LVL1
+	.long	.LVL4
 	.word	0x6
 	.byte	0x60
 	.byte	0x93
@@ -1163,26 +1047,8 @@ trace_number:
 	.long	0
 	.long	0
 .LLST2:
-	.long	.LVL0
-	.long	.LVL1
-	.word	0x6
-	.byte	0x68
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x69
-	.byte	0x93
-	.uleb128 0x1
-	.long	.LVL1
-	.long	.LVL2-1
-	.word	0x6
-	.byte	0x66
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x67
-	.byte	0x93
-	.uleb128 0x1
-	.long	.LVL4
 	.long	.LVL5
+	.long	.LVL6
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -1190,33 +1056,12 @@ trace_number:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL5
-	.long	.LVL6-1
-	.word	0x6
-	.byte	0x66
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x67
-	.byte	0x93
-	.uleb128 0x1
-	.long	0
-	.long	0
-.LLST3:
-	.long	.LVL9
-	.long	.LVL10
-	.word	0x6
-	.byte	0x68
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x69
-	.byte	0x93
-	.uleb128 0x1
-	.long	.LVL10
-	.long	.LVL11
+	.long	.LVL6
+	.long	.LVL7
 	.word	0x2
 	.byte	0x8e
 	.sleb128 0
-	.long	.LVL11
+	.long	.LVL7
 	.long	.LFE12
 	.word	0x4
 	.byte	0xf3
@@ -1262,33 +1107,33 @@ trace_number:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF21:
+.LASF20:
 	.string	"trace_array"
-.LASF25:
+.LASF24:
 	.string	"../trace/trace.cpp"
-.LASF32:
-	.string	"uart_write"
-.LASF14:
+.LASF25:
+	.string	"C:\\\\Users\\\\Mikko\\\\Documents\\\\CSC460\\\\Project\\\\csc460-RTOS\\\\project3\\\\project3\\\\project2\\\\Debug"
+.LASF13:
 	.string	"_Z12add_to_tracej"
-.LASF11:
+.LASF10:
 	.string	"print_trace"
-.LASF18:
+.LASF17:
 	.string	"trace_number"
-.LASF16:
+.LASF15:
 	.string	"_Z14set_trace_testh"
 .LASF3:
 	.string	"unsigned char"
-.LASF10:
+.LASF26:
 	.string	"returned_chars"
 .LASF6:
 	.string	"long unsigned int"
-.LASF19:
+.LASF18:
 	.string	"trace_printed"
-.LASF12:
+.LASF11:
 	.string	"add_to_trace"
-.LASF22:
+.LASF21:
 	.string	"trace_counter"
-.LASF23:
+.LASF22:
 	.string	"trace_buffer"
 .LASF0:
 	.string	"unsigned int"
@@ -1300,15 +1145,13 @@ trace_number:
 	.string	"sprintf"
 .LASF30:
 	.string	"_Z11reset_tracev"
-.LASF13:
+.LASF12:
 	.string	"_Z11print_tracev"
-.LASF26:
-	.string	"D:\\\\Google Drive\\\\Course\\\\csc460\\\\lab\\\\CSC460\\\\csc460-RTOS\\\\Project 2\\\\atmel\\\\project2\\\\project2\\\\Debug"
-.LASF20:
+.LASF19:
 	.string	"sizetype"
 .LASF7:
 	.string	"long long int"
-.LASF24:
+.LASF23:
 	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
 .LASF9:
 	.string	"char"
@@ -1320,15 +1163,13 @@ trace_number:
 	.string	"long int"
 .LASF2:
 	.string	"signed char"
-.LASF33:
-	.string	"_Z10uart_writePhi"
 .LASF27:
 	.string	"is_trace_full"
 .LASF29:
 	.string	"reset_trace"
-.LASF15:
+.LASF14:
 	.string	"set_trace_test"
-.LASF17:
+.LASF16:
 	.string	"number"
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"
 .global __do_copy_data

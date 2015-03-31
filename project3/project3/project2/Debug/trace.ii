@@ -1,5 +1,5 @@
 # 1 "../trace/trace.cpp"
-# 1 "D:\\Google Drive\\Course\\csc460\\lab\\CSC460\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
+# 1 "C:\\Users\\Mikko\\Documents\\CSC460\\Project\\csc460-RTOS\\project3\\project3\\project2\\Debug//"
 # 1 "<command-line>"
 # 1 "../trace/trace.cpp"
 # 16 "../trace/trace.cpp"
@@ -958,9 +958,7 @@ int is_trace_full();
 void reset_trace();
 # 17 "../trace/trace.cpp" 2
 # 1 "../trace/../uart/uart.h" 1
-
-
-
+# 12 "../trace/../uart/uart.h"
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 1 3
 # 99 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 3
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\sfr_defs.h" 1 3
@@ -1059,18 +1057,27 @@ typedef struct
 
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\lock.h" 1 3
 # 631 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
-# 5 "../trace/../uart/uart.h" 2
+# 13 "../trace/../uart/uart.h" 2
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\interrupt.h" 1 3
-# 6 "../trace/../uart/uart.h" 2
-# 17 "../trace/../uart/uart.h"
-void uart_init();
-void uart_putchar(char c);
-char uart_getchar(int index);
-void uart_putstr(char *s);
-int uart_write(uint8_t* const str, int len);
+# 14 "../trace/../uart/uart.h" 2
 
-uint8_t uart_bytes_recv(void);
-void uart_reset_recv(void);
+
+
+void Roomba_Send_Byte(uint8_t data_out);
+
+typedef enum _uart_bps
+{
+ UART_19200,
+ UART_38400,
+ UART_57600,
+ UART_115200,
+ UART_DEFAULT,
+} UART_BPS;
+
+void Roomba_UART_Init(UART_BPS baud);
+uint8_t uart_bytes_received(void);
+void uart_reset_receive(void);
+uint8_t uart_get_byte(int index);
 # 18 "../trace/trace.cpp" 2
 
 
@@ -1097,14 +1104,14 @@ void print_trace()
 
 
         returned_chars = sprintf((char*)&trace_buffer, "T%03d;", trace_number);
-        uart_write((uint8_t*)trace_buffer, returned_chars);
+
 
 
 
   for(i = 0; i < (int)trace_counter; i++)
         {
             returned_chars = sprintf((char*)&trace_buffer, "%u;", trace_array[i]);
-            uart_write((uint8_t*)trace_buffer, returned_chars);
+
 
         }
 

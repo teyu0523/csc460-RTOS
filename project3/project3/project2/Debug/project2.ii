@@ -1,5 +1,5 @@
 # 1 ".././project2.cpp"
-# 1 "D:\\Google Drive\\Course\\csc460\\lab\\CSC460\\csc460-RTOS\\project3\\project3\\project2\\Debug//"
+# 1 "C:\\Users\\Mikko\\Documents\\CSC460\\Project\\csc460-RTOS\\project3\\project3\\project2\\Debug//"
 # 1 "<command-line>"
 # 1 ".././project2.cpp"
 
@@ -2028,14 +2028,21 @@ struct service{
 
 # 1 ".././uart/uart.h" 1
 # 17 ".././uart/uart.h"
-void uart_init();
-void uart_putchar(char c);
-char uart_getchar(int index);
-void uart_putstr(char *s);
-int uart_write(uint8_t* const str, int len);
+void Roomba_Send_Byte(uint8_t data_out);
 
-uint8_t uart_bytes_recv(void);
-void uart_reset_recv(void);
+typedef enum _uart_bps
+{
+ UART_19200,
+ UART_38400,
+ UART_57600,
+ UART_115200,
+ UART_DEFAULT,
+} UART_BPS;
+
+void Roomba_UART_Init(UART_BPS baud);
+uint8_t uart_bytes_received(void);
+void uart_reset_receive(void);
+uint8_t uart_get_byte(int index);
 # 8 ".././project2.cpp" 2
 # 1 ".././trace/trace.h" 1
 # 27 ".././trace/trace.h"
@@ -2296,75 +2303,107 @@ void Radio_Flush();
 # 10 ".././project2.cpp" 2
 # 1 ".././radio/packet.h" 1
 # 11 ".././project2.cpp" 2
+# 1 ".././roomba/roomba.h" 1
+# 12 ".././roomba/roomba.h"
+# 1 ".././roomba/sensor_struct.h" 1
+# 13 ".././roomba/roomba.h" 2
 
-
-
-# 1 ".././tests/test0_now.cpp" 1
-# 15 ".././project2.cpp" 2
-# 1 ".././tests/test1_system.cpp" 1
-# 16 ".././project2.cpp" 2
-# 1 ".././tests/test2_rr.cpp" 1
-# 17 ".././project2.cpp" 2
-# 1 ".././tests/test3_system_rr.cpp" 1
-# 18 ".././project2.cpp" 2
-# 1 ".././tests/test4_periodic.cpp" 1
-# 19 ".././project2.cpp" 2
-# 1 ".././tests/test5_periodic_two.cpp" 1
-# 20 ".././project2.cpp" 2
-# 1 ".././tests/test6_periodic_complex.cpp" 1
-# 21 ".././project2.cpp" 2
-# 1 ".././tests/test7_tasks_all.cpp" 1
-# 22 ".././project2.cpp" 2
-# 1 ".././tests/test8_service_system.cpp" 1
-# 23 ".././project2.cpp" 2
-# 1 ".././tests/test9_service_rr.cpp" 1
-# 24 ".././project2.cpp" 2
-# 1 ".././tests/test10_service_system_multiple.cpp" 1
-# 25 ".././project2.cpp" 2
-# 1 ".././tests/test11_service_system_rr.cpp" 1
-# 26 ".././project2.cpp" 2
-# 1 ".././tests/test12_service_system_periodic.cpp" 1
-# 27 ".././project2.cpp" 2
-# 1 ".././tests/test13_service_subscribe_error.cpp" 1
-# 16 ".././tests/test13_service_subscribe_error.cpp"
-# 1 ".././tests/../trace/trace.h" 1
-# 17 ".././tests/test13_service_subscribe_error.cpp" 2
-
-SERVICE* serviceTest;
-
-void s()
+typedef enum _rsg
 {
- int16_t value = 1;
- add_to_trace(value);
- Service_Subscribe(serviceTest, &value);
- add_to_trace(value);
+ EXTERNAL_ROOMBA=1,
+ CHASSIS=2,
+ INTERNAL=3,
+} ROOMBA_SENSOR_GROUP;
+
+
+
+
+
+
+
+void Roomba_Init();
+# 40 ".././roomba/roomba.h"
+void Roomba_UpdateSensorPacket(ROOMBA_SENSOR_GROUP group, roomba_sensor_data_t* sensor_packet);
+# 52 ".././roomba/roomba.h"
+void Roomba_Drive( int16_t velocity, int16_t radius );
+# 12 ".././project2.cpp" 2
+# 1 ".././roomba/roomba_sci.h" 1
+# 38 ".././roomba/roomba_sci.h"
+typedef enum _br {
+ ROOMBA_300BPS = 0,
+ ROOMBA_600BPS = 1,
+ ROOMBA_1200BPS = 2,
+ ROOMBA_2400BPS = 3,
+ ROOMBA_4800BPS = 4,
+ ROOMBA_9600BPS = 5,
+ ROOMBA_14400BPS = 6,
+ ROOMBA_19200BPS = 7,
+ ROOMBA_28800BPS = 8,
+ ROOMBA_38400BPS = 9,
+ ROOMBA_57600BPS = 10,
+ ROOMBA_115200BPS = 11,
+} ROOMBA_BITRATE;
+# 89 ".././roomba/roomba_sci.h"
+typedef enum _cs
+{
+ NOT_CHARGING = 0,
+ CHARGING_RECOVERY = 1,
+ CHARGING = 2,
+ TRICKLE_CHARGING = 3,
+ WAITING_ROOMBA = 4,
+ CHARGING_ERROR = 5,
+} ROOMBA_CHARGING_STATE;
+# 13 ".././project2.cpp" 2
+# 1 ".././roomba/sensor_struct.h" 1
+# 14 ".././project2.cpp" 2
+# 23 ".././project2.cpp"
+void radio_rxhandler(uint8_t pipenumber) {
+
 }
 
-void rr()
-{
- int16_t value = 5;
- add_to_trace(2);
- Service_Publish(serviceTest, value);
- add_to_trace(2);
- print_trace();
+
+
+void ir_rxhandler() {
+
+}
+
+void handleRoombaPacket(radiopacket_t *packet) {
+
+}
+
+void handleIRPacket(radiopacket_t *packet) {
+
+
+}
+
+void rr_roomba_controler() {
+
+}
+
+
+
+
+
+void per_roomba_timeout() {
+
+}
+# 71 ".././project2.cpp"
+void setup(){
+ Roomba_Init();
+}
+
+void Send_Drive_Command(){
+ for(;;) {
+  Roomba_Drive(240,0);
+  Task_Next();
+ }
 }
 
 int r_main(void)
 {
- serviceTest = Service_Init();
 
- uart_init();
- set_trace_test(13);
- add_to_trace(0);
- Task_Create_System(s, 0);
- Task_Create_System(s, 0);
- Task_Create_System(s, 0);
- Task_Create_System(s, 0);
- Task_Create_Periodic(rr, 0, 20, 5, 5);
+ setup();
+ Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
 
- add_to_trace(0);
  return 1;
 }
-# 28 ".././project2.cpp" 2
-# 1 ".././tests/test14_service_periodic_error.cpp" 1
-# 29 ".././project2.cpp" 2

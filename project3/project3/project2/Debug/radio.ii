@@ -1,0 +1,1759 @@
+# 1 "../radio/radio.cpp"
+# 1 "C:\\Users\\Mikko\\Documents\\CSC460\\Project\\csc460-RTOS\\project3\\project3\\project2\\Debug//"
+# 1 "<command-line>"
+# 1 "../radio/radio.cpp"
+
+
+
+
+
+
+# 1 "../radio/radio.h" 1
+# 18 "../radio/radio.h"
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 1 3 4
+# 147 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 3 4
+typedef int ptrdiff_t;
+# 212 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 3 4
+typedef unsigned int size_t;
+# 19 "../radio/radio.h" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 1 3
+# 45 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 1 3 4
+# 46 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 2 3
+# 56 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 3
+extern "C" {
+# 111 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\string.h" 3
+extern int ffs (int __val) __attribute__((__const__));
+extern int ffsl (long __val) __attribute__((__const__));
+extern int ffsll (long long __val) __attribute__((__const__));
+extern void *memccpy(void *, const void *, int, size_t);
+extern void *memchr(const void *, int, size_t) __attribute__((__pure__));
+extern int memcmp(const void *, const void *, size_t) __attribute__((__pure__));
+extern void *memcpy(void *, const void *, size_t);
+extern void *memmem(const void *, size_t, const void *, size_t) __attribute__((__pure__));
+extern void *memmove(void *, const void *, size_t);
+extern void *memrchr(const void *, int, size_t) __attribute__((__pure__));
+extern void *memset(void *, int, size_t);
+extern char *strcat(char *, const char *);
+extern char *strchr(const char *, int) __attribute__((__pure__));
+extern char *strchrnul(const char *, int) __attribute__((__pure__));
+extern int strcmp(const char *, const char *) __attribute__((__pure__));
+extern char *strcpy(char *, const char *);
+extern int strcasecmp(const char *, const char *) __attribute__((__pure__));
+extern char *strcasestr(const char *, const char *) __attribute__((__pure__));
+extern size_t strcspn(const char *__s, const char *__reject) __attribute__((__pure__));
+extern char *strdup(const char *s1);
+extern size_t strlcat(char *, const char *, size_t);
+extern size_t strlcpy(char *, const char *, size_t);
+extern size_t strlen(const char *) __attribute__((__pure__));
+extern char *strlwr(char *);
+extern char *strncat(char *, const char *, size_t);
+extern int strncmp(const char *, const char *, size_t) __attribute__((__pure__));
+extern char *strncpy(char *, const char *, size_t);
+extern int strncasecmp(const char *, const char *, size_t) __attribute__((__pure__));
+extern size_t strnlen(const char *, size_t) __attribute__((__pure__));
+extern char *strpbrk(const char *__s, const char *__accept) __attribute__((__pure__));
+extern char *strrchr(const char *, int) __attribute__((__pure__));
+extern char *strrev(char *);
+extern char *strsep(char **, const char *);
+extern size_t strspn(const char *__s, const char *__accept) __attribute__((__pure__));
+extern char *strstr(const char *, const char *) __attribute__((__pure__));
+extern char *strtok(char *, const char *);
+extern char *strtok_r(char *, const char *, char **);
+extern char *strupr(char *);
+
+
+}
+# 20 "../radio/radio.h" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 1 3
+# 99 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\sfr_defs.h" 1 3
+# 126 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\sfr_defs.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\inttypes.h" 1 3
+# 37 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\inttypes.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdint.h" 1 3 4
+# 9 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdint.h" 3 4
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 1 3 4
+# 121 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef signed int int8_t __attribute__((__mode__(__QI__)));
+typedef unsigned int uint8_t __attribute__((__mode__(__QI__)));
+typedef signed int int16_t __attribute__ ((__mode__ (__HI__)));
+typedef unsigned int uint16_t __attribute__ ((__mode__ (__HI__)));
+typedef signed int int32_t __attribute__ ((__mode__ (__SI__)));
+typedef unsigned int uint32_t __attribute__ ((__mode__ (__SI__)));
+
+typedef signed int int64_t __attribute__((__mode__(__DI__)));
+typedef unsigned int uint64_t __attribute__((__mode__(__DI__)));
+# 142 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+# 159 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef int8_t int_least8_t;
+
+
+
+
+typedef uint8_t uint_least8_t;
+
+
+
+
+typedef int16_t int_least16_t;
+
+
+
+
+typedef uint16_t uint_least16_t;
+
+
+
+
+typedef int32_t int_least32_t;
+
+
+
+
+typedef uint32_t uint_least32_t;
+
+
+
+
+
+
+
+typedef int64_t int_least64_t;
+
+
+
+
+
+
+typedef uint64_t uint_least64_t;
+# 213 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef int8_t int_fast8_t;
+
+
+
+
+typedef uint8_t uint_fast8_t;
+
+
+
+
+typedef int16_t int_fast16_t;
+
+
+
+
+typedef uint16_t uint_fast16_t;
+
+
+
+
+typedef int32_t int_fast32_t;
+
+
+
+
+typedef uint32_t uint_fast32_t;
+
+
+
+
+
+
+
+typedef int64_t int_fast64_t;
+
+
+
+
+
+
+typedef uint64_t uint_fast64_t;
+# 273 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h" 3 4
+typedef int64_t intmax_t;
+
+
+
+
+typedef uint64_t uintmax_t;
+# 10 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdint.h" 2 3 4
+# 38 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\inttypes.h" 2 3
+# 77 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\inttypes.h" 3
+typedef int32_t int_farptr_t;
+
+
+
+typedef uint32_t uint_farptr_t;
+# 127 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\sfr_defs.h" 2 3
+# 100 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+# 174 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iom2560.h" 1 3
+# 38 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iom2560.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iomxx0_1.h" 1 3
+# 1613 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iomxx0_1.h" 3
+       
+# 1614 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iomxx0_1.h" 3
+
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+# 39 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\iom2560.h" 2 3
+# 175 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+# 616 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\portpins.h" 1 3
+# 617 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\common.h" 1 3
+# 619 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\version.h" 1 3
+# 621 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+
+
+
+
+
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\fuse.h" 1 3
+# 239 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\fuse.h" 3
+typedef struct
+{
+    unsigned char low;
+    unsigned char high;
+    unsigned char extended;
+} __fuse_t;
+# 628 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\lock.h" 1 3
+# 631 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
+# 21 "../radio/radio.h" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\interrupt.h" 1 3
+# 22 "../radio/radio.h" 2
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 1 3
+# 43 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 1 3
+# 40 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
+static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
+# 80 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+void
+_delay_loop_1(uint8_t __count)
+{
+ __asm__ volatile (
+  "1: dec %0" "\n\t"
+  "brne 1b"
+  : "=r" (__count)
+  : "0" (__count)
+ );
+}
+# 102 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay_basic.h" 3
+void
+_delay_loop_2(uint16_t __count)
+{
+ __asm__ volatile (
+  "1: sbiw %0,1" "\n\t"
+  "brne 1b"
+  : "=w" (__count)
+  : "0" (__count)
+ );
+}
+# 44 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 2 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 1 3
+# 121 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern "C" {
+
+
+
+
+
+extern double cos(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double sin(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double tan(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double fabs(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double fmod(double __x, double __y) __attribute__((__const__));
+# 168 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double modf(double __x, double *__iptr);
+
+
+
+extern float modff (float __x, float *__iptr);
+
+
+
+
+extern double sqrt(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double cbrt(double __x) __attribute__((__const__));
+# 194 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double hypot (double __x, double __y) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double square(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double floor(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double ceil(double __x) __attribute__((__const__));
+# 234 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double frexp(double __x, int *__pexp);
+
+
+
+
+
+
+
+extern double ldexp(double __x, int __exp) __attribute__((__const__));
+
+
+
+
+
+extern double exp(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double cosh(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double sinh(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double tanh(double __x) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double acos(double __x) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double asin(double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double atan(double __x) __attribute__((__const__));
+# 298 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double atan2(double __y, double __x) __attribute__((__const__));
+
+
+
+
+
+extern double log(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double log10(double __x) __attribute__((__const__));
+
+
+
+
+
+extern double pow(double __x, double __y) __attribute__((__const__));
+
+
+
+
+
+
+extern int isnan(double __x) __attribute__((__const__));
+# 333 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern int isinf(double __x) __attribute__((__const__));
+
+
+
+
+
+
+__attribute__((__const__)) static inline int isfinite (double __x)
+{
+    unsigned char __exp;
+    __asm__ (
+ "mov	%0, %C1		\n\t"
+ "lsl	%0		\n\t"
+ "mov	%0, %D1		\n\t"
+ "rol	%0		"
+ : "=r" (__exp)
+ : "r" (__x) );
+    return __exp != 0xff;
+}
+
+
+
+
+
+
+__attribute__((__const__)) static inline double copysign (double __x, double __y)
+{
+    __asm__ (
+ "bst	%D2, 7	\n\t"
+ "bld	%D0, 7	"
+ : "=r" (__x)
+ : "0" (__x), "r" (__y) );
+    return __x;
+}
+# 376 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern int signbit (double __x) __attribute__((__const__));
+
+
+
+
+
+
+extern double fdim (double __x, double __y) __attribute__((__const__));
+# 392 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double fma (double __x, double __y, double __z) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double fmax (double __x, double __y) __attribute__((__const__));
+
+
+
+
+
+
+
+extern double fmin (double __x, double __y) __attribute__((__const__));
+
+
+
+
+
+
+extern double trunc (double __x) __attribute__((__const__));
+# 426 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern double round (double __x) __attribute__((__const__));
+# 439 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern long lround (double __x) __attribute__((__const__));
+# 453 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\math.h" 3
+extern long lrint (double __x) __attribute__((__const__));
+
+
+
+}
+# 45 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 2 3
+# 84 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+static inline void _delay_us(double __us) __attribute__((always_inline));
+static inline void _delay_ms(double __ms) __attribute__((always_inline));
+# 141 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+void
+_delay_ms(double __ms)
+{
+ double __tmp ;
+
+
+
+ uint32_t __ticks_dc;
+ extern void __builtin_avr_delay_cycles(unsigned long);
+ __tmp = ((16000000L) / 1e3) * __ms;
+# 160 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+  __ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+
+
+ __builtin_avr_delay_cycles(__ticks_dc);
+# 186 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+}
+# 223 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+void
+_delay_us(double __us)
+{
+ double __tmp ;
+
+
+
+ uint32_t __ticks_dc;
+ extern void __builtin_avr_delay_cycles(unsigned long);
+ __tmp = ((16000000L) / 1e6) * __us;
+# 242 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+  __ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+
+
+ __builtin_avr_delay_cycles(__ticks_dc);
+# 268 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h" 3
+}
+# 23 "../radio/radio.h" 2
+# 1 "../radio/nRF24L01.h" 1
+# 25 "../radio/nRF24L01.h"
+typedef uint8_t radio_register_t;
+# 24 "../radio/radio.h" 2
+# 1 "../radio/packet.h" 1
+# 15 "../radio/packet.h"
+# 1 "../radio/sensor_struct.h" 1
+# 12 "../radio/sensor_struct.h"
+typedef struct _i16s
+{
+ uint8_t low_byte;
+ uint8_t high_byte;
+} int16_split;
+
+
+typedef union _i16u
+{
+ int16_t value;
+ int16_split bytes;
+} int16_u;
+
+
+typedef union _u16u
+{
+ uint16_t value;
+ int16_split bytes;
+} uint16_u;
+
+
+typedef struct
+{
+
+    uint8_t bumps_wheeldrops;
+    uint8_t wall;
+    uint8_t cliff_left;
+    uint8_t cliff_front_left;
+    uint8_t cliff_front_right;
+    uint8_t cliff_right;
+    uint8_t virtual_wall;
+    uint8_t motor_overcurrents;
+    uint8_t dirt_left;
+    uint8_t dirt_right;
+
+
+    uint8_t remote_opcode;
+    uint8_t buttons;
+ int16_u distance;
+ int16_u angle;
+
+
+    uint8_t charging_state;
+    uint16_u voltage;
+    int16_u current;
+    int8_t temperature;
+    uint16_u charge;
+    uint16_u capacity;
+} roomba_sensor_data_t;
+# 16 "../radio/packet.h" 2
+
+
+
+
+typedef enum _pt
+{
+ COMMAND,
+ SENSOR_DATA,
+ IR_COMMAND,
+ IR_DATA,
+ MESSAGE
+} PACKET_TYPE;
+# 40 "../radio/packet.h"
+typedef struct _cmd
+{
+ uint8_t sender_address[5];
+ uint8_t command;
+
+ uint8_t num_arg_bytes;
+ uint8_t arguments[16];
+
+} pf_command_t;
+
+typedef struct _sensors
+{
+ uint8_t roomba_number;
+ roomba_sensor_data_t sensors;
+
+} pf_sensors_t;
+
+typedef struct _ir_command {
+ uint8_t sender_address[5];
+ uint8_t ir_command;
+ uint8_t ir_data;
+ uint8_t servo_angle;
+} pf_ir_command_t;
+
+typedef struct _ir_data {
+ uint8_t roomba_number;
+ uint8_t ir_data;
+} pf_ir_data_t;
+
+typedef struct _msg
+{
+ uint8_t address[5];
+ uint8_t messagecontent[24];
+} pf_message_t;
+
+
+
+
+
+
+typedef union _pf
+{
+ uint8_t _filler[29];
+ pf_command_t command;
+ pf_sensors_t sensors;
+ pf_ir_data_t ir_data;
+ pf_ir_command_t ir_command;
+ pf_message_t message;
+} payloadformat_t;
+
+
+
+typedef struct _rp
+{
+ uint8_t type;
+ uint16_t timestamp;
+ payloadformat_t payload;
+} radiopacket_t;
+# 25 "../radio/radio.h" 2
+# 1 "../radio/spi.h" 1
+# 20 "../radio/spi.h"
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 1 3
+# 45 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdarg.h" 1 3 4
+# 40 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdarg.h" 3 4
+typedef __builtin_va_list __gnuc_va_list;
+# 98 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stdarg.h" 3 4
+typedef __gnuc_va_list va_list;
+# 46 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 2 3
+
+
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 1 3 4
+# 50 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 2 3
+# 242 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+struct __file {
+ char *buf;
+ unsigned char unget;
+ uint8_t flags;
+# 261 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+ int size;
+ int len;
+ int (*put)(char, struct __file *);
+ int (*get)(struct __file *);
+ void *udata;
+};
+# 397 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern "C" {
+
+
+
+
+
+
+
+extern struct __file *__iob[];
+# 417 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern struct __file *fdevopen(int (*__put)(char, struct __file*), int (*__get)(struct __file*));
+# 434 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int fclose(struct __file *__stream);
+# 608 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int vfprintf(struct __file *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+extern int vfprintf_P(struct __file *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+
+extern int fputc(int __c, struct __file *__stream);
+
+
+
+
+extern int putc(int __c, struct __file *__stream);
+
+
+extern int putchar(int __c);
+# 649 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int printf(const char *__fmt, ...);
+
+
+
+
+
+extern int printf_P(const char *__fmt, ...);
+
+
+
+
+
+
+
+extern int vprintf(const char *__fmt, va_list __ap);
+
+
+
+
+
+extern int sprintf(char *__s, const char *__fmt, ...);
+
+
+
+
+
+extern int sprintf_P(char *__s, const char *__fmt, ...);
+# 685 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int snprintf(char *__s, size_t __n, const char *__fmt, ...);
+
+
+
+
+
+extern int snprintf_P(char *__s, size_t __n, const char *__fmt, ...);
+
+
+
+
+
+extern int vsprintf(char *__s, const char *__fmt, va_list ap);
+
+
+
+
+
+extern int vsprintf_P(char *__s, const char *__fmt, va_list ap);
+# 713 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int vsnprintf(char *__s, size_t __n, const char *__fmt, va_list ap);
+
+
+
+
+
+extern int vsnprintf_P(char *__s, size_t __n, const char *__fmt, va_list ap);
+
+
+
+
+extern int fprintf(struct __file *__stream, const char *__fmt, ...);
+
+
+
+
+
+extern int fprintf_P(struct __file *__stream, const char *__fmt, ...);
+
+
+
+
+
+
+extern int fputs(const char *__str, struct __file *__stream);
+
+
+
+
+extern int fputs_P(const char *__str, struct __file *__stream);
+
+
+
+
+
+extern int puts(const char *__str);
+
+
+
+
+extern int puts_P(const char *__str);
+# 762 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern size_t fwrite(const void *__ptr, size_t __size, size_t __nmemb,
+         struct __file *__stream);
+
+
+
+
+
+
+
+extern int fgetc(struct __file *__stream);
+
+
+
+
+extern int getc(struct __file *__stream);
+
+
+extern int getchar(void);
+# 810 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int ungetc(int __c, struct __file *__stream);
+# 822 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern char *fgets(char *__str, int __size, struct __file *__stream);
+
+
+
+
+
+
+extern char *gets(char *__str);
+# 840 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern size_t fread(void *__ptr, size_t __size, size_t __nmemb,
+        struct __file *__stream);
+
+
+
+
+extern void clearerr(struct __file *__stream);
+# 857 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int feof(struct __file *__stream);
+# 868 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+extern int ferror(struct __file *__stream);
+
+
+
+
+
+
+extern int vfscanf(struct __file *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+extern int vfscanf_P(struct __file *__stream, const char *__fmt, va_list __ap);
+
+
+
+
+
+
+
+extern int fscanf(struct __file *__stream, const char *__fmt, ...);
+
+
+
+
+extern int fscanf_P(struct __file *__stream, const char *__fmt, ...);
+
+
+
+
+
+
+extern int scanf(const char *__fmt, ...);
+
+
+
+
+extern int scanf_P(const char *__fmt, ...);
+
+
+
+
+
+
+
+extern int vscanf(const char *__fmt, va_list __ap);
+
+
+
+
+
+
+
+extern int sscanf(const char *__buf, const char *__fmt, ...);
+
+
+
+
+extern int sscanf_P(const char *__buf, const char *__fmt, ...);
+# 938 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdio.h" 3
+static __inline__ int fflush(struct __file *stream __attribute__((unused)))
+{
+ return 0;
+}
+
+
+
+}
+# 21 "../radio/spi.h" 2
+
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 1 3
+# 47 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+# 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\lib\\gcc\\avr\\4.8.1\\include\\stddef.h" 1 3 4
+# 48 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 2 3
+
+
+
+
+
+
+extern "C" {
+# 68 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+typedef struct {
+ int quot;
+ int rem;
+} div_t;
+
+
+typedef struct {
+ long quot;
+ long rem;
+} ldiv_t;
+
+
+typedef int (*__compar_fn_t)(const void *, const void *);
+# 114 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void abort(void) __attribute__((__noreturn__));
+
+
+
+
+extern int abs(int __i) __attribute__((__const__));
+# 128 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern long labs(long __i) __attribute__((__const__));
+# 151 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void *bsearch(const void *__key, const void *__base, size_t __nmemb,
+       size_t __size, int (*__compar)(const void *, const void *));
+
+
+
+
+
+
+
+extern div_t div(int __num, int __denom) __asm__("__divmodhi4") __attribute__((__const__));
+
+
+
+
+
+extern ldiv_t ldiv(long __num, long __denom) __asm__("__divmodsi4") __attribute__((__const__));
+# 183 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void qsort(void *__base, size_t __nmemb, size_t __size,
+    __compar_fn_t __compar);
+# 216 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern long strtol(const char *__nptr, char **__endptr, int __base);
+# 250 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern unsigned long strtoul(const char *__nptr, char **__endptr, int __base);
+# 262 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern long atol(const char *__s) __attribute__((__pure__));
+# 274 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern int atoi(const char *__s) __attribute__((__pure__));
+# 286 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void exit(int __status) __attribute__((__noreturn__));
+# 298 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void *malloc(size_t __size) __attribute__((__malloc__));
+
+
+
+
+
+
+extern void free(void *__ptr);
+
+
+
+
+extern size_t __malloc_margin;
+
+
+
+
+extern char *__malloc_heap_start;
+
+
+
+
+extern char *__malloc_heap_end;
+
+
+
+
+
+
+extern void *calloc(size_t __nele, size_t __size) __attribute__((__malloc__));
+# 346 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern void *realloc(void *__ptr, size_t __size) __attribute__((__malloc__));
+
+extern double strtod(const char *__nptr, char **__endptr);
+
+extern double atof(const char *__nptr);
+# 372 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern int rand(void);
+
+
+
+extern void srand(unsigned int __seed);
+
+
+
+
+
+
+extern int rand_r(unsigned long *__ctx);
+# 417 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern __inline__
+char *itoa (int __val, char *__s, int __radix)
+{
+    if (!__builtin_constant_p (__radix)) {
+ extern char *__itoa (int, char *, int);
+ return __itoa (__val, __s, __radix);
+    } else if (__radix < 2 || __radix > 36) {
+ *__s = 0;
+ return __s;
+    } else {
+ extern char *__itoa_ncheck (int, char *, unsigned char);
+ return __itoa_ncheck (__val, __s, __radix);
+    }
+}
+# 462 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern __inline__
+char *ltoa (long __val, char *__s, int __radix)
+{
+    if (!__builtin_constant_p (__radix)) {
+ extern char *__ltoa (long, char *, int);
+ return __ltoa (__val, __s, __radix);
+    } else if (__radix < 2 || __radix > 36) {
+ *__s = 0;
+ return __s;
+    } else {
+ extern char *__ltoa_ncheck (long, char *, unsigned char);
+ return __ltoa_ncheck (__val, __s, __radix);
+    }
+}
+# 505 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern __inline__
+char *utoa (unsigned int __val, char *__s, int __radix)
+{
+    if (!__builtin_constant_p (__radix)) {
+ extern char *__utoa (unsigned int, char *, int);
+ return __utoa (__val, __s, __radix);
+    } else if (__radix < 2 || __radix > 36) {
+ *__s = 0;
+ return __s;
+    } else {
+ extern char *__utoa_ncheck (unsigned int, char *, unsigned char);
+ return __utoa_ncheck (__val, __s, __radix);
+    }
+}
+# 547 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern __inline__
+char *ultoa (unsigned long __val, char *__s, int __radix)
+{
+    if (!__builtin_constant_p (__radix)) {
+ extern char *__ultoa (unsigned long, char *, int);
+ return __ultoa (__val, __s, __radix);
+    } else if (__radix < 2 || __radix > 36) {
+ *__s = 0;
+ return __s;
+    } else {
+ extern char *__ultoa_ncheck (unsigned long, char *, unsigned char);
+ return __ultoa_ncheck (__val, __s, __radix);
+    }
+}
+# 579 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern long random(void);
+
+
+
+
+extern void srandom(unsigned long __seed);
+
+
+
+
+
+
+
+extern long random_r(unsigned long *__ctx);
+# 638 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern char *dtostre(double __val, char *__s, unsigned char __prec,
+       unsigned char __flags);
+# 655 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+extern char *dtostrf(double __val, signed char __width,
+                     unsigned char __prec, char *__s);
+# 677 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdlib.h" 3
+}
+# 23 "../radio/spi.h" 2
+
+
+
+
+
+void SPI_Init();
+# 37 "../radio/spi.h"
+void SPI_ReadWrite_Block (uint8_t * data, uint8_t * buffer, uint8_t len);
+
+
+
+
+
+
+void SPI_Write_Block (uint8_t * data, uint8_t len);
+
+
+
+
+uint8_t SPI_Write_Byte (uint8_t data);
+# 26 "../radio/radio.h" 2
+
+
+
+typedef enum _radio_pipe {
+ RADIO_PIPE_0 = 0,
+ RADIO_PIPE_1 = 1,
+ RADIO_PIPE_2 = 2,
+ RADIO_PIPE_3 = 3,
+ RADIO_PIPE_4 = 4,
+ RADIO_PIPE_5 = 5,
+ RADIO_PIPE_EMPTY = 7,
+} RADIO_PIPE;
+
+typedef enum _radio_tx_power {
+ RADIO_LOWEST_POWER = 0,
+ RADIO_LOW_POWER = 1,
+ RADIO_HIGH_POWER = 2,
+ RADIO_HIGHEST_POWER = 3,
+} RADIO_TX_POWER;
+
+typedef enum _radio_dr {
+ RADIO_1MBPS = 0,
+ RADIO_2MBPS = 1,
+} RADIO_DATA_RATE;
+
+typedef enum _radio_receive {
+ RADIO_RX_INVALID_ARGS,
+ RADIO_RX_TRANSMITTING,
+ RADIO_RX_FIFO_EMPTY,
+ RADIO_RX_MORE_PACKETS,
+ RADIO_RX_SUCCESS,
+} RADIO_RX_STATUS;
+
+typedef enum _radio_transmit {
+ RADIO_TX_MAX_RT,
+ RADIO_TX_SUCCESS,
+} RADIO_TX_STATUS;
+
+typedef enum _radio_tx_wait {
+ RADIO_WAIT_FOR_TX,
+ RADIO_RETURN_ON_TX,
+} RADIO_TX_WAIT;
+
+typedef enum _radio_ack {
+ RADIO_ACK,
+ RADIO_NO_ACK,
+} RADIO_USE_ACK;
+
+typedef enum _ed {
+ DISABLE=0,
+ ENABLE=1,
+} ON_OFF;
+
+void Radio_Init();
+# 111 "../radio/radio.h"
+void Radio_Configure_Rx(RADIO_PIPE pipe, uint8_t* address, ON_OFF enable);
+
+
+
+
+
+
+void Radio_Configure(RADIO_DATA_RATE dr, RADIO_TX_POWER power);
+
+
+
+
+
+void Radio_Set_Tx_Addr(uint8_t* address);
+# 139 "../radio/radio.h"
+uint8_t Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait);
+
+
+
+
+
+
+
+RADIO_RX_STATUS Radio_Receive(radiopacket_t* buffer);
+
+
+
+
+
+uint8_t Radio_Success_Rate();
+
+
+
+
+void Radio_Flush();
+# 8 "../radio/radio.cpp" 2
+# 39 "../radio/radio.cpp"
+static volatile uint8_t transmit_lock;
+
+static volatile uint8_t rx_pipe_widths[6] = {32, 32, 0, 0, 0, 0};
+
+static volatile uint8_t tx_address[5] = { 0xe7, 0xe7, 0xe7, 0xe7, 0xe7 };
+
+static volatile uint8_t rx_pipe0_address[5] = { 0xe7, 0xe7, 0xe7, 0xe7, 0xe7 };
+
+static volatile uint16_t tx_history = 0xFF;
+
+static volatile RADIO_TX_STATUS tx_last_status = RADIO_TX_SUCCESS;
+
+extern void radio_rxhandler(uint8_t pipenumber);
+
+
+
+
+static uint8_t get_status()
+{
+ uint8_t status = 0;
+ (*(volatile uint8_t *)(0x102)) &= ~(1 << (6));;
+
+ status = SPI_Write_Byte(0xFF);
+
+ (*(volatile uint8_t *)(0x102)) |= (1 << (6));;
+
+ return status;
+}
+
+
+
+
+
+
+static uint8_t set_register(radio_register_t reg, uint8_t* value, uint8_t len)
+{
+ uint8_t status;
+ (*(volatile uint8_t *)(0x102)) &= ~(1 << (6));;
+
+ status = SPI_Write_Byte(0x20 | (0x1F & reg));
+ SPI_Write_Block(value, len);
+
+ (*(volatile uint8_t *)(0x102)) |= (1 << (6));;
+
+ return status;
+}
+# 93 "../radio/radio.cpp"
+static uint8_t get_register(radio_register_t reg, uint8_t* buffer, uint8_t len)
+{
+ uint8_t status, i;
+ for (i = 0; i < len; i++)
+ {
+
+
+  buffer[i] = 0xFF;
+ }
+ (*(volatile uint8_t *)(0x102)) &= ~(1 << (6));;
+
+ status = SPI_Write_Byte(0x00 | (0x1F & reg));
+ SPI_ReadWrite_Block(__null, buffer, len);
+
+ (*(volatile uint8_t *)(0x102)) |= (1 << (6));;
+
+ return status;
+}
+# 119 "../radio/radio.cpp"
+static void send_instruction(uint8_t instruction, uint8_t* data, uint8_t* buffer, uint8_t len)
+{
+    (*(volatile uint8_t *)(0x102)) &= ~(1 << (6));;
+
+ SPI_Write_Byte(instruction);
+
+ if (len > 0)
+ {
+  if (buffer == __null)
+   SPI_Write_Block(data, len);
+  else
+   SPI_ReadWrite_Block(data, buffer, len);
+ }
+
+    (*(volatile uint8_t *)(0x102)) |= (1 << (6));;
+}
+
+
+
+
+static void set_rx_mode()
+{
+ uint8_t config;
+ get_register(0x00, &config, 1);
+ if ((config & (1 << (0))) == 0)
+ {
+  config |= (1 << (0));
+  set_register(0x00, &config, 1);
+
+  _delay_us(65);
+  _delay_us(65);
+ }
+}
+
+
+
+
+static void set_tx_mode()
+{
+ uint8_t config;
+ get_register(0x00, &config, 1);
+ if ((config & (1 << (0))) != 0)
+ {
+  config &= ~(1 << (0));
+  set_register(0x00, &config, 1);
+
+
+
+  _delay_us(65);
+  _delay_us(65);
+ }
+}
+
+
+
+
+
+
+static void reset_pipe0_address()
+{
+ if (rx_pipe_widths[RADIO_PIPE_0] != 0)
+ {
+
+  set_register(0x0A, (uint8_t*)rx_pipe0_address, 5);
+ }
+}
+
+
+
+
+
+
+static void configure_registers()
+{
+ uint8_t value;
+
+ SPI_Init();
+
+
+ value = 5 - 2;
+ set_register(0x03, &value, 1);
+
+
+
+ value = 0x15;
+
+ set_register(0x04, &value, 1);
+
+
+ value = 104;
+ set_register(0x05, &value, 1);
+
+
+ value = (1 << (3)) | (1 << (0));
+ set_register(0x06, &value, 1);
+
+
+ value = (1 << (3)) | (1 << (2)) | (1 << (1)) | (1 << (0));
+ set_register(0x00, &value, 1);
+
+
+    value = (1 << (6)) | (1 << (5)) | (1 << (4));
+    set_register(0x07, &value, 1);
+
+
+ send_instruction(0xE1, __null, __null, 0);
+ send_instruction(0xE2, __null, __null, 0);
+}
+
+void Radio_Init()
+{
+
+ transmit_lock = 0;
+ (*(volatile uint8_t *)(0x101)) |= (1 << (3)) | (1 << (4));
+ (*(volatile uint8_t *)(0x102)) &= ~(1 << (4));
+ (*(volatile uint8_t *)(0x102)) &= ~(1 << (3));
+
+
+
+
+ (*(volatile uint8_t *)(0x102)) &= ~(1 << (5));;
+
+
+ (*(volatile uint8_t *)(0x101)) |= (1 << (5));
+ (*(volatile uint8_t *)(0x101)) |= (1 << (6));
+
+
+ (*(volatile uint8_t *)((0x0D) + 0x20)) &= ~(1 << (4));
+ (*(volatile uint8_t *)(0x6A)) |= (1 << (1));
+ (*(volatile uint8_t *)(0x6A)) &= ~(1 << (0));
+ (*(volatile uint8_t *)((0x1D) + 0x20)) |= (1 << (4));
+ (*(volatile uint8_t *)((0x1C) + 0x20)) |= (1 << (4));
+
+
+
+ _delay_ms(11);
+
+
+ configure_registers();
+
+
+ _delay_ms(2);
+
+
+ (*(volatile uint8_t *)(0x102)) |= (1 << (5));;
+ (*(volatile uint8_t *)(0x102)) |= (1 << (4));
+}
+
+
+
+
+
+
+
+void Radio_Configure_Rx(RADIO_PIPE pipe, uint8_t* address, ON_OFF enable)
+{
+ uint8_t value;
+ uint8_t use_aa = 1;
+ uint8_t payload_width = 32;
+ if (payload_width < 1 || payload_width > 32 || pipe < RADIO_PIPE_0 || pipe > RADIO_PIPE_5) return;
+
+
+ if (pipe == RADIO_PIPE_0)
+ {
+  rx_pipe0_address[0] = address[0];
+  rx_pipe0_address[1] = address[1];
+  rx_pipe0_address[2] = address[2];
+  rx_pipe0_address[3] = address[3];
+  rx_pipe0_address[4] = address[4];
+ }
+
+
+
+ set_register(0x0A + pipe, address, pipe > RADIO_PIPE_1 ? 1 : 5);
+
+
+ get_register(0x01, &value, 1);
+ if (use_aa)
+  value |= (1 << (pipe));
+ else
+  value &= ~(1 << (pipe));
+ set_register(0x01, &value, 1);
+
+
+ value = enable ? payload_width : 0;
+ set_register(0x11 + pipe, &value, 1);
+ rx_pipe_widths[pipe] = value;
+
+
+ get_register(0x02, &value, 1);
+ if (enable)
+  value |= (1 << (pipe));
+ else
+  value &= ~(1 << (pipe));
+ set_register(0x02, &value, 1);
+
+}
+
+
+void Radio_Set_Tx_Addr(uint8_t* address)
+{
+ tx_address[0] = address[0];
+ tx_address[1] = address[1];
+ tx_address[2] = address[2];
+ tx_address[3] = address[3];
+ tx_address[4] = address[4];
+ set_register(0x10, address, 5);
+}
+
+void Radio_Configure(RADIO_DATA_RATE dr, RADIO_TX_POWER power)
+{
+ uint8_t value;
+
+ if (power < RADIO_LOWEST_POWER || power > RADIO_HIGHEST_POWER || dr < RADIO_1MBPS || dr > RADIO_2MBPS) return;
+
+
+
+
+
+ get_register(0x06, &value, 1);
+
+ value |= 3 << 1;
+ value &= power << 1;
+
+ if (dr)
+  value |= (1 << (3));
+ else
+  value &= ~(1 << (3));
+
+ set_register(0x06, &value, 1);
+}
+
+uint8_t Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait)
+{
+
+
+ uint8_t len = 32;
+
+
+    transmit_lock = 1;
+
+    (*(volatile uint8_t *)(0x102)) &= ~(1 << (5));;
+
+ set_tx_mode();
+
+
+
+    set_register(0x0A, (uint8_t*)tx_address, 5);
+
+
+ (*(volatile uint8_t *)(0x102)) |= (1 << (3));
+    send_instruction(0xA0, (uint8_t *)payload, __null, len);
+
+    (*(volatile uint8_t *)(0x102)) |= (1 << (5));;
+
+    if (wait == RADIO_WAIT_FOR_TX)
+    {
+     while (transmit_lock);
+     return tx_last_status;
+    }
+
+    return RADIO_TX_SUCCESS;
+}
+
+RADIO_RX_STATUS Radio_Receive(radiopacket_t* buffer)
+{
+ uint8_t len = 32;
+ uint8_t status;
+ uint8_t pipe_number;
+ uint8_t doMove = 1;
+ RADIO_RX_STATUS result;
+
+ transmit_lock = 0;
+
+ (*(volatile uint8_t *)(0x102)) &= ~(1 << (5));;
+
+    status = get_status();
+ pipe_number = (status & 0xE) >> 1;
+
+ if (pipe_number == RADIO_PIPE_EMPTY)
+ {
+  result = RADIO_RX_FIFO_EMPTY;
+  doMove = 0;
+ }
+
+ if (rx_pipe_widths[pipe_number] > len)
+ {
+
+  result = RADIO_RX_INVALID_ARGS;
+  doMove = 0;
+ }
+
+ if (doMove)
+ {
+
+  send_instruction(0x61, (uint8_t*)buffer, (uint8_t*)buffer, rx_pipe_widths[pipe_number]);
+
+  status = get_status();
+  pipe_number = (status & 0xE) >> 1;
+
+  if (pipe_number != RADIO_PIPE_EMPTY)
+   result = RADIO_RX_MORE_PACKETS;
+  else
+   result = RADIO_RX_SUCCESS;
+ }
+
+ (*(volatile uint8_t *)(0x102)) |= (1 << (5));;
+
+ transmit_lock = 0;
+
+
+
+ return result;
+}
+
+
+uint8_t Radio_Success_Rate()
+{
+ uint16_t wh = tx_history;
+ uint8_t weight = 0;
+ while (wh != 0)
+ {
+  if ((wh & 1) != 0) weight++;
+  wh >>= 1;
+ }
+ wh = (16 - weight) * 100;
+ wh /= 16;
+ return wh;
+}
+
+void Radio_Flush()
+{
+ send_instruction(0xE1, __null, __null, 0);
+ send_instruction(0xE2, __null, __null, 0);
+}
+
+
+
+extern "C" void __vector_5 (void) __attribute__ ((signal,used, externally_visible)) ; void __vector_5 (void)
+{
+    uint8_t status;
+    uint8_t pipe_number;
+
+ (*(volatile uint8_t *)(0x102)) &= ~(1 << (4));
+    (*(volatile uint8_t *)(0x102)) &= ~(1 << (5));;
+
+    status = get_status();
+
+    if (status & (1 << (6)))
+    {
+     pipe_number = (status & 0xE) >> 1;
+     radio_rxhandler(pipe_number);
+    }
+
+    if (status & (1 << (5)))
+    {
+
+        transmit_lock = 0;
+        reset_pipe0_address();
+        set_rx_mode();
+
+
+     tx_history <<= 1;
+     tx_history |= 1;
+
+     tx_last_status = RADIO_TX_SUCCESS;
+    }
+    else if (status & (1 << (4)))
+    {
+        send_instruction(0xE1, __null, __null, 0);
+
+     transmit_lock = 0;
+     reset_pipe0_address();
+  set_rx_mode();
+
+     tx_history <<= 1;
+
+     tx_last_status = RADIO_TX_MAX_RT;
+    }
+
+
+ status = (1 << (6)) | (1 << (5)) | (1 << (4));
+ set_register(0x07, &status, 1);
+ (*(volatile uint8_t *)(0x102)) |= (1 << (4));
+
+    (*(volatile uint8_t *)(0x102)) |= (1 << (5));;
+}

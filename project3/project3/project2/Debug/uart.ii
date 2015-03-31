@@ -1,7 +1,9 @@
 # 1 "../uart/uart.cpp"
-# 1 "D:\\Google Drive\\Course\\csc460\\lab\\CSC460\\csc460-RTOS\\Project 2\\atmel\\project2\\project2\\Debug//"
+# 1 "C:\\Users\\Mikko\\Documents\\CSC460\\Project\\csc460-RTOS\\project3\\project3\\project2\\Debug//"
 # 1 "<command-line>"
 # 1 "../uart/uart.cpp"
+# 1 "../uart/uart.h" 1
+# 12 "../uart/uart.h"
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 1 3
 # 99 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 3
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\sfr_defs.h" 1 3
@@ -223,100 +225,103 @@ typedef struct
 
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\lock.h" 1 3
 # 631 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
-# 2 "../uart/uart.cpp" 2
+# 13 "../uart/uart.h" 2
 # 1 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\interrupt.h" 1 3
-# 3 "../uart/uart.cpp" 2
-
-# 1 "../uart/uart.h" 1
-# 17 "../uart/uart.h"
-void uart_init();
-void uart_putchar(char c);
-char uart_getchar(int index);
-void uart_putstr(char *s);
-int uart_write(uint8_t* const str, int len);
-
-uint8_t uart_bytes_recv(void);
-void uart_reset_recv(void);
-# 5 "../uart/uart.cpp" 2
+# 14 "../uart/uart.h" 2
 
 
 
+void Roomba_Send_Byte(uint8_t data_out);
 
-
-static volatile int rxn;
-static volatile char rx[100];
-static volatile char uart_rx;
-
-void uart_putchar (char c)
+typedef enum _uart_bps
 {
- asm volatile ("cli"::);
+ UART_19200,
+ UART_38400,
+ UART_57600,
+ UART_115200,
+ UART_DEFAULT,
+} UART_BPS;
 
- while ( !( (*(volatile uint8_t *)(0xC0)) & (1<<5)) );
- (*(volatile uint8_t *)(0XC6)) = c;
- asm volatile ("sei"::);
+void Roomba_UART_Init(UART_BPS baud);
+uint8_t uart_bytes_received(void);
+void uart_reset_receive(void);
+uint8_t uart_get_byte(int index);
+# 2 "../uart/uart.cpp" 2
+
+
+
+static volatile uint8_t uart_buffer[32];
+static volatile uint8_t uart_buffer_index;
+
+void Roomba_Send_Byte(uint8_t data_out){
+ while(! ((*(volatile uint8_t *)(0xC8)) & (1<<5)));
+ (*(volatile uint8_t *)(0XCE)) = data_out;
 }
 
-char uart_getchar (int index)
+void Roomba_UART_Init(UART_BPS baud){
+ uint8_t sreg = (*(volatile uint8_t *)((0x3F) + 0x20));
+ __asm__ __volatile__ ("cli" ::: "memory");
+
+
+ (*(volatile uint8_t *)(0x65)) &= ~(1 << 0);
+
+
+
+ switch(baud) {
+  case UART_19200:
+   (*(volatile uint16_t *)(0xCC)) = 51;
+   break;
+  case UART_38400:
+   (*(volatile uint16_t *)(0xCC)) = 25;
+   break;
+  case UART_57600:
+   (*(volatile uint16_t *)(0xCC)) = 16;
+   break;
+  case UART_115200:
+   (*(volatile uint16_t *)(0xCC)) = 8;
+   break;
+  default:
+   (*(volatile uint16_t *)(0xCC)) = 16;
+ }
+
+
+ (*(volatile uint8_t *)(0xC8)) = (1 << 6) | (0 << 1);
+
+
+ (*(volatile uint8_t *)(0XC9)) = (1<<3);
+
+ (*(volatile uint8_t *)(0xCA)) = ((1<<2)|(1<<1));
+
+ (*(volatile uint8_t *)(0xC8)) &= ~(1<<1);
+
+
+ (*(volatile uint8_t *)((0x3F) + 0x20)) = sreg;
+}
+
+uint8_t uart_bytes_received(void)
 {
- if (index < 100) {
-  return rx[index];
+ return uart_buffer_index;
+}
+
+void uart_reset_receive(void)
+{
+ uart_buffer_index = 0;
+}
+
+
+
+
+extern "C" void __vector_36 (void) __attribute__ ((signal,used, externally_visible)) ; void __vector_36 (void)
+{
+    uart_buffer[uart_buffer_index] = (*(volatile uint8_t *)(0XCE));
+    uart_buffer_index = (uart_buffer_index + 1) % 32;
+}
+
+uint8_t uart_get_byte(int index)
+{
+ if (index < 32)
+ {
+  return uart_buffer[index];
  }
  return 0;
-}
-
-void uart_putstr(char *s)
-{
- while(*s) uart_putchar(*s++);
-
-}
-
-int uart_write(uint8_t* const str, int len){
- uart_putstr((char*)str);
- return 0;
-}
-
-void uart_init(){
-
-
-
-
- rxn = 0;
- uart_rx = 0;
-
-
- uint16_t baud_rate = (16000000L/16/9600-1);
- (*(volatile uint8_t *)(0xC5)) = (unsigned char) baud_rate>>8;
- (*(volatile uint8_t *)(0xC4)) = (unsigned char) baud_rate;
-
-
- (*(volatile uint8_t *)(0XC1)) = (1 << (4))|(1 << (3)) | (1 << (7));
-
-
- (*(volatile uint8_t *)(0xC2)) = (1<<3)|(1<<1) | (1 << (2));
-}
-
-uint8_t uart_bytes_recv(void)
-{
- return rxn;
-}
-
-void uart_reset_recv(void)
-{
- rxn = 0;
-}
-
-
-
-
-
-extern "C" void __vector_25 (void) __attribute__ ((signal,used, externally_visible)) ; void __vector_25 (void)
-{
- while ( !((*(volatile uint8_t *)(0xC0)) & (1<<7)) );
-
-
-
- rx[rxn] = (*(volatile uint8_t *)(0XC6));
- rxn = (rxn + 1) % 100;
- uart_rx = 1;
-
 }

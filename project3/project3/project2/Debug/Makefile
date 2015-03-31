@@ -33,7 +33,8 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../tests \
+../radio/ \
+../roomba/ \
 ../src/ \
 ../src/ASF/ \
 ../src/ASF/common/ \
@@ -57,21 +58,11 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../os.cpp \
 ../project2.cpp \
-../tests/test0_now.cpp \
-../tests/test10_service_system_multiple.cpp \
-../tests/test11_service_system_rr.cpp \
-../tests/test12_service_system_periodic.cpp \
-../tests/test13_service_subscribe_error.cpp \
-../tests/test14_service_periodic_error.cpp \
-../tests/test1_system.cpp \
-../tests/test2_rr.cpp \
-../tests/test3_system_rr.cpp \
-../tests/test4_periodic.cpp \
-../tests/test5_periodic_two.cpp \
-../tests/test6_periodic_complex.cpp \
-../tests/test7_tasks_all.cpp \
-../tests/test8_service_system.cpp \
-../tests/test9_service_rr.cpp \
+../radio/cops_and_robbers.cpp \
+../radio/radio.cpp \
+../radio/scheduler.cpp \
+../radio/spi.cpp \
+../roomba/roomba.cpp \
 ../trace/trace.cpp \
 ../uart/uart.cpp \
 ../src/ASF/mega/boards/stk600/rcx_x/init.c \
@@ -87,21 +78,11 @@ ASM_SRCS +=
 OBJS +=  \
 os.o \
 project2.o \
-tests/test0_now.o \
-tests/test10_service_system_multiple.o \
-tests/test11_service_system_rr.o \
-tests/test12_service_system_periodic.o \
-tests/test13_service_subscribe_error.o \
-tests/test14_service_periodic_error.o \
-tests/test1_system.o \
-tests/test2_rr.o \
-tests/test3_system_rr.o \
-tests/test4_periodic.o \
-tests/test5_periodic_two.o \
-tests/test6_periodic_complex.o \
-tests/test7_tasks_all.o \
-tests/test8_service_system.o \
-tests/test9_service_rr.o \
+radio/cops_and_robbers.o \
+radio/radio.o \
+radio/scheduler.o \
+radio/spi.o \
+roomba/roomba.o \
 trace/trace.o \
 uart/uart.o \
 src/ASF/mega/boards/stk600/rcx_x/init.o \
@@ -110,21 +91,11 @@ src/main.o
 OBJS_AS_ARGS +=  \
 os.o \
 project2.o \
-tests/test0_now.o \
-tests/test10_service_system_multiple.o \
-tests/test11_service_system_rr.o \
-tests/test12_service_system_periodic.o \
-tests/test13_service_subscribe_error.o \
-tests/test14_service_periodic_error.o \
-tests/test1_system.o \
-tests/test2_rr.o \
-tests/test3_system_rr.o \
-tests/test4_periodic.o \
-tests/test5_periodic_two.o \
-tests/test6_periodic_complex.o \
-tests/test7_tasks_all.o \
-tests/test8_service_system.o \
-tests/test9_service_rr.o \
+radio/cops_and_robbers.o \
+radio/radio.o \
+radio/scheduler.o \
+radio/spi.o \
+roomba/roomba.o \
 trace/trace.o \
 uart/uart.o \
 src/ASF/mega/boards/stk600/rcx_x/init.o \
@@ -133,21 +104,11 @@ src/main.o
 C_DEPS +=  \
 os.d \
 project2.d \
-tests/test0_now.d \
-tests/test10_service_system_multiple.d \
-tests/test11_service_system_rr.d \
-tests/test12_service_system_periodic.d \
-tests/test13_service_subscribe_error.d \
-tests/test14_service_periodic_error.d \
-tests/test1_system.d \
-tests/test2_rr.d \
-tests/test3_system_rr.d \
-tests/test4_periodic.d \
-tests/test5_periodic_two.d \
-tests/test6_periodic_complex.d \
-tests/test7_tasks_all.d \
-tests/test8_service_system.d \
-tests/test9_service_rr.d \
+radio/cops_and_robbers.d \
+radio/radio.d \
+radio/scheduler.d \
+radio/spi.d \
+roomba/roomba.d \
 trace/trace.d \
 uart/uart.d \
 src/ASF/mega/boards/stk600/rcx_x/init.d \
@@ -156,21 +117,11 @@ src/main.d
 C_DEPS_AS_ARGS +=  \
 os.d \
 project2.d \
-tests/test0_now.d \
-tests/test10_service_system_multiple.d \
-tests/test11_service_system_rr.d \
-tests/test12_service_system_periodic.d \
-tests/test13_service_subscribe_error.d \
-tests/test14_service_periodic_error.d \
-tests/test1_system.d \
-tests/test2_rr.d \
-tests/test3_system_rr.d \
-tests/test4_periodic.d \
-tests/test5_periodic_two.d \
-tests/test6_periodic_complex.d \
-tests/test7_tasks_all.d \
-tests/test8_service_system.d \
-tests/test9_service_rr.d \
+radio/cops_and_robbers.d \
+radio/radio.d \
+radio/scheduler.d \
+radio/spi.d \
+roomba/roomba.d \
 trace/trace.d \
 uart/uart.d \
 src/ASF/mega/boards/stk600/rcx_x/init.d \
@@ -185,32 +136,12 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 LIB_DEP+=  \
-C:/Users/Teyu/Documents/Atmel\ Studio/arduinoCore/libcore.a
+C:/Users/Mikko/Documents/Atmel\ Studio/arduinoCore/libcore.a
 
 LINKER_SCRIPT_DEP+= 
 
 
 # AVR32/GNU C Compiler
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -241,7 +172,14 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-tests/%.o: ../tests/%.cpp
+radio/%.o: ../radio/%.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 4.8.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1061\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DF_CPU=16000000L -DARDUINO=106 -DBOARD=STK600_MEGA -DDEBUG  -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" -I"../common/applications/user_application/atmega2560_stk600-mega/config" -I"../src/config" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/utils/preprocessor" -I"../src"  -Os -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -c -fno-exceptions -v -ansi -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+roomba/%.o: ../roomba/%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 4.8.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1061\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DF_CPU=16000000L -DARDUINO=106 -DBOARD=STK600_MEGA -DDEBUG  -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" -I"../common/applications/user_application/atmega2560_stk600-mega/config" -I"../src/config" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/utils/preprocessor" -I"../src"  -Os -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -c -fno-exceptions -v -ansi -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
