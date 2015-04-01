@@ -36,7 +36,7 @@ project2.d project2.o: .././project2.cpp \
  .././radio/radio.h .././radio/nRF24L01.h .././radio/packet.h \
  .././radio/sensor_struct.h .././radio/spi.h .././radio/packet.h \
  .././roomba/roomba.h .././roomba/sensor_struct.h \
- .././roomba/roomba_sci.h .././roomba/sensor_struct.h
+ .././roomba/roomba_sci.h .././roomba/sensor_struct.h .././ir/ir.h
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -131,3 +131,5 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 .././roomba/roomba_sci.h:
 
 .././roomba/sensor_struct.h:
+
+.././ir/ir.h:

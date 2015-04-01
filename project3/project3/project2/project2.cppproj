@@ -261,6 +261,12 @@
     <Compile Include="error_code.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="ir\ir.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ir\ir.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="kernel.h">
       <SubType>compile</SubType>
     </Compile>
@@ -395,6 +401,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ir\" />
     <Folder Include="radio\" />
     <Folder Include="roomba\" />
     <Folder Include="src\" />

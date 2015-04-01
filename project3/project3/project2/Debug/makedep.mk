@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+ir\ir.cpp
+
 os.cpp
 
 project2.cpp

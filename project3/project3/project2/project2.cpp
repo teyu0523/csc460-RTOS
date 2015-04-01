@@ -11,6 +11,7 @@
 #include "roomba/roomba.h"
 #include "roomba/roomba_sci.h"
 #include "roomba/sensor_struct.h"
+#include "ir/ir.h"
 
 
 #define _USE_MAIN_
@@ -19,38 +20,16 @@
 
 #ifdef _USE_MAIN_
 
+#define ENEMY_CODE (uint8_t)'B'
 
 void radio_rxhandler(uint8_t pipenumber) {
 	
 }
 
-//Handle expected IR values, record unexpected values to pass on via radio.
-//	(Get Roomba state via state packets)
-void ir_rxhandler() {
-	
-}
-
-void handleRoombaPacket(radiopacket_t *packet) {
-	
-}
-
-void handleIRPacket(radiopacket_t *packet) {
+void ir_rxhandler(){
 	
 	
 }
-
-void rr_roomba_controler() {
-	
-}
-
-
-//Check if the Roomba has been idle long enough to
-//	put it to sleep. This timer is reset every time a
-//	packet arrives.
-void per_roomba_timeout() {
-	
-}
-
 
 
 //void send_radio(){
@@ -70,6 +49,7 @@ void per_roomba_timeout() {
 
 void setup(){
 	Roomba_Init();
+	IR_init();
 }
 
 void Send_Drive_Command(){
@@ -79,11 +59,19 @@ void Send_Drive_Command(){
 	}
 }
 
+void send_IR_Command(){
+	
+	for(;;) {
+		IR_transmit(ENEMY_CODE);
+		Task_Next();
+	}
+}
+
 int r_main(void)
 {
 	
 	setup();
-	Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
+	Task_Create_Periodic(send_IR_Command,0,10,4,5);
 	
 	return 1;
 }

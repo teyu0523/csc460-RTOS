@@ -33,6 +33,7 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
+../ir/ \
 ../radio/ \
 ../roomba/ \
 ../src/ \
@@ -56,6 +57,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../ir/ir.cpp \
 ../os.cpp \
 ../project2.cpp \
 ../radio/cops_and_robbers.cpp \
@@ -76,6 +78,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+ir/ir.o \
 os.o \
 project2.o \
 radio/cops_and_robbers.o \
@@ -89,6 +92,7 @@ src/ASF/mega/boards/stk600/rcx_x/init.o \
 src/main.o
 
 OBJS_AS_ARGS +=  \
+ir/ir.o \
 os.o \
 project2.o \
 radio/cops_and_robbers.o \
@@ -102,6 +106,7 @@ src/ASF/mega/boards/stk600/rcx_x/init.o \
 src/main.o
 
 C_DEPS +=  \
+ir/ir.d \
 os.d \
 project2.d \
 radio/cops_and_robbers.d \
@@ -115,6 +120,7 @@ src/ASF/mega/boards/stk600/rcx_x/init.d \
 src/main.d
 
 C_DEPS_AS_ARGS +=  \
+ir/ir.d \
 os.d \
 project2.d \
 radio/cops_and_robbers.d \
@@ -164,6 +170,15 @@ LINKER_SCRIPT_DEP+=
 
 
 
+
+
+
+ir/%.o: ../ir/%.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 4.8.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1061\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DF_CPU=16000000L -DARDUINO=106 -DBOARD=STK600_MEGA -DDEBUG  -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" -I"../common/applications/user_application/atmega2560_stk600-mega/config" -I"../src/config" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/utils/preprocessor" -I"../src"  -Os -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -c -fno-exceptions -v -ansi -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
 
 ./%.o: .././%.cpp
 	@echo Building file: $<

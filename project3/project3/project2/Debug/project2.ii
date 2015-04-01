@@ -2356,40 +2356,27 @@ typedef enum _cs
 # 13 ".././project2.cpp" 2
 # 1 ".././roomba/sensor_struct.h" 1
 # 14 ".././project2.cpp" 2
-# 23 ".././project2.cpp"
+# 1 ".././ir/ir.h" 1
+# 15 ".././ir/ir.h"
+typedef enum _ir_command_bytes {IR_SHOOT = 0x92, IR_WAKE_COP1 = 0x24, IR_WAKE_COP2 = 0x11, IR_WAKE_ROBBER1 = 0x84, IR_WAKE_ROBBER2 = 0xE3} IR_COMMAND_CODE;
+
+void IR_transmit(uint8_t data);
+void IR_init();
+uint8_t IR_getLast();
+# 15 ".././project2.cpp" 2
+# 25 ".././project2.cpp"
 void radio_rxhandler(uint8_t pipenumber) {
 
 }
 
-
-
-void ir_rxhandler() {
-
-}
-
-void handleRoombaPacket(radiopacket_t *packet) {
-
-}
-
-void handleIRPacket(radiopacket_t *packet) {
+void ir_rxhandler(){
 
 
 }
-
-void rr_roomba_controler() {
-
-}
-
-
-
-
-
-void per_roomba_timeout() {
-
-}
-# 71 ".././project2.cpp"
+# 50 ".././project2.cpp"
 void setup(){
  Roomba_Init();
+ IR_init();
 }
 
 void Send_Drive_Command(){
@@ -2399,11 +2386,19 @@ void Send_Drive_Command(){
  }
 }
 
+void send_IR_Command(){
+
+ for(;;) {
+  IR_transmit((uint8_t)'B');
+  Task_Next();
+ }
+}
+
 int r_main(void)
 {
 
  setup();
- Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
+ Task_Create_Periodic(send_IR_Command,0,10,4,5);
 
  return 1;
 }
