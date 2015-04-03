@@ -14,18 +14,18 @@ __zero_reg__ = 1
 _Z15send_IR_Commandv:
 .LFB98:
 	.file 1 ".././project2.cpp"
-	.loc 1 62 0
+	.loc 1 81 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
 .L2:
-	.loc 1 65 0 discriminator 1
-	ldi r24,lo8(66)
+	.loc 1 84 0 discriminator 1
+	ldi r24,lo8(65)
 	call _Z11IR_transmith
 .LVL0:
-	.loc 1 66 0 discriminator 1
+	.loc 1 85 0 discriminator 1
 	call Task_Next
 .LVL1:
 	rjmp .L2
@@ -37,7 +37,7 @@ _Z15send_IR_Commandv:
 	.type	_Z15radio_rxhandlerh, @function
 _Z15radio_rxhandlerh:
 .LFB94:
-	.loc 1 25 0
+	.loc 1 26 0
 	.cfi_startproc
 .LVL2:
 /* prologue: function */
@@ -53,13 +53,36 @@ _Z15radio_rxhandlerh:
 	.type	_Z12ir_rxhandlerv, @function
 _Z12ir_rxhandlerv:
 .LFB95:
-	.loc 1 29 0
+	.loc 1 30 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
+.LBB2:
+	.loc 1 31 0
+	call _Z10IR_getLastv
+.LVL3:
+	.loc 1 34 0
+	cpi r24,lo8(65)
+	brne .L5
+	.loc 1 36 0
+	ldi r24,lo8(8)
+.LVL4:
+	rjmp .L7
+.LVL5:
+.L5:
+	.loc 1 38 0
+	cpi r24,lo8(66)
+	brne .L4
+	.loc 1 40 0
+	ldi r24,lo8(16)
+.LVL6:
+.L7:
+	sts 258,r24
+.L4:
 	ret
+.LBE2:
 	.cfi_endproc
 .LFE95:
 	.size	_Z12ir_rxhandlerv, .-_Z12ir_rxhandlerv
@@ -68,18 +91,21 @@ _Z12ir_rxhandlerv:
 	.type	setup, @function
 setup:
 .LFB96:
-	.loc 1 50 0
+	.loc 1 62 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 51 0
+	.loc 1 66 0
+	ldi r24,lo8(24)
+	sts 257,r24
+	.loc 1 70 0
 	call _Z11Roomba_Initv
-.LVL3:
-	.loc 1 52 0
+.LVL7:
+	.loc 1 71 0
 	jmp _Z7IR_initv
-.LVL4:
+.LVL8:
 	.cfi_endproc
 .LFE96:
 	.size	setup, .-setup
@@ -88,24 +114,24 @@ setup:
 	.type	_Z18Send_Drive_Commandv, @function
 _Z18Send_Drive_Commandv:
 .LFB97:
-	.loc 1 55 0
+	.loc 1 74 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-.L7:
-	.loc 1 57 0 discriminator 1
+.L11:
+	.loc 1 76 0 discriminator 1
 	ldi r22,0
 	ldi r23,0
 	ldi r24,lo8(-16)
 	ldi r25,0
 	call _Z12Roomba_Driveii
-.LVL5:
-	.loc 1 58 0 discriminator 1
+.LVL9:
+	.loc 1 77 0 discriminator 1
 	call Task_Next
-.LVL6:
-	rjmp .L7
+.LVL10:
+	rjmp .L11
 	.cfi_endproc
 .LFE97:
 	.size	_Z18Send_Drive_Commandv, .-_Z18Send_Drive_Commandv
@@ -114,7 +140,7 @@ _Z18Send_Drive_Commandv:
 	.type	_Z6r_mainv, @function
 _Z6r_mainv:
 .LFB99:
-	.loc 1 71 0
+	.loc 1 90 0
 	.cfi_startproc
 	push r16
 .LCFI0:
@@ -128,10 +154,10 @@ _Z6r_mainv:
 /* frame size = 0 */
 /* stack size = 2 */
 .L__stack_usage = 2
-	.loc 1 73 0
+	.loc 1 92 0
 	call setup
-.LVL7:
-	.loc 1 74 0
+.LVL11:
+	.loc 1 93 0
 	ldi r16,lo8(5)
 	ldi r17,0
 	ldi r18,lo8(4)
@@ -143,8 +169,8 @@ _Z6r_mainv:
 	ldi r24,lo8(gs(_Z15send_IR_Commandv))
 	ldi r25,hi8(gs(_Z15send_IR_Commandv))
 	call Task_Create_Periodic
-.LVL8:
-	.loc 1 77 0
+.LVL12:
+	.loc 1 96 0
 	ldi r24,lo8(1)
 	ldi r25,0
 /* epilogue start */
@@ -163,15 +189,15 @@ _Z6r_mainv:
 	.file 6 ".././os.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x339
+	.long	0x371
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF32
+	.long	.LASF35
 	.byte	0x4
-	.long	.LASF33
-	.long	.LASF34
+	.long	.LASF36
+	.long	.LASF37
 	.long	.Ldebug_ranges0+0
 	.long	0
 	.long	0
@@ -256,7 +282,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF16
 	.byte	0x1
-	.byte	0x3e
+	.byte	0x51
 	.long	.LASF18
 	.long	.LFB98
 	.long	.LFE98
@@ -268,24 +294,24 @@ _Z6r_mainv:
 	.long	0xf2
 	.uleb128 0x8
 	.long	.LVL0
-	.long	0x2bd
+	.long	0x2e4
 	.long	0xe8
 	.uleb128 0x9
 	.byte	0x1
 	.byte	0x68
 	.byte	0x2
 	.byte	0x8
-	.byte	0x42
+	.byte	0x41
 	.byte	0
 	.uleb128 0xa
 	.long	.LVL1
-	.long	0x2d4
+	.long	0x2fb
 	.byte	0
 	.uleb128 0x7
 	.byte	0x1
 	.long	.LASF17
 	.byte	0x1
-	.byte	0x19
+	.byte	0x1a
 	.long	.LASF19
 	.long	.LFB94
 	.long	.LFE94
@@ -296,19 +322,19 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	0x11d
 	.uleb128 0xb
-	.long	.LASF35
+	.long	.LASF38
 	.byte	0x1
-	.byte	0x19
+	.byte	0x1a
 	.long	0x3b
 	.byte	0x1
 	.byte	0x68
 	.byte	0
-	.uleb128 0xc
+	.uleb128 0x7
 	.byte	0x1
-	.long	.LASF36
+	.long	.LASF20
 	.byte	0x1
-	.byte	0x1d
-	.long	.LASF37
+	.byte	0x1e
+	.long	.LASF21
 	.long	.LFB95
 	.long	.LFE95
 	.byte	0x3
@@ -316,11 +342,26 @@ _Z6r_mainv:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
+	.long	0x15d
+	.uleb128 0xc
+	.long	.LBB2
+	.long	.LBE2
 	.uleb128 0xd
+	.long	.LASF24
 	.byte	0x1
-	.long	.LASF38
+	.byte	0x1f
+	.long	0x3b
+	.long	.LLST0
+	.uleb128 0xa
+	.long	.LVL3
+	.long	0x305
+	.byte	0
+	.byte	0
+	.uleb128 0xe
 	.byte	0x1
-	.byte	0x32
+	.long	.LASF39
+	.byte	0x1
+	.byte	0x3e
 	.long	.LFB96
 	.long	.LFE96
 	.byte	0x3
@@ -328,21 +369,21 @@ _Z6r_mainv:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x163
+	.long	0x18a
 	.uleb128 0xa
-	.long	.LVL3
-	.long	0x2de
-	.uleb128 0xe
-	.long	.LVL4
+	.long	.LVL7
+	.long	0x316
+	.uleb128 0xf
+	.long	.LVL8
 	.byte	0x1
-	.long	0x2eb
+	.long	0x323
 	.byte	0
 	.uleb128 0x7
 	.byte	0x1
-	.long	.LASF20
+	.long	.LASF22
 	.byte	0x1
-	.byte	0x37
-	.long	.LASF21
+	.byte	0x4a
+	.long	.LASF23
 	.long	.LFB97
 	.long	.LFE97
 	.byte	0x3
@@ -350,11 +391,11 @@ _Z6r_mainv:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x1ad
+	.long	0x1d4
 	.uleb128 0x8
-	.long	.LVL5
-	.long	0x2f8
-	.long	0x1a3
+	.long	.LVL9
+	.long	0x330
+	.long	0x1ca
 	.uleb128 0x9
 	.byte	0x6
 	.byte	0x68
@@ -378,27 +419,27 @@ _Z6r_mainv:
 	.byte	0x30
 	.byte	0
 	.uleb128 0xa
-	.long	.LVL6
-	.long	0x2d4
+	.long	.LVL10
+	.long	0x2fb
 	.byte	0
-	.uleb128 0xf
+	.uleb128 0x10
 	.byte	0x1
-	.long	.LASF39
-	.byte	0x1
-	.byte	0x46
 	.long	.LASF40
+	.byte	0x1
+	.byte	0x59
+	.long	.LASF41
 	.long	0x58
 	.long	.LFB99
 	.long	.LFE99
-	.long	.LLST0
+	.long	.LLST1
 	.byte	0x1
-	.long	0x219
+	.long	0x240
 	.uleb128 0xa
-	.long	.LVL7
-	.long	0x136
-	.uleb128 0x10
-	.long	.LVL8
-	.long	0x314
+	.long	.LVL11
+	.long	0x15d
+	.uleb128 0x11
+	.long	.LVL12
+	.long	0x34c
 	.uleb128 0x9
 	.byte	0x6
 	.byte	0x68
@@ -453,152 +494,160 @@ _Z6r_mainv:
 	.sleb128 0
 	.byte	0
 	.byte	0
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"SS"
 	.byte	0x3
 	.byte	0x28
-	.long	0x224
+	.long	0x24b
 	.byte	0xa
-	.uleb128 0x12
-	.long	0x3b
 	.uleb128 0x13
-	.long	.LASF22
+	.long	0x3b
+	.uleb128 0x14
+	.long	.LASF25
 	.byte	0x3
 	.byte	0x29
-	.long	0x224
+	.long	0x24b
 	.byte	0xb
-	.uleb128 0x13
-	.long	.LASF23
+	.uleb128 0x14
+	.long	.LASF26
 	.byte	0x3
 	.byte	0x2a
-	.long	0x224
+	.long	0x24b
 	.byte	0xc
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"SCK"
 	.byte	0x3
 	.byte	0x2b
-	.long	0x224
+	.long	0x24b
 	.byte	0xd
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"SDA"
 	.byte	0x3
 	.byte	0x2d
-	.long	0x224
+	.long	0x24b
 	.byte	0x12
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"SCL"
 	.byte	0x3
 	.byte	0x2e
-	.long	0x224
+	.long	0x24b
 	.byte	0x13
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"A0"
 	.byte	0x3
 	.byte	0x31
-	.long	0x224
+	.long	0x24b
 	.byte	0xe
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"A1"
 	.byte	0x3
 	.byte	0x32
-	.long	0x224
+	.long	0x24b
 	.byte	0xf
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"A2"
 	.byte	0x3
 	.byte	0x33
-	.long	0x224
+	.long	0x24b
 	.byte	0x10
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"A3"
 	.byte	0x3
 	.byte	0x34
-	.long	0x224
+	.long	0x24b
 	.byte	0x11
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"A4"
 	.byte	0x3
 	.byte	0x35
-	.long	0x224
+	.long	0x24b
 	.byte	0x12
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"A5"
 	.byte	0x3
 	.byte	0x36
-	.long	0x224
+	.long	0x24b
 	.byte	0x13
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"A6"
 	.byte	0x3
 	.byte	0x37
-	.long	0x224
+	.long	0x24b
 	.byte	0x14
-	.uleb128 0x11
+	.uleb128 0x12
 	.string	"A7"
 	.byte	0x3
 	.byte	0x38
-	.long	0x224
+	.long	0x24b
 	.byte	0x15
-	.uleb128 0x14
+	.uleb128 0x15
 	.byte	0x1
-	.long	.LASF28
+	.long	.LASF31
 	.byte	0x5
 	.byte	0x11
-	.long	.LASF30
+	.long	.LASF33
 	.byte	0x1
-	.long	0x2d4
-	.uleb128 0x15
+	.long	0x2fb
+	.uleb128 0x16
 	.long	0x3b
 	.byte	0
-	.uleb128 0x16
+	.uleb128 0x17
 	.byte	0x1
-	.long	.LASF41
+	.long	.LASF42
 	.byte	0x6
 	.word	0x12e
 	.byte	0x1
-	.uleb128 0x17
-	.byte	0x1
-	.long	.LASF24
-	.byte	0x4
-	.byte	0x1b
-	.long	.LASF26
-	.byte	0x1
-	.uleb128 0x17
-	.byte	0x1
-	.long	.LASF25
-	.byte	0x5
-	.byte	0x12
-	.long	.LASF27
-	.byte	0x1
-	.uleb128 0x14
-	.byte	0x1
-	.long	.LASF29
-	.byte	0x4
-	.byte	0x34
-	.long	.LASF31
-	.byte	0x1
-	.long	0x314
-	.uleb128 0x15
-	.long	0x4d
-	.uleb128 0x15
-	.long	0x4d
-	.byte	0
 	.uleb128 0x18
 	.byte	0x1
-	.long	.LASF42
+	.long	.LASF43
+	.byte	0x5
+	.byte	0x13
+	.long	.LASF44
+	.long	0x3b
+	.byte	0x1
+	.uleb128 0x19
+	.byte	0x1
+	.long	.LASF27
+	.byte	0x4
+	.byte	0x1b
+	.long	.LASF29
+	.byte	0x1
+	.uleb128 0x19
+	.byte	0x1
+	.long	.LASF28
+	.byte	0x5
+	.byte	0x12
+	.long	.LASF30
+	.byte	0x1
+	.uleb128 0x15
+	.byte	0x1
+	.long	.LASF32
+	.byte	0x4
+	.byte	0x34
+	.long	.LASF34
+	.byte	0x1
+	.long	0x34c
+	.uleb128 0x16
+	.long	0x4d
+	.uleb128 0x16
+	.long	0x4d
+	.byte	0
+	.uleb128 0x1a
+	.byte	0x1
+	.long	.LASF45
 	.byte	0x6
 	.word	0x123
 	.long	0x29
 	.byte	0x1
-	.uleb128 0x15
+	.uleb128 0x16
 	.long	0xa2
-	.uleb128 0x15
+	.uleb128 0x16
 	.long	0x4d
-	.uleb128 0x15
+	.uleb128 0x16
 	.long	0x5f
-	.uleb128 0x15
+	.uleb128 0x16
 	.long	0x5f
-	.uleb128 0x15
+	.uleb128 0x16
 	.long	0x5f
 	.byte	0
 	.byte	0
@@ -744,29 +793,30 @@ _Z6r_mainv:
 	.byte	0
 	.byte	0
 	.uleb128 0xc
-	.uleb128 0x2e
+	.uleb128 0xb
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
 	.byte	0
-	.uleb128 0x3f
-	.uleb128 0xc
+	.byte	0
+	.uleb128 0xd
+	.uleb128 0x34
+	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
-	.uleb128 0x2007
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x6
+	.byte	0
+	.byte	0
 	.uleb128 0xe
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0xd
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -789,7 +839,7 @@ _Z6r_mainv:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xe
+	.uleb128 0xf
 	.uleb128 0x4109
 	.byte	0
 	.uleb128 0x11
@@ -800,7 +850,7 @@ _Z6r_mainv:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xf
+	.uleb128 0x10
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -827,7 +877,7 @@ _Z6r_mainv:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x10
+	.uleb128 0x11
 	.uleb128 0x4109
 	.byte	0x1
 	.uleb128 0x11
@@ -836,7 +886,7 @@ _Z6r_mainv:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x11
+	.uleb128 0x12
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -851,14 +901,14 @@ _Z6r_mainv:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x12
+	.uleb128 0x13
 	.uleb128 0x26
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x13
+	.uleb128 0x14
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -873,7 +923,7 @@ _Z6r_mainv:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x14
+	.uleb128 0x15
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -892,14 +942,14 @@ _Z6r_mainv:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x15
+	.uleb128 0x16
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x16
+	.uleb128 0x17
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -914,7 +964,26 @@ _Z6r_mainv:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x17
+	.uleb128 0x18
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x2007
+	.uleb128 0xe
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x3c
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x19
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -931,7 +1000,7 @@ _Z6r_mainv:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x18
+	.uleb128 0x1a
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -952,6 +1021,17 @@ _Z6r_mainv:
 	.section	.debug_loc,"",@progbits
 .Ldebug_loc0:
 .LLST0:
+	.long	.LVL3
+	.long	.LVL4
+	.word	0x1
+	.byte	0x68
+	.long	.LVL5
+	.long	.LVL6
+	.word	0x1
+	.byte	0x68
+	.long	0
+	.long	0
+.LLST1:
 	.long	.LFB99
 	.long	.LCFI0
 	.word	0x3
@@ -1015,11 +1095,13 @@ _Z6r_mainv:
 	.section	.debug_str,"MS",@progbits,1
 .LASF9:
 	.string	"long long int"
-.LASF38:
+.LASF39:
 	.string	"setup"
-.LASF36:
-	.string	"ir_rxhandler"
-.LASF34:
+.LASF24:
+	.string	"ir_value"
+.LASF44:
+	.string	"_Z10IR_getLastv"
+.LASF37:
 	.string	"C:\\\\Users\\\\Mikko\\\\Documents\\\\CSC460\\\\Project\\\\csc460-RTOS\\\\project3\\\\project3\\\\project2\\\\Debug"
 .LASF7:
 	.string	"long int"
@@ -1029,37 +1111,39 @@ _Z6r_mainv:
 	.string	"send_IR_Command"
 .LASF0:
 	.string	"int8_t"
-.LASF30:
+.LASF33:
 	.string	"_Z11IR_transmith"
-.LASF20:
+.LASF22:
 	.string	"Send_Drive_Command"
 .LASF12:
 	.string	"float"
-.LASF37:
+.LASF21:
 	.string	"_Z12ir_rxhandlerv"
-.LASF42:
+.LASF45:
 	.string	"Task_Create_Periodic"
-.LASF24:
+.LASF27:
 	.string	"Roomba_Init"
-.LASF39:
+.LASF40:
 	.string	"r_main"
 .LASF8:
 	.string	"long unsigned int"
+.LASF20:
+	.string	"ir_rxhandler"
 .LASF3:
 	.string	"unsigned char"
-.LASF29:
+.LASF32:
 	.string	"Roomba_Drive"
 .LASF13:
 	.string	"double"
-.LASF23:
+.LASF26:
 	.string	"MISO"
-.LASF25:
+.LASF28:
 	.string	"IR_init"
-.LASF22:
+.LASF25:
 	.string	"MOSI"
 .LASF6:
 	.string	"unsigned int"
-.LASF40:
+.LASF41:
 	.string	"_Z6r_mainv"
 .LASF10:
 	.string	"long long unsigned int"
@@ -1073,29 +1157,31 @@ _Z6r_mainv:
 	.string	"sizetype"
 .LASF18:
 	.string	"_Z15send_IR_Commandv"
-.LASF32:
+.LASF35:
 	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
-.LASF33:
+.LASF36:
 	.string	".././project2.cpp"
 .LASF11:
 	.string	"char"
-.LASF21:
+.LASF23:
 	.string	"_Z18Send_Drive_Commandv"
-.LASF27:
+.LASF30:
 	.string	"_Z7IR_initv"
-.LASF26:
+.LASF29:
 	.string	"_Z11Roomba_Initv"
-.LASF28:
+.LASF31:
 	.string	"IR_transmit"
 .LASF5:
 	.string	"uint16_t"
-.LASF41:
+.LASF43:
+	.string	"IR_getLast"
+.LASF42:
 	.string	"Task_Next"
 .LASF19:
 	.string	"_Z15radio_rxhandlerh"
-.LASF35:
+.LASF38:
 	.string	"pipenumber"
-.LASF31:
+.LASF34:
 	.string	"_Z12Roomba_Driveii"
 .LASF17:
 	.string	"radio_rxhandler"

@@ -21,12 +21,24 @@
 #ifdef _USE_MAIN_
 
 #define ENEMY_CODE (uint8_t)'B'
+#define TEAM_CODE (uint8_t)'A'
 
 void radio_rxhandler(uint8_t pipenumber) {
 	
 }
 
 void ir_rxhandler(){
+	uint8_t ir_value = IR_getLast();
+	
+	
+	if (ir_value == TEAM_CODE){
+		
+		PORTH = (uint8_t)(_BV(PH3)); 
+		
+	}else if (ir_value == ENEMY_CODE){
+	
+		PORTH = (uint8_t)(_BV(PH4));
+	}	
 	
 	
 }
@@ -48,6 +60,13 @@ void ir_rxhandler(){
 //}
 
 void setup(){
+	
+	
+	//setting LEDS for getting hit by TEAM (PH3 - pin 6) and ENEMY (PH4 - pin 7) 
+	DDRH = (uint8_t)(_BV(PH3)) | (uint8_t)(_BV(PH4));
+	
+	
+	
 	Roomba_Init();
 	IR_init();
 }
@@ -62,7 +81,7 @@ void Send_Drive_Command(){
 void send_IR_Command(){
 	
 	for(;;) {
-		IR_transmit(ENEMY_CODE);
+		IR_transmit(TEAM_CODE);
 		Task_Next();
 	}
 }
