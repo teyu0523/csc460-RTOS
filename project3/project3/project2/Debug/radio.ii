@@ -604,99 +604,58 @@ typedef uint8_t radio_register_t;
 # 24 "../radio/radio.h" 2
 # 1 "../radio/packet.h" 1
 # 15 "../radio/packet.h"
-# 1 "../radio/sensor_struct.h" 1
-# 12 "../radio/sensor_struct.h"
-typedef struct _i16s
+# 1 "../radio/cops_and_robbers.h" 1
+# 17 "../radio/cops_and_robbers.h"
+typedef enum _game_state {
+  GAME_STARTING,
+  GAME_RUNNING,
+  GAME_OVER
+} GAME_STATE;
+
+typedef enum _cops_and_robbers {
+  COP1 = 0,
+  COP2 = 1,
+  ROBBER1 = 2,
+  ROBBER2 = 3
+} COPS_AND_ROBBERS;
+
+typedef enum _ir_teams {
+  COP_CODE = (uint8_t)'B',
+  ROBBER_CODE = (uint8_t)'A'
+} IR_TEAM_CODE;
+
+typedef struct _gs_pkt
 {
- uint8_t low_byte;
- uint8_t high_byte;
-} int16_split;
+  uint8_t game_state;
+  uint8_t roomba_states[4];
+} pf_gamestate_t;
 
 
-typedef union _i16u
+typedef struct _roomba_pkt
 {
- int16_t value;
- int16_split bytes;
-} int16_u;
+  uint8_t roomba_id;
+  uint8_t roomba_state;
+} pf_roombastate_t;
 
+extern uint8_t BASE_ADDRESS[5];
+extern uint8_t ROOMBA_ADDRESSES[][5];
 
-typedef union _u16u
-{
- uint16_t value;
- int16_split bytes;
-} uint16_u;
-
-
-typedef struct
-{
-
-    uint8_t bumps_wheeldrops;
-    uint8_t wall;
-    uint8_t cliff_left;
-    uint8_t cliff_front_left;
-    uint8_t cliff_front_right;
-    uint8_t cliff_right;
-    uint8_t virtual_wall;
-    uint8_t motor_overcurrents;
-    uint8_t dirt_left;
-    uint8_t dirt_right;
-
-
-    uint8_t remote_opcode;
-    uint8_t buttons;
- int16_u distance;
- int16_u angle;
-
-
-    uint8_t charging_state;
-    uint16_u voltage;
-    int16_u current;
-    int8_t temperature;
-    uint16_u charge;
-    uint16_u capacity;
-} roomba_sensor_data_t;
+extern uint8_t BASE_FREQUENCY;
+extern uint8_t ROOMBA_FREQUENCIES[];
 # 16 "../radio/packet.h" 2
-
 
 
 
 typedef enum _pt
 {
- COMMAND,
- SENSOR_DATA,
- IR_COMMAND,
- IR_DATA,
- MESSAGE
+ GAMESTATE_PACKET,
+ ROOMBASTATE_PACKET,
+ MESSAGE_PACKET
 } PACKET_TYPE;
-# 40 "../radio/packet.h"
-typedef struct _cmd
-{
- uint8_t sender_address[5];
- uint8_t command;
 
- uint8_t num_arg_bytes;
- uint8_t arguments[16];
 
-} pf_command_t;
 
-typedef struct _sensors
-{
- uint8_t roomba_number;
- roomba_sensor_data_t sensors;
 
-} pf_sensors_t;
-
-typedef struct _ir_command {
- uint8_t sender_address[5];
- uint8_t ir_command;
- uint8_t ir_data;
- uint8_t servo_angle;
-} pf_ir_command_t;
-
-typedef struct _ir_data {
- uint8_t roomba_number;
- uint8_t ir_data;
-} pf_ir_data_t;
 
 typedef struct _msg
 {
@@ -712,10 +671,8 @@ typedef struct _msg
 typedef union _pf
 {
  uint8_t _filler[29];
- pf_command_t command;
- pf_sensors_t sensors;
- pf_ir_data_t ir_data;
- pf_ir_command_t ir_command;
+ pf_gamestate_t gamestate;
+ pf_roombastate_t roombastate;
  pf_message_t message;
 } payloadformat_t;
 

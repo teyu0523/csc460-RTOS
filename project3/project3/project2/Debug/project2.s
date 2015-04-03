@@ -14,18 +14,18 @@ __zero_reg__ = 1
 _Z15send_IR_Commandv:
 .LFB98:
 	.file 1 ".././project2.cpp"
-	.loc 1 81 0
+	.loc 1 83 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
 .L2:
-	.loc 1 84 0 discriminator 1
-	ldi r24,lo8(65)
+	.loc 1 86 0 discriminator 1
+	ldi r24,lo8(66)
 	call _Z11IR_transmith
 .LVL0:
-	.loc 1 85 0 discriminator 1
+	.loc 1 87 0 discriminator 1
 	call Task_Next
 .LVL1:
 	rjmp .L2
@@ -37,7 +37,7 @@ _Z15send_IR_Commandv:
 	.type	_Z15radio_rxhandlerh, @function
 _Z15radio_rxhandlerh:
 .LFB94:
-	.loc 1 26 0
+	.loc 1 28 0
 	.cfi_startproc
 .LVL2:
 /* prologue: function */
@@ -53,29 +53,29 @@ _Z15radio_rxhandlerh:
 	.type	_Z12ir_rxhandlerv, @function
 _Z12ir_rxhandlerv:
 .LFB95:
-	.loc 1 30 0
+	.loc 1 32 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
 .LBB2:
-	.loc 1 31 0
+	.loc 1 33 0
 	call _Z10IR_getLastv
 .LVL3:
-	.loc 1 34 0
-	cpi r24,lo8(65)
-	brne .L5
 	.loc 1 36 0
+	cpi r24,lo8(66)
+	brne .L5
+	.loc 1 38 0
 	ldi r24,lo8(8)
 .LVL4:
 	rjmp .L7
 .LVL5:
 .L5:
-	.loc 1 38 0
-	cpi r24,lo8(66)
-	brne .L4
 	.loc 1 40 0
+	cpi r24,lo8(65)
+	brne .L4
+	.loc 1 42 0
 	ldi r24,lo8(16)
 .LVL6:
 .L7:
@@ -91,19 +91,19 @@ _Z12ir_rxhandlerv:
 	.type	setup, @function
 setup:
 .LFB96:
-	.loc 1 62 0
+	.loc 1 64 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 66 0
+	.loc 1 68 0
 	ldi r24,lo8(24)
 	sts 257,r24
-	.loc 1 70 0
+	.loc 1 72 0
 	call _Z11Roomba_Initv
 .LVL7:
-	.loc 1 71 0
+	.loc 1 73 0
 	jmp _Z7IR_initv
 .LVL8:
 	.cfi_endproc
@@ -114,21 +114,21 @@ setup:
 	.type	_Z18Send_Drive_Commandv, @function
 _Z18Send_Drive_Commandv:
 .LFB97:
-	.loc 1 74 0
+	.loc 1 76 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
 .L11:
-	.loc 1 76 0 discriminator 1
+	.loc 1 78 0 discriminator 1
 	ldi r22,0
 	ldi r23,0
 	ldi r24,lo8(-16)
 	ldi r25,0
 	call _Z12Roomba_Driveii
 .LVL9:
-	.loc 1 77 0 discriminator 1
+	.loc 1 79 0 discriminator 1
 	call Task_Next
 .LVL10:
 	rjmp .L11
@@ -140,7 +140,7 @@ _Z18Send_Drive_Commandv:
 	.type	_Z6r_mainv, @function
 _Z6r_mainv:
 .LFB99:
-	.loc 1 90 0
+	.loc 1 92 0
 	.cfi_startproc
 	push r16
 .LCFI0:
@@ -154,10 +154,10 @@ _Z6r_mainv:
 /* frame size = 0 */
 /* stack size = 2 */
 .L__stack_usage = 2
-	.loc 1 92 0
+	.loc 1 94 0
 	call setup
 .LVL11:
-	.loc 1 93 0
+	.loc 1 95 0
 	ldi r16,lo8(5)
 	ldi r17,0
 	ldi r18,lo8(4)
@@ -170,7 +170,7 @@ _Z6r_mainv:
 	ldi r25,hi8(gs(_Z15send_IR_Commandv))
 	call Task_Create_Periodic
 .LVL12:
-	.loc 1 96 0
+	.loc 1 98 0
 	ldi r24,lo8(1)
 	ldi r25,0
 /* epilogue start */
@@ -282,7 +282,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF16
 	.byte	0x1
-	.byte	0x51
+	.byte	0x53
 	.long	.LASF18
 	.long	.LFB98
 	.long	.LFE98
@@ -301,7 +301,7 @@ _Z6r_mainv:
 	.byte	0x68
 	.byte	0x2
 	.byte	0x8
-	.byte	0x41
+	.byte	0x42
 	.byte	0
 	.uleb128 0xa
 	.long	.LVL1
@@ -311,7 +311,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF17
 	.byte	0x1
-	.byte	0x1a
+	.byte	0x1c
 	.long	.LASF19
 	.long	.LFB94
 	.long	.LFE94
@@ -324,7 +324,7 @@ _Z6r_mainv:
 	.uleb128 0xb
 	.long	.LASF38
 	.byte	0x1
-	.byte	0x1a
+	.byte	0x1c
 	.long	0x3b
 	.byte	0x1
 	.byte	0x68
@@ -333,7 +333,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF20
 	.byte	0x1
-	.byte	0x1e
+	.byte	0x20
 	.long	.LASF21
 	.long	.LFB95
 	.long	.LFE95
@@ -349,7 +349,7 @@ _Z6r_mainv:
 	.uleb128 0xd
 	.long	.LASF24
 	.byte	0x1
-	.byte	0x1f
+	.byte	0x21
 	.long	0x3b
 	.long	.LLST0
 	.uleb128 0xa
@@ -361,7 +361,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF39
 	.byte	0x1
-	.byte	0x3e
+	.byte	0x40
 	.long	.LFB96
 	.long	.LFE96
 	.byte	0x3
@@ -382,7 +382,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF22
 	.byte	0x1
-	.byte	0x4a
+	.byte	0x4c
 	.long	.LASF23
 	.long	.LFB97
 	.long	.LFE97
@@ -426,7 +426,7 @@ _Z6r_mainv:
 	.byte	0x1
 	.long	.LASF40
 	.byte	0x1
-	.byte	0x59
+	.byte	0x5b
 	.long	.LASF41
 	.long	0x58
 	.long	.LFB99

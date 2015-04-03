@@ -234,24 +234,55 @@ typedef struct
 # 631 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\avr\\io.h" 2 3
 # 13 "../radio/cops_and_robbers.h" 2
 
-typedef enum {COP1 = 0, COP2, ROBBER1, ROBBER2} COPS_AND_ROBBERS;
+
+
+
+typedef enum _game_state {
+  GAME_STARTING,
+  GAME_RUNNING,
+  GAME_OVER
+} GAME_STATE;
+
+typedef enum _cops_and_robbers {
+  COP1 = 0,
+  COP2 = 1,
+  ROBBER1 = 2,
+  ROBBER2 = 3
+} COPS_AND_ROBBERS;
+
+typedef enum _ir_teams {
+  COP_CODE = (uint8_t)'B',
+  ROBBER_CODE = (uint8_t)'A'
+} IR_TEAM_CODE;
+
+typedef struct _gs_pkt
+{
+  uint8_t game_state;
+  uint8_t roomba_states[4];
+} pf_gamestate_t;
+
+
+typedef struct _roomba_pkt
+{
+  uint8_t roomba_id;
+  uint8_t roomba_state;
+} pf_roombastate_t;
+
+extern uint8_t BASE_ADDRESS[5];
 extern uint8_t ROOMBA_ADDRESSES[][5];
 
+extern uint8_t BASE_FREQUENCY;
 extern uint8_t ROOMBA_FREQUENCIES[];
-
-typedef enum {
- SEND_BYTE,
- REQUEST_DATA,
- AIM_SERVO
- } IR_COMMANDS;
 # 9 "../radio/cops_and_robbers.cpp" 2
 
 
+uint8_t BASE_ADDRESS[5] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 uint8_t ROOMBA_ADDRESSES[4][5] = {
- {0xAA,0xAA,0xAA,0xAA,0xAA},
- {0xBB,0xBB,0xBB,0xBB,0xBB},
- {0xCC,0xCC,0xCC,0xCC,0xCC},
- {0xDD,0xDD,0xDD,0xDD,0xDD}
+ {0x4A,0x4A,0x4A,0x4A,0x4A},
+  {0x4A,0x4A,0x4A,0x4A,0x4A},
+  {0x4A,0x4A,0x4A,0x4A,0x4A},
+  {0x4A,0x4A,0x4A,0x4A,0x4A}
 };
 
+uint8_t BASE_FREQUENCY = 102;
 uint8_t ROOMBA_FREQUENCIES [4] = {104, 106, 108, 110};

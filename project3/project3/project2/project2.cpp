@@ -8,6 +8,7 @@
 #include "trace/trace.h"
 #include "radio/radio.h"
 #include "radio/packet.h"
+#include "radio/cops_and_robbers.h"
 #include "roomba/roomba.h"
 #include "roomba/roomba_sci.h"
 #include "roomba/sensor_struct.h"
@@ -20,8 +21,9 @@
 
 #ifdef _USE_MAIN_
 
-#define ENEMY_CODE (uint8_t)'B'
-#define TEAM_CODE (uint8_t)'A'
+ #define COP_CODE (uint8_t)'B'
+ #define ROBBER_CODE (uint8_t)'A'
+
 
 void radio_rxhandler(uint8_t pipenumber) {
 	
@@ -31,11 +33,11 @@ void ir_rxhandler(){
 	uint8_t ir_value = IR_getLast();
 	
 	
-	if (ir_value == TEAM_CODE){
+	if (ir_value == COP_CODE){
 		
 		PORTH = (uint8_t)(_BV(PH3)); 
 		
-	}else if (ir_value == ENEMY_CODE){
+	}else if (ir_value == ROBBER_CODE){
 	
 		PORTH = (uint8_t)(_BV(PH4));
 	}	
@@ -81,7 +83,7 @@ void Send_Drive_Command(){
 void send_IR_Command(){
 	
 	for(;;) {
-		IR_transmit(TEAM_CODE);
+		IR_transmit(COP_CODE);
 		Task_Next();
 	}
 }

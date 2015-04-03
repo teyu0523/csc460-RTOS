@@ -66,14 +66,18 @@ Discarded input sections
  .bss           0x00000000        0x0 radio/cops_and_robbers.o
  .data.ROOMBA_FREQUENCIES
                 0x00000000        0x4 radio/cops_and_robbers.o
+ .data.BASE_FREQUENCY
+                0x00000000        0x1 radio/cops_and_robbers.o
  .data.ROOMBA_ADDRESSES
                 0x00000000       0x14 radio/cops_and_robbers.o
- .debug_info    0x00000000       0xa7 radio/cops_and_robbers.o
- .debug_abbrev  0x00000000       0x49 radio/cops_and_robbers.o
+ .data.BASE_ADDRESS
+                0x00000000        0x5 radio/cops_and_robbers.o
+ .debug_info    0x00000000       0xe6 radio/cops_and_robbers.o
+ .debug_abbrev  0x00000000       0x56 radio/cops_and_robbers.o
  .debug_aranges
                 0x00000000       0x18 radio/cops_and_robbers.o
- .debug_line    0x00000000       0x3b radio/cops_and_robbers.o
- .debug_str     0x00000000      0x1ea radio/cops_and_robbers.o
+ .debug_line    0x00000000       0xac radio/cops_and_robbers.o
+ .debug_str     0x00000000      0x20e radio/cops_and_robbers.o
  .comment       0x00000000       0x31 radio/cops_and_robbers.o
  .text          0x00000000        0x0 radio/radio.o
  .data          0x00000000        0x0 radio/radio.o
@@ -970,38 +974,38 @@ END GROUP
  .debug_pubnames
                 0x00000000       0x8d C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
-.debug_info     0x00000000     0x3989
+.debug_info     0x00000000     0x36fd
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x2fa ir/ir.o
  .debug_info    0x000002fa     0x106a os.o
  .debug_info    0x00001364      0x375 project2.o
- .debug_info    0x000016d9     0x12ee radio/radio.o
- .debug_info    0x000029c7      0x174 radio/spi.o
- .debug_info    0x00002b3b      0x90f roomba/roomba.o
- .debug_info    0x0000344a      0x1d1 uart/uart.o
- .debug_info    0x0000361b      0x36e C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+ .debug_info    0x000016d9     0x1062 radio/radio.o
+ .debug_info    0x0000273b      0x174 radio/spi.o
+ .debug_info    0x000028af      0x90f roomba/roomba.o
+ .debug_info    0x000031be      0x1d1 uart/uart.o
+ .debug_info    0x0000338f      0x36e C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
-.debug_abbrev   0x00000000     0x10d4
+.debug_abbrev   0x00000000     0x10b5
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x1bf ir/ir.o
  .debug_abbrev  0x000001bf      0x3f0 os.o
  .debug_abbrev  0x000005af      0x181 project2.o
- .debug_abbrev  0x00000730      0x418 radio/radio.o
- .debug_abbrev  0x00000b48       0xd6 radio/spi.o
- .debug_abbrev  0x00000c1e      0x217 roomba/roomba.o
- .debug_abbrev  0x00000e35      0x122 uart/uart.o
- .debug_abbrev  0x00000f57      0x17d C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+ .debug_abbrev  0x00000730      0x3f9 radio/radio.o
+ .debug_abbrev  0x00000b29       0xd6 radio/spi.o
+ .debug_abbrev  0x00000bff      0x217 roomba/roomba.o
+ .debug_abbrev  0x00000e16      0x122 uart/uart.o
+ .debug_abbrev  0x00000f38      0x17d C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
-.debug_line     0x00000000     0x2007
+.debug_line     0x00000000     0x200a
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x320 ir/ir.o
  .debug_line    0x00000320      0xa22 os.o
  .debug_line    0x00000d42      0x1f1 project2.o
- .debug_line    0x00000f33      0x6a4 radio/radio.o
- .debug_line    0x000015d7      0x177 radio/spi.o
- .debug_line    0x0000174e      0x31b roomba/roomba.o
- .debug_line    0x00001a69      0x1a3 uart/uart.o
- .debug_line    0x00001c0c      0x3fb C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+ .debug_line    0x00000f33      0x6a7 radio/radio.o
+ .debug_line    0x000015da      0x177 radio/spi.o
+ .debug_line    0x00001751      0x31b roomba/roomba.o
+ .debug_line    0x00001a6c      0x1a3 uart/uart.o
+ .debug_line    0x00001c0f      0x3fb C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
 .debug_frame    0x00000000      0x7c4
  *(.debug_frame)
@@ -1014,23 +1018,23 @@ END GROUP
  .debug_frame   0x000006c0       0x94 uart/uart.o
  .debug_frame   0x00000754       0x70 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
-.debug_str      0x00000000     0x157f
+.debug_str      0x00000000     0x156f
  *(.debug_str)
- .debug_str     0x00000000      0x2fa ir/ir.o
+ .debug_str     0x00000000      0x2ff ir/ir.o
                                 0x333 (size before relaxing)
- .debug_str     0x000002fa      0x66f os.o
+ .debug_str     0x000002ff      0x66f os.o
                                 0x8da (size before relaxing)
- .debug_str     0x00000969      0x105 project2.o
+ .debug_str     0x0000096e      0x105 project2.o
                                 0x363 (size before relaxing)
- .debug_str     0x00000a6e      0x74c radio/radio.o
-                                0xa66 (size before relaxing)
- .debug_str     0x000011ba       0x11 radio/spi.o
+ .debug_str     0x00000a73      0x617 radio/radio.o
+                                0x8ba (size before relaxing)
+ .debug_str     0x0000108a       0x11 radio/spi.o
                                 0x25f (size before relaxing)
- .debug_str     0x000011cb      0x2b4 roomba/roomba.o
+ .debug_str     0x0000109b      0x3d4 roomba/roomba.o
                                 0x669 (size before relaxing)
- .debug_str     0x0000147f       0x49 uart/uart.o
+ .debug_str     0x0000146f       0x49 uart/uart.o
                                 0x321 (size before relaxing)
- .debug_str     0x000014c8       0xb7 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+ .debug_str     0x000014b8       0xb7 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
                                 0x150 (size before relaxing)
 
 .debug_loc      0x00000000     0x1b3d
