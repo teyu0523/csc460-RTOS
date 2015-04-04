@@ -34,6 +34,12 @@ Discarded input sections
                 0x00000000        0x6 ir/ir.o
  .text._Z17disable_interruptv
                 0x00000000       0x14 ir/ir.o
+ .text._Z4markv
+                0x00000000       0x1a ir/ir.o
+ .text._Z5spacev
+                0x00000000       0x1a ir/ir.o
+ .text._Z11IR_transmith
+                0x00000000       0x48 ir/ir.o
  .text          0x00000000        0x0 os.o
  .data          0x00000000        0x0 os.o
  .bss           0x00000000        0x0 os.o
@@ -49,8 +55,8 @@ Discarded input sections
  .bss           0x00000000        0x0 project2.o
  .text._Z10send_radiov
                 0x00000000        0x2 project2.o
- .text._Z18Send_Drive_Commandv
-                0x00000000       0x12 project2.o
+ .text._Z15send_IR_Commandv
+                0x00000000       0x20 project2.o
  .text          0x00000000        0x0 radio/cops_and_robbers.o
  .data          0x00000000        0x0 radio/cops_and_robbers.o
  .bss           0x00000000        0x0 radio/cops_and_robbers.o
@@ -97,8 +103,6 @@ Discarded input sections
                 0x00000000        0x6 roomba/roomba.o
  .text._Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t
                 0x00000000      0x150 roomba/roomba.o
- .text._Z12Roomba_Driveii
-                0x00000000       0x44 roomba/roomba.o
  .text          0x00000000        0x0 trace/trace.o
  .data          0x00000000        0x0 trace/trace.o
  .bss           0x00000000        0x0 trace/trace.o
@@ -510,7 +514,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1736
+.text           0x00000000     0x175a
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr6/crtm2560.o
                 0x00000000                __vector_default
@@ -629,145 +633,139 @@ END GROUP
  .text.__vector_32
                 0x000001ea       0xbc ir/ir.o
                 0x000001ea                __vector_32
- .text._Z4markv
-                0x000002a6       0x1a ir/ir.o
-                0x000002a6                _Z4markv
- .text._Z5spacev
-                0x000002c0       0x1a ir/ir.o
-                0x000002c0                _Z5spacev
- .text._Z11IR_transmith
-                0x000002da       0x3e ir/ir.o
-                0x000002da                _Z11IR_transmith
  .text._Z10IR_getLastv
-                0x00000318        0x6 ir/ir.o
-                0x00000318                _Z10IR_getLastv
+                0x000002a6        0x6 ir/ir.o
+                0x000002a6                _Z10IR_getLastv
  .text._ZL4idlev
-                0x0000031e        0x2 os.o
+                0x000002ac        0x2 os.o
  .text._ZL11exit_kernelv
-                0x00000320       0xb2 os.o
+                0x000002ae       0xb2 os.o
  .text._ZL12enter_kernelv
-                0x000003d2       0xb2 os.o
+                0x00000360       0xb2 os.o
  .text._ZL7enqueueP7queue_tP9td_struct
-                0x00000484       0x2c os.o
+                0x00000412       0x2c os.o
  .text.Task_Terminate
-                0x000004b0       0x14 os.o
-                0x000004b0                Task_Terminate
+                0x0000043e       0x14 os.o
+                0x0000043e                Task_Terminate
  .text._ZL7dequeueP7queue_t.isra.1
-                0x000004c4       0x20 os.o
+                0x00000452       0x20 os.o
  .text.__vector_17
-                0x000004e4       0xd6 os.o
-                0x000004e4                __vector_17
+                0x00000472       0xd6 os.o
+                0x00000472                __vector_17
  .text.OS_Abort
-                0x000005ba       0xb6 os.o
-                0x000005ba                OS_Abort
+                0x00000548       0xb6 os.o
+                0x00000548                OS_Abort
  .text._ZL18kernel_create_taskv
-                0x00000670      0x18c os.o
+                0x000005fe      0x18c os.o
  .text._Z7OS_Initv
-                0x000007fc      0x3a0 os.o
-                0x000007fc                _Z7OS_Initv
+                0x0000078a      0x3a0 os.o
+                0x0000078a                _Z7OS_Initv
  .text.Service_Init
-                0x00000b9c       0x3e os.o
-                0x00000b9c                Service_Init
+                0x00000b2a       0x3e os.o
+                0x00000b2a                Service_Init
  .text.Service_Subscribe
-                0x00000bda       0x62 os.o
-                0x00000bda                Service_Subscribe
+                0x00000b68       0x62 os.o
+                0x00000b68                Service_Subscribe
  .text.Service_Publish
-                0x00000c3c       0xc2 os.o
-                0x00000c3c                Service_Publish
+                0x00000bca       0xc2 os.o
+                0x00000bca                Service_Publish
  .text.Task_Create_System
-                0x00000cfe       0x32 os.o
-                0x00000cfe                Task_Create_System
+                0x00000c8c       0x32 os.o
+                0x00000c8c                Task_Create_System
  .text.Task_Create_Periodic
-                0x00000d30       0x60 os.o
-                0x00000d30                Task_Create_Periodic
+                0x00000cbe       0x60 os.o
+                0x00000cbe                Task_Create_Periodic
  .text.Task_Next
-                0x00000d90       0x24 os.o
-                0x00000d90                Task_Next
+                0x00000d1e       0x24 os.o
+                0x00000d1e                Task_Next
  .text.startup.main
-                0x00000db4        0x2 os.o
-                0x00000db4                main
+                0x00000d42        0x2 os.o
+                0x00000d42                main
  .text._Z18send_recieve_radiov
-                0x00000db6       0x7a project2.o
-                0x00000db6                _Z18send_recieve_radiov
- .text._Z15send_IR_Commandv
-                0x00000e30        0x8 project2.o
-                0x00000e30                _Z15send_IR_Commandv
+                0x00000d44       0x82 project2.o
+                0x00000d44                _Z18send_recieve_radiov
+ .text._Z18Send_Drive_Commandv
+                0x00000dc6        0xe project2.o
+                0x00000dc6                _Z18Send_Drive_Commandv
  .text._Z12ir_rxhandlerv
-                0x00000e38       0x5e project2.o
-                0x00000e38                _Z12ir_rxhandlerv
+                0x00000dd4       0x66 project2.o
+                0x00000dd4                _Z12ir_rxhandlerv
  .text._Z15radio_rxhandlerh
-                0x00000e96        0xe project2.o
-                0x00000e96                _Z15radio_rxhandlerh
- .text.setup    0x00000ea4       0x20 project2.o
-                0x00000ea4                setup
+                0x00000e3a       0x46 project2.o
+                0x00000e3a                _Z15radio_rxhandlerh
+ .text.setup    0x00000e80       0x98 project2.o
+                0x00000e80                setup
  .text._Z6r_mainv
-                0x00000ec4       0x9a project2.o
-                0x00000ec4                _Z6r_mainv
+                0x00000f18       0x30 project2.o
+                0x00000f18                _Z6r_mainv
  .text._ZL10get_statusv
-                0x00000f5e       0x1e radio/radio.o
+                0x00000f48       0x1e radio/radio.o
  .text._ZL12set_registerhPhh
-                0x00000f7c       0x54 radio/radio.o
+                0x00000f66       0x54 radio/radio.o
  .text._ZL16send_instructionhPhS_h
-                0x00000fd0       0x5a radio/radio.o
+                0x00000fba       0x5a radio/radio.o
  .text._ZL19reset_pipe0_addressv
-                0x0000102a       0x14 radio/radio.o
+                0x00001014       0x14 radio/radio.o
  .text._ZL12get_registerhPhh.constprop.1
-                0x0000103e       0x58 radio/radio.o
+                0x00001028       0x58 radio/radio.o
  .text._ZL11set_rx_modev
-                0x00001096       0x4a radio/radio.o
+                0x00001080       0x4a radio/radio.o
  .text._Z10Radio_Inith
-                0x000010e0       0xe8 radio/radio.o
-                0x000010e0                _Z10Radio_Inith
+                0x000010ca       0xe8 radio/radio.o
+                0x000010ca                _Z10Radio_Inith
  .text._Z18Radio_Configure_Rx11_radio_pipePh3_ed
-                0x000011c8       0xe8 radio/radio.o
-                0x000011c8                _Z18Radio_Configure_Rx11_radio_pipePh3_ed
+                0x000011b2       0xe8 radio/radio.o
+                0x000011b2                _Z18Radio_Configure_Rx11_radio_pipePh3_ed
  .text._Z17Radio_Set_Tx_AddrPh
-                0x000012b0       0x28 radio/radio.o
-                0x000012b0                _Z17Radio_Set_Tx_AddrPh
+                0x0000129a       0x28 radio/radio.o
+                0x0000129a                _Z17Radio_Set_Tx_AddrPh
  .text._Z15Radio_Configure9_radio_dr15_radio_tx_power
-                0x000012d8       0x4c radio/radio.o
-                0x000012d8                _Z15Radio_Configure9_radio_dr15_radio_tx_power
+                0x000012c2       0x4c radio/radio.o
+                0x000012c2                _Z15Radio_Configure9_radio_dr15_radio_tx_power
  .text._Z14Radio_TransmitP3_rp14_radio_tx_wait
-                0x00001324       0x9e radio/radio.o
-                0x00001324                _Z14Radio_TransmitP3_rp14_radio_tx_wait
+                0x0000130e       0x9e radio/radio.o
+                0x0000130e                _Z14Radio_TransmitP3_rp14_radio_tx_wait
  .text._Z13Radio_ReceiveP3_rp
-                0x000013c2       0x64 radio/radio.o
-                0x000013c2                _Z13Radio_ReceiveP3_rp
+                0x000013ac       0x64 radio/radio.o
+                0x000013ac                _Z13Radio_ReceiveP3_rp
  .text.__vector_5
-                0x00001426       0xfc radio/radio.o
-                0x00001426                __vector_5
+                0x00001410       0xfc radio/radio.o
+                0x00001410                __vector_5
  .text._Z8SPI_Initv
-                0x00001522       0x1a radio/spi.o
-                0x00001522                _Z8SPI_Initv
+                0x0000150c       0x1a radio/spi.o
+                0x0000150c                _Z8SPI_Initv
  .text._Z19SPI_ReadWrite_BlockPhS_h
-                0x0000153c       0x22 radio/spi.o
-                0x0000153c                _Z19SPI_ReadWrite_BlockPhS_h
+                0x00001526       0x22 radio/spi.o
+                0x00001526                _Z19SPI_ReadWrite_BlockPhS_h
  .text._Z15SPI_Write_BlockPhh
-                0x0000155e       0x1a radio/spi.o
-                0x0000155e                _Z15SPI_Write_BlockPhh
+                0x00001548       0x1a radio/spi.o
+                0x00001548                _Z15SPI_Write_BlockPhh
  .text._Z14SPI_Write_Byteh
-                0x00001578        0xc radio/spi.o
-                0x00001578                _Z14SPI_Write_Byteh
+                0x00001562        0xc radio/spi.o
+                0x00001562                _Z14SPI_Write_Byteh
  .text._Z11Roomba_Initv
-                0x00001584       0x6a roomba/roomba.o
-                0x00001584                _Z11Roomba_Initv
+                0x0000156e       0x6a roomba/roomba.o
+                0x0000156e                _Z11Roomba_Initv
+ .text._Z12Roomba_Driveii
+                0x000015d8       0x3a roomba/roomba.o
+                0x000015d8                _Z12Roomba_Driveii
  .text._Z16Roomba_Send_Byteh
-                0x000015ee        0xe uart/uart.o
-                0x000015ee                _Z16Roomba_Send_Byteh
+                0x00001612        0xe uart/uart.o
+                0x00001612                _Z16Roomba_Send_Byteh
  .text._Z16Roomba_UART_Init9_uart_bps
-                0x000015fc       0x5a uart/uart.o
-                0x000015fc                _Z16Roomba_UART_Init9_uart_bps
+                0x00001620       0x5a uart/uart.o
+                0x00001620                _Z16Roomba_UART_Init9_uart_bps
  .text.__vector_36
-                0x00001656       0x4c uart/uart.o
-                0x00001656                __vector_36
+                0x0000167a       0x4c uart/uart.o
+                0x0000167a                __vector_36
  .text.__vector_23
-                0x000016a2       0x90 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
-                0x000016a2                __vector_23
-                0x00001732                . = ALIGN (0x2)
+                0x000016c6       0x90 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+                0x000016c6                __vector_23
+                0x00001756                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001732        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_exit.o)
-                0x00001732                _exit
-                0x00001732                exit
+ .fini9         0x00001756        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_exit.o)
+                0x00001756                _exit
+                0x00001756                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -786,11 +784,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001732        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_exit.o)
+ .fini0         0x00001756        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001736                _etext = .
+                0x0000175a                _etext = .
 
-.data           0x00800200       0x2e load address 0x00001736
+.data           0x00800200       0x2e load address 0x0000175a
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -896,8 +894,8 @@ END GROUP
                 0x00800cf1        0x1 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
  *(COMMON)
                 0x00800cf2                PROVIDE (__bss_end, .)
-                0x00001736                __data_load_start = LOADADDR (.data)
-                0x00001764                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000175a                __data_load_start = LOADADDR (.data)
+                0x00001788                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800cf2        0x0
                 0x00800cf2                PROVIDE (__noinit_start, .)
@@ -997,17 +995,17 @@ END GROUP
  .debug_pubnames
                 0x00000000       0x8d C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
-.debug_info     0x00000000     0x4033
+.debug_info     0x00000000     0x4040
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x2fa ir/ir.o
  .debug_info    0x000002fa     0x106a os.o
- .debug_info    0x00001364      0xba2 project2.o
- .debug_info    0x00001f06       0xe6 radio/cops_and_robbers.o
- .debug_info    0x00001fec     0x1085 radio/radio.o
- .debug_info    0x00003071      0x174 radio/spi.o
- .debug_info    0x000031e5      0x90f roomba/roomba.o
- .debug_info    0x00003af4      0x1d1 uart/uart.o
- .debug_info    0x00003cc5      0x36e C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+ .debug_info    0x00001364      0xbaf project2.o
+ .debug_info    0x00001f13       0xe6 radio/cops_and_robbers.o
+ .debug_info    0x00001ff9     0x1085 radio/radio.o
+ .debug_info    0x0000307e      0x174 radio/spi.o
+ .debug_info    0x000031f2      0x90f roomba/roomba.o
+ .debug_info    0x00003b01      0x1d1 uart/uart.o
+ .debug_info    0x00003cd2      0x36e C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
 .debug_abbrev   0x00000000     0x12f4
  *(.debug_abbrev)
@@ -1021,17 +1019,17 @@ END GROUP
  .debug_abbrev  0x00001055      0x122 uart/uart.o
  .debug_abbrev  0x00001177      0x17d C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
-.debug_line     0x00000000     0x2264
+.debug_line     0x00000000     0x22a8
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x320 ir/ir.o
  .debug_line    0x00000320      0xa22 os.o
- .debug_line    0x00000d42      0x3c9 project2.o
- .debug_line    0x0000110b       0xac radio/cops_and_robbers.o
- .debug_line    0x000011b7      0x67d radio/radio.o
- .debug_line    0x00001834      0x177 radio/spi.o
- .debug_line    0x000019ab      0x31b roomba/roomba.o
- .debug_line    0x00001cc6      0x1a3 uart/uart.o
- .debug_line    0x00001e69      0x3fb C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+ .debug_line    0x00000d42      0x40d project2.o
+ .debug_line    0x0000114f       0xac radio/cops_and_robbers.o
+ .debug_line    0x000011fb      0x67d radio/radio.o
+ .debug_line    0x00001878      0x177 radio/spi.o
+ .debug_line    0x000019ef      0x31b roomba/roomba.o
+ .debug_line    0x00001d0a      0x1a3 uart/uart.o
+ .debug_line    0x00001ead      0x3fb C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
 .debug_frame    0x00000000      0x7fc
  *(.debug_frame)
@@ -1065,16 +1063,16 @@ END GROUP
  .debug_str     0x0000164a       0xb7 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
                                 0x150 (size before relaxing)
 
-.debug_loc      0x00000000     0x1c60
+.debug_loc      0x00000000     0x1c6b
  *(.debug_loc)
  .debug_loc     0x00000000      0x1ad ir/ir.o
  .debug_loc     0x000001ad      0x9c8 os.o
- .debug_loc     0x00000b75      0x116 project2.o
- .debug_loc     0x00000c8b      0xb3a radio/radio.o
- .debug_loc     0x000017c5       0xd7 radio/spi.o
- .debug_loc     0x0000189c      0x13f roomba/roomba.o
- .debug_loc     0x000019db      0x118 uart/uart.o
- .debug_loc     0x00001af3      0x16d C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+ .debug_loc     0x00000b75      0x121 project2.o
+ .debug_loc     0x00000c96      0xb3a radio/radio.o
+ .debug_loc     0x000017d0       0xd7 radio/spi.o
+ .debug_loc     0x000018a7      0x13f roomba/roomba.o
+ .debug_loc     0x000019e6      0x118 uart/uart.o
+ .debug_loc     0x00001afe      0x16d C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1094,16 +1092,16 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x2f8
+.debug_ranges   0x00000000      0x2f0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x50 ir/ir.o
  .debug_ranges  0x00000050       0xf8 os.o
- .debug_ranges  0x00000148       0x68 project2.o
- .debug_ranges  0x000001b0       0x80 radio/radio.o
- .debug_ranges  0x00000230       0x28 radio/spi.o
- .debug_ranges  0x00000258       0x28 roomba/roomba.o
- .debug_ranges  0x00000280       0x38 uart/uart.o
- .debug_ranges  0x000002b8       0x40 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
+ .debug_ranges  0x00000148       0x60 project2.o
+ .debug_ranges  0x000001a8       0x80 radio/radio.o
+ .debug_ranges  0x00000228       0x28 radio/spi.o
+ .debug_ranges  0x00000250       0x28 roomba/roomba.o
+ .debug_ranges  0x00000278       0x38 uart/uart.o
+ .debug_ranges  0x000002b0       0x40 C:\Users\Mikko\Documents\Atmel Studio\arduinoCore\libcore.a(wiring.c.o)
 
 .debug_macro
  *(.debug_macro)

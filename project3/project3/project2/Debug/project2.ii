@@ -2386,39 +2386,41 @@ void ir_rxhandler(){
   if((roomba_state & 1 << 1) == 0){
    if(roomba_identity >= ROBBER1 && (roomba_state & 1 << 0) == 0){
     roomba_state ^= 1 << 0;
-    (*(volatile uint8_t *)(0x102)) |= (uint8_t)((1 << (4)));
+    (*(volatile uint8_t *)(0x102)) ^= (uint8_t)((1 << (3)));
+    (*(volatile uint8_t *)(0x102)) ^= (uint8_t)((1 << (4)));
    }
 
    else if (roomba_identity <= COP2 && (roomba_state & 1 << 0) > 0) {
     roomba_state ^= 1 << 0;
-    (*(volatile uint8_t *)(0x102)) |= (uint8_t)((1 << (3)));
+    (*(volatile uint8_t *)(0x102)) ^= (uint8_t)((1 << (3)));
+    (*(volatile uint8_t *)(0x102)) ^= (uint8_t)((1 << (4)));
    }
   }
-
-
  }else if (ir_value == (uint8_t)'A'){
   if((roomba_state & 1 << 1) == 0){
    if(roomba_identity >= ROBBER1 && (roomba_state & 1 << 0) > 0){
     roomba_state ^= 1 << 0;
-    (*(volatile uint8_t *)(0x102)) |= (uint8_t)((1 << (3)));
+    (*(volatile uint8_t *)(0x102)) ^= (uint8_t)((1 << (3)));
+    (*(volatile uint8_t *)(0x102)) ^= (uint8_t)((1 << (4)));
    } else if (roomba_identity <= COP2 && (roomba_state & 1 << 0) == 0) {
     roomba_state ^= 1 << 0;
-    (*(volatile uint8_t *)(0x102)) |= (uint8_t)((1 << (4)));
+    (*(volatile uint8_t *)(0x102)) ^= (uint8_t)((1 << (3)));
+    (*(volatile uint8_t *)(0x102)) ^= (uint8_t)((1 << (4)));
    }
   }
 
  }
-
-
 }
 
 void radio_rxhandler(uint8_t pipe_number){
-
+ (*(volatile uint8_t *)((0x0E) + 0x20)) ^= (uint8_t)((1 << (3)));
  Service_Publish(radio_send_receive_service, pipe_number);
  if((roomba_state&1 << 0) == 0){
-
+  (*(volatile uint8_t *)(0x102)) &= ~(uint8_t)((1 << (4)));
+  (*(volatile uint8_t *)(0x102)) |= (uint8_t)((1 << (3)));
  } else if((roomba_state&1 << 0) > 0) {
-
+  (*(volatile uint8_t *)(0x102)) |= (uint8_t)((1 << (4)));
+  (*(volatile uint8_t *)(0x102)) &= ~(uint8_t)((1 << (3)));
  }
 }
 
@@ -2438,25 +2440,27 @@ void send_recieve_radio(){
 
 
   radio_status = Radio_Receive(&radio_packet);
+  (*(volatile uint8_t *)((0x0E) + 0x20)) |= (uint8_t)((1 << (3)));
   while(radio_status == RADIO_RX_MORE_PACKETS || radio_status == RADIO_RX_SUCCESS){
    uint8_t radio_roomba_state = radio_packet.payload.gamestate.roomba_states[roomba_identity];
    if(radio_packet.type != GAMESTATE_PACKET){
     break;
    }
-
-   if((radio_roomba_state & 1 << 1) == 0 && radio_roomba_state != roomba_state){
-    if((roomba_state & 1 << 1) > 0){
-     roomba_state = radio_roomba_state;
+   if(radio_roomba_state != roomba_state){
+    if((radio_roomba_state & 1 << 1) == 0){
+     if((roomba_state & 1 << 1) > 0){
+      roomba_state = radio_roomba_state;
+     } else {
+      pk_roomba_state.roomba_id = roomba_identity;
+      pk_roomba_state.roomba_state = roomba_state;
+      memcpy(&radio_packet.payload.roombastate, &pk_roomba_state, sizeof(pf_roombastate_t));
+      radio_packet.type = ROOMBASTATE_PACKET;
+      radio_status_send = Radio_Transmit(&radio_packet, RADIO_RETURN_ON_TX);
+      (void)radio_status_send;
+     }
     } else {
-     pk_roomba_state.roomba_id = roomba_identity;
-     pk_roomba_state.roomba_state = roomba_state;
-     memcpy(&radio_packet.payload.roombastate, &pk_roomba_state, sizeof(pf_roombastate_t));
-     radio_packet.type = ROOMBASTATE_PACKET;
-     radio_status_send = Radio_Transmit(&radio_packet, RADIO_RETURN_ON_TX);
-        (void)radio_status_send;
+     roomba_state = radio_roomba_state;
     }
-   } else {
-    roomba_state = radio_roomba_state;
    }
    radio_status = Radio_Receive(&radio_packet);
   }
@@ -2465,7 +2469,7 @@ void send_recieve_radio(){
 
 
 void send_radio(){
-# 132 ".././project2.cpp"
+# 136 ".././project2.cpp"
 }
 
 void setup(){
@@ -2473,11 +2477,26 @@ void setup(){
 
 
  (*(volatile uint8_t *)(0x101)) |= (uint8_t)((1 << (3))) | (uint8_t)((1 << (4)));
+ (*(volatile uint8_t *)((0x0D) + 0x20)) |= (uint8_t)((1 << (3)));
  if((roomba_state&1 << 0) == 0){
-  (*(volatile uint8_t *)(0x102)) = (uint8_t)((1 << (3)));
+  (*(volatile uint8_t *)(0x102)) |= (uint8_t)((1 << (3)));
  } else if((roomba_state&1 << 0) > 0) {
-  (*(volatile uint8_t *)(0x102)) = (uint8_t)((1 << (4)));
+  (*(volatile uint8_t *)(0x102)) |= (uint8_t)((1 << (4)));
  }
+
+
+ (*(volatile uint8_t *)(0x10A)) |= (1 << 2);
+ (*(volatile uint8_t *)(0x10B)) &= ~(1 << 2);
+ _delay_ms(500);
+ (*(volatile uint8_t *)(0x10B)) |= 1 << 2;
+ _delay_ms(500);
+ Radio_Init(BASE_FREQUENCY);
+
+ Radio_Configure_Rx(RADIO_PIPE_0, ROOMBA_ADDRESSES[roomba_identity], ENABLE);
+
+ Radio_Configure(RADIO_1MBPS, RADIO_HIGHEST_POWER);
+ radio_send_receive_service = Service_Init();
+
 
  Roomba_Init();
  IR_init();
@@ -2493,32 +2512,23 @@ void Send_Drive_Command(){
 void send_IR_Command(){
 
  for(;;) {
-  IR_transmit((uint8_t)'A');
+  if((roomba_state & 1 << 0) == 0){
+   if(roomba_identity <= COP2){
+    IR_transmit((uint8_t)'B');
+   } else if (roomba_identity >= ROBBER1){
+    IR_transmit((uint8_t)'A');
+   }
+  }
   Task_Next();
  }
 }
 
 int r_main(void)
 {
- (*(volatile uint8_t *)(0x10A)) |= (1 << 2);
- (*(volatile uint8_t *)(0x10B)) &= ~(1 << 2);
- _delay_ms(500);
- (*(volatile uint8_t *)(0x10B)) |= 1 << 2;
- _delay_ms(500);
 
- Radio_Init(BASE_FREQUENCY);
-
-
- Radio_Configure_Rx(RADIO_PIPE_0, ROOMBA_ADDRESSES[roomba_identity], ENABLE);
-
-
- Radio_Configure(RADIO_1MBPS, RADIO_HIGHEST_POWER);
-
-
- radio_send_receive_service = Service_Init();
  setup();
  Task_Create_System(send_recieve_radio, 0);
- Task_Create_Periodic(send_IR_Command,0,10,4,5);
+ Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
 
  return 1;
 }
