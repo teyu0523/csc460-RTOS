@@ -1222,7 +1222,7 @@ typedef enum _ed {
  ENABLE=1,
 } ON_OFF;
 
-void Radio_Init();
+void Radio_Init(uint8_t channel);
 # 111 "../radio/radio.h"
 void Radio_Configure_Rx(RADIO_PIPE pipe, uint8_t* address, ON_OFF enable);
 
@@ -1239,7 +1239,7 @@ void Radio_Configure(RADIO_DATA_RATE dr, RADIO_TX_POWER power);
 
 void Radio_Set_Tx_Addr(uint8_t* address);
 # 139 "../radio/radio.h"
-uint8_t Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait);
+RADIO_TX_STATUS Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait);
 
 
 
@@ -1399,7 +1399,7 @@ static void reset_pipe0_address()
 
 
 
-static void configure_registers()
+static void configure_registers(uint8_t channel)
 {
  uint8_t value;
 
@@ -1416,7 +1416,7 @@ static void configure_registers()
  set_register(0x04, &value, 1);
 
 
- value = 104;
+ value = channel;
  set_register(0x05, &value, 1);
 
 
@@ -1436,13 +1436,12 @@ static void configure_registers()
  send_instruction(0xE2, __null, __null, 0);
 }
 
-void Radio_Init()
+void Radio_Init(uint8_t channel)
 {
-
  transmit_lock = 0;
- (*(volatile uint8_t *)(0x101)) |= (1 << (3)) | (1 << (4));
- (*(volatile uint8_t *)(0x102)) &= ~(1 << (4));
- (*(volatile uint8_t *)(0x102)) &= ~(1 << (3));
+
+
+
 
 
 
@@ -1465,14 +1464,14 @@ void Radio_Init()
  _delay_ms(11);
 
 
- configure_registers();
+ configure_registers(channel);
 
 
  _delay_ms(2);
 
 
  (*(volatile uint8_t *)(0x102)) |= (1 << (5));;
- (*(volatile uint8_t *)(0x102)) |= (1 << (4));
+
 }
 
 
@@ -1559,7 +1558,7 @@ void Radio_Configure(RADIO_DATA_RATE dr, RADIO_TX_POWER power)
  set_register(0x06, &value, 1);
 }
 
-uint8_t Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait)
+RADIO_TX_STATUS Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait)
 {
 
 
@@ -1577,7 +1576,7 @@ uint8_t Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait)
     set_register(0x0A, (uint8_t*)tx_address, 5);
 
 
- (*(volatile uint8_t *)(0x102)) |= (1 << (3));
+
     send_instruction(0xA0, (uint8_t *)payload, __null, len);
 
     (*(volatile uint8_t *)(0x102)) |= (1 << (5));;
@@ -1670,7 +1669,7 @@ extern "C" void __vector_5 (void) __attribute__ ((signal,used, externally_visibl
     uint8_t status;
     uint8_t pipe_number;
 
- (*(volatile uint8_t *)(0x102)) &= ~(1 << (4));
+
     (*(volatile uint8_t *)(0x102)) &= ~(1 << (5));;
 
     status = get_status();
@@ -1710,7 +1709,7 @@ extern "C" void __vector_5 (void) __attribute__ ((signal,used, externally_visibl
 
  status = (1 << (6)) | (1 << (5)) | (1 << (4));
  set_register(0x07, &status, 1);
- (*(volatile uint8_t *)(0x102)) |= (1 << (4));
+
 
     (*(volatile uint8_t *)(0x102)) |= (1 << (5));;
 }

@@ -5,19 +5,19 @@
  *      Author: Neil MacMillan
  */
 #include "radio.h"
-//#include "LED.h"
+//#include "port_map.h"
 
 // debug
-#define DEBUG_1_HIGH	PORTH |= _BV(PH3)
-#define DEBUG_1_LOW		PORTH &= ~_BV(PH3)
-#define DEBUG_2_HIGH	PORTH |= _BV(PH4)
-#define DEBUG_2_LOW		PORTH &= ~_BV(PH4)
-#define DEBUG_INIT		DDRH |= _BV(PH3) | _BV(PH4)
+//#define DEBUG_1_HIGH	PORTH |= _BV(PH3)
+//#define DEBUG_1_LOW		PORTH &= ~_BV(PH3)
+//#define DEBUG_2_HIGH	PORTH |= _BV(PH4)
+//#define DEBUG_2_LOW		PORTH &= ~_BV(PH4)
+//#define DEBUG_INIT		DDRH |= _BV(PH3) | _BV(PH4)
 //#define LED_TOGGLE		PORTB ^= _BV(PB7)
 
 // non-public constants and macros
 
-#define CHANNEL 104
+#define CHANNEL 106
 #define ADDRESS_LENGTH 5
 
 // Pin definitions for chip select and chip enable on the radio module
@@ -188,7 +188,7 @@ static void reset_pipe0_address()
  * This configures the radio to its max-power, max-packet-header-length settings.  If you want to reduce power consumption
  * or increase on-air payload bandwidth, you'll have to change the config.
  */
-static void configure_registers()
+static void configure_registers(uint8_t channel)
 {
 	uint8_t value;
 
@@ -205,7 +205,7 @@ static void configure_registers()
 	set_register(SETUP_RETR, &value, 1);
 
 	// Set to use 2.4 GHz channel 110.
-	value = CHANNEL;
+	value = channel;
 	set_register(RF_CH, &value, 1);
 
 	// Set radio to 2 Mbps and high power.  Leave LNA_HCURR at its default.
@@ -225,15 +225,14 @@ static void configure_registers()
 	send_instruction(FLUSH_RX, NULL, NULL, 0);
 }
 
-void Radio_Init()
+void Radio_Init(uint8_t channel)
 {
-//	LED_STATUS_ON()	;
 	transmit_lock = 0;
-	DEBUG_INIT;
-	DEBUG_2_LOW;
-	DEBUG_1_LOW;
-	
-	
+	//DEBUG_INIT;
+	//DEBUG_2_LOW;
+	//DEBUG_1_LOW;
+
+
 
 	// disable radio during config
 	CE_LOW();
@@ -254,14 +253,14 @@ void Radio_Init()
 	_delay_ms(11);
 
 	// Configure the radio registers that are not application-dependent.
-	configure_registers();
+	configure_registers(channel);
 
 	// A 1.5 ms delay is required between power down and power up states (controlled by PWR_UP bit in CONFIG)
 	_delay_ms(2);
 
 	// enable radio as a receiver
 	CE_HIGH();
-	DEBUG_2_HIGH;
+	//DEBUG_2_HIGH;
 }
 
 // default address for pipe 0 is 0xe7e7e7e7e7
@@ -348,7 +347,7 @@ void Radio_Configure(RADIO_DATA_RATE dr, RADIO_TX_POWER power)
 	set_register(RF_SETUP, &value, 1);
 }
 
-uint8_t Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait)
+RADIO_TX_STATUS Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait)
 {
 	//if (block && transmit_lock) while (transmit_lock);
 	//if (!block && transmit_lock) return 0;
@@ -366,7 +365,7 @@ uint8_t Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait)
     set_register(RX_ADDR_P0, (uint8_t*)tx_address, ADDRESS_LENGTH);
 
     // transfer the packet to the radio's Tx FIFO for transmission
-	DEBUG_1_HIGH;
+	//DEBUG_1_HIGH;
     send_instruction(W_TX_PAYLOAD, (uint8_t *)payload, NULL, len);
     // start the transmission.
     CE_HIGH();
@@ -459,7 +458,7 @@ ISR(INT4_vect)
     uint8_t status;
     uint8_t pipe_number;
 
-	DEBUG_2_LOW;
+	//DEBUG_2_LOW;
     CE_LOW();
 
     status = get_status();
@@ -495,12 +494,11 @@ ISR(INT4_vect)
 
     	tx_last_status = RADIO_TX_MAX_RT;
     }
-	
+
     // clear the interrupt flags.
 	status = _BV(RX_DR) | _BV(TX_DS) | _BV(MAX_RT);
 	set_register(STATUS, &status, 1);
-	DEBUG_2_HIGH;
-	
+	//DEBUG_2_HIGH;
+
     CE_HIGH();
 }
-

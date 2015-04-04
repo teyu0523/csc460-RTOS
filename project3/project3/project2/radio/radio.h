@@ -76,7 +76,7 @@ typedef enum _ed {
 	ENABLE=1,
 } ON_OFF;		// there's got to be a better name for this.
 
-void Radio_Init();
+void Radio_Init(uint8_t channel);
 
 
 /**
@@ -136,7 +136,7 @@ void Radio_Set_Tx_Addr(uint8_t* address);
  * 		(MAX_RT interrupt asserted, i.e. no ack was received and the maximum number of retries were sent), then
  * 		Radio_Transmit returns RADIO_TX_MAX_RT.
  */
-uint8_t Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait);
+RADIO_TX_STATUS Radio_Transmit(radiopacket_t* payload, RADIO_TX_WAIT wait);
 
 /**
  * Get the next packet from the Rx FIFO.

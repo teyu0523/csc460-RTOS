@@ -446,79 +446,73 @@ _ZL11set_rx_modev:
 	.cfi_endproc
 .LFE15:
 	.size	_ZL11set_rx_modev, .-_ZL11set_rx_modev
-	.section	.text._Z10Radio_Initv,"ax",@progbits
-.global	_Z10Radio_Initv
-	.type	_Z10Radio_Initv, @function
-_Z10Radio_Initv:
+	.section	.text._Z10Radio_Inith,"ax",@progbits
+.global	_Z10Radio_Inith
+	.type	_Z10Radio_Inith, @function
+_Z10Radio_Inith:
 .LFB19:
 	.loc 1 229 0
 	.cfi_startproc
-	push r28
+.LVL28:
+	push r17
 .LCFI30:
 	.cfi_def_cfa_offset 4
-	.cfi_offset 28, -3
-	push r29
+	.cfi_offset 17, -3
+	push r28
 .LCFI31:
 	.cfi_def_cfa_offset 5
-	.cfi_offset 29, -4
-	push __zero_reg__
+	.cfi_offset 28, -4
+	push r29
 .LCFI32:
 	.cfi_def_cfa_offset 6
+	.cfi_offset 29, -5
+	push __zero_reg__
+.LCFI33:
+	.cfi_def_cfa_offset 7
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI33:
+.LCFI34:
 	.cfi_def_cfa_register 28
 /* prologue: function */
 /* frame size = 1 */
-/* stack size = 3 */
-.L__stack_usage = 3
-	.loc 1 231 0
+/* stack size = 4 */
+.L__stack_usage = 4
+	mov r17,r24
+	.loc 1 230 0
 	sts _ZL13transmit_lock,__zero_reg__
-	.loc 1 232 0
+	.loc 1 238 0
+	ldi r30,lo8(2)
+	ldi r31,lo8(1)
+	ld r25,Z
+	andi r25,lo8(-33)
+	st Z,r25
+	.loc 1 241 0
 	ldi r30,lo8(1)
 	ldi r31,lo8(1)
-	ld r24,Z
-	ori r24,lo8(24)
-	st Z,r24
-	.loc 1 233 0
-	ldi r26,lo8(2)
-	ldi r27,lo8(1)
-	ld r24,X
-	andi r24,lo8(-17)
-	st X,r24
-	.loc 1 234 0
-	ld r24,X
-	andi r24,lo8(-9)
-	st X,r24
-	.loc 1 239 0
-	ld r24,X
-	andi r24,lo8(-33)
-	st X,r24
+	ld r25,Z
+	ori r25,lo8(32)
+	st Z,r25
 	.loc 1 242 0
-	ld r24,Z
-	ori r24,lo8(32)
-	st Z,r24
-	.loc 1 243 0
-	ld r24,Z
-	ori r24,lo8(64)
-	st Z,r24
-	.loc 1 246 0
+	ld r25,Z
+	ori r25,lo8(64)
+	st Z,r25
+	.loc 1 245 0
 	cbi 0xd,4
-	.loc 1 247 0
+	.loc 1 246 0
 	ldi r30,lo8(106)
 	ldi r31,0
-	ld r24,Z
-	ori r24,lo8(2)
-	st Z,r24
+	ld r25,Z
+	ori r25,lo8(2)
+	st Z,r25
+	.loc 1 247 0
+	ld r25,Z
+	andi r25,lo8(-2)
+	st Z,r25
 	.loc 1 248 0
-	ld r24,Z
-	andi r24,lo8(-2)
-	st Z,r24
-	.loc 1 249 0
 	sbi 0x1d,4
-	.loc 1 250 0
+	.loc 1 249 0
 	sbi 0x1c,4
-.LVL28:
+.LVL29:
 .LBB42:
 .LBB43:
 	.loc 2 163 0
@@ -526,15 +520,17 @@ _Z10Radio_Initv:
 	ldi r25,hi8(-21537)
 	1: sbiw r24,1
 	brne 1b
+.LVL30:
 	rjmp .
 	nop
+.LVL31:
 .LBE43:
 .LBE42:
 .LBB44:
 .LBB45:
 	.loc 1 195 0
 	call _Z8SPI_Initv
-.LVL29:
+.LVL32:
 	.loc 1 198 0
 	ldi r24,lo8(3)
 	std Y+1,r24
@@ -544,7 +540,7 @@ _Z10Radio_Initv:
 	subi r22,-1
 	sbci r23,-1
 	call _ZL12set_registerhPhh
-.LVL30:
+.LVL33:
 	.loc 1 203 0
 	ldi r24,lo8(21)
 	std Y+1,r24
@@ -555,10 +551,9 @@ _Z10Radio_Initv:
 	sbci r23,-1
 	ldi r24,lo8(4)
 	call _ZL12set_registerhPhh
-.LVL31:
+.LVL34:
 	.loc 1 208 0
-	ldi r24,lo8(104)
-	std Y+1,r24
+	std Y+1,r17
 	.loc 1 209 0
 	ldi r20,lo8(1)
 	movw r22,r28
@@ -566,7 +561,7 @@ _Z10Radio_Initv:
 	sbci r23,-1
 	ldi r24,lo8(5)
 	call _ZL12set_registerhPhh
-.LVL32:
+.LVL35:
 	.loc 1 212 0
 	ldi r24,lo8(9)
 	std Y+1,r24
@@ -577,7 +572,7 @@ _Z10Radio_Initv:
 	sbci r23,-1
 	ldi r24,lo8(6)
 	call _ZL12set_registerhPhh
-.LVL33:
+.LVL36:
 	.loc 1 216 0
 	ldi r24,lo8(15)
 	std Y+1,r24
@@ -588,7 +583,7 @@ _Z10Radio_Initv:
 	sbci r23,-1
 	ldi r24,0
 	call _ZL12set_registerhPhh
-.LVL34:
+.LVL37:
 	.loc 1 220 0
 	ldi r24,lo8(112)
 	std Y+1,r24
@@ -599,7 +594,7 @@ _Z10Radio_Initv:
 	sbci r23,-1
 	ldi r24,lo8(7)
 	call _ZL12set_registerhPhh
-.LVL35:
+.LVL38:
 	.loc 1 224 0
 	ldi r18,0
 	ldi r20,0
@@ -608,7 +603,7 @@ _Z10Radio_Initv:
 	ldi r23,0
 	ldi r24,lo8(-31)
 	call _ZL16send_instructionhPhS_h
-.LVL36:
+.LVL39:
 	.loc 1 225 0
 	ldi r18,0
 	ldi r20,0
@@ -617,7 +612,7 @@ _Z10Radio_Initv:
 	ldi r23,0
 	ldi r24,lo8(-30)
 	call _ZL16send_instructionhPhS_h
-.LVL37:
+.LVL40:
 .LBE45:
 .LBE44:
 .LBB46:
@@ -631,68 +626,66 @@ _Z10Radio_Initv:
 	nop
 .LBE47:
 .LBE46:
-	.loc 1 263 0
+	.loc 1 262 0
 	ldi r30,lo8(2)
 	ldi r31,lo8(1)
 	ld r24,Z
 	ori r24,lo8(32)
 	st Z,r24
-	.loc 1 264 0
-	ld r24,Z
-	ori r24,lo8(16)
-	st Z,r24
 /* epilogue start */
-	.loc 1 265 0
+	.loc 1 264 0
 	pop __tmp_reg__
 	pop r29
 	pop r28
+	pop r17
+.LVL41:
 	ret
 	.cfi_endproc
 .LFE19:
-	.size	_Z10Radio_Initv, .-_Z10Radio_Initv
+	.size	_Z10Radio_Inith, .-_Z10Radio_Inith
 	.section	.text._Z18Radio_Configure_Rx11_radio_pipePh3_ed,"ax",@progbits
 .global	_Z18Radio_Configure_Rx11_radio_pipePh3_ed
 	.type	_Z18Radio_Configure_Rx11_radio_pipePh3_ed, @function
 _Z18Radio_Configure_Rx11_radio_pipePh3_ed:
 .LFB20:
-	.loc 1 274 0
+	.loc 1 273 0
 	.cfi_startproc
-.LVL38:
+.LVL42:
 	push r13
-.LCFI34:
+.LCFI35:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 13, -3
 	push r14
-.LCFI35:
+.LCFI36:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 14, -4
 	push r15
-.LCFI36:
+.LCFI37:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 15, -5
 	push r16
-.LCFI37:
+.LCFI38:
 	.cfi_def_cfa_offset 7
 	.cfi_offset 16, -6
 	push r17
-.LCFI38:
+.LCFI39:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 17, -7
 	push r28
-.LCFI39:
+.LCFI40:
 	.cfi_def_cfa_offset 9
 	.cfi_offset 28, -8
 	push r29
-.LCFI40:
+.LCFI41:
 	.cfi_def_cfa_offset 10
 	.cfi_offset 29, -9
 	push __zero_reg__
 	push __zero_reg__
-.LCFI41:
+.LCFI42:
 	.cfi_def_cfa_offset 12
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI42:
+.LCFI43:
 	.cfi_def_cfa_register 28
 /* prologue: function */
 /* frame size = 2 */
@@ -701,60 +694,60 @@ _Z18Radio_Configure_Rx11_radio_pipePh3_ed:
 	mov r25,r24
 	movw r30,r22
 	mov r13,r20
-.LVL39:
+.LVL43:
 .LBB48:
-	.loc 1 278 0
+	.loc 1 277 0
 	cpi r24,lo8(6)
 	brlo .+2
 	rjmp .L16
-	.loc 1 281 0
+	.loc 1 280 0
 	cpse r24,__zero_reg__
 	rjmp .L18
-	.loc 1 283 0
+	.loc 1 282 0
 	ld r24,Z
-.LVL40:
+.LVL44:
 	sts _ZL16rx_pipe0_address,r24
-	.loc 1 284 0
+	.loc 1 283 0
 	ldd r24,Z+1
 	sts _ZL16rx_pipe0_address+1,r24
-	.loc 1 285 0
+	.loc 1 284 0
 	ldd r24,Z+2
 	sts _ZL16rx_pipe0_address+2,r24
-	.loc 1 286 0
+	.loc 1 285 0
 	ldd r24,Z+3
 	sts _ZL16rx_pipe0_address+3,r24
-	.loc 1 287 0
+	.loc 1 286 0
 	ldd r24,Z+4
 	sts _ZL16rx_pipe0_address+4,r24
 	rjmp .L24
-.LVL41:
+.LVL45:
 .L18:
-	.loc 1 292 0
+	.loc 1 291 0
 	cpi r24,lo8(1)
 	breq .L24
 	ldi r20,lo8(1)
-.LVL42:
+.LVL46:
 	rjmp .L19
-.LVL43:
+.LVL47:
 .L24:
 	ldi r20,lo8(5)
 .L19:
-	.loc 1 292 0 is_stmt 0 discriminator 3
+	.loc 1 291 0 is_stmt 0 discriminator 3
 	movw r22,r30
-.LVL44:
+.LVL48:
 	ldi r24,lo8(10)
 	add r24,r25
 	std Y+2,r25
 	call _ZL12set_registerhPhh
-.LVL45:
-	.loc 1 295 0 is_stmt 1 discriminator 3
+.LVL49:
+	.loc 1 294 0 is_stmt 1 discriminator 3
 	movw r22,r28
 	subi r22,-1
 	sbci r23,-1
 	ldi r24,lo8(1)
 	call _ZL12get_registerhPhh.constprop.1
-.LVL46:
-	.loc 1 297 0 discriminator 3
+.LVL50:
+	.loc 1 296 0 discriminator 3
 	ldd r25,Y+2
 	mov r14,r25
 	mov r15,__zero_reg__
@@ -769,27 +762,27 @@ _Z18Radio_Configure_Rx11_radio_pipePh3_ed:
 	ldd r24,Y+1
 	or r24,r16
 	std Y+1,r24
-	.loc 1 300 0 discriminator 3
+	.loc 1 299 0 discriminator 3
 	ldi r20,lo8(1)
 	movw r22,r28
 	subi r22,-1
 	sbci r23,-1
 	ldi r24,lo8(1)
 	call _ZL12set_registerhPhh
-.LVL47:
-	.loc 1 303 0 discriminator 3
+.LVL51:
+	.loc 1 302 0 discriminator 3
 	ldd r25,Y+2
 	tst r13
 	breq .L25
-	.loc 1 303 0 is_stmt 0
+	.loc 1 302 0 is_stmt 0
 	ldi r24,lo8(32)
 	rjmp .L20
 .L25:
 	ldi r24,0
 .L20:
-	.loc 1 303 0 discriminator 3
+	.loc 1 302 0 discriminator 3
 	std Y+1,r24
-	.loc 1 304 0 is_stmt 1 discriminator 3
+	.loc 1 303 0 is_stmt 1 discriminator 3
 	ldi r20,lo8(1)
 	movw r22,r28
 	subi r22,-1
@@ -797,45 +790,45 @@ _Z18Radio_Configure_Rx11_radio_pipePh3_ed:
 	ldi r24,lo8(17)
 	add r24,r25
 	call _ZL12set_registerhPhh
-.LVL48:
-	.loc 1 305 0 discriminator 3
+.LVL52:
+	.loc 1 304 0 discriminator 3
 	ldd r24,Y+1
 	movw r30,r14
 	subi r30,lo8(-(_ZL14rx_pipe_widths))
 	sbci r31,hi8(-(_ZL14rx_pipe_widths))
 	st Z,r24
-	.loc 1 308 0 discriminator 3
+	.loc 1 307 0 discriminator 3
 	movw r22,r28
 	subi r22,-1
 	sbci r23,-1
 	ldi r24,lo8(2)
 	call _ZL12get_registerhPhh.constprop.1
-.LVL49:
+.LVL53:
 	ldd r24,Y+1
-	.loc 1 309 0 discriminator 3
+	.loc 1 308 0 discriminator 3
 	tst r13
 	breq .L21
-	.loc 1 310 0
+	.loc 1 309 0
 	or r16,r24
 	rjmp .L26
 .L21:
-	.loc 1 312 0
+	.loc 1 311 0
 	com r16
 	and r16,r24
 .L26:
 	std Y+1,r16
-	.loc 1 313 0
+	.loc 1 312 0
 	ldi r20,lo8(1)
 	movw r22,r28
 	subi r22,-1
 	sbci r23,-1
 	ldi r24,lo8(2)
 	call _ZL12set_registerhPhh
-.LVL50:
+.LVL54:
 .L16:
 /* epilogue start */
 .LBE48:
-	.loc 1 315 0
+	.loc 1 314 0
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop r29
@@ -845,7 +838,7 @@ _Z18Radio_Configure_Rx11_radio_pipePh3_ed:
 	pop r15
 	pop r14
 	pop r13
-.LVL51:
+.LVL55:
 	ret
 	.cfi_endproc
 .LFE20:
@@ -855,36 +848,36 @@ _Z18Radio_Configure_Rx11_radio_pipePh3_ed:
 	.type	_Z17Radio_Set_Tx_AddrPh, @function
 _Z17Radio_Set_Tx_AddrPh:
 .LFB21:
-	.loc 1 319 0
+	.loc 1 318 0
 	.cfi_startproc
-.LVL52:
+.LVL56:
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
 	movw r30,r24
-	.loc 1 320 0
+	.loc 1 319 0
 	ld r24,Z
-.LVL53:
+.LVL57:
 	sts _ZL10tx_address,r24
-	.loc 1 321 0
+	.loc 1 320 0
 	ldd r24,Z+1
 	sts _ZL10tx_address+1,r24
-	.loc 1 322 0
+	.loc 1 321 0
 	ldd r24,Z+2
 	sts _ZL10tx_address+2,r24
-	.loc 1 323 0
+	.loc 1 322 0
 	ldd r24,Z+3
 	sts _ZL10tx_address+3,r24
-	.loc 1 324 0
+	.loc 1 323 0
 	ldd r24,Z+4
 	sts _ZL10tx_address+4,r24
-	.loc 1 325 0
+	.loc 1 324 0
 	ldi r20,lo8(5)
 	movw r22,r30
 	ldi r24,lo8(16)
 	jmp _ZL12set_registerhPhh
-.LVL54:
+.LVL58:
 	.cfi_endproc
 .LFE21:
 	.size	_Z17Radio_Set_Tx_AddrPh, .-_Z17Radio_Set_Tx_AddrPh
@@ -893,31 +886,31 @@ _Z17Radio_Set_Tx_AddrPh:
 	.type	_Z15Radio_Configure9_radio_dr15_radio_tx_power, @function
 _Z15Radio_Configure9_radio_dr15_radio_tx_power:
 .LFB22:
-	.loc 1 329 0
+	.loc 1 328 0
 	.cfi_startproc
-.LVL55:
+.LVL59:
 	push r16
-.LCFI43:
+.LCFI44:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 16, -3
 	push r17
-.LCFI44:
+.LCFI45:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 17, -4
 	push r28
-.LCFI45:
+.LCFI46:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 28, -5
 	push r29
-.LCFI46:
+.LCFI47:
 	.cfi_def_cfa_offset 7
 	.cfi_offset 29, -6
 	push __zero_reg__
-.LCFI47:
+.LCFI48:
 	.cfi_def_cfa_offset 8
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI48:
+.LCFI49:
 	.cfi_def_cfa_register 28
 /* prologue: function */
 /* frame size = 1 */
@@ -926,54 +919,54 @@ _Z15Radio_Configure9_radio_dr15_radio_tx_power:
 	mov r17,r24
 	mov r16,r22
 .LBB49:
-	.loc 1 332 0
+	.loc 1 331 0
 	cpi r22,lo8(4)
 	brsh .L28
-	.loc 1 332 0 is_stmt 0 discriminator 2
+	.loc 1 331 0 is_stmt 0 discriminator 2
 	cpi r24,lo8(2)
 	brsh .L28
-	.loc 1 338 0 is_stmt 1
+	.loc 1 337 0 is_stmt 1
 	movw r22,r28
-.LVL56:
+.LVL60:
 	subi r22,-1
 	sbci r23,-1
 	ldi r24,lo8(6)
-.LVL57:
+.LVL61:
 	call _ZL12get_registerhPhh.constprop.1
-.LVL58:
-	.loc 1 341 0
+.LVL62:
+	.loc 1 340 0
 	mov r22,r16
 	lsl r22
-	.loc 1 340 0
+	.loc 1 339 0
 	ldd r25,Y+1
 	ori r25,lo8(6)
-	.loc 1 341 0
+	.loc 1 340 0
 	and r22,r25
-	.loc 1 343 0
+	.loc 1 342 0
 	cpse r17,__zero_reg__
-	.loc 1 344 0
+	.loc 1 343 0
 	ori r22,lo8(8)
 .L33:
 	std Y+1,r22
-	.loc 1 348 0
+	.loc 1 347 0
 	ldi r20,lo8(1)
 	movw r22,r28
 	subi r22,-1
 	sbci r23,-1
 	ldi r24,lo8(6)
 	call _ZL12set_registerhPhh
-.LVL59:
+.LVL63:
 .L28:
 /* epilogue start */
 .LBE49:
-	.loc 1 349 0
+	.loc 1 348 0
 	pop __tmp_reg__
 	pop r29
 	pop r28
 	pop r17
-.LVL60:
+.LVL64:
 	pop r16
-.LVL61:
+.LVL65:
 	ret
 	.cfi_endproc
 .LFE22:
@@ -983,35 +976,35 @@ _Z15Radio_Configure9_radio_dr15_radio_tx_power:
 	.type	_Z14Radio_TransmitP3_rp14_radio_tx_wait, @function
 _Z14Radio_TransmitP3_rp14_radio_tx_wait:
 .LFB23:
-	.loc 1 352 0
+	.loc 1 351 0
 	.cfi_startproc
-.LVL62:
+.LVL66:
 	push r15
-.LCFI49:
+.LCFI50:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 15, -3
 	push r16
-.LCFI50:
+.LCFI51:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 16, -4
 	push r17
-.LCFI51:
+.LCFI52:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 17, -5
 	push r28
-.LCFI52:
+.LCFI53:
 	.cfi_def_cfa_offset 7
 	.cfi_offset 28, -6
 	push r29
-.LCFI53:
+.LCFI54:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 29, -7
 	push __zero_reg__
-.LCFI54:
+.LCFI55:
 	.cfi_def_cfa_offset 9
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI55:
+.LCFI56:
 	.cfi_def_cfa_register 28
 /* prologue: function */
 /* frame size = 1 */
@@ -1019,13 +1012,13 @@ _Z14Radio_TransmitP3_rp14_radio_tx_wait:
 .L__stack_usage = 6
 	movw r16,r24
 	mov r15,r22
-.LVL63:
+.LVL67:
 .LBB58:
-	.loc 1 358 0
+	.loc 1 357 0
 	ldi r24,lo8(1)
-.LVL64:
+.LVL68:
 	sts _ZL13transmit_lock,r24
-	.loc 1 360 0
+	.loc 1 359 0
 	lds r24,258
 	andi r24,lo8(-33)
 	sts 258,r24
@@ -1033,12 +1026,12 @@ _Z14Radio_TransmitP3_rp14_radio_tx_wait:
 .LBB60:
 	.loc 1 159 0
 	movw r22,r28
-.LVL65:
+.LVL69:
 	subi r22,-1
 	sbci r23,-1
 	ldi r24,0
 	call _ZL12get_registerhPhh.constprop.1
-.LVL66:
+.LVL70:
 	.loc 1 160 0
 	ldd r24,Y+1
 	sbrs r24,0
@@ -1053,7 +1046,7 @@ _Z14Radio_TransmitP3_rp14_radio_tx_wait:
 	sbci r23,-1
 	ldi r24,0
 	call _ZL12set_registerhPhh
-.LVL67:
+.LVL71:
 .LBB61:
 .LBB62:
 	.loc 2 245 0
@@ -1063,7 +1056,7 @@ _Z14Radio_TransmitP3_rp14_radio_tx_wait:
 	brne 1b
 	rjmp .
 	nop
-.LVL68:
+.LVL72:
 .LBE62:
 .LBE61:
 .LBB63:
@@ -1074,61 +1067,57 @@ _Z14Radio_TransmitP3_rp14_radio_tx_wait:
 	brne 1b
 	rjmp .
 	nop
-.LVL69:
+.LVL73:
 .L35:
 .LBE64:
 .LBE63:
 .LBE60:
 .LBE59:
-	.loc 1 366 0
+	.loc 1 365 0
 	ldi r20,lo8(5)
 	ldi r22,lo8(_ZL10tx_address)
 	ldi r23,hi8(_ZL10tx_address)
 	ldi r24,lo8(10)
 	call _ZL12set_registerhPhh
-.LVL70:
+.LVL74:
 	.loc 1 369 0
-	lds r24,258
-	ori r24,lo8(8)
-	sts 258,r24
-	.loc 1 370 0
 	ldi r18,lo8(32)
 	ldi r20,0
 	ldi r21,0
 	movw r22,r16
 	ldi r24,lo8(-96)
 	call _ZL16send_instructionhPhS_h
-.LVL71:
-	.loc 1 372 0
+.LVL75:
+	.loc 1 371 0
 	lds r24,258
 	ori r24,lo8(32)
 	sts 258,r24
-	.loc 1 374 0
+	.loc 1 373 0
 	cpse r15,__zero_reg__
 	rjmp .L39
 .L38:
-	.loc 1 376 0
+	.loc 1 375 0
 	lds r24,_ZL13transmit_lock
 	cpse r24,__zero_reg__
 	rjmp .L38
-	.loc 1 377 0
+	.loc 1 376 0
 	lds r24,_ZL14tx_last_status
 	rjmp .L36
 .L39:
-	.loc 1 380 0
+	.loc 1 379 0
 	ldi r24,lo8(1)
 .L36:
 /* epilogue start */
 .LBE58:
-	.loc 1 381 0
+	.loc 1 380 0
 	pop __tmp_reg__
 	pop r29
 	pop r28
 	pop r17
 	pop r16
-.LVL72:
+.LVL76:
 	pop r15
-.LVL73:
+.LVL77:
 	ret
 	.cfi_endproc
 .LFE23:
@@ -1138,15 +1127,15 @@ _Z14Radio_TransmitP3_rp14_radio_tx_wait:
 	.type	_Z13Radio_ReceiveP3_rp, @function
 _Z13Radio_ReceiveP3_rp:
 .LFB24:
-	.loc 1 384 0
+	.loc 1 383 0
 	.cfi_startproc
-.LVL74:
+.LVL78:
 	push r28
-.LCFI56:
+.LCFI57:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 28, -3
 	push r29
-.LCFI57:
+.LCFI58:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 29, -4
 /* prologue: function */
@@ -1154,82 +1143,82 @@ _Z13Radio_ReceiveP3_rp:
 /* stack size = 2 */
 .L__stack_usage = 2
 	movw r28,r24
-.LVL75:
+.LVL79:
 .LBB65:
-	.loc 1 391 0
+	.loc 1 390 0
 	sts _ZL13transmit_lock,__zero_reg__
-	.loc 1 393 0
+	.loc 1 392 0
 	lds r24,258
-.LVL76:
+.LVL80:
 	andi r24,lo8(-33)
 	sts 258,r24
-	.loc 1 395 0
+	.loc 1 394 0
 	call _ZL10get_statusv
-.LVL77:
-	.loc 1 396 0
+.LVL81:
+	.loc 1 395 0
 	andi r24,lo8(14)
-.LVL78:
+.LVL82:
 	mov r18,r24
 	ldi r19,0
 	asr r19
 	ror r18
-.LVL79:
-	.loc 1 404 0
+.LVL83:
+	.loc 1 403 0
 	movw r30,r18
 	subi r30,lo8(-(_ZL14rx_pipe_widths))
 	sbci r31,hi8(-(_ZL14rx_pipe_widths))
 	ld r24,Z
 	cpi r24,lo8(33)
 	brsh .L45
-	.loc 1 411 0
+	.loc 1 410 0
 	cpi r18,lo8(7)
 	breq .L46
-	.loc 1 414 0
+	.loc 1 413 0
 	ld r18,Z
-.LVL80:
+.LVL84:
 	movw r20,r28
 	movw r22,r28
 	ldi r24,lo8(97)
 	call _ZL16send_instructionhPhS_h
-.LVL81:
-	.loc 1 416 0
+.LVL85:
+	.loc 1 415 0
 	call _ZL10get_statusv
-.LVL82:
-	.loc 1 417 0
+.LVL86:
+	.loc 1 416 0
 	andi r24,lo8(14)
-.LVL83:
-	.loc 1 419 0
+.LVL87:
+	.loc 1 418 0
 	cpi r24,lo8(14)
 	breq .L47
-	.loc 1 420 0
+	.loc 1 419 0
 	ldi r24,lo8(3)
 	rjmp .L44
-.LVL84:
+.LVL88:
 .L45:
-	.loc 1 407 0
+	.loc 1 406 0
 	ldi r24,0
 	rjmp .L44
 .L46:
 	ldi r24,lo8(2)
 	rjmp .L44
-.LVL85:
+.LVL89:
 .L47:
-	.loc 1 422 0
+	.loc 1 421 0
 	ldi r24,lo8(4)
 .L44:
-.LVL86:
-	.loc 1 425 0
+.LVL90:
+	.loc 1 424 0
 	lds r25,258
 	ori r25,lo8(32)
 	sts 258,r25
-	.loc 1 427 0
+	.loc 1 426 0
 	sts _ZL13transmit_lock,__zero_reg__
 /* epilogue start */
 .LBE65:
-	.loc 1 432 0
+	.loc 1 431 0
 	pop r29
 	pop r28
-.LVL87:
+.LVL91:
 	ret
 	.cfi_endproc
 .LFE24:
@@ -1239,59 +1228,59 @@ _Z13Radio_ReceiveP3_rp:
 	.type	_Z18Radio_Success_Ratev, @function
 _Z18Radio_Success_Ratev:
 .LFB25:
-	.loc 1 436 0
+	.loc 1 435 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
 .LBB66:
-	.loc 1 437 0
+	.loc 1 436 0
 	lds r24,_ZL10tx_history
 	lds r25,_ZL10tx_history+1
-.LVL88:
-	.loc 1 438 0
+.LVL92:
+	.loc 1 437 0
 	ldi r20,0
-.LVL89:
+.LVL93:
 .L49:
-	.loc 1 439 0 discriminator 1
+	.loc 1 438 0 discriminator 1
 	sbiw r24,0
 	breq .L55
-	.loc 1 441 0
+	.loc 1 440 0
 	sbrc r24,0
-	.loc 1 441 0 is_stmt 0 discriminator 1
+	.loc 1 440 0 is_stmt 0 discriminator 1
 	subi r20,lo8(-(1))
-.LVL90:
+.LVL94:
 .L50:
-	.loc 1 442 0 is_stmt 1
+	.loc 1 441 0 is_stmt 1
 	lsr r25
 	ror r24
-.LVL91:
+.LVL95:
 	rjmp .L49
 .L55:
-	.loc 1 444 0
+	.loc 1 443 0
 	ldi r18,lo8(16)
 	ldi r19,0
 	sub r18,r20
 	sbc r19,__zero_reg__
 	ldi r20,lo8(100)
-.LVL92:
+.LVL96:
 	mul r20,r18
 	movw r24,r0
 	mul r20,r19
 	add r25,r0
 	clr __zero_reg__
-.LVL93:
-	.loc 1 445 0
+.LVL97:
+	.loc 1 444 0
 	ldi r21,4
 	1:
 	lsr r25
 	ror r24
 	dec r21
 	brne 1b
-.LVL94:
+.LVL98:
 .LBE66:
-	.loc 1 447 0
+	.loc 1 446 0
 	ret
 	.cfi_endproc
 .LFE25:
@@ -1301,13 +1290,13 @@ _Z18Radio_Success_Ratev:
 	.type	_Z11Radio_Flushv, @function
 _Z11Radio_Flushv:
 .LFB26:
-	.loc 1 450 0
+	.loc 1 449 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 451 0
+	.loc 1 450 0
 	ldi r18,0
 	ldi r20,0
 	ldi r21,0
@@ -1315,8 +1304,8 @@ _Z11Radio_Flushv:
 	ldi r23,0
 	ldi r24,lo8(-31)
 	call _ZL16send_instructionhPhS_h
-.LVL95:
-	.loc 1 452 0
+.LVL99:
+	.loc 1 451 0
 	ldi r18,0
 	ldi r20,0
 	ldi r21,0
@@ -1324,7 +1313,7 @@ _Z11Radio_Flushv:
 	ldi r23,0
 	ldi r24,lo8(-30)
 	jmp _ZL16send_instructionhPhS_h
-.LVL96:
+.LVL100:
 	.cfi_endproc
 .LFE26:
 	.size	_Z11Radio_Flushv, .-_Z11Radio_Flushv
@@ -1333,14 +1322,14 @@ _Z11Radio_Flushv:
 	.type	__vector_5, @function
 __vector_5:
 .LFB27:
-	.loc 1 458 0
+	.loc 1 457 0
 	.cfi_startproc
 	push r1
-.LCFI58:
+.LCFI59:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 1, -3
 	push r0
-.LCFI59:
+.LCFI60:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 0, -4
 	in r0,__SREG__
@@ -1349,67 +1338,67 @@ __vector_5:
 	in r0,__RAMPZ__
 	push r0
 	push r18
-.LCFI60:
+.LCFI61:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 18, -5
 	push r19
-.LCFI61:
+.LCFI62:
 	.cfi_def_cfa_offset 7
 	.cfi_offset 19, -6
 	push r20
-.LCFI62:
+.LCFI63:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 20, -7
 	push r21
-.LCFI63:
+.LCFI64:
 	.cfi_def_cfa_offset 9
 	.cfi_offset 21, -8
 	push r22
-.LCFI64:
+.LCFI65:
 	.cfi_def_cfa_offset 10
 	.cfi_offset 22, -9
 	push r23
-.LCFI65:
+.LCFI66:
 	.cfi_def_cfa_offset 11
 	.cfi_offset 23, -10
 	push r24
-.LCFI66:
+.LCFI67:
 	.cfi_def_cfa_offset 12
 	.cfi_offset 24, -11
 	push r25
-.LCFI67:
+.LCFI68:
 	.cfi_def_cfa_offset 13
 	.cfi_offset 25, -12
 	push r26
-.LCFI68:
+.LCFI69:
 	.cfi_def_cfa_offset 14
 	.cfi_offset 26, -13
 	push r27
-.LCFI69:
+.LCFI70:
 	.cfi_def_cfa_offset 15
 	.cfi_offset 27, -14
 	push r30
-.LCFI70:
+.LCFI71:
 	.cfi_def_cfa_offset 16
 	.cfi_offset 30, -15
 	push r31
-.LCFI71:
+.LCFI72:
 	.cfi_def_cfa_offset 17
 	.cfi_offset 31, -16
 	push r28
-.LCFI72:
+.LCFI73:
 	.cfi_def_cfa_offset 18
 	.cfi_offset 28, -17
 	push r29
-.LCFI73:
+.LCFI74:
 	.cfi_def_cfa_offset 19
 	.cfi_offset 29, -18
 	push __zero_reg__
-.LCFI74:
+.LCFI75:
 	.cfi_def_cfa_offset 20
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI75:
+.LCFI76:
 	.cfi_def_cfa_register 28
 /* prologue: Signal */
 /* frame size = 1 */
@@ -1418,63 +1407,59 @@ __vector_5:
 .LBB67:
 	.loc 1 462 0
 	lds r24,258
-	andi r24,lo8(-17)
-	sts 258,r24
-	.loc 1 463 0
-	lds r24,258
 	andi r24,lo8(-33)
 	sts 258,r24
-	.loc 1 465 0
+	.loc 1 464 0
 	call _ZL10get_statusv
-.LVL97:
+.LVL101:
 	std Y+1,r24
-	.loc 1 467 0
+	.loc 1 466 0
 	sbrs r24,6
 	rjmp .L58
-.LVL98:
-	.loc 1 469 0
+.LVL102:
+	.loc 1 468 0
 	andi r24,lo8(14)
-.LVL99:
-	.loc 1 470 0
+.LVL103:
+	.loc 1 469 0
 	lsr r24
-.LVL100:
+.LVL104:
 	call _Z15radio_rxhandlerh
-.LVL101:
+.LVL105:
 .L58:
-	.loc 1 473 0
+	.loc 1 472 0
 	ldd r24,Y+1
 	sbrs r24,5
 	rjmp .L59
-	.loc 1 476 0
+	.loc 1 475 0
 	sts _ZL13transmit_lock,__zero_reg__
-	.loc 1 477 0
+	.loc 1 476 0
 	call _ZL19reset_pipe0_addressv
-.LVL102:
-	.loc 1 478 0
+.LVL106:
+	.loc 1 477 0
 	call _ZL11set_rx_modev
-.LVL103:
-	.loc 1 481 0
+.LVL107:
+	.loc 1 480 0
 	lds r24,_ZL10tx_history
 	lds r25,_ZL10tx_history+1
 	lsl r24
 	rol r25
 	sts _ZL10tx_history+1,r25
 	sts _ZL10tx_history,r24
-	.loc 1 482 0
+	.loc 1 481 0
 	lds r24,_ZL10tx_history
 	lds r25,_ZL10tx_history+1
 	ori r24,1
 	sts _ZL10tx_history+1,r25
 	sts _ZL10tx_history,r24
-	.loc 1 484 0
+	.loc 1 483 0
 	ldi r24,lo8(1)
 	sts _ZL14tx_last_status,r24
 	rjmp .L60
 .L59:
-	.loc 1 486 0
+	.loc 1 485 0
 	sbrs r24,4
 	rjmp .L60
-	.loc 1 488 0
+	.loc 1 487 0
 	ldi r18,0
 	ldi r20,0
 	ldi r21,0
@@ -1482,47 +1467,43 @@ __vector_5:
 	ldi r23,0
 	ldi r24,lo8(-31)
 	call _ZL16send_instructionhPhS_h
-.LVL104:
-	.loc 1 490 0
+.LVL108:
+	.loc 1 489 0
 	sts _ZL13transmit_lock,__zero_reg__
-	.loc 1 491 0
+	.loc 1 490 0
 	call _ZL19reset_pipe0_addressv
-.LVL105:
-	.loc 1 492 0
+.LVL109:
+	.loc 1 491 0
 	call _ZL11set_rx_modev
-.LVL106:
-	.loc 1 494 0
+.LVL110:
+	.loc 1 493 0
 	lds r24,_ZL10tx_history
 	lds r25,_ZL10tx_history+1
 	lsl r24
 	rol r25
 	sts _ZL10tx_history+1,r25
 	sts _ZL10tx_history,r24
-	.loc 1 496 0
+	.loc 1 495 0
 	sts _ZL14tx_last_status,__zero_reg__
 .L60:
-	.loc 1 500 0
+	.loc 1 499 0
 	ldi r24,lo8(112)
 	std Y+1,r24
-	.loc 1 501 0
+	.loc 1 500 0
 	ldi r20,lo8(1)
 	movw r22,r28
 	subi r22,-1
 	sbci r23,-1
 	ldi r24,lo8(7)
 	call _ZL12set_registerhPhh
-.LVL107:
-	.loc 1 502 0
-	lds r24,258
-	ori r24,lo8(16)
-	sts 258,r24
-	.loc 1 504 0
+.LVL111:
+	.loc 1 503 0
 	lds r24,258
 	ori r24,lo8(32)
 	sts 258,r24
 /* epilogue start */
 .LBE67:
-	.loc 1 505 0
+	.loc 1 504 0
 	pop __tmp_reg__
 	pop r29
 	pop r28
@@ -1601,15 +1582,15 @@ _ZL13transmit_lock:
 	.file 8 "../radio/spi.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x105e
+	.long	0x1081
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF126
-	.byte	0x4
 	.long	.LASF127
+	.byte	0x4
 	.long	.LASF128
+	.long	.LASF129
 	.long	.Ldebug_ranges0+0
 	.long	0
 	.long	0
@@ -2011,7 +1992,7 @@ _ZL13transmit_lock:
 	.byte	0x4d
 	.long	0x311
 	.uleb128 0xf
-	.long	.LASF129
+	.long	.LASF130
 	.byte	0x1
 	.byte	0xb1
 	.byte	0x1
@@ -2086,7 +2067,7 @@ _ZL13transmit_lock:
 	.byte	0
 	.byte	0
 	.uleb128 0x16
-	.long	.LASF130
+	.long	.LASF131
 	.byte	0x1
 	.byte	0x5d
 	.long	0x3e
@@ -2144,7 +2125,7 @@ _ZL13transmit_lock:
 	.long	.LLST1
 	.uleb128 0x1d
 	.long	.LVL1
-	.long	0xfe9
+	.long	0x100c
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2193,7 +2174,7 @@ _ZL13transmit_lock:
 	.long	.LLST6
 	.uleb128 0x21
 	.long	.LVL4
-	.long	0xfe9
+	.long	0x100c
 	.long	0x4d1
 	.uleb128 0x1e
 	.byte	0x1
@@ -2210,7 +2191,7 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x1d
 	.long	.LVL6
-	.long	0x1004
+	.long	0x1027
 	.uleb128 0x1e
 	.byte	0x6
 	.byte	0x68
@@ -2260,7 +2241,7 @@ _ZL13transmit_lock:
 	.long	.LLST11
 	.uleb128 0x21
 	.long	.LVL10
-	.long	0xfe9
+	.long	0x100c
 	.long	0x551
 	.uleb128 0x1e
 	.byte	0x1
@@ -2272,7 +2253,7 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x21
 	.long	.LVL11
-	.long	0x1004
+	.long	0x1027
 	.long	0x56a
 	.uleb128 0x1e
 	.byte	0x6
@@ -2288,7 +2269,7 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x1d
 	.long	.LVL12
-	.long	0x1020
+	.long	0x1043
 	.uleb128 0x1e
 	.byte	0x6
 	.byte	0x68
@@ -2377,7 +2358,7 @@ _ZL13transmit_lock:
 	.long	.LLST16
 	.uleb128 0x21
 	.long	.LVL20
-	.long	0xfe9
+	.long	0x100c
 	.long	0x625
 	.uleb128 0x1e
 	.byte	0x1
@@ -2391,7 +2372,7 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x1d
 	.long	.LVL22
-	.long	0x1020
+	.long	0x1043
 	.uleb128 0x1e
 	.byte	0x6
 	.byte	0x68
@@ -2532,7 +2513,12 @@ _ZL13transmit_lock:
 	.byte	0x1
 	.byte	0xbf
 	.byte	0x1
-	.long	0x74a
+	.long	0x755
+	.uleb128 0x11
+	.long	.LASF90
+	.byte	0x1
+	.byte	0xbf
+	.long	0x3e
 	.uleb128 0x12
 	.uleb128 0x13
 	.long	.LASF83
@@ -2543,22 +2529,28 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x2c
 	.byte	0x1
-	.long	.LASF90
+	.long	.LASF91
 	.byte	0x1
 	.byte	0xe4
-	.long	.LASF131
+	.long	.LASF132
 	.long	.LFB19
 	.long	.LFE19
 	.long	.LLST24
 	.byte	0x1
-	.long	0x931
+	.long	0x954
+	.uleb128 0x20
+	.long	.LASF90
+	.byte	0x1
+	.byte	0xe4
+	.long	0x3e
+	.long	.LLST25
 	.uleb128 0x2a
 	.long	0x383
 	.long	.LBB42
 	.long	.LBE42
 	.byte	0x1
-	.byte	0xfe
-	.long	0x7a2
+	.byte	0xfd
+	.long	0x7bc
 	.uleb128 0x2d
 	.long	0x38f
 	.byte	0x4
@@ -2580,23 +2572,26 @@ _ZL13transmit_lock:
 	.long	.LBB44
 	.long	.LBE44
 	.byte	0x1
-	.word	0x101
-	.long	0x8fa
+	.word	0x100
+	.long	0x91d
+	.uleb128 0x26
+	.long	0x73c
+	.long	.LLST26
 	.uleb128 0x1b
 	.long	.LBB45
 	.long	.LBE45
 	.uleb128 0x31
-	.long	0x73d
+	.long	0x748
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
 	.uleb128 0x32
-	.long	.LVL29
-	.long	0x1041
+	.long	.LVL32
+	.long	0x1064
 	.uleb128 0x21
-	.long	.LVL30
+	.long	.LVL33
 	.long	0x456
-	.long	0x7f3
+	.long	0x816
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2620,9 +2615,9 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL31
+	.long	.LVL34
 	.long	0x456
-	.long	0x816
+	.long	0x839
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2646,9 +2641,9 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL32
+	.long	.LVL35
 	.long	0x456
-	.long	0x839
+	.long	0x85c
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2672,9 +2667,9 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL33
+	.long	.LVL36
 	.long	0x456
-	.long	0x85c
+	.long	0x87f
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2698,9 +2693,9 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL34
+	.long	.LVL37
 	.long	0x456
-	.long	0x87f
+	.long	0x8a2
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2724,9 +2719,9 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL35
+	.long	.LVL38
 	.long	0x456
-	.long	0x8a2
+	.long	0x8c5
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2750,9 +2745,9 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL36
+	.long	.LVL39
 	.long	0x4e8
-	.long	0x8cf
+	.long	0x8f2
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2786,7 +2781,7 @@ _ZL13transmit_lock:
 	.byte	0x30
 	.byte	0
 	.uleb128 0x1d
-	.long	.LVL37
+	.long	.LVL40
 	.long	0x4e8
 	.uleb128 0x1e
 	.byte	0x1
@@ -2827,7 +2822,7 @@ _ZL13transmit_lock:
 	.long	.LBB46
 	.long	.LBE46
 	.byte	0x1
-	.word	0x104
+	.word	0x103
 	.uleb128 0x2d
 	.long	0x38f
 	.byte	0x4
@@ -2848,66 +2843,66 @@ _ZL13transmit_lock:
 	.uleb128 0x2b
 	.long	0x3b1
 	.byte	0
-	.long	0x941
+	.long	0x964
 	.uleb128 0x15
 	.long	0x6d
 	.byte	0
 	.uleb128 0x35
 	.byte	0x1
-	.long	.LASF91
-	.byte	0x1
-	.word	0x111
-	.long	.LASF97
-	.long	.LFB20
-	.long	.LFE20
-	.long	.LLST25
-	.byte	0x1
-	.long	0xa82
-	.uleb128 0x36
 	.long	.LASF92
 	.byte	0x1
-	.word	0x111
-	.long	0x234
-	.long	.LLST26
-	.uleb128 0x36
-	.long	.LASF21
-	.byte	0x1
-	.word	0x111
-	.long	0x40a
+	.word	0x110
+	.long	.LASF98
+	.long	.LFB20
+	.long	.LFE20
 	.long	.LLST27
+	.byte	0x1
+	.long	0xaa5
 	.uleb128 0x36
 	.long	.LASF93
 	.byte	0x1
-	.word	0x111
-	.long	0x32a
+	.word	0x110
+	.long	0x234
 	.long	.LLST28
+	.uleb128 0x36
+	.long	.LASF21
+	.byte	0x1
+	.word	0x110
+	.long	0x40a
+	.long	.LLST29
+	.uleb128 0x36
+	.long	.LASF94
+	.byte	0x1
+	.word	0x110
+	.long	0x32a
+	.long	.LLST30
 	.uleb128 0x1b
 	.long	.LBB48
 	.long	.LBE48
 	.uleb128 0x37
 	.long	.LASF83
 	.byte	0x1
-	.word	0x113
+	.word	0x112
 	.long	0x3e
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
 	.uleb128 0x38
-	.long	.LASF94
+	.long	.LASF95
 	.byte	0x1
-	.word	0x114
+	.word	0x113
 	.long	0x3e
 	.byte	0x1
 	.uleb128 0x38
-	.long	.LASF95
+	.long	.LASF96
 	.byte	0x1
-	.word	0x115
+	.word	0x114
 	.long	0x3e
 	.byte	0x20
 	.uleb128 0x21
-	.long	.LVL45
+	.long	.LVL49
 	.long	0x456
-	.long	0x9e4
+	.long	0xa07
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -2931,29 +2926,8 @@ _ZL13transmit_lock:
 	.byte	0x66
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL46
+	.long	.LVL50
 	.long	0x5c5
-	.long	0xa02
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x68
-	.byte	0x1
-	.byte	0x31
-	.uleb128 0x1e
-	.byte	0x6
-	.byte	0x66
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x67
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x2
-	.byte	0x8c
-	.sleb128 1
-	.byte	0
-	.uleb128 0x21
-	.long	.LVL47
-	.long	0x456
 	.long	0xa25
 	.uleb128 0x1e
 	.byte	0x1
@@ -2971,16 +2945,16 @@ _ZL13transmit_lock:
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x64
-	.byte	0x1
-	.byte	0x31
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL48
+	.long	.LVL51
 	.long	0x456
-	.long	0xa43
+	.long	0xa48
+	.uleb128 0x1e
+	.byte	0x1
+	.byte	0x68
+	.byte	0x1
+	.byte	0x31
 	.uleb128 0x1e
 	.byte	0x6
 	.byte	0x66
@@ -2999,9 +2973,30 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL49
+	.long	.LVL52
+	.long	0x456
+	.long	0xa66
+	.uleb128 0x1e
+	.byte	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x2
+	.byte	0x8c
+	.sleb128 1
+	.uleb128 0x1e
+	.byte	0x1
+	.byte	0x64
+	.byte	0x1
+	.byte	0x31
+	.byte	0
+	.uleb128 0x21
+	.long	.LVL53
 	.long	0x5c5
-	.long	0xa61
+	.long	0xa84
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -3020,7 +3015,7 @@ _ZL13transmit_lock:
 	.sleb128 1
 	.byte	0
 	.uleb128 0x1d
-	.long	.LVL50
+	.long	.LVL54
 	.long	0x456
 	.uleb128 0x1e
 	.byte	0x1
@@ -3048,10 +3043,10 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x39
 	.byte	0x1
-	.long	.LASF96
+	.long	.LASF97
 	.byte	0x1
-	.word	0x13e
-	.long	.LASF98
+	.word	0x13d
+	.long	.LASF99
 	.long	.LFB21
 	.long	.LFE21
 	.byte	0x3
@@ -3059,15 +3054,15 @@ _ZL13transmit_lock:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0xad2
+	.long	0xaf5
 	.uleb128 0x36
 	.long	.LASF21
 	.byte	0x1
-	.word	0x13e
+	.word	0x13d
 	.long	0x40a
-	.long	.LLST29
+	.long	.LLST31
 	.uleb128 0x24
-	.long	.LVL54
+	.long	.LVL58
 	.byte	0x1
 	.long	0x456
 	.uleb128 0x1e
@@ -3096,42 +3091,42 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x35
 	.byte	0x1
-	.long	.LASF99
-	.byte	0x1
-	.word	0x148
 	.long	.LASF100
+	.byte	0x1
+	.word	0x147
+	.long	.LASF101
 	.long	.LFB22
 	.long	.LFE22
-	.long	.LLST30
+	.long	.LLST32
 	.byte	0x1
-	.long	0xb66
+	.long	0xb89
 	.uleb128 0x3a
 	.string	"dr"
 	.byte	0x1
-	.word	0x148
+	.word	0x147
 	.long	0x288
-	.long	.LLST31
+	.long	.LLST33
 	.uleb128 0x36
-	.long	.LASF101
+	.long	.LASF102
 	.byte	0x1
-	.word	0x148
+	.word	0x147
 	.long	0x264
-	.long	.LLST32
+	.long	.LLST34
 	.uleb128 0x1b
 	.long	.LBB49
 	.long	.LBE49
 	.uleb128 0x37
 	.long	.LASF83
 	.byte	0x1
-	.word	0x14a
+	.word	0x149
 	.long	0x3e
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
 	.uleb128 0x21
-	.long	.LVL58
+	.long	.LVL62
 	.long	0x5c5
-	.long	0xb45
+	.long	0xb68
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -3150,7 +3145,7 @@ _ZL13transmit_lock:
 	.sleb128 1
 	.byte	0
 	.uleb128 0x1d
-	.long	.LVL59
+	.long	.LVL63
 	.long	0x456
 	.uleb128 0x1e
 	.byte	0x1
@@ -3177,11 +3172,11 @@ _ZL13transmit_lock:
 	.byte	0
 	.byte	0
 	.uleb128 0x10
-	.long	.LASF102
+	.long	.LASF103
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.long	0xb80
+	.long	0xba3
 	.uleb128 0x12
 	.uleb128 0x13
 	.long	.LASF88
@@ -3192,49 +3187,49 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x3b
 	.byte	0x1
-	.long	.LASF104
+	.long	.LASF105
 	.byte	0x1
-	.word	0x15f
-	.long	.LASF106
-	.long	0x3e
+	.word	0x15e
+	.long	.LASF107
+	.long	0x2e2
 	.long	.LFB23
 	.long	.LFE23
-	.long	.LLST33
+	.long	.LLST35
 	.byte	0x1
-	.long	0xd01
+	.long	0xd24
 	.uleb128 0x36
 	.long	.LASF31
 	.byte	0x1
-	.word	0x15f
-	.long	0xd01
-	.long	.LLST34
+	.word	0x15e
+	.long	0xd24
+	.long	.LLST36
 	.uleb128 0x36
-	.long	.LASF103
+	.long	.LASF104
 	.byte	0x1
-	.word	0x15f
+	.word	0x15e
 	.long	0x306
-	.long	.LLST35
+	.long	.LLST37
 	.uleb128 0x1b
 	.long	.LBB58
 	.long	.LBE58
 	.uleb128 0x3c
 	.string	"len"
 	.byte	0x1
-	.word	0x163
+	.word	0x162
 	.long	0x3e
 	.byte	0x20
 	.uleb128 0x30
-	.long	0xb66
+	.long	0xb89
 	.long	.LBB59
 	.long	.LBE59
 	.byte	0x1
-	.word	0x16a
-	.long	0xcae
+	.word	0x169
+	.long	0xcd1
 	.uleb128 0x1b
 	.long	.LBB60
 	.long	.LBE60
 	.uleb128 0x31
-	.long	0xb73
+	.long	0xb96
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
@@ -3244,19 +3239,19 @@ _ZL13transmit_lock:
 	.long	.LBE61
 	.byte	0x1
 	.byte	0xa7
-	.long	0xc36
+	.long	0xc59
 	.uleb128 0x26
 	.long	0x349
-	.long	.LLST36
+	.long	.LLST38
 	.uleb128 0x1b
 	.long	.LBB62
 	.long	.LBE62
 	.uleb128 0x28
 	.long	0x355
-	.long	.LLST37
+	.long	.LLST39
 	.uleb128 0x28
 	.long	0x360
-	.long	.LLST38
+	.long	.LLST40
 	.byte	0
 	.byte	0
 	.uleb128 0x2a
@@ -3265,25 +3260,25 @@ _ZL13transmit_lock:
 	.long	.LBE63
 	.byte	0x1
 	.byte	0xa8
-	.long	0xc6f
+	.long	0xc92
 	.uleb128 0x26
 	.long	0x349
-	.long	.LLST39
+	.long	.LLST41
 	.uleb128 0x1b
 	.long	.LBB64
 	.long	.LBE64
 	.uleb128 0x28
 	.long	0x355
-	.long	.LLST40
+	.long	.LLST42
 	.uleb128 0x28
 	.long	0x360
-	.long	.LLST41
+	.long	.LLST43
 	.byte	0
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL66
+	.long	.LVL70
 	.long	0x5c5
-	.long	0xc8d
+	.long	0xcb0
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -3302,7 +3297,7 @@ _ZL13transmit_lock:
 	.sleb128 1
 	.byte	0
 	.uleb128 0x1d
-	.long	.LVL67
+	.long	.LVL71
 	.long	0x456
 	.uleb128 0x1e
 	.byte	0x1
@@ -3329,9 +3324,9 @@ _ZL13transmit_lock:
 	.byte	0
 	.byte	0
 	.uleb128 0x21
-	.long	.LVL70
+	.long	.LVL74
 	.long	0x456
-	.long	0xcd4
+	.long	0xcf7
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -3355,7 +3350,7 @@ _ZL13transmit_lock:
 	.byte	0x35
 	.byte	0
 	.uleb128 0x1d
-	.long	.LVL71
+	.long	.LVL75
 	.long	0x4e8
 	.uleb128 0x1e
 	.byte	0x1
@@ -3398,62 +3393,62 @@ _ZL13transmit_lock:
 	.long	0x1eb
 	.uleb128 0x3b
 	.byte	0x1
-	.long	.LASF105
+	.long	.LASF106
 	.byte	0x1
-	.word	0x17f
-	.long	.LASF107
+	.word	0x17e
+	.long	.LASF108
 	.long	0x2be
 	.long	.LFB24
 	.long	.LFE24
-	.long	.LLST42
+	.long	.LLST44
 	.byte	0x1
-	.long	0xdcd
+	.long	0xdf0
 	.uleb128 0x36
 	.long	.LASF79
 	.byte	0x1
-	.word	0x17f
-	.long	0xd01
-	.long	.LLST43
+	.word	0x17e
+	.long	0xd24
+	.long	.LLST45
 	.uleb128 0x1b
 	.long	.LBB65
 	.long	.LBE65
 	.uleb128 0x3c
 	.string	"len"
 	.byte	0x1
-	.word	0x181
+	.word	0x180
 	.long	0x3e
 	.byte	0x20
 	.uleb128 0x3d
 	.long	.LASF80
 	.byte	0x1
-	.word	0x182
-	.long	0x3e
-	.long	.LLST44
-	.uleb128 0x3d
-	.long	.LASF108
-	.byte	0x1
-	.word	0x183
-	.long	0x3e
-	.long	.LLST45
-	.uleb128 0x3d
-	.long	.LASF109
-	.byte	0x1
-	.word	0x184
+	.word	0x181
 	.long	0x3e
 	.long	.LLST46
 	.uleb128 0x3d
+	.long	.LASF109
+	.byte	0x1
+	.word	0x182
+	.long	0x3e
+	.long	.LLST47
+	.uleb128 0x3d
 	.long	.LASF110
 	.byte	0x1
-	.word	0x185
+	.word	0x183
+	.long	0x3e
+	.long	.LLST48
+	.uleb128 0x3d
+	.long	.LASF111
+	.byte	0x1
+	.word	0x184
 	.long	0x2be
-	.long	.LLST47
+	.long	.LLST49
 	.uleb128 0x32
-	.long	.LVL77
+	.long	.LVL81
 	.long	0x410
 	.uleb128 0x21
-	.long	.LVL81
+	.long	.LVL85
 	.long	0x4e8
-	.long	0xdc2
+	.long	0xde5
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -3484,16 +3479,16 @@ _ZL13transmit_lock:
 	.sleb128 0
 	.byte	0
 	.uleb128 0x32
-	.long	.LVL82
+	.long	.LVL86
 	.long	0x410
 	.byte	0
 	.byte	0
 	.uleb128 0x3e
 	.byte	0x1
-	.long	.LASF111
-	.byte	0x1
-	.word	0x1b3
 	.long	.LASF112
+	.byte	0x1
+	.word	0x1b2
+	.long	.LASF113
 	.long	0x3e
 	.long	.LFB25
 	.long	.LFE25
@@ -3502,30 +3497,30 @@ _ZL13transmit_lock:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0xe19
+	.long	0xe3c
 	.uleb128 0x1b
 	.long	.LBB66
 	.long	.LBE66
 	.uleb128 0x3f
 	.string	"wh"
 	.byte	0x1
-	.word	0x1b5
+	.word	0x1b4
 	.long	0x50
-	.long	.LLST48
+	.long	.LLST50
 	.uleb128 0x3d
-	.long	.LASF113
+	.long	.LASF114
 	.byte	0x1
-	.word	0x1b6
+	.word	0x1b5
 	.long	0x3e
-	.long	.LLST49
+	.long	.LLST51
 	.byte	0
 	.byte	0
 	.uleb128 0x39
 	.byte	0x1
-	.long	.LASF114
-	.byte	0x1
-	.word	0x1c1
 	.long	.LASF115
+	.byte	0x1
+	.word	0x1c0
+	.long	.LASF116
 	.long	.LFB26
 	.long	.LFE26
 	.byte	0x3
@@ -3533,11 +3528,11 @@ _ZL13transmit_lock:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0xe8f
+	.long	0xeb2
 	.uleb128 0x21
-	.long	.LVL95
+	.long	.LVL99
 	.long	0x4e8
-	.long	0xe64
+	.long	0xe87
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -3571,7 +3566,7 @@ _ZL13transmit_lock:
 	.byte	0x30
 	.byte	0
 	.uleb128 0x24
-	.long	.LVL96
+	.long	.LVL100
 	.byte	0x1
 	.long	0x4e8
 	.uleb128 0x1e
@@ -3609,47 +3604,47 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x40
 	.byte	0x1
-	.long	.LASF132
+	.long	.LASF133
 	.byte	0x1
-	.word	0x1c9
+	.word	0x1c8
 	.long	.LFB27
 	.long	.LFE27
-	.long	.LLST50
+	.long	.LLST52
 	.byte	0x1
-	.long	0xf55
+	.long	0xf78
 	.uleb128 0x1b
 	.long	.LBB67
 	.long	.LBE67
 	.uleb128 0x37
 	.long	.LASF80
 	.byte	0x1
-	.word	0x1cb
+	.word	0x1ca
 	.long	0x3e
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
 	.uleb128 0x3d
-	.long	.LASF108
+	.long	.LASF109
 	.byte	0x1
-	.word	0x1cc
+	.word	0x1cb
 	.long	0x3e
-	.long	.LLST51
-	.uleb128 0x32
-	.long	.LVL97
-	.long	0x410
+	.long	.LLST53
 	.uleb128 0x32
 	.long	.LVL101
-	.long	0x104e
+	.long	0x410
 	.uleb128 0x32
-	.long	.LVL102
+	.long	.LVL105
+	.long	0x1071
+	.uleb128 0x32
+	.long	.LVL106
 	.long	0x335
 	.uleb128 0x32
-	.long	.LVL103
+	.long	.LVL107
 	.long	0x640
 	.uleb128 0x21
-	.long	.LVL104
+	.long	.LVL108
 	.long	0x4e8
-	.long	0xf22
+	.long	0xf45
 	.uleb128 0x1e
 	.byte	0x1
 	.byte	0x68
@@ -3683,13 +3678,13 @@ _ZL13transmit_lock:
 	.byte	0x30
 	.byte	0
 	.uleb128 0x32
-	.long	.LVL105
+	.long	.LVL109
 	.long	0x335
 	.uleb128 0x32
-	.long	.LVL106
+	.long	.LVL110
 	.long	0x640
 	.uleb128 0x1d
-	.long	.LVL107
+	.long	.LVL111
 	.long	0x456
 	.uleb128 0x1e
 	.byte	0x1
@@ -3716,10 +3711,10 @@ _ZL13transmit_lock:
 	.byte	0
 	.byte	0
 	.uleb128 0x29
-	.long	.LASF116
+	.long	.LASF117
 	.byte	0x1
 	.byte	0x27
-	.long	0xf66
+	.long	0xf89
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL13transmit_lock
@@ -3727,56 +3722,56 @@ _ZL13transmit_lock:
 	.long	0x3e
 	.uleb128 0x7
 	.long	0x49
-	.long	0xf7b
+	.long	0xf9e
 	.uleb128 0x8
 	.long	0xc6
 	.byte	0x5
 	.byte	0
 	.uleb128 0x29
-	.long	.LASF117
+	.long	.LASF118
 	.byte	0x1
 	.byte	0x29
-	.long	0xf8c
+	.long	0xfaf
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL14rx_pipe_widths
 	.uleb128 0x41
-	.long	0xf6b
+	.long	0xf8e
 	.uleb128 0x29
-	.long	.LASF118
+	.long	.LASF119
 	.byte	0x1
 	.byte	0x2b
-	.long	0xfa2
+	.long	0xfc5
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL10tx_address
 	.uleb128 0x41
 	.long	0x135
 	.uleb128 0x29
-	.long	.LASF119
+	.long	.LASF120
 	.byte	0x1
 	.byte	0x2d
-	.long	0xfb8
+	.long	0xfdb
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL16rx_pipe0_address
 	.uleb128 0x41
 	.long	0x135
 	.uleb128 0x29
-	.long	.LASF120
+	.long	.LASF121
 	.byte	0x1
 	.byte	0x2f
-	.long	0xfce
+	.long	0xff1
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL10tx_history
 	.uleb128 0x41
 	.long	0x50
 	.uleb128 0x29
-	.long	.LASF121
+	.long	.LASF122
 	.byte	0x1
 	.byte	0x31
-	.long	0xfe4
+	.long	0x1007
 	.byte	0x5
 	.byte	0x3
 	.long	_ZL14tx_last_status
@@ -3784,26 +3779,13 @@ _ZL13transmit_lock:
 	.long	0x2e2
 	.uleb128 0x42
 	.byte	0x1
-	.long	.LASF133
+	.long	.LASF134
 	.byte	0x8
 	.byte	0x31
-	.long	.LASF134
+	.long	.LASF135
 	.long	0x3e
 	.byte	0x1
-	.long	0x1004
-	.uleb128 0x15
-	.long	0x3e
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.long	.LASF122
-	.byte	0x8
-	.byte	0x2c
-	.long	.LASF124
-	.byte	0x1
-	.long	0x1020
-	.uleb128 0x15
-	.long	0x40a
+	.long	0x1027
 	.uleb128 0x15
 	.long	0x3e
 	.byte	0
@@ -3811,10 +3793,23 @@ _ZL13transmit_lock:
 	.byte	0x1
 	.long	.LASF123
 	.byte	0x8
-	.byte	0x25
+	.byte	0x2c
 	.long	.LASF125
 	.byte	0x1
-	.long	0x1041
+	.long	0x1043
+	.uleb128 0x15
+	.long	0x40a
+	.uleb128 0x15
+	.long	0x3e
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.long	.LASF124
+	.byte	0x8
+	.byte	0x25
+	.long	.LASF126
+	.byte	0x1
+	.long	0x1064
 	.uleb128 0x15
 	.long	0x40a
 	.uleb128 0x15
@@ -3824,17 +3819,17 @@ _ZL13transmit_lock:
 	.byte	0
 	.uleb128 0x44
 	.byte	0x1
-	.long	.LASF135
+	.long	.LASF136
 	.byte	0x8
 	.byte	0x1c
-	.long	.LASF136
+	.long	.LASF137
 	.byte	0x1
 	.uleb128 0x45
 	.byte	0x1
-	.long	.LASF137
+	.long	.LASF138
 	.byte	0x1
 	.byte	0x33
-	.long	.LASF138
+	.long	.LASF139
 	.byte	0x1
 	.uleb128 0x15
 	.long	0x3e
@@ -5351,93 +5346,43 @@ _ZL13transmit_lock:
 	.uleb128 0x20
 	.sleb128 6
 	.long	.LCFI33
-	.long	.LFE19
-	.word	0x2
-	.byte	0x8c
-	.sleb128 6
-	.long	0
-	.long	0
-.LLST25:
-	.long	.LFB20
 	.long	.LCFI34
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.long	.LCFI34
-	.long	.LCFI35
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 4
-	.long	.LCFI35
-	.long	.LCFI36
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 5
-	.long	.LCFI36
-	.long	.LCFI37
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 6
-	.long	.LCFI37
-	.long	.LCFI38
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 7
-	.long	.LCFI38
-	.long	.LCFI39
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 8
-	.long	.LCFI39
-	.long	.LCFI40
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 9
-	.long	.LCFI40
-	.long	.LCFI41
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 10
-	.long	.LCFI41
-	.long	.LCFI42
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 12
-	.long	.LCFI42
-	.long	.LFE20
+	.long	.LCFI34
+	.long	.LFE19
 	.word	0x2
 	.byte	0x8c
-	.sleb128 12
+	.sleb128 7
+	.long	0
+	.long	0
+.LLST25:
+	.long	.LVL28
+	.long	.LVL30
+	.word	0x1
+	.byte	0x68
+	.long	.LVL30
+	.long	.LVL41
+	.word	0x1
+	.byte	0x61
+	.long	.LVL41
+	.long	.LFE19
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x68
+	.byte	0x9f
 	.long	0
 	.long	0
 .LLST26:
-	.long	.LVL38
-	.long	.LVL40
-	.word	0x1
-	.byte	0x68
-	.long	.LVL40
+	.long	.LVL31
 	.long	.LVL41
 	.word	0x1
-	.byte	0x69
+	.byte	0x61
 	.long	.LVL41
-	.long	.LVL43
-	.word	0x1
-	.byte	0x68
-	.long	.LVL43
-	.long	.LVL45-1
-	.word	0x1
-	.byte	0x69
-	.long	.LVL45-1
-	.long	.LFE20
+	.long	.LFE19
 	.word	0x4
 	.byte	0xf3
 	.uleb128 0x1
@@ -5446,8 +5391,96 @@ _ZL13transmit_lock:
 	.long	0
 	.long	0
 .LLST27:
-	.long	.LVL38
+	.long	.LFB20
+	.long	.LCFI35
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI35
+	.long	.LCFI36
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI36
+	.long	.LCFI37
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 5
+	.long	.LCFI37
+	.long	.LCFI38
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 6
+	.long	.LCFI38
+	.long	.LCFI39
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 7
+	.long	.LCFI39
+	.long	.LCFI40
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 8
+	.long	.LCFI40
+	.long	.LCFI41
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 9
+	.long	.LCFI41
+	.long	.LCFI42
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 10
+	.long	.LCFI42
+	.long	.LCFI43
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 12
+	.long	.LCFI43
+	.long	.LFE20
+	.word	0x2
+	.byte	0x8c
+	.sleb128 12
+	.long	0
+	.long	0
+.LLST28:
+	.long	.LVL42
 	.long	.LVL44
+	.word	0x1
+	.byte	0x68
+	.long	.LVL44
+	.long	.LVL45
+	.word	0x1
+	.byte	0x69
+	.long	.LVL45
+	.long	.LVL47
+	.word	0x1
+	.byte	0x68
+	.long	.LVL47
+	.long	.LVL49-1
+	.word	0x1
+	.byte	0x69
+	.long	.LVL49-1
+	.long	.LFE20
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x68
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST29:
+	.long	.LVL42
+	.long	.LVL48
 	.word	0x6
 	.byte	0x66
 	.byte	0x93
@@ -5455,8 +5488,8 @@ _ZL13transmit_lock:
 	.byte	0x67
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL44
-	.long	.LVL45-1
+	.long	.LVL48
+	.long	.LVL49-1
 	.word	0x6
 	.byte	0x6e
 	.byte	0x93
@@ -5464,7 +5497,7 @@ _ZL13transmit_lock:
 	.byte	0x6f
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL45-1
+	.long	.LVL49-1
 	.long	.LFE20
 	.word	0x4
 	.byte	0xf3
@@ -5473,16 +5506,16 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST28:
-	.long	.LVL38
+.LLST30:
 	.long	.LVL42
+	.long	.LVL46
 	.word	0x1
 	.byte	0x64
-	.long	.LVL42
-	.long	.LVL51
+	.long	.LVL46
+	.long	.LVL55
 	.word	0x1
 	.byte	0x5d
-	.long	.LVL51
+	.long	.LVL55
 	.long	.LFE20
 	.word	0x4
 	.byte	0xf3
@@ -5491,9 +5524,9 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST29:
-	.long	.LVL52
-	.long	.LVL53
+.LLST31:
+	.long	.LVL56
+	.long	.LVL57
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -5501,8 +5534,8 @@ _ZL13transmit_lock:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL53
-	.long	.LVL54-1
+	.long	.LVL57
+	.long	.LVL58-1
 	.word	0x6
 	.byte	0x6e
 	.byte	0x93
@@ -5510,7 +5543,7 @@ _ZL13transmit_lock:
 	.byte	0x6f
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL54-1
+	.long	.LVL58-1
 	.long	.LFE21
 	.word	0x4
 	.byte	0xf3
@@ -5519,60 +5552,60 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST30:
+.LLST32:
 	.long	.LFB22
-	.long	.LCFI43
+	.long	.LCFI44
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
-	.long	.LCFI43
 	.long	.LCFI44
+	.long	.LCFI45
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 4
-	.long	.LCFI44
 	.long	.LCFI45
+	.long	.LCFI46
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 5
-	.long	.LCFI45
 	.long	.LCFI46
+	.long	.LCFI47
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 6
-	.long	.LCFI46
 	.long	.LCFI47
+	.long	.LCFI48
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 7
-	.long	.LCFI47
 	.long	.LCFI48
+	.long	.LCFI49
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 8
-	.long	.LCFI48
+	.long	.LCFI49
 	.long	.LFE22
 	.word	0x2
 	.byte	0x8c
 	.sleb128 8
 	.long	0
 	.long	0
-.LLST31:
-	.long	.LVL55
-	.long	.LVL57
+.LLST33:
+	.long	.LVL59
+	.long	.LVL61
 	.word	0x1
 	.byte	0x68
-	.long	.LVL57
-	.long	.LVL60
+	.long	.LVL61
+	.long	.LVL64
 	.word	0x1
 	.byte	0x61
-	.long	.LVL60
+	.long	.LVL64
 	.long	.LFE22
 	.word	0x4
 	.byte	0xf3
@@ -5581,16 +5614,16 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST32:
-	.long	.LVL55
-	.long	.LVL56
+.LLST34:
+	.long	.LVL59
+	.long	.LVL60
 	.word	0x1
 	.byte	0x66
-	.long	.LVL56
-	.long	.LVL61
+	.long	.LVL60
+	.long	.LVL65
 	.word	0x1
 	.byte	0x60
-	.long	.LVL61
+	.long	.LVL65
 	.long	.LFE22
 	.word	0x4
 	.byte	0xf3
@@ -5599,59 +5632,59 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST33:
+.LLST35:
 	.long	.LFB23
-	.long	.LCFI49
+	.long	.LCFI50
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
-	.long	.LCFI49
 	.long	.LCFI50
+	.long	.LCFI51
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 4
-	.long	.LCFI50
 	.long	.LCFI51
+	.long	.LCFI52
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 5
-	.long	.LCFI51
 	.long	.LCFI52
+	.long	.LCFI53
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 6
-	.long	.LCFI52
 	.long	.LCFI53
+	.long	.LCFI54
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 7
-	.long	.LCFI53
 	.long	.LCFI54
+	.long	.LCFI55
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 8
-	.long	.LCFI54
 	.long	.LCFI55
+	.long	.LCFI56
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 9
-	.long	.LCFI55
+	.long	.LCFI56
 	.long	.LFE23
 	.word	0x2
 	.byte	0x8c
 	.sleb128 9
 	.long	0
 	.long	0
-.LLST34:
-	.long	.LVL62
-	.long	.LVL64
+.LLST36:
+	.long	.LVL66
+	.long	.LVL68
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -5659,8 +5692,8 @@ _ZL13transmit_lock:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL64
-	.long	.LVL72
+	.long	.LVL68
+	.long	.LVL76
 	.word	0x6
 	.byte	0x60
 	.byte	0x93
@@ -5668,7 +5701,7 @@ _ZL13transmit_lock:
 	.byte	0x61
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL72
+	.long	.LVL76
 	.long	.LFE23
 	.word	0x4
 	.byte	0xf3
@@ -5677,16 +5710,16 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST35:
-	.long	.LVL62
-	.long	.LVL65
+.LLST37:
+	.long	.LVL66
+	.long	.LVL69
 	.word	0x1
 	.byte	0x66
-	.long	.LVL65
-	.long	.LVL73
+	.long	.LVL69
+	.long	.LVL77
 	.word	0x1
 	.byte	0x5f
-	.long	.LVL73
+	.long	.LVL77
 	.long	.LFE23
 	.word	0x4
 	.byte	0xf3
@@ -5695,74 +5728,74 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST36:
-	.long	.LVL67
-	.long	.LVL69
+.LLST38:
+	.long	.LVL71
+	.long	.LVL73
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
 	.long	0x42820000
-	.long	0
-	.long	0
-.LLST37:
-	.long	.LVL67
-	.long	.LVL69
-	.word	0x6
-	.byte	0x9e
-	.uleb128 0x4
-	.long	0x44820000
-	.long	0
-	.long	0
-.LLST38:
-	.long	.LVL67
-	.long	.LVL69
-	.word	0x4
-	.byte	0xa
-	.word	0x410
-	.byte	0x9f
 	.long	0
 	.long	0
 .LLST39:
-	.long	.LVL68
-	.long	.LVL69
-	.word	0x6
-	.byte	0x9e
-	.uleb128 0x4
-	.long	0x42820000
-	.long	0
-	.long	0
-.LLST40:
-	.long	.LVL68
-	.long	.LVL69
+	.long	.LVL71
+	.long	.LVL73
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
 	.long	0x44820000
 	.long	0
 	.long	0
-.LLST41:
-	.long	.LVL68
-	.long	.LVL69
+.LLST40:
+	.long	.LVL71
+	.long	.LVL73
 	.word	0x4
 	.byte	0xa
 	.word	0x410
 	.byte	0x9f
 	.long	0
 	.long	0
+.LLST41:
+	.long	.LVL72
+	.long	.LVL73
+	.word	0x6
+	.byte	0x9e
+	.uleb128 0x4
+	.long	0x42820000
+	.long	0
+	.long	0
 .LLST42:
+	.long	.LVL72
+	.long	.LVL73
+	.word	0x6
+	.byte	0x9e
+	.uleb128 0x4
+	.long	0x44820000
+	.long	0
+	.long	0
+.LLST43:
+	.long	.LVL72
+	.long	.LVL73
+	.word	0x4
+	.byte	0xa
+	.word	0x410
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST44:
 	.long	.LFB24
-	.long	.LCFI56
+	.long	.LCFI57
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
-	.long	.LCFI56
 	.long	.LCFI57
+	.long	.LCFI58
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 4
-	.long	.LCFI57
+	.long	.LCFI58
 	.long	.LFE24
 	.word	0x3
 	.byte	0x92
@@ -5770,9 +5803,9 @@ _ZL13transmit_lock:
 	.sleb128 5
 	.long	0
 	.long	0
-.LLST43:
-	.long	.LVL74
-	.long	.LVL76
+.LLST45:
+	.long	.LVL78
+	.long	.LVL80
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -5780,8 +5813,8 @@ _ZL13transmit_lock:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL76
-	.long	.LVL87
+	.long	.LVL80
+	.long	.LVL91
 	.word	0x6
 	.byte	0x6c
 	.byte	0x93
@@ -5789,7 +5822,7 @@ _ZL13transmit_lock:
 	.byte	0x6d
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL87
+	.long	.LVL91
 	.long	.LFE24
 	.word	0x4
 	.byte	0xf3
@@ -5798,24 +5831,24 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST44:
-	.long	.LVL77
-	.long	.LVL78
-	.word	0x1
-	.byte	0x68
+.LLST46:
+	.long	.LVL81
 	.long	.LVL82
-	.long	.LVL83
+	.word	0x1
+	.byte	0x68
+	.long	.LVL86
+	.long	.LVL87
 	.word	0x1
 	.byte	0x68
 	.long	0
 	.long	0
-.LLST45:
-	.long	.LVL79
-	.long	.LVL80
+.LLST47:
+	.long	.LVL83
+	.long	.LVL84
 	.word	0x1
 	.byte	0x62
-	.long	.LVL80
-	.long	.LVL81-1
+	.long	.LVL84
+	.long	.LVL85-1
 	.word	0x9
 	.byte	0x8e
 	.sleb128 0
@@ -5823,8 +5856,8 @@ _ZL13transmit_lock:
 	.long	_ZL14rx_pipe_widths
 	.byte	0x1c
 	.byte	0x9f
-	.long	.LVL82
-	.long	.LVL83
+	.long	.LVL86
+	.long	.LVL87
 	.word	0x7
 	.byte	0x88
 	.sleb128 0
@@ -5833,20 +5866,20 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0x25
 	.byte	0x9f
-	.long	.LVL84
-	.long	.LVL85
+	.long	.LVL88
+	.long	.LVL89
 	.word	0x1
 	.byte	0x62
 	.long	0
 	.long	0
-.LLST46:
-	.long	.LVL75
+.LLST48:
 	.long	.LVL79
+	.long	.LVL83
 	.word	0x2
 	.byte	0x31
 	.byte	0x9f
-	.long	.LVL79
-	.long	.LVL80
+	.long	.LVL83
+	.long	.LVL84
 	.word	0x8
 	.byte	0x82
 	.sleb128 0
@@ -5856,8 +5889,8 @@ _ZL13transmit_lock:
 	.byte	0x37
 	.byte	0x2e
 	.byte	0x9f
-	.long	.LVL80
-	.long	.LVL81-1
+	.long	.LVL84
+	.long	.LVL85-1
 	.word	0xe
 	.byte	0x8e
 	.sleb128 0
@@ -5870,8 +5903,8 @@ _ZL13transmit_lock:
 	.byte	0x37
 	.byte	0x2e
 	.byte	0x9f
-	.long	.LVL84
-	.long	.LVL85
+	.long	.LVL88
+	.long	.LVL89
 	.word	0x8
 	.byte	0x82
 	.sleb128 0
@@ -5883,21 +5916,21 @@ _ZL13transmit_lock:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST47:
-	.long	.LVL79
-	.long	.LVL86
+.LLST49:
+	.long	.LVL83
+	.long	.LVL90
 	.word	0x2
 	.byte	0x32
 	.byte	0x9f
-	.long	.LVL86
+	.long	.LVL90
 	.long	.LFE24
 	.word	0x1
 	.byte	0x68
 	.long	0
 	.long	0
-.LLST48:
-	.long	.LVL88
-	.long	.LVL93
+.LLST50:
+	.long	.LVL92
+	.long	.LVL97
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -5905,15 +5938,15 @@ _ZL13transmit_lock:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL93
-	.long	.LVL94
+	.long	.LVL97
+	.long	.LVL98
 	.word	0x5
 	.byte	0x88
 	.sleb128 0
 	.byte	0x34
 	.byte	0x25
 	.byte	0x9f
-	.long	.LVL94
+	.long	.LVL98
 	.long	.LFE25
 	.word	0x6
 	.byte	0x68
@@ -5924,137 +5957,137 @@ _ZL13transmit_lock:
 	.uleb128 0x1
 	.long	0
 	.long	0
-.LLST49:
-	.long	.LVL88
-	.long	.LVL89
+.LLST51:
+	.long	.LVL92
+	.long	.LVL93
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
-	.long	.LVL89
-	.long	.LVL92
+	.long	.LVL93
+	.long	.LVL96
 	.word	0x1
 	.byte	0x64
 	.long	0
 	.long	0
-.LLST50:
+.LLST52:
 	.long	.LFB27
-	.long	.LCFI58
+	.long	.LCFI59
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
-	.long	.LCFI58
 	.long	.LCFI59
+	.long	.LCFI60
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 4
-	.long	.LCFI59
 	.long	.LCFI60
+	.long	.LCFI61
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 5
-	.long	.LCFI60
 	.long	.LCFI61
+	.long	.LCFI62
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 6
-	.long	.LCFI61
 	.long	.LCFI62
+	.long	.LCFI63
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 7
-	.long	.LCFI62
 	.long	.LCFI63
+	.long	.LCFI64
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 8
-	.long	.LCFI63
 	.long	.LCFI64
+	.long	.LCFI65
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 9
-	.long	.LCFI64
 	.long	.LCFI65
+	.long	.LCFI66
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 10
-	.long	.LCFI65
 	.long	.LCFI66
+	.long	.LCFI67
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 11
-	.long	.LCFI66
 	.long	.LCFI67
+	.long	.LCFI68
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 12
-	.long	.LCFI67
 	.long	.LCFI68
+	.long	.LCFI69
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 13
-	.long	.LCFI68
 	.long	.LCFI69
+	.long	.LCFI70
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 14
-	.long	.LCFI69
 	.long	.LCFI70
+	.long	.LCFI71
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 15
-	.long	.LCFI70
 	.long	.LCFI71
+	.long	.LCFI72
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 16
-	.long	.LCFI71
 	.long	.LCFI72
+	.long	.LCFI73
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 17
-	.long	.LCFI72
 	.long	.LCFI73
+	.long	.LCFI74
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 18
-	.long	.LCFI73
 	.long	.LCFI74
+	.long	.LCFI75
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 19
-	.long	.LCFI74
 	.long	.LCFI75
+	.long	.LCFI76
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 20
-	.long	.LCFI75
+	.long	.LCFI76
 	.long	.LFE27
 	.word	0x2
 	.byte	0x8c
 	.sleb128 20
 	.long	0
 	.long	0
-.LLST51:
-	.long	.LVL98
-	.long	.LVL99
+.LLST53:
+	.long	.LVL102
+	.long	.LVL103
 	.word	0x7
 	.byte	0x88
 	.sleb128 0
@@ -6063,8 +6096,8 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0x25
 	.byte	0x9f
-	.long	.LVL99
-	.long	.LVL100
+	.long	.LVL103
+	.long	.LVL104
 	.word	0x9
 	.byte	0x8c
 	.sleb128 5
@@ -6075,8 +6108,8 @@ _ZL13transmit_lock:
 	.byte	0x31
 	.byte	0x25
 	.byte	0x9f
-	.long	.LVL100
-	.long	.LVL101-1
+	.long	.LVL104
+	.long	.LVL105-1
 	.word	0x1
 	.byte	0x68
 	.long	0
@@ -6158,13 +6191,13 @@ _ZL13transmit_lock:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF97:
+.LASF98:
 	.string	"_Z18Radio_Configure_Rx11_radio_pipePh3_ed"
-.LASF107:
+.LASF108:
 	.string	"_Z13Radio_ReceiveP3_rp"
 .LASF57:
 	.string	"RADIO_RX_MORE_PACKETS"
-.LASF108:
+.LASF109:
 	.string	"pipe_number"
 .LASF55:
 	.string	"RADIO_RX_TRANSMITTING"
@@ -6172,7 +6205,7 @@ _ZL13transmit_lock:
 	.string	"RADIO_TX_SUCCESS"
 .LASF75:
 	.string	"_delay_ms"
-.LASF135:
+.LASF136:
 	.string	"SPI_Init"
 .LASF26:
 	.string	"roombastate"
@@ -6188,15 +6221,15 @@ _ZL13transmit_lock:
 	.string	"long long unsigned int"
 .LASF74:
 	.string	"_delay_us"
-.LASF130:
+.LASF131:
 	.string	"get_register"
-.LASF92:
+.LASF93:
 	.string	"pipe"
 .LASF12:
 	.string	"roomba_states"
-.LASF106:
+.LASF107:
 	.string	"_Z14Radio_TransmitP3_rp14_radio_tx_wait"
-.LASF123:
+.LASF124:
 	.string	"SPI_ReadWrite_Block"
 .LASF30:
 	.string	"timestamp"
@@ -6208,13 +6241,13 @@ _ZL13transmit_lock:
 	.string	"long long int"
 .LASF1:
 	.string	"signed char"
-.LASF128:
+.LASF129:
 	.string	"C:\\\\Users\\\\Mikko\\\\Documents\\\\CSC460\\\\Project\\\\csc460-RTOS\\\\project3\\\\project3\\\\project2\\\\Debug"
 .LASF59:
 	.string	"RADIO_RX_STATUS"
-.LASF103:
+.LASF104:
 	.string	"wait"
-.LASF102:
+.LASF103:
 	.string	"set_tx_mode"
 .LASF5:
 	.string	"long int"
@@ -6222,15 +6255,15 @@ _ZL13transmit_lock:
 	.string	"_radio_receive"
 .LASF25:
 	.string	"gamestate"
-.LASF105:
+.LASF106:
 	.string	"Radio_Receive"
-.LASF122:
+.LASF123:
 	.string	"SPI_Write_Block"
-.LASF116:
+.LASF117:
 	.string	"transmit_lock"
 .LASF69:
 	.string	"ENABLE"
-.LASF110:
+.LASF111:
 	.string	"result"
 .LASF4:
 	.string	"uint16_t"
@@ -6238,9 +6271,9 @@ _ZL13transmit_lock:
 	.string	"RADIO_LOW_POWER"
 .LASF14:
 	.string	"pf_gamestate_t"
-.LASF104:
+.LASF105:
 	.string	"Radio_Transmit"
-.LASF133:
+.LASF134:
 	.string	"SPI_Write_Byte"
 .LASF61:
 	.string	"RADIO_TX_MAX_RT"
@@ -6248,31 +6281,31 @@ _ZL13transmit_lock:
 	.string	"pf_roombastate_t"
 .LASF44:
 	.string	"RADIO_LOWEST_POWER"
-.LASF134:
+.LASF135:
 	.string	"_Z14SPI_Write_Byteh"
 .LASF83:
 	.string	"value"
 .LASF51:
 	.string	"RADIO_2MBPS"
-.LASF136:
+.LASF137:
 	.string	"_Z8SPI_Initv"
 .LASF0:
 	.string	"unsigned int"
 .LASF58:
 	.string	"RADIO_RX_SUCCESS"
-.LASF90:
+.LASF91:
 	.string	"Radio_Init"
-.LASF129:
+.LASF130:
 	.string	"reset_pipe0_address"
 .LASF7:
 	.string	"long unsigned int"
-.LASF132:
+.LASF133:
 	.string	"__vector_5"
 .LASF85:
 	.string	"data"
 .LASF20:
 	.string	"_msg"
-.LASF99:
+.LASF100:
 	.string	"Radio_Configure"
 .LASF66:
 	.string	"RADIO_RETURN_ON_TX"
@@ -6282,11 +6315,11 @@ _ZL13transmit_lock:
 	.string	"_radio_dr"
 .LASF16:
 	.string	"_roomba_pkt"
-.LASF118:
-	.string	"tx_address"
 .LASF119:
+	.string	"tx_address"
+.LASF120:
 	.string	"rx_pipe0_address"
-.LASF124:
+.LASF125:
 	.string	"_Z15SPI_Write_BlockPhh"
 .LASF32:
 	.string	"radiopacket_t"
@@ -6294,7 +6327,7 @@ _ZL13transmit_lock:
 	.string	"__us"
 .LASF63:
 	.string	"RADIO_TX_STATUS"
-.LASF94:
+.LASF95:
 	.string	"use_aa"
 .LASF42:
 	.string	"_radio_pipe"
@@ -6302,17 +6335,17 @@ _ZL13transmit_lock:
 	.string	"sizetype"
 .LASF67:
 	.string	"RADIO_TX_WAIT"
-.LASF114:
+.LASF115:
 	.string	"Radio_Flush"
-.LASF120:
+.LASF121:
 	.string	"tx_history"
 .LASF21:
 	.string	"address"
-.LASF96:
+.LASF97:
 	.string	"Radio_Set_Tx_Addr"
-.LASF93:
+.LASF94:
 	.string	"enable"
-.LASF100:
+.LASF101:
 	.string	"_Z15Radio_Configure9_radio_dr15_radio_tx_power"
 .LASF31:
 	.string	"payload"
@@ -6322,13 +6355,13 @@ _ZL13transmit_lock:
 	.string	"message"
 .LASF87:
 	.string	"set_rx_mode"
-.LASF127:
+.LASF128:
 	.string	"../radio/radio.cpp"
 .LASF48:
 	.string	"RADIO_TX_POWER"
-.LASF95:
+.LASF96:
 	.string	"payload_width"
-.LASF109:
+.LASF110:
 	.string	"doMove"
 .LASF34:
 	.string	"RADIO_PIPE_0"
@@ -6352,25 +6385,27 @@ _ZL13transmit_lock:
 	.string	"unsigned char"
 .LASF56:
 	.string	"RADIO_RX_FIFO_EMPTY"
-.LASF117:
+.LASF118:
 	.string	"rx_pipe_widths"
-.LASF91:
+.LASF92:
 	.string	"Radio_Configure_Rx"
 .LASF50:
 	.string	"RADIO_1MBPS"
 .LASF60:
 	.string	"_radio_transmit"
-.LASF115:
+.LASF116:
 	.string	"_Z11Radio_Flushv"
-.LASF126:
+.LASF90:
+	.string	"channel"
+.LASF127:
 	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
 .LASF24:
 	.string	"_filler"
 .LASF6:
 	.string	"uint32_t"
-.LASF138:
+.LASF139:
 	.string	"_Z15radio_rxhandlerh"
-.LASF111:
+.LASF112:
 	.string	"Radio_Success_Rate"
 .LASF33:
 	.string	"char"
@@ -6386,22 +6421,22 @@ _ZL13transmit_lock:
 	.string	"game_state"
 .LASF79:
 	.string	"buffer"
-.LASF112:
+.LASF113:
 	.string	"_Z18Radio_Success_Ratev"
-.LASF101:
+.LASF102:
 	.string	"power"
 .LASF71:
 	.string	"__tmp"
 .LASF72:
 	.string	"__ticks_dc"
+.LASF132:
+	.string	"_Z10Radio_Inith"
 .LASF10:
 	.string	"radio_register_t"
-.LASF98:
+.LASF99:
 	.string	"_Z17Radio_Set_Tx_AddrPh"
 .LASF89:
 	.string	"configure_registers"
-.LASF131:
-	.string	"_Z10Radio_Initv"
 .LASF41:
 	.string	"RADIO_PIPE"
 .LASF81:
@@ -6418,23 +6453,23 @@ _ZL13transmit_lock:
 	.string	"uint8_t"
 .LASF70:
 	.string	"ON_OFF"
-.LASF121:
+.LASF122:
 	.string	"tx_last_status"
 .LASF64:
 	.string	"_radio_tx_wait"
-.LASF125:
+.LASF126:
 	.string	"_Z19SPI_ReadWrite_BlockPhS_h"
 .LASF22:
 	.string	"messagecontent"
 .LASF40:
 	.string	"RADIO_PIPE_EMPTY"
-.LASF137:
+.LASF138:
 	.string	"radio_rxhandler"
 .LASF86:
 	.string	"send_instruction"
 .LASF73:
 	.string	"double"
-.LASF113:
+.LASF114:
 	.string	"weight"
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"
 .global __do_copy_data

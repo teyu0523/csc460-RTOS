@@ -23,30 +23,100 @@
 
  #define COP_CODE (uint8_t)'B'
  #define ROBBER_CODE (uint8_t)'A'
-
-
-void radio_rxhandler(uint8_t pipenumber) {
-	
-}
+SERVICE* radio_send_receive_service;
+uint8_t roomba_state;
+COPS_AND_ROBBERS roomba_identity = COP1;
 
 void ir_rxhandler(){
 	uint8_t ir_value = IR_getLast();
 	
-	
 	if (ir_value == COP_CODE){
+		// if roomba is robber and not dead will result dead
+		if((roomba_state & FORCED) == 0){
+			if(roomba_identity >= ROBBER1 && (roomba_state & DEAD) == 0){
+				roomba_state ^= DEAD;		
+				PORTH |= (uint8_t)(_BV(PH4));
+			} 
+			// if roomba is cop and dead will result not dead
+			else if (roomba_identity <= COP2 && (roomba_state & DEAD) > 0) {
+				roomba_state ^= DEAD;
+				PORTH |= (uint8_t)(_BV(PH3)); 
+			}
+		}
 		
-		PORTH = (uint8_t)(_BV(PH3)); 
 		
 	}else if (ir_value == ROBBER_CODE){
-	
-		PORTH = (uint8_t)(_BV(PH4));
+		if((roomba_state & FORCED) == 0){
+			if(roomba_identity >= ROBBER1 && (roomba_state & DEAD) > 0){
+				roomba_state ^= DEAD;
+				PORTH |= (uint8_t)(_BV(PH3)); 
+			} else if (roomba_identity <= COP2 && (roomba_state & DEAD) == 0) {
+				roomba_state ^= DEAD;
+				PORTH |= (uint8_t)(_BV(PH4));
+			}
+		}
+		
 	}	
 	
 	
 }
 
+void radio_rxhandler(uint8_t pipe_number){
+	
+	Service_Publish(radio_send_receive_service, pipe_number);
+	if((roomba_state&DEAD) == 0){
+		//PORTH = (uint8_t)(_BV(PH3)); 
+	} else if((roomba_state&DEAD) > 0) {
+		//PORTH = (uint8_t)(_BV(PH4));
+	}
+}
 
-//void send_radio(){
+void send_recieve_radio(){
+	DDRB |= (_BV(PB7));
+	PORTB = 0;
+	RADIO_TX_STATUS radio_status_send;
+	RADIO_RX_STATUS radio_status;
+	radiopacket_t radio_packet;
+	pf_roombastate_t pk_roomba_state;
+	int16_t radio_receive_service_value;
+	Radio_Set_Tx_Addr(BASE_ADDRESS);
+
+	for(;;){
+		
+		Service_Subscribe(radio_send_receive_service, &radio_receive_service_value);
+		// RADIO_RX_MORE_PACKETS: more packets exists (4 total at start)
+		// RADIO_RX_SUCCESS: all packets have been read
+		radio_status = Radio_Receive(&radio_packet);
+		while(radio_status == RADIO_RX_MORE_PACKETS || radio_status == RADIO_RX_SUCCESS){
+			uint8_t radio_roomba_state = radio_packet.payload.gamestate.roomba_states[roomba_identity];
+			if(radio_packet.type != GAMESTATE_PACKET){
+				break;		
+			}
+			
+			if((radio_roomba_state & FORCED) == 0 && radio_roomba_state != roomba_state){
+				if((roomba_state & FORCED) > 0){
+					roomba_state = radio_roomba_state; // transition from end game to start new game
+				} else {
+					pk_roomba_state.roomba_id = roomba_identity;
+					pk_roomba_state.roomba_state = roomba_state;
+					memcpy(&radio_packet.payload.roombastate, &pk_roomba_state, sizeof(pf_roombastate_t));
+					radio_packet.type = ROOMBASTATE_PACKET;
+					radio_status_send = Radio_Transmit(&radio_packet, RADIO_RETURN_ON_TX); // !!!!!!!!!!!! may need to change radio_status variable !!!!!!!!!!!!!!!!!!!!
+				    (void)radio_status_send; //Removed unused warning. :P
+				}
+			} else {
+				roomba_state = radio_roomba_state;
+			}
+			radio_status = Radio_Receive(&radio_packet);
+		}
+	}
+}
+
+
+void send_radio(){
+	
+	
+
 	//IRpacket.type = IR_COMMAND;
 	//memcpy(IRpacket.payload.ir_command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
 	//IRpacket.payload.ir_command.ir_command = SEND_BYTE;
@@ -59,15 +129,18 @@ void ir_rxhandler(){
 			//rxflag = 0;
 		//} 
 	//}
-//}
+}
 
 void setup(){
 	
 	
 	//setting LEDS for getting hit by TEAM (PH3 - pin 6) and ENEMY (PH4 - pin 7) 
-	DDRH = (uint8_t)(_BV(PH3)) | (uint8_t)(_BV(PH4));
-	
-	
+	DDRH |= (uint8_t)(_BV(PH3)) | (uint8_t)(_BV(PH4));
+	if((roomba_state&DEAD) == 0){
+		PORTH = (uint8_t)(_BV(PH3));
+	} else if((roomba_state&DEAD) > 0) {
+		PORTH = (uint8_t)(_BV(PH4));
+	}
 	
 	Roomba_Init();
 	IR_init();
@@ -83,15 +156,31 @@ void Send_Drive_Command(){
 void send_IR_Command(){
 	
 	for(;;) {
-		IR_transmit(COP_CODE);
+		IR_transmit(ROBBER_CODE);
 		Task_Next();
 	}
 }
 
 int r_main(void)
 {
+	DDRL |= (1 << PL2);
+	PORTL &= ~(1 << PL2);
+	_delay_ms(500);  /* max is 262.14 ms / F_CPU in MHz */
+	PORTL |= 1 << PL2;
+	_delay_ms(500);
+
+	Radio_Init(BASE_FREQUENCY);
+
+	// Configure the receive settings for radio pipe 0
+	Radio_Configure_Rx(RADIO_PIPE_0, ROOMBA_ADDRESSES[roomba_identity], ENABLE);
+
+	// Configure radio transceiver settings.
+	Radio_Configure(RADIO_1MBPS, RADIO_HIGHEST_POWER);
 	
+	
+	radio_send_receive_service = Service_Init();
 	setup();
+	Task_Create_System(send_recieve_radio, 0);
 	Task_Create_Periodic(send_IR_Command,0,10,4,5);
 	
 	return 1;
