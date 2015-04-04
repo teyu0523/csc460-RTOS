@@ -15,9 +15,11 @@
 #include "ir/ir.h"
 
 
+
 #define _USE_MAIN_
 
-
+int16_t   roomba_velocity = 240;
+int16_t  roomba_rotation = 0;
 
 #ifdef _USE_MAIN_
 
@@ -26,6 +28,8 @@
 SERVICE* radio_send_receive_service;
 uint8_t roomba_state;
 COPS_AND_ROBBERS roomba_identity = COP1;
+
+roomba_sensor_data_t roomba_sensor_packet;
 
 void ir_rxhandler(){
 	uint8_t ir_value = IR_getLast();
@@ -166,9 +170,26 @@ void setup(){
 }
 
 void Send_Drive_Command(){
-	for(;;) {
-		Roomba_Drive(240,0);
-		Task_Next();
+	if((roomba_state & DEAD) == 0){ // If roomba alive
+		for(;;) {
+			Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet); // updates the sensors in the roombas chassis
+			Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet); // updates the external sensors of the bot
+
+			if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
+			{
+				roomba_velocity = 100;
+				roomba_rotation = 1;
+			} else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
+			{
+				roomba_velocity = 100;
+				roomba_rotation = -1;
+			} else {
+				roomba_velocity = 240;
+				roomba_rotation = 0;
+			}
+			Roomba_Drive(roomba_velocity, roomba_rotation);
+			Task_Next();
+		}
 	}
 }
 

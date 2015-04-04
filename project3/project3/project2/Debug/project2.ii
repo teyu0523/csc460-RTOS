@@ -2373,10 +2373,23 @@ void IR_transmit(uint8_t data);
 void IR_init();
 uint8_t IR_getLast();
 # 16 ".././project2.cpp" 2
-# 26 ".././project2.cpp"
+
+
+
+
+
+int16_t roomba_velocity = 240;
+int16_t roomba_rotation = 0;
+
+
+
+
+
 SERVICE* radio_send_receive_service;
 uint8_t roomba_state;
 COPS_AND_ROBBERS roomba_identity = COP1;
+
+roomba_sensor_data_t roomba_sensor_packet;
 
 void ir_rxhandler(){
  uint8_t ir_value = IR_getLast();
@@ -2469,7 +2482,7 @@ void send_recieve_radio(){
 
 
 void send_radio(){
-# 136 ".././project2.cpp"
+# 140 ".././project2.cpp"
 }
 
 void setup(){
@@ -2503,9 +2516,26 @@ void setup(){
 }
 
 void Send_Drive_Command(){
- for(;;) {
-  Roomba_Drive(240,0);
-  Task_Next();
+ if((roomba_state & 1 << 0) == 0){
+  for(;;) {
+   Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet);
+   Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet);
+
+   if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
+   {
+    roomba_velocity = 100;
+    roomba_rotation = 1;
+   } else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
+   {
+    roomba_velocity = 100;
+    roomba_rotation = -1;
+   } else {
+    roomba_velocity = 240;
+    roomba_rotation = 0;
+   }
+   Roomba_Drive(roomba_velocity, roomba_rotation);
+   Task_Next();
+  }
  }
 }
 

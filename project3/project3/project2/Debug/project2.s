@@ -14,7 +14,7 @@ __zero_reg__ = 1
 _Z18send_recieve_radiov:
 .LFB96:
 	.file 1 ".././project2.cpp"
-	.loc 1 76 0
+	.loc 1 80 0
 	.cfi_startproc
 	push r28
 .LCFI0:
@@ -41,22 +41,22 @@ _Z18send_recieve_radiov:
 /* stack size = 36 */
 .L__stack_usage = 36
 .LBB8:
-	.loc 1 77 0
+	.loc 1 81 0
 	sbi 0x4,7
-	.loc 1 78 0
+	.loc 1 82 0
 	out 0x5,__zero_reg__
-	.loc 1 84 0
+	.loc 1 88 0
 	ldi r24,lo8(BASE_ADDRESS)
 	ldi r25,hi8(BASE_ADDRESS)
 	call _Z17Radio_Set_Tx_AddrPh
 .LVL0:
 .LBB9:
 .LBB10:
-	.loc 1 106 0
+	.loc 1 110 0
 	ldi r17,lo8(1)
 .L2:
 .LBE10:
-	.loc 1 88 0
+	.loc 1 92 0
 	movw r22,r28
 	subi r22,-33
 	sbci r23,-1
@@ -64,21 +64,21 @@ _Z18send_recieve_radiov:
 	lds r25,radio_send_receive_service+1
 	call Service_Subscribe
 .LVL1:
-	.loc 1 91 0
+	.loc 1 95 0
 	movw r24,r28
 	adiw r24,1
 	call _Z13Radio_ReceiveP3_rp
 .LVL2:
-	.loc 1 92 0
+	.loc 1 96 0
 	sbi 0xe,3
 .L3:
-	.loc 1 93 0 discriminator 1
+	.loc 1 97 0 discriminator 1
 	subi r24,lo8(-(-3))
 .LVL3:
 	cpi r24,lo8(2)
 	brsh .L2
 .LBB11:
-	.loc 1 94 0
+	.loc 1 98 0
 	lds r18,roomba_identity
 	ldi r30,lo8(5)
 	ldi r31,0
@@ -88,27 +88,27 @@ _Z18send_recieve_radiov:
 	adc r31,__zero_reg__
 	ld r24,Z
 .LVL4:
-	.loc 1 95 0
+	.loc 1 99 0
 	ldd r25,Y+1
 	cpse r25,__zero_reg__
 	rjmp .L2
-	.loc 1 98 0
+	.loc 1 102 0
 	lds r25,roomba_state
 	cp r24,r25
 	breq .L5
-	.loc 1 99 0
+	.loc 1 103 0
 	sbrc r24,1
 	rjmp .L6
-	.loc 1 100 0
+	.loc 1 104 0
 	sbrc r25,1
 	rjmp .L6
 .LVL5:
-	.loc 1 105 0
+	.loc 1 109 0
 	std Y+4,r18
 	std Y+5,r25
-	.loc 1 106 0
+	.loc 1 110 0
 	std Y+1,r17
-	.loc 1 107 0
+	.loc 1 111 0
 	ldi r22,lo8(1)
 	movw r24,r28
 .LVL6:
@@ -118,11 +118,11 @@ _Z18send_recieve_radiov:
 	rjmp .L5
 .LVL8:
 .L6:
-	.loc 1 111 0
+	.loc 1 115 0
 	sts roomba_state,r24
 .LVL9:
 .L5:
-	.loc 1 114 0
+	.loc 1 118 0
 	movw r24,r28
 	adiw r24,1
 	call _Z13Radio_ReceiveP3_rp
@@ -139,24 +139,129 @@ _Z18send_recieve_radiov:
 	.type	_Z18Send_Drive_Commandv, @function
 _Z18Send_Drive_Commandv:
 .LFB99:
-	.loc 1 168 0
+	.loc 1 172 0
 	.cfi_startproc
+	push r12
+.LCFI4:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 12, -3
+	push r13
+.LCFI5:
+	.cfi_def_cfa_offset 5
+	.cfi_offset 13, -4
+	push r14
+.LCFI6:
+	.cfi_def_cfa_offset 6
+	.cfi_offset 14, -5
+	push r15
+.LCFI7:
+	.cfi_def_cfa_offset 7
+	.cfi_offset 15, -6
+	push r16
+.LCFI8:
+	.cfi_def_cfa_offset 8
+	.cfi_offset 16, -7
+	push r17
+.LCFI9:
+	.cfi_def_cfa_offset 9
+	.cfi_offset 17, -8
+	push r28
+.LCFI10:
+	.cfi_def_cfa_offset 10
+	.cfi_offset 28, -9
+	push r29
+.LCFI11:
+	.cfi_def_cfa_offset 11
+	.cfi_offset 29, -10
 /* prologue: function */
 /* frame size = 0 */
-/* stack size = 0 */
-.L__stack_usage = 0
-.L11:
-	.loc 1 170 0 discriminator 1
-	ldi r22,0
-	ldi r23,0
-	ldi r24,lo8(-16)
-	ldi r25,0
-	call _Z12Roomba_Driveii
+/* stack size = 8 */
+.L__stack_usage = 8
+	.loc 1 173 0
+	lds r24,roomba_state
+	sbrc r24,0
+	rjmp .L10
+	.loc 1 187 0
+	ldi r16,lo8(-16)
+	ldi r17,0
+	.loc 1 184 0
+	ldi r28,lo8(100)
+	ldi r29,0
+	.loc 1 185 0
+	clr r14
+	dec r14
+	mov r15,r14
+	.loc 1 181 0
+	clr r12
+	inc r12
+	mov r13,__zero_reg__
+.L15:
+	.loc 1 175 0
+	ldi r22,lo8(roomba_sensor_packet)
+	ldi r23,hi8(roomba_sensor_packet)
+	ldi r24,lo8(2)
+	call _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t
 .LVL11:
-	.loc 1 171 0 discriminator 1
-	call Task_Next
+	.loc 1 176 0
+	ldi r22,lo8(roomba_sensor_packet)
+	ldi r23,hi8(roomba_sensor_packet)
+	ldi r24,lo8(1)
+	call _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t
 .LVL12:
-	rjmp .L11
+	.loc 1 178 0
+	lds r24,roomba_sensor_packet
+	sbrs r24,0
+	rjmp .L12
+	.loc 1 180 0
+	sts roomba_velocity+1,r29
+	sts roomba_velocity,r28
+	.loc 1 181 0
+	sts roomba_rotation+1,r13
+	sts roomba_rotation,r12
+	rjmp .L13
+.L12:
+	.loc 1 182 0
+	sbrs r24,1
+	rjmp .L14
+	.loc 1 184 0
+	sts roomba_velocity+1,r29
+	sts roomba_velocity,r28
+	.loc 1 185 0
+	sts roomba_rotation+1,r15
+	sts roomba_rotation,r14
+	rjmp .L13
+.L14:
+	.loc 1 187 0
+	sts roomba_velocity+1,r17
+	sts roomba_velocity,r16
+	.loc 1 188 0
+	sts roomba_rotation+1,__zero_reg__
+	sts roomba_rotation,__zero_reg__
+.L13:
+	.loc 1 190 0
+	lds r22,roomba_rotation
+	lds r23,roomba_rotation+1
+	lds r24,roomba_velocity
+	lds r25,roomba_velocity+1
+	call _Z12Roomba_Driveii
+.LVL13:
+	.loc 1 191 0
+	call Task_Next
+.LVL14:
+	.loc 1 173 0
+	rjmp .L15
+.L10:
+/* epilogue start */
+	.loc 1 194 0
+	pop r29
+	pop r28
+	pop r17
+	pop r16
+	pop r15
+	pop r14
+	pop r13
+	pop r12
+	ret
 	.cfi_endproc
 .LFE99:
 	.size	_Z18Send_Drive_Commandv, .-_Z18Send_Drive_Commandv
@@ -165,75 +270,75 @@ _Z18Send_Drive_Commandv:
 	.type	_Z12ir_rxhandlerv, @function
 _Z12ir_rxhandlerv:
 .LFB94:
-	.loc 1 30 0
+	.loc 1 34 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
 .LBB12:
-	.loc 1 31 0
-	call _Z10IR_getLastv
-.LVL13:
-	.loc 1 33 0
-	cpi r24,lo8(66)
-	brne .L13
 	.loc 1 35 0
-	lds r24,roomba_state
-.LVL14:
-	sbrc r24,1
-	rjmp .L12
-	.loc 1 36 0
-	lds r18,roomba_identity
-	mov r25,r24
-	andi r25,lo8(1)
-	cpi r18,lo8(2)
-	brsh .L16
-	rjmp .L22
+	call _Z10IR_getLastv
 .LVL15:
-.L13:
-	.loc 1 48 0
-	cpi r24,lo8(65)
-	brne .L12
-	.loc 1 49 0
+	.loc 1 37 0
+	cpi r24,lo8(66)
+	brne .L17
+	.loc 1 39 0
 	lds r24,roomba_state
 .LVL16:
 	sbrc r24,1
-	rjmp .L12
-	.loc 1 50 0
+	rjmp .L16
+	.loc 1 40 0
 	lds r18,roomba_identity
 	mov r25,r24
 	andi r25,lo8(1)
 	cpi r18,lo8(2)
-	brlo .L16
-.L22:
-	.loc 1 50 0 is_stmt 0 discriminator 1
+	brsh .L20
+	rjmp .L26
+.LVL17:
+.L17:
+	.loc 1 52 0
+	cpi r24,lo8(65)
+	brne .L16
+	.loc 1 53 0
+	lds r24,roomba_state
+.LVL18:
+	sbrc r24,1
+	rjmp .L16
+	.loc 1 54 0
+	lds r18,roomba_identity
+	mov r25,r24
+	andi r25,lo8(1)
+	cpi r18,lo8(2)
+	brlo .L20
+.L26:
+	.loc 1 54 0 is_stmt 0 discriminator 1
 	cpi r25,lo8(1)
-	brne .L12
-	.loc 1 51 0 is_stmt 1
+	brne .L16
+	.loc 1 55 0 is_stmt 1
 	eor r24,r25
 	sts roomba_state,r24
-	rjmp .L18
-.L16:
-	.loc 1 54 0 discriminator 1
+	rjmp .L22
+.L20:
+	.loc 1 58 0 discriminator 1
 	cpse r25,__zero_reg__
-	rjmp .L12
-	.loc 1 55 0
+	rjmp .L16
+	.loc 1 59 0
 	ldi r25,lo8(1)
 	eor r25,r24
 	sts roomba_state,r25
-.L18:
-	.loc 1 56 0
+.L22:
+	.loc 1 60 0
 	lds r24,258
 	ldi r25,lo8(8)
 	eor r24,r25
 	sts 258,r24
-	.loc 1 57 0
+	.loc 1 61 0
 	lds r24,258
 	ldi r25,lo8(16)
 	eor r24,r25
 	sts 258,r24
-.L12:
+.L16:
 	ret
 .LBE12:
 	.cfi_endproc
@@ -244,47 +349,47 @@ _Z12ir_rxhandlerv:
 	.type	_Z15radio_rxhandlerh, @function
 _Z15radio_rxhandlerh:
 .LFB95:
-	.loc 1 64 0
+	.loc 1 68 0
 	.cfi_startproc
-.LVL17:
+.LVL19:
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 65 0
+	.loc 1 69 0
 	in r25,0xe
 	ldi r18,lo8(8)
 	eor r25,r18
 	out 0xe,r25
-	.loc 1 66 0
+	.loc 1 70 0
 	mov r22,r24
 	ldi r23,0
 	lds r24,radio_send_receive_service
 	lds r25,radio_send_receive_service+1
-.LVL18:
+.LVL20:
 	call Service_Publish
-.LVL19:
-	.loc 1 67 0
+.LVL21:
+	.loc 1 71 0
 	lds r24,roomba_state
 	sbrc r24,0
-	rjmp .L24
-	.loc 1 68 0
+	rjmp .L28
+	.loc 1 72 0
 	lds r24,258
 	andi r24,lo8(-17)
 	sts 258,r24
-	.loc 1 69 0
+	.loc 1 73 0
 	lds r24,258
 	ori r24,lo8(8)
-	rjmp .L26
-.L24:
-	.loc 1 71 0
+	rjmp .L30
+.L28:
+	.loc 1 75 0
 	lds r24,258
 	ori r24,lo8(16)
 	sts 258,r24
-	.loc 1 72 0
+	.loc 1 76 0
 	lds r24,258
 	andi r24,lo8(-9)
-.L26:
+.L30:
 	sts 258,r24
 	ret
 	.cfi_endproc
@@ -295,7 +400,7 @@ _Z15radio_rxhandlerh:
 	.type	_Z10send_radiov, @function
 _Z10send_radiov:
 .LFB97:
-	.loc 1 120 0
+	.loc 1 124 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
@@ -310,41 +415,41 @@ _Z10send_radiov:
 	.type	setup, @function
 setup:
 .LFB98:
-	.loc 1 138 0
+	.loc 1 142 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 142 0
+	.loc 1 146 0
 	lds r24,257
 	ori r24,lo8(24)
 	sts 257,r24
-	.loc 1 143 0
+	.loc 1 147 0
 	sbi 0xd,3
-	.loc 1 144 0
+	.loc 1 148 0
 	lds r24,roomba_state
 	sbrc r24,0
-	rjmp .L29
-	.loc 1 145 0
+	rjmp .L33
+	.loc 1 149 0
 	lds r24,258
 	ori r24,lo8(8)
-	rjmp .L31
-.L29:
-	.loc 1 147 0
+	rjmp .L35
+.L33:
+	.loc 1 151 0
 	lds r24,258
 	ori r24,lo8(16)
-.L31:
+.L35:
 	sts 258,r24
-	.loc 1 151 0
+	.loc 1 155 0
 	lds r24,266
 	ori r24,lo8(4)
 	sts 266,r24
-	.loc 1 152 0
+	.loc 1 156 0
 	lds r24,267
 	andi r24,lo8(-5)
 	sts 267,r24
-.LVL20:
+.LVL22:
 .LBB13:
 .LBB14:
 	.file 2 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h"
@@ -360,11 +465,11 @@ setup:
 	nop
 .LBE14:
 .LBE13:
-	.loc 1 154 0
+	.loc 1 158 0
 	lds r24,267
 	ori r24,lo8(4)
 	sts 267,r24
-.LVL21:
+.LVL23:
 .LBB15:
 .LBB16:
 	.loc 2 163 0
@@ -379,11 +484,11 @@ setup:
 	nop
 .LBE16:
 .LBE15:
-	.loc 1 156 0
+	.loc 1 160 0
 	lds r24,BASE_FREQUENCY
 	call _Z10Radio_Inith
-.LVL22:
-	.loc 1 158 0
+.LVL24:
+	.loc 1 162 0
 	lds r22,roomba_identity
 	ldi r18,lo8(5)
 	mul r22,r18
@@ -394,23 +499,23 @@ setup:
 	ldi r20,lo8(1)
 	ldi r24,0
 	call _Z18Radio_Configure_Rx11_radio_pipePh3_ed
-.LVL23:
-	.loc 1 160 0
+.LVL25:
+	.loc 1 164 0
 	ldi r22,lo8(3)
 	ldi r24,0
 	call _Z15Radio_Configure9_radio_dr15_radio_tx_power
-.LVL24:
-	.loc 1 161 0
-	call Service_Init
-.LVL25:
-	sts radio_send_receive_service+1,r25
-	sts radio_send_receive_service,r24
-	.loc 1 164 0
-	call _Z11Roomba_Initv
 .LVL26:
 	.loc 1 165 0
-	jmp _Z7IR_initv
+	call Service_Init
 .LVL27:
+	sts radio_send_receive_service+1,r25
+	sts radio_send_receive_service,r24
+	.loc 1 168 0
+	call _Z11Roomba_Initv
+.LVL28:
+	.loc 1 169 0
+	jmp _Z7IR_initv
+.LVL29:
 	.cfi_endproc
 .LFE98:
 	.size	setup, .-setup
@@ -419,36 +524,36 @@ setup:
 	.type	_Z15send_IR_Commandv, @function
 _Z15send_IR_Commandv:
 .LFB100:
-	.loc 1 175 0
+	.loc 1 196 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-.L35:
-	.loc 1 178 0
+.L39:
+	.loc 1 199 0
 	lds r24,roomba_state
 	sbrc r24,0
-	rjmp .L33
-	.loc 1 179 0
+	rjmp .L37
+	.loc 1 200 0
 	lds r24,roomba_identity
 	cpi r24,lo8(2)
-	brsh .L34
-	.loc 1 180 0
+	brsh .L38
+	.loc 1 201 0
 	ldi r24,lo8(66)
-	rjmp .L36
-.L34:
-	.loc 1 182 0
+	rjmp .L40
+.L38:
+	.loc 1 203 0
 	ldi r24,lo8(65)
-.L36:
+.L40:
 	call _Z11IR_transmith
-.LVL28:
-.L33:
-	.loc 1 185 0
+.LVL30:
+.L37:
+	.loc 1 206 0
 	call Task_Next
-.LVL29:
-	.loc 1 175 0
-	rjmp .L35
+.LVL31:
+	.loc 1 196 0
+	rjmp .L39
 	.cfi_endproc
 .LFE100:
 	.size	_Z15send_IR_Commandv, .-_Z15send_IR_Commandv
@@ -457,31 +562,31 @@ _Z15send_IR_Commandv:
 	.type	_Z6r_mainv, @function
 _Z6r_mainv:
 .LFB101:
-	.loc 1 190 0
+	.loc 1 211 0
 	.cfi_startproc
 	push r16
-.LCFI4:
+.LCFI12:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 16, -3
 	push r17
-.LCFI5:
+.LCFI13:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 17, -4
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 2 */
 .L__stack_usage = 2
-	.loc 1 192 0
+	.loc 1 213 0
 	call setup
-.LVL30:
-	.loc 1 193 0
+.LVL32:
+	.loc 1 214 0
 	ldi r22,0
 	ldi r23,0
 	ldi r24,lo8(gs(_Z18send_recieve_radiov))
 	ldi r25,hi8(gs(_Z18send_recieve_radiov))
 	call Task_Create_System
-.LVL31:
-	.loc 1 194 0
+.LVL33:
+	.loc 1 215 0
 	ldi r16,lo8(5)
 	ldi r17,0
 	ldi r18,lo8(4)
@@ -493,8 +598,8 @@ _Z6r_mainv:
 	ldi r24,lo8(gs(_Z18Send_Drive_Commandv))
 	ldi r25,hi8(gs(_Z18Send_Drive_Commandv))
 	call Task_Create_Periodic
-.LVL32:
-	.loc 1 197 0
+.LVL34:
+	.loc 1 218 0
 	ldi r24,lo8(1)
 	ldi r25,0
 /* epilogue start */
@@ -504,6 +609,12 @@ _Z6r_mainv:
 	.cfi_endproc
 .LFE101:
 	.size	_Z6r_mainv, .-_Z6r_mainv
+.global	roomba_sensor_packet
+	.section	.bss.roomba_sensor_packet,"aw",@nobits
+	.type	roomba_sensor_packet, @object
+	.size	roomba_sensor_packet, 26
+roomba_sensor_packet:
+	.zero	26
 .global	roomba_identity
 	.section	.bss.roomba_identity,"aw",@nobits
 	.type	roomba_identity, @object
@@ -522,6 +633,18 @@ roomba_state:
 	.size	radio_send_receive_service, 2
 radio_send_receive_service:
 	.zero	2
+.global	roomba_rotation
+	.section	.bss.roomba_rotation,"aw",@nobits
+	.type	roomba_rotation, @object
+	.size	roomba_rotation, 2
+roomba_rotation:
+	.zero	2
+.global	roomba_velocity
+	.section	.data.roomba_velocity,"aw",@progbits
+	.type	roomba_velocity, @object
+	.size	roomba_velocity, 2
+roomba_velocity:
+	.word	240
 	.text
 .Letext0:
 	.file 3 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\stdint.h"
@@ -530,20 +653,21 @@ radio_send_receive_service:
 	.file 6 ".././radio/cops_and_robbers.h"
 	.file 7 ".././radio/packet.h"
 	.file 8 ".././radio/radio.h"
-	.file 9 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\variants\\standard/pins_arduino.h"
+	.file 9 ".././roomba/sensor_struct.h"
 	.file 10 ".././roomba/roomba.h"
-	.file 11 ".././ir/ir.h"
+	.file 11 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\variants\\standard/pins_arduino.h"
+	.file 12 ".././ir/ir.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0xbab
+	.long	0xe15
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF157
+	.long	.LASF197
 	.byte	0x4
-	.long	.LASF158
-	.long	.LASF159
+	.long	.LASF198
+	.long	.LASF199
 	.long	.Ldebug_ranges0+0x18
 	.long	0
 	.long	0
@@ -669,7 +793,7 @@ radio_send_receive_service:
 	.byte	0x1
 	.byte	0x5
 	.byte	0x36
-	.long	.LASF160
+	.long	.LASF200
 	.long	0x129
 	.uleb128 0xa
 	.long	.LASF20
@@ -1209,104 +1333,369 @@ radio_send_receive_service:
 	.byte	0x8
 	.byte	0x4d
 	.long	0x512
+	.uleb128 0x5
+	.long	.LASF105
+	.byte	0x2
+	.byte	0x9
+	.byte	0xc
+	.long	0x55f
+	.uleb128 0x6
+	.long	.LASF106
+	.byte	0x9
+	.byte	0xe
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0
+	.uleb128 0x6
+	.long	.LASF107
+	.byte	0x9
+	.byte	0xf
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF108
+	.byte	0x9
+	.byte	0x10
+	.long	0x536
+	.uleb128 0x15
+	.long	.LASF109
+	.byte	0x2
+	.byte	0x9
+	.byte	0x13
+	.long	0x58d
+	.uleb128 0x13
+	.long	.LASF18
+	.byte	0x9
+	.byte	0x15
+	.long	0x4d
+	.uleb128 0x13
+	.long	.LASF110
+	.byte	0x9
+	.byte	0x16
+	.long	0x55f
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF111
+	.byte	0x9
+	.byte	0x17
+	.long	0x56a
+	.uleb128 0x15
+	.long	.LASF112
+	.byte	0x2
+	.byte	0x9
+	.byte	0x1a
+	.long	0x5bb
+	.uleb128 0x13
+	.long	.LASF18
+	.byte	0x9
+	.byte	0x1c
+	.long	0x5f
+	.uleb128 0x13
+	.long	.LASF110
+	.byte	0x9
+	.byte	0x1d
+	.long	0x55f
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF113
+	.byte	0x9
+	.byte	0x1e
+	.long	0x598
+	.uleb128 0x16
+	.byte	0x1a
+	.byte	0x9
+	.byte	0x22
+	.long	.LASF201
+	.long	0x6eb
+	.uleb128 0x6
+	.long	.LASF114
+	.byte	0x9
+	.byte	0x24
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0
+	.uleb128 0x6
+	.long	.LASF115
+	.byte	0x9
+	.byte	0x25
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1
+	.uleb128 0x6
+	.long	.LASF116
+	.byte	0x9
+	.byte	0x26
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2
+	.uleb128 0x6
+	.long	.LASF117
+	.byte	0x9
+	.byte	0x27
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x3
+	.uleb128 0x6
+	.long	.LASF118
+	.byte	0x9
+	.byte	0x28
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x4
+	.uleb128 0x6
+	.long	.LASF119
+	.byte	0x9
+	.byte	0x29
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x5
+	.uleb128 0x6
+	.long	.LASF120
+	.byte	0x9
+	.byte	0x2a
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x6
+	.uleb128 0x6
+	.long	.LASF121
+	.byte	0x9
+	.byte	0x2b
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x7
+	.uleb128 0x6
+	.long	.LASF122
+	.byte	0x9
+	.byte	0x2c
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x8
+	.uleb128 0x6
+	.long	.LASF123
+	.byte	0x9
+	.byte	0x2d
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x9
+	.uleb128 0x6
+	.long	.LASF124
+	.byte	0x9
+	.byte	0x30
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xa
+	.uleb128 0x6
+	.long	.LASF125
+	.byte	0x9
+	.byte	0x31
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xb
+	.uleb128 0x6
+	.long	.LASF126
+	.byte	0x9
+	.byte	0x32
+	.long	0x58d
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xc
+	.uleb128 0x6
+	.long	.LASF127
+	.byte	0x9
+	.byte	0x33
+	.long	0x58d
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0xe
+	.uleb128 0x6
+	.long	.LASF128
+	.byte	0x9
+	.byte	0x36
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x10
+	.uleb128 0x6
+	.long	.LASF129
+	.byte	0x9
+	.byte	0x37
+	.long	0x5bb
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x11
+	.uleb128 0x6
+	.long	.LASF130
+	.byte	0x9
+	.byte	0x38
+	.long	0x58d
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x13
+	.uleb128 0x6
+	.long	.LASF131
+	.byte	0x9
+	.byte	0x39
+	.long	0x29
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x15
+	.uleb128 0x6
+	.long	.LASF132
+	.byte	0x9
+	.byte	0x3a
+	.long	0x5bb
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x16
+	.uleb128 0x6
+	.long	.LASF133
+	.byte	0x9
+	.byte	0x3b
+	.long	0x5bb
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x18
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF134
+	.byte	0x9
+	.byte	0x3c
+	.long	0x5c6
+	.uleb128 0x10
+	.long	.LASF135
+	.byte	0x1
+	.byte	0xa
+	.byte	0xe
+	.long	0x715
+	.uleb128 0xa
+	.long	.LASF136
+	.sleb128 1
+	.uleb128 0xa
+	.long	.LASF137
+	.sleb128 2
+	.uleb128 0xa
+	.long	.LASF138
+	.sleb128 3
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF139
+	.byte	0xa
+	.byte	0x13
+	.long	0x6f6
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x2
-	.long	.LASF105
-	.uleb128 0x15
-	.long	.LASF161
+	.long	.LASF140
+	.uleb128 0x17
+	.long	.LASF202
 	.byte	0x2
 	.byte	0x8e
 	.byte	0x3
-	.long	0x57c
-	.uleb128 0x16
-	.long	.LASF162
+	.long	0x766
+	.uleb128 0x18
+	.long	.LASF203
 	.byte	0x2
 	.byte	0x8e
 	.long	0xa6
-	.uleb128 0x17
-	.uleb128 0x18
-	.long	.LASF106
+	.uleb128 0x19
+	.uleb128 0x1a
+	.long	.LASF141
 	.byte	0x2
 	.byte	0x90
 	.long	0xa6
-	.uleb128 0x18
-	.long	.LASF107
+	.uleb128 0x1a
+	.long	.LASF142
 	.byte	0x2
 	.byte	0x94
 	.long	0x78
-	.uleb128 0x19
+	.uleb128 0x1b
 	.byte	0x1
-	.long	.LASF163
+	.long	.LASF204
 	.byte	0x2
 	.byte	0x95
 	.byte	0x1
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x83
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1d
 	.byte	0x1
-	.long	.LASF114
+	.long	.LASF149
 	.byte	0x1
-	.byte	0x4c
-	.long	.LASF116
+	.byte	0x50
+	.long	.LASF151
 	.long	.LFB96
 	.long	.LFE96
 	.long	.LLST0
 	.byte	0x1
-	.long	0x66d
-	.uleb128 0x1c
+	.long	0x857
+	.uleb128 0x1e
 	.long	.LBB8
 	.long	.LBE8
-	.uleb128 0x18
-	.long	.LASF108
+	.uleb128 0x1a
+	.long	.LASF143
 	.byte	0x1
-	.byte	0x4f
+	.byte	0x53
 	.long	0x4e3
-	.uleb128 0x1d
-	.long	.LASF109
+	.uleb128 0x1f
+	.long	.LASF144
 	.byte	0x1
-	.byte	0x50
+	.byte	0x54
 	.long	0x4bf
 	.long	.LLST1
-	.uleb128 0x1e
-	.long	.LASF110
+	.uleb128 0x20
+	.long	.LASF145
 	.byte	0x1
-	.byte	0x51
+	.byte	0x55
 	.long	0x3f3
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
-	.uleb128 0x1d
-	.long	.LASF111
+	.uleb128 0x1f
+	.long	.LASF146
 	.byte	0x1
-	.byte	0x52
+	.byte	0x56
 	.long	0x2ea
 	.long	.LLST2
-	.uleb128 0x1e
-	.long	.LASF112
+	.uleb128 0x20
+	.long	.LASF147
 	.byte	0x1
-	.byte	0x53
+	.byte	0x57
 	.long	0x4d
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 33
-	.uleb128 0x1f
+	.uleb128 0x21
 	.long	.Ldebug_ranges0+0
-	.long	0x634
-	.uleb128 0x1d
-	.long	.LASF113
+	.long	0x81e
+	.uleb128 0x1f
+	.long	.LASF148
 	.byte	0x1
-	.byte	0x5e
+	.byte	0x62
 	.long	0x3b
 	.long	.LLST3
-	.uleb128 0x20
+	.uleb128 0x22
 	.long	.LVL7
-	.long	0xa15
-	.long	0x61e
-	.uleb128 0x21
+	.long	0xc5d
+	.long	0x808
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
 	.byte	0x93
@@ -1317,17 +1706,17 @@ radio_send_receive_service:
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -38
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x1
 	.byte	0x66
 	.byte	0x2
 	.byte	0x81
 	.sleb128 0
 	.byte	0
-	.uleb128 0x22
+	.uleb128 0x24
 	.long	.LVL10
-	.long	0xa3b
-	.uleb128 0x21
+	.long	0xc83
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
 	.byte	0x93
@@ -1340,14 +1729,14 @@ radio_send_receive_service:
 	.sleb128 -38
 	.byte	0
 	.byte	0
-	.uleb128 0x23
+	.uleb128 0x25
 	.long	.LVL0
-	.long	0xa56
-	.uleb128 0x20
+	.long	0xc9e
+	.uleb128 0x22
 	.long	.LVL1
-	.long	0xa6d
-	.long	0x656
-	.uleb128 0x21
+	.long	0xcb5
+	.long	0x840
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x66
 	.byte	0x93
@@ -1359,10 +1748,10 @@ radio_send_receive_service:
 	.byte	0x91
 	.sleb128 -6
 	.byte	0
-	.uleb128 0x22
+	.uleb128 0x24
 	.long	.LVL2
-	.long	0xa3b
-	.uleb128 0x21
+	.long	0xc83
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
 	.byte	0x93
@@ -1376,36 +1765,27 @@ radio_send_receive_service:
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x1d
 	.byte	0x1
-	.long	.LASF115
+	.long	.LASF150
 	.byte	0x1
-	.byte	0xa8
-	.long	.LASF117
+	.byte	0xac
+	.long	.LASF152
 	.long	.LFB99
 	.long	.LFE99
-	.byte	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
+	.long	.LLST4
 	.byte	0x1
-	.long	0x6b7
-	.uleb128 0x20
+	.long	0x8c9
+	.uleb128 0x22
 	.long	.LVL11
-	.long	0xa86
-	.long	0x6ad
-	.uleb128 0x21
-	.byte	0x6
+	.long	0xcce
+	.long	0x895
+	.uleb128 0x23
+	.byte	0x1
 	.byte	0x68
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x69
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x2
-	.byte	0x8
-	.byte	0xf0
-	.uleb128 0x21
+	.byte	0x1
+	.byte	0x32
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x66
 	.byte	0x93
@@ -1413,19 +1793,44 @@ radio_send_receive_service:
 	.byte	0x67
 	.byte	0x93
 	.uleb128 0x1
-	.byte	0x1
-	.byte	0x30
+	.byte	0x5
+	.byte	0x3
+	.long	roomba_sensor_packet
 	.byte	0
-	.uleb128 0x23
+	.uleb128 0x22
 	.long	.LVL12
-	.long	0xaa2
+	.long	0xcce
+	.long	0x8b6
+	.uleb128 0x23
+	.byte	0x1
+	.byte	0x68
+	.byte	0x1
+	.byte	0x31
+	.uleb128 0x23
+	.byte	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5
+	.byte	0x3
+	.long	roomba_sensor_packet
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x25
+	.long	.LVL13
+	.long	0xcf0
+	.uleb128 0x25
+	.long	.LVL14
+	.long	0xd0c
+	.byte	0
+	.uleb128 0x26
 	.byte	0x1
-	.long	.LASF118
+	.long	.LASF153
 	.byte	0x1
-	.byte	0x1e
-	.long	.LASF119
+	.byte	0x22
+	.long	.LASF154
 	.long	.LFB94
 	.long	.LFE94
 	.byte	0x3
@@ -1433,27 +1838,27 @@ radio_send_receive_service:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x6f7
-	.uleb128 0x1c
+	.long	0x909
+	.uleb128 0x1e
 	.long	.LBB12
 	.long	.LBE12
-	.uleb128 0x1d
-	.long	.LASF120
+	.uleb128 0x1f
+	.long	.LASF155
 	.byte	0x1
-	.byte	0x1f
+	.byte	0x23
 	.long	0x3b
-	.long	.LLST4
-	.uleb128 0x23
-	.long	.LVL13
-	.long	0xaac
+	.long	.LLST5
+	.uleb128 0x25
+	.long	.LVL15
+	.long	0xd16
 	.byte	0
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x26
 	.byte	0x1
-	.long	.LASF121
+	.long	.LASF156
 	.byte	0x1
-	.byte	0x40
-	.long	.LASF122
+	.byte	0x44
+	.long	.LASF157
 	.long	.LFB95
 	.long	.LFE95
 	.byte	0x3
@@ -1461,23 +1866,23 @@ radio_send_receive_service:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x72d
-	.uleb128 0x25
-	.long	.LASF164
+	.long	0x93f
+	.uleb128 0x27
+	.long	.LASF205
 	.byte	0x1
-	.byte	0x40
+	.byte	0x44
 	.long	0x3b
-	.long	.LLST5
-	.uleb128 0x23
-	.long	.LVL19
-	.long	0xabd
+	.long	.LLST6
+	.uleb128 0x25
+	.long	.LVL21
+	.long	0xd27
 	.byte	0
-	.uleb128 0x26
+	.uleb128 0x28
 	.byte	0x1
-	.long	.LASF165
+	.long	.LASF206
 	.byte	0x1
-	.byte	0x78
-	.long	.LASF166
+	.byte	0x7c
+	.long	.LASF207
 	.long	.LFB97
 	.long	.LFE97
 	.byte	0x3
@@ -1485,11 +1890,11 @@ radio_send_receive_service:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.uleb128 0x27
+	.uleb128 0x29
 	.byte	0x1
-	.long	.LASF167
+	.long	.LASF208
 	.byte	0x1
-	.byte	0x8a
+	.byte	0x8e
 	.long	.LFB98
 	.long	.LFE98
 	.byte	0x3
@@ -1497,110 +1902,110 @@ radio_send_receive_service:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x82b
-	.uleb128 0x28
-	.long	0x53d
+	.long	0xa3d
+	.uleb128 0x2a
+	.long	0x727
 	.long	.LBB13
 	.long	.LBE13
 	.byte	0x1
-	.byte	0x99
-	.long	0x79a
-	.uleb128 0x29
-	.long	0x549
+	.byte	0x9d
+	.long	0x9ac
+	.uleb128 0x2b
+	.long	0x733
 	.byte	0x4
 	.long	0x43fa0000
-	.uleb128 0x1c
+	.uleb128 0x1e
 	.long	.LBB14
 	.long	.LBE14
-	.uleb128 0x2a
-	.long	0x555
+	.uleb128 0x2c
+	.long	0x73f
 	.byte	0x4
 	.long	0x4af42400
-	.uleb128 0x2b
-	.long	0x560
+	.uleb128 0x2d
+	.long	0x74a
 	.long	0x7a1200
 	.byte	0
 	.byte	0
-	.uleb128 0x28
-	.long	0x53d
+	.uleb128 0x2a
+	.long	0x727
 	.long	.LBB15
 	.long	.LBE15
 	.byte	0x1
-	.byte	0x9b
-	.long	0x7d5
-	.uleb128 0x29
-	.long	0x549
+	.byte	0x9f
+	.long	0x9e7
+	.uleb128 0x2b
+	.long	0x733
 	.byte	0x4
 	.long	0x43fa0000
-	.uleb128 0x1c
+	.uleb128 0x1e
 	.long	.LBB16
 	.long	.LBE16
-	.uleb128 0x2a
-	.long	0x555
+	.uleb128 0x2c
+	.long	0x73f
 	.byte	0x4
 	.long	0x4af42400
-	.uleb128 0x2b
-	.long	0x560
+	.uleb128 0x2d
+	.long	0x74a
 	.long	0x7a1200
 	.byte	0
 	.byte	0
+	.uleb128 0x25
+	.long	.LVL24
+	.long	0xd40
+	.uleb128 0x22
+	.long	.LVL25
+	.long	0xd57
+	.long	0xa08
 	.uleb128 0x23
-	.long	.LVL22
-	.long	0xad6
-	.uleb128 0x20
-	.long	.LVL23
-	.long	0xaed
-	.long	0x7f6
-	.uleb128 0x21
 	.byte	0x1
 	.byte	0x68
 	.byte	0x1
 	.byte	0x30
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x1
 	.byte	0x64
 	.byte	0x1
 	.byte	0x31
 	.byte	0
-	.uleb128 0x20
-	.long	.LVL24
-	.long	0xb0e
-	.long	0x80e
-	.uleb128 0x21
+	.uleb128 0x22
+	.long	.LVL26
+	.long	0xd78
+	.long	0xa20
+	.uleb128 0x23
 	.byte	0x1
 	.byte	0x68
 	.byte	0x1
 	.byte	0x30
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x1
 	.byte	0x66
 	.byte	0x1
 	.byte	0x33
 	.byte	0
-	.uleb128 0x23
-	.long	.LVL25
-	.long	0xb2a
-	.uleb128 0x23
-	.long	.LVL26
-	.long	0xb38
-	.uleb128 0x2c
+	.uleb128 0x25
 	.long	.LVL27
+	.long	0xd94
+	.uleb128 0x25
+	.long	.LVL28
+	.long	0xda2
+	.uleb128 0x2e
+	.long	.LVL29
 	.byte	0x1
-	.long	0xb45
+	.long	0xdaf
 	.byte	0
-	.uleb128 0x2d
-	.long	0x56b
+	.uleb128 0x2f
+	.long	0x755
 	.byte	0
-	.long	0x83b
-	.uleb128 0x1a
+	.long	0xa4d
+	.uleb128 0x1c
 	.long	0x83
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x26
 	.byte	0x1
-	.long	.LASF123
+	.long	.LASF158
 	.byte	0x1
-	.byte	0xaf
-	.long	.LASF124
+	.byte	0xc4
+	.long	.LASF159
 	.long	.LFB100
 	.long	.LFE100
 	.byte	0x3
@@ -1608,34 +2013,34 @@ radio_send_receive_service:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x86b
-	.uleb128 0x23
-	.long	.LVL28
-	.long	0xb52
-	.uleb128 0x23
-	.long	.LVL29
-	.long	0xaa2
+	.long	0xa7d
+	.uleb128 0x25
+	.long	.LVL30
+	.long	0xdbc
+	.uleb128 0x25
+	.long	.LVL31
+	.long	0xd0c
 	.byte	0
-	.uleb128 0x2e
+	.uleb128 0x30
 	.byte	0x1
-	.long	.LASF168
+	.long	.LASF209
 	.byte	0x1
-	.byte	0xbd
-	.long	.LASF169
+	.byte	0xd2
+	.long	.LASF210
 	.long	0x58
 	.long	.LFB101
 	.long	.LFE101
-	.long	.LLST6
+	.long	.LLST7
 	.byte	0x1
-	.long	0x8fd
+	.long	0xb0f
+	.uleb128 0x25
+	.long	.LVL32
+	.long	0x958
+	.uleb128 0x22
+	.long	.LVL33
+	.long	0xdd3
+	.long	0xacd
 	.uleb128 0x23
-	.long	.LVL30
-	.long	0x746
-	.uleb128 0x20
-	.long	.LVL31
-	.long	0xb69
-	.long	0x8bb
-	.uleb128 0x21
 	.byte	0x6
 	.byte	0x68
 	.byte	0x93
@@ -1646,7 +2051,7 @@ radio_send_receive_service:
 	.byte	0x5
 	.byte	0x3
 	.long	_Z18send_recieve_radiov
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x66
 	.byte	0x93
@@ -1657,10 +2062,10 @@ radio_send_receive_service:
 	.byte	0x1
 	.byte	0x30
 	.byte	0
-	.uleb128 0x22
-	.long	.LVL32
-	.long	0xb86
-	.uleb128 0x21
+	.uleb128 0x24
+	.long	.LVL34
+	.long	0xdf0
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
 	.byte	0x93
@@ -1671,7 +2076,7 @@ radio_send_receive_service:
 	.byte	0x5
 	.byte	0x3
 	.long	_Z18Send_Drive_Commandv
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x66
 	.byte	0x93
@@ -1681,7 +2086,7 @@ radio_send_receive_service:
 	.uleb128 0x1
 	.byte	0x1
 	.byte	0x30
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x64
 	.byte	0x93
@@ -1691,7 +2096,7 @@ radio_send_receive_service:
 	.uleb128 0x1
 	.byte	0x1
 	.byte	0x3a
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x62
 	.byte	0x93
@@ -1701,7 +2106,7 @@ radio_send_receive_service:
 	.uleb128 0x1
 	.byte	0x1
 	.byte	0x34
-	.uleb128 0x21
+	.uleb128 0x23
 	.byte	0x6
 	.byte	0x60
 	.byte	0x93
@@ -1714,94 +2119,94 @@ radio_send_receive_service:
 	.sleb128 0
 	.byte	0
 	.byte	0
-	.uleb128 0x2f
+	.uleb128 0x31
 	.string	"SS"
-	.byte	0x9
-	.byte	0x28
-	.long	0x908
-	.byte	0xa
-	.uleb128 0x30
-	.long	0x3b
-	.uleb128 0x31
-	.long	.LASF125
-	.byte	0x9
-	.byte	0x29
-	.long	0x908
 	.byte	0xb
-	.uleb128 0x31
-	.long	.LASF126
-	.byte	0x9
-	.byte	0x2a
-	.long	0x908
-	.byte	0xc
-	.uleb128 0x2f
-	.string	"SCK"
-	.byte	0x9
-	.byte	0x2b
-	.long	0x908
-	.byte	0xd
-	.uleb128 0x2f
-	.string	"SDA"
-	.byte	0x9
-	.byte	0x2d
-	.long	0x908
-	.byte	0x12
-	.uleb128 0x2f
-	.string	"SCL"
-	.byte	0x9
-	.byte	0x2e
-	.long	0x908
-	.byte	0x13
-	.uleb128 0x2f
-	.string	"A0"
-	.byte	0x9
-	.byte	0x31
-	.long	0x908
-	.byte	0xe
-	.uleb128 0x2f
-	.string	"A1"
-	.byte	0x9
-	.byte	0x32
-	.long	0x908
-	.byte	0xf
-	.uleb128 0x2f
-	.string	"A2"
-	.byte	0x9
-	.byte	0x33
-	.long	0x908
-	.byte	0x10
-	.uleb128 0x2f
-	.string	"A3"
-	.byte	0x9
-	.byte	0x34
-	.long	0x908
-	.byte	0x11
-	.uleb128 0x2f
-	.string	"A4"
-	.byte	0x9
-	.byte	0x35
-	.long	0x908
-	.byte	0x12
-	.uleb128 0x2f
-	.string	"A5"
-	.byte	0x9
-	.byte	0x36
-	.long	0x908
-	.byte	0x13
-	.uleb128 0x2f
-	.string	"A6"
-	.byte	0x9
-	.byte	0x37
-	.long	0x908
-	.byte	0x14
-	.uleb128 0x2f
-	.string	"A7"
-	.byte	0x9
-	.byte	0x38
-	.long	0x908
-	.byte	0x15
+	.byte	0x28
+	.long	0xb1a
+	.byte	0xa
 	.uleb128 0x32
-	.long	.LASF127
+	.long	0x3b
+	.uleb128 0x33
+	.long	.LASF160
+	.byte	0xb
+	.byte	0x29
+	.long	0xb1a
+	.byte	0xb
+	.uleb128 0x33
+	.long	.LASF161
+	.byte	0xb
+	.byte	0x2a
+	.long	0xb1a
+	.byte	0xc
+	.uleb128 0x31
+	.string	"SCK"
+	.byte	0xb
+	.byte	0x2b
+	.long	0xb1a
+	.byte	0xd
+	.uleb128 0x31
+	.string	"SDA"
+	.byte	0xb
+	.byte	0x2d
+	.long	0xb1a
+	.byte	0x12
+	.uleb128 0x31
+	.string	"SCL"
+	.byte	0xb
+	.byte	0x2e
+	.long	0xb1a
+	.byte	0x13
+	.uleb128 0x31
+	.string	"A0"
+	.byte	0xb
+	.byte	0x31
+	.long	0xb1a
+	.byte	0xe
+	.uleb128 0x31
+	.string	"A1"
+	.byte	0xb
+	.byte	0x32
+	.long	0xb1a
+	.byte	0xf
+	.uleb128 0x31
+	.string	"A2"
+	.byte	0xb
+	.byte	0x33
+	.long	0xb1a
+	.byte	0x10
+	.uleb128 0x31
+	.string	"A3"
+	.byte	0xb
+	.byte	0x34
+	.long	0xb1a
+	.byte	0x11
+	.uleb128 0x31
+	.string	"A4"
+	.byte	0xb
+	.byte	0x35
+	.long	0xb1a
+	.byte	0x12
+	.uleb128 0x31
+	.string	"A5"
+	.byte	0xb
+	.byte	0x36
+	.long	0xb1a
+	.byte	0x13
+	.uleb128 0x31
+	.string	"A6"
+	.byte	0xb
+	.byte	0x37
+	.long	0xb1a
+	.byte	0x14
+	.uleb128 0x31
+	.string	"A7"
+	.byte	0xb
+	.byte	0x38
+	.long	0xb1a
+	.byte	0x15
+	.uleb128 0x34
+	.long	.LASF162
 	.byte	0x6
 	.byte	0x30
 	.long	0x33d
@@ -1809,31 +2214,49 @@ radio_send_receive_service:
 	.byte	0x1
 	.uleb128 0xd
 	.long	0x46
-	.long	0x9bf
-	.uleb128 0x33
+	.long	0xbd1
+	.uleb128 0x35
 	.uleb128 0xe
 	.long	0x20f
 	.byte	0x4
 	.byte	0
-	.uleb128 0x32
-	.long	.LASF128
+	.uleb128 0x34
+	.long	.LASF163
 	.byte	0x6
 	.byte	0x31
-	.long	0x9ae
+	.long	0xbc0
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x32
-	.long	.LASF129
+	.uleb128 0x34
+	.long	.LASF164
 	.byte	0x6
 	.byte	0x33
 	.long	0x3b
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x34
-	.long	.LASF130
+	.uleb128 0x36
+	.long	.LASF165
 	.byte	0x1
-	.byte	0x1a
-	.long	0x9eb
+	.byte	0x15
+	.long	0x4d
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.long	roomba_velocity
+	.uleb128 0x36
+	.long	.LASF166
+	.byte	0x1
+	.byte	0x16
+	.long	0x4d
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.long	roomba_rotation
+	.uleb128 0x36
+	.long	.LASF167
+	.byte	0x1
+	.byte	0x1c
+	.long	0xc21
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -1841,215 +2264,240 @@ radio_send_receive_service:
 	.uleb128 0x7
 	.byte	0x2
 	.long	0xad
-	.uleb128 0x34
+	.uleb128 0x36
 	.long	.LASF49
 	.byte	0x1
-	.byte	0x1b
+	.byte	0x1d
 	.long	0x3b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	roomba_state
-	.uleb128 0x34
-	.long	.LASF131
+	.uleb128 0x36
+	.long	.LASF168
 	.byte	0x1
-	.byte	0x1c
+	.byte	0x1e
 	.long	0x272
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	roomba_identity
-	.uleb128 0x35
+	.uleb128 0x36
+	.long	.LASF169
 	.byte	0x1
-	.long	.LASF132
+	.byte	0x20
+	.long	0x6eb
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.long	roomba_sensor_packet
+	.uleb128 0x37
+	.byte	0x1
+	.long	.LASF170
 	.byte	0x8
 	.byte	0x8b
-	.long	.LASF134
+	.long	.LASF172
 	.long	0x4e3
 	.byte	0x1
-	.long	0xa35
-	.uleb128 0x1a
-	.long	0xa35
-	.uleb128 0x1a
+	.long	0xc7d
+	.uleb128 0x1c
+	.long	0xc7d
+	.uleb128 0x1c
 	.long	0x507
 	.byte	0
 	.uleb128 0x7
 	.byte	0x2
 	.long	0x3f3
-	.uleb128 0x35
-	.byte	0x1
-	.long	.LASF133
-	.byte	0x8
-	.byte	0x93
-	.long	.LASF135
-	.long	0x4bf
-	.byte	0x1
-	.long	0xa56
-	.uleb128 0x1a
-	.long	0xa35
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.long	.LASF136
-	.byte	0x8
-	.byte	0x7c
-	.long	.LASF138
-	.byte	0x1
-	.long	0xa6d
-	.uleb128 0x1a
-	.long	0x21b
-	.byte	0
 	.uleb128 0x37
 	.byte	0x1
-	.long	.LASF140
+	.long	.LASF171
+	.byte	0x8
+	.byte	0x93
+	.long	.LASF173
+	.long	0x4bf
+	.byte	0x1
+	.long	0xc9e
+	.uleb128 0x1c
+	.long	0xc7d
+	.byte	0
+	.uleb128 0x38
+	.byte	0x1
+	.long	.LASF174
+	.byte	0x8
+	.byte	0x7c
+	.long	.LASF176
+	.byte	0x1
+	.long	0xcb5
+	.uleb128 0x1c
+	.long	0x21b
+	.byte	0
+	.uleb128 0x39
+	.byte	0x1
+	.long	.LASF180
 	.byte	0x4
 	.word	0x148
 	.byte	0x1
-	.long	0xa86
-	.uleb128 0x1a
-	.long	0x9eb
-	.uleb128 0x1a
+	.long	0xcce
+	.uleb128 0x1c
+	.long	0xc21
+	.uleb128 0x1c
 	.long	0x247
 	.byte	0
-	.uleb128 0x36
+	.uleb128 0x38
 	.byte	0x1
-	.long	.LASF137
+	.long	.LASF175
+	.byte	0xa
+	.byte	0x28
+	.long	.LASF177
+	.byte	0x1
+	.long	0xcea
+	.uleb128 0x1c
+	.long	0x715
+	.uleb128 0x1c
+	.long	0xcea
+	.byte	0
+	.uleb128 0x7
+	.byte	0x2
+	.long	0x6eb
+	.uleb128 0x38
+	.byte	0x1
+	.long	.LASF178
 	.byte	0xa
 	.byte	0x34
-	.long	.LASF139
+	.long	.LASF179
 	.byte	0x1
-	.long	0xaa2
-	.uleb128 0x1a
+	.long	0xd0c
+	.uleb128 0x1c
 	.long	0x4d
-	.uleb128 0x1a
+	.uleb128 0x1c
+	.long	0x4d
+	.byte	0
+	.uleb128 0x3a
+	.byte	0x1
+	.long	.LASF211
+	.byte	0x4
+	.word	0x12e
+	.byte	0x1
+	.uleb128 0x3b
+	.byte	0x1
+	.long	.LASF212
+	.byte	0xc
+	.byte	0x13
+	.long	.LASF213
+	.long	0x3b
+	.byte	0x1
+	.uleb128 0x39
+	.byte	0x1
+	.long	.LASF181
+	.byte	0x4
+	.word	0x152
+	.byte	0x1
+	.long	0xd40
+	.uleb128 0x1c
+	.long	0xc21
+	.uleb128 0x1c
 	.long	0x4d
 	.byte	0
 	.uleb128 0x38
 	.byte	0x1
-	.long	.LASF170
-	.byte	0x4
-	.word	0x12e
-	.byte	0x1
-	.uleb128 0x39
-	.byte	0x1
-	.long	.LASF171
-	.byte	0xb
-	.byte	0x13
-	.long	.LASF172
-	.long	0x3b
-	.byte	0x1
-	.uleb128 0x37
-	.byte	0x1
-	.long	.LASF141
-	.byte	0x4
-	.word	0x152
-	.byte	0x1
-	.long	0xad6
-	.uleb128 0x1a
-	.long	0x9eb
-	.uleb128 0x1a
-	.long	0x4d
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.long	.LASF142
+	.long	.LASF182
 	.byte	0x8
 	.byte	0x4f
-	.long	.LASF143
+	.long	.LASF183
 	.byte	0x1
-	.long	0xaed
-	.uleb128 0x1a
+	.long	0xd57
+	.uleb128 0x1c
 	.long	0x3b
 	.byte	0
-	.uleb128 0x36
+	.uleb128 0x38
 	.byte	0x1
-	.long	.LASF144
+	.long	.LASF184
 	.byte	0x8
 	.byte	0x6f
-	.long	.LASF145
+	.long	.LASF185
 	.byte	0x1
-	.long	0xb0e
-	.uleb128 0x1a
+	.long	0xd78
+	.uleb128 0x1c
 	.long	0x435
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x21b
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x52b
 	.byte	0
-	.uleb128 0x36
+	.uleb128 0x38
 	.byte	0x1
-	.long	.LASF146
+	.long	.LASF186
 	.byte	0x8
 	.byte	0x76
-	.long	.LASF147
+	.long	.LASF187
 	.byte	0x1
-	.long	0xb2a
-	.uleb128 0x1a
+	.long	0xd94
+	.uleb128 0x1c
 	.long	0x489
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x465
-	.byte	0
-	.uleb128 0x3a
-	.byte	0x1
-	.long	.LASF148
-	.byte	0x4
-	.word	0x13e
-	.long	0x9eb
-	.byte	0x1
-	.uleb128 0x3b
-	.byte	0x1
-	.long	.LASF149
-	.byte	0xa
-	.byte	0x1b
-	.long	.LASF151
-	.byte	0x1
-	.uleb128 0x3b
-	.byte	0x1
-	.long	.LASF150
-	.byte	0xb
-	.byte	0x12
-	.long	.LASF152
-	.byte	0x1
-	.uleb128 0x36
-	.byte	0x1
-	.long	.LASF153
-	.byte	0xb
-	.byte	0x11
-	.long	.LASF154
-	.byte	0x1
-	.long	0xb69
-	.uleb128 0x1a
-	.long	0x3b
 	.byte	0
 	.uleb128 0x3c
 	.byte	0x1
-	.long	.LASF155
+	.long	.LASF188
+	.byte	0x4
+	.word	0x13e
+	.long	0xc21
+	.byte	0x1
+	.uleb128 0x3d
+	.byte	0x1
+	.long	.LASF189
+	.byte	0xa
+	.byte	0x1b
+	.long	.LASF191
+	.byte	0x1
+	.uleb128 0x3d
+	.byte	0x1
+	.long	.LASF190
+	.byte	0xc
+	.byte	0x12
+	.long	.LASF192
+	.byte	0x1
+	.uleb128 0x38
+	.byte	0x1
+	.long	.LASF193
+	.byte	0xc
+	.byte	0x11
+	.long	.LASF194
+	.byte	0x1
+	.long	0xdd3
+	.uleb128 0x1c
+	.long	0x3b
+	.byte	0
+	.uleb128 0x3e
+	.byte	0x1
+	.long	.LASF195
 	.byte	0x4
 	.word	0x110
 	.long	0x29
 	.byte	0x1
-	.long	0xb86
-	.uleb128 0x1a
+	.long	0xdf0
+	.uleb128 0x1c
 	.long	0xfd
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x4d
 	.byte	0
-	.uleb128 0x3d
+	.uleb128 0x3f
 	.byte	0x1
-	.long	.LASF156
+	.long	.LASF196
 	.byte	0x4
 	.word	0x123
 	.long	0x29
 	.byte	0x1
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0xfd
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x4d
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x5f
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x5f
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.long	0x5f
 	.byte	0
 	.byte	0
@@ -2308,6 +2756,36 @@ radio_send_receive_service:
 	.byte	0
 	.byte	0
 	.uleb128 0x15
+	.uleb128 0x17
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x16
+	.uleb128 0x13
+	.byte	0x1
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x2007
+	.uleb128 0xe
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x17
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3
@@ -2322,26 +2800,8 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x16
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x17
-	.uleb128 0xb
-	.byte	0x1
-	.byte	0
-	.byte	0
 	.uleb128 0x18
-	.uleb128 0x34
+	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
@@ -2354,23 +2814,19 @@ radio_send_receive_service:
 	.byte	0
 	.byte	0
 	.uleb128 0x19
-	.uleb128 0x2e
+	.uleb128 0xb
 	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x1a
+	.uleb128 0x34
+	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
-	.uleb128 0x3c
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x1a
-	.uleb128 0x5
-	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
@@ -2386,6 +2842,28 @@ radio_send_receive_service:
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
+	.uleb128 0x3c
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x1c
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x1d
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
 	.uleb128 0x2007
 	.uleb128 0xe
 	.uleb128 0x11
@@ -2400,7 +2878,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1e
 	.uleb128 0xb
 	.byte	0x1
 	.uleb128 0x11
@@ -2409,7 +2887,7 @@ radio_send_receive_service:
 	.uleb128 0x1
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
+	.uleb128 0x1f
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2424,7 +2902,7 @@ radio_send_receive_service:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x1e
+	.uleb128 0x20
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2439,33 +2917,13 @@ radio_send_receive_service:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x1f
+	.uleb128 0x21
 	.uleb128 0xb
 	.byte	0x1
 	.uleb128 0x55
 	.uleb128 0x6
 	.uleb128 0x1
 	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x20
-	.uleb128 0x4109
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x21
-	.uleb128 0x410a
-	.byte	0
-	.uleb128 0x2
-	.uleb128 0xa
-	.uleb128 0x2111
-	.uleb128 0xa
 	.byte	0
 	.byte	0
 	.uleb128 0x22
@@ -2475,9 +2933,29 @@ radio_send_receive_service:
 	.uleb128 0x1
 	.uleb128 0x31
 	.uleb128 0x13
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x23
+	.uleb128 0x410a
+	.byte	0
+	.uleb128 0x2
+	.uleb128 0xa
+	.uleb128 0x2111
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x24
+	.uleb128 0x4109
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x25
 	.uleb128 0x4109
 	.byte	0
 	.uleb128 0x11
@@ -2486,7 +2964,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x26
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -2511,7 +2989,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x25
+	.uleb128 0x27
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -2526,7 +3004,7 @@ radio_send_receive_service:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x26
+	.uleb128 0x28
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -2549,7 +3027,7 @@ radio_send_receive_service:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x27
+	.uleb128 0x29
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -2572,7 +3050,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x28
+	.uleb128 0x2a
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -2589,7 +3067,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x29
+	.uleb128 0x2b
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x31
@@ -2598,7 +3076,7 @@ radio_send_receive_service:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x31
@@ -2607,7 +3085,7 @@ radio_send_receive_service:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x2b
+	.uleb128 0x2d
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x31
@@ -2616,7 +3094,7 @@ radio_send_receive_service:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uleb128 0x4109
 	.byte	0
 	.uleb128 0x11
@@ -2627,7 +3105,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x2d
+	.uleb128 0x2f
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x47
@@ -2638,7 +3116,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -2665,7 +3143,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2680,14 +3158,14 @@ radio_send_receive_service:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x30
+	.uleb128 0x32
 	.uleb128 0x26
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x31
+	.uleb128 0x33
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2702,7 +3180,7 @@ radio_send_receive_service:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x32
+	.uleb128 0x34
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2719,12 +3197,12 @@ radio_send_receive_service:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x33
+	.uleb128 0x35
 	.uleb128 0x21
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x34
+	.uleb128 0x36
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2741,46 +3219,6 @@ radio_send_receive_service:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x35
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x2007
-	.uleb128 0xe
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x36
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x2007
-	.uleb128 0xe
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
 	.uleb128 0x37
 	.uleb128 0x2e
 	.byte	0x1
@@ -2791,7 +3229,11 @@ radio_send_receive_service:
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
-	.uleb128 0x5
+	.uleb128 0xb
+	.uleb128 0x2007
+	.uleb128 0xe
+	.uleb128 0x49
+	.uleb128 0x13
 	.uleb128 0x3c
 	.uleb128 0xc
 	.uleb128 0x1
@@ -2800,7 +3242,7 @@ radio_send_receive_service:
 	.byte	0
 	.uleb128 0x38
 	.uleb128 0x2e
-	.byte	0
+	.byte	0x1
 	.uleb128 0x3f
 	.uleb128 0xc
 	.uleb128 0x3
@@ -2808,13 +3250,49 @@ radio_send_receive_service:
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
-	.uleb128 0x5
+	.uleb128 0xb
+	.uleb128 0x2007
+	.uleb128 0xe
 	.uleb128 0x3c
 	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x39
 	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x3a
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x3c
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x3b
+	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
 	.uleb128 0xc
@@ -2832,7 +3310,7 @@ radio_send_receive_service:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x3a
+	.uleb128 0x3c
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -2849,7 +3327,7 @@ radio_send_receive_service:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x3b
+	.uleb128 0x3d
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -2866,7 +3344,7 @@ radio_send_receive_service:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x3c
+	.uleb128 0x3e
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -2885,7 +3363,7 @@ radio_send_receive_service:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x3d
+	.uleb128 0x3f
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -2977,36 +3455,7 @@ radio_send_receive_service:
 	.long	0
 	.long	0
 .LLST4:
-	.long	.LVL13
-	.long	.LVL14
-	.word	0x1
-	.byte	0x68
-	.long	.LVL15
-	.long	.LVL16
-	.word	0x1
-	.byte	0x68
-	.long	0
-	.long	0
-.LLST5:
-	.long	.LVL17
-	.long	.LVL18
-	.word	0x1
-	.byte	0x68
-	.long	.LVL18
-	.long	.LVL19-1
-	.word	0x1
-	.byte	0x66
-	.long	.LVL19-1
-	.long	.LFE95
-	.word	0x4
-	.byte	0xf3
-	.uleb128 0x1
-	.byte	0x68
-	.byte	0x9f
-	.long	0
-	.long	0
-.LLST6:
-	.long	.LFB101
+	.long	.LFB99
 	.long	.LCFI4
 	.word	0x3
 	.byte	0x92
@@ -3019,6 +3468,92 @@ radio_send_receive_service:
 	.uleb128 0x20
 	.sleb128 4
 	.long	.LCFI5
+	.long	.LCFI6
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 5
+	.long	.LCFI6
+	.long	.LCFI7
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 6
+	.long	.LCFI7
+	.long	.LCFI8
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 7
+	.long	.LCFI8
+	.long	.LCFI9
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 8
+	.long	.LCFI9
+	.long	.LCFI10
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 9
+	.long	.LCFI10
+	.long	.LCFI11
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 10
+	.long	.LCFI11
+	.long	.LFE99
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 11
+	.long	0
+	.long	0
+.LLST5:
+	.long	.LVL15
+	.long	.LVL16
+	.word	0x1
+	.byte	0x68
+	.long	.LVL17
+	.long	.LVL18
+	.word	0x1
+	.byte	0x68
+	.long	0
+	.long	0
+.LLST6:
+	.long	.LVL19
+	.long	.LVL20
+	.word	0x1
+	.byte	0x68
+	.long	.LVL20
+	.long	.LVL21-1
+	.word	0x1
+	.byte	0x66
+	.long	.LVL21-1
+	.long	.LFE95
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x68
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST7:
+	.long	.LFB101
+	.long	.LCFI12
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI12
+	.long	.LCFI13
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI13
 	.long	.LFE101
 	.word	0x3
 	.byte	0x92
@@ -3081,47 +3616,57 @@ radio_send_receive_service:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF145:
+.LASF185:
 	.string	"_Z18Radio_Configure_Rx11_radio_pipePh3_ed"
-.LASF111:
+.LASF146:
 	.string	"pk_roomba_state"
 .LASF78:
 	.string	"RADIO_LOWEST_POWER"
 .LASF51:
 	.string	"_cops_and_robbers"
+.LASF131:
+	.string	"temperature"
 .LASF63:
 	.string	"payloadformat_t"
-.LASF148:
+.LASF188:
 	.string	"Service_Init"
 .LASF62:
 	.string	"message"
 .LASF83:
 	.string	"_radio_dr"
-.LASF137:
+.LASF178:
 	.string	"Roomba_Drive"
-.LASF129:
+.LASF164:
 	.string	"BASE_FREQUENCY"
-.LASF121:
+.LASF156:
 	.string	"radio_rxhandler"
+.LASF124:
+	.string	"remote_opcode"
 .LASF6:
 	.string	"unsigned int"
 .LASF35:
 	.string	"next"
-.LASF107:
+.LASF142:
 	.string	"__ticks_dc"
-.LASF127:
+.LASF162:
 	.string	"BASE_ADDRESS"
 .LASF50:
 	.string	"pf_roombastate_t"
-.LASF120:
+.LASF165:
+	.string	"roomba_velocity"
+.LASF155:
 	.string	"ir_value"
+.LASF134:
+	.string	"roomba_sensor_data_t"
+.LASF129:
+	.string	"voltage"
 .LASF34:
 	.string	"level"
 .LASF43:
 	.string	"_gs_pkt"
-.LASF128:
+.LASF163:
 	.string	"ROOMBA_ADDRESSES"
-.LASF154:
+.LASF194:
 	.string	"_Z11IR_transmith"
 .LASF31:
 	.string	"wcet"
@@ -3129,13 +3674,13 @@ radio_send_receive_service:
 	.string	"tasks"
 .LASF77:
 	.string	"_radio_tx_power"
-.LASF147:
+.LASF187:
 	.string	"_Z15Radio_Configure9_radio_dr15_radio_tx_power"
 .LASF58:
 	.string	"pf_message_t"
 .LASF36:
 	.string	"prev"
-.LASF155:
+.LASF195:
 	.string	"Task_Create_System"
 .LASF61:
 	.string	"roombastate"
@@ -3145,7 +3690,7 @@ radio_send_receive_service:
 	.string	"_roomba_pkt"
 .LASF67:
 	.string	"radiopacket_t"
-.LASF170:
+.LASF211:
 	.string	"Task_Next"
 .LASF88:
 	.string	"RADIO_RX_INVALID_ARGS"
@@ -3153,39 +3698,49 @@ radio_send_receive_service:
 	.string	"uint32_t"
 .LASF0:
 	.string	"int8_t"
-.LASF169:
+.LASF210:
 	.string	"_Z6r_mainv"
+.LASF136:
+	.string	"EXTERNAL_ROOMBA"
 .LASF53:
 	.string	"ROOMBASTATE_PACKET"
-.LASF161:
+.LASF202:
 	.string	"_delay_ms"
 .LASF13:
 	.string	"float"
-.LASF163:
+.LASF204:
 	.string	"__builtin_avr_delay_cycles"
-.LASF167:
+.LASF132:
+	.string	"charge"
+.LASF208:
 	.string	"setup"
 .LASF98:
 	.string	"_radio_tx_wait"
 .LASF4:
 	.string	"int16_t"
+.LASF111:
+	.string	"int16_u"
+.LASF135:
+	.string	"_rsg"
 .LASF85:
 	.string	"RADIO_2MBPS"
 .LASF11:
 	.string	"long long unsigned int"
-.LASF119:
+.LASF154:
 	.string	"_Z12ir_rxhandlerv"
+.LASF133:
+	.string	"capacity"
 .LASF55:
 	.string	"_msg"
-.LASF117:
+.LASF152:
 	.string	"_Z18Send_Drive_Commandv"
 .LASF46:
 	.string	"pf_gamestate_t"
-.LASF142:
+.LASF182:
 	.string	"Radio_Init"
 .LASF18:
 	.string	"value"
-.LASF132:
+.LASF170:
 	.string	"Radio_Transmit"
 .LASF19:
 	.string	"counter"
@@ -3201,31 +3756,37 @@ radio_send_receive_service:
 	.string	"RADIO_PIPE_5"
 .LASF26:
 	.string	"service"
-.LASF162:
+.LASF203:
 	.string	"__ms"
 .LASF66:
 	.string	"payload"
 .LASF17:
 	.string	"valueLocations"
-.LASF114:
+.LASF149:
 	.string	"send_recieve_radio"
+.LASF123:
+	.string	"dirt_right"
 .LASF57:
 	.string	"messagecontent"
-.LASF136:
+.LASF174:
 	.string	"Radio_Set_Tx_Addr"
-.LASF149:
+.LASF189:
 	.string	"Roomba_Init"
-.LASF146:
+.LASF186:
 	.string	"Radio_Configure"
 .LASF101:
 	.string	"RADIO_TX_WAIT"
-.LASF143:
+.LASF110:
+	.string	"bytes"
+.LASF183:
 	.string	"_Z10Radio_Inith"
+.LASF166:
+	.string	"roomba_rotation"
 .LASF24:
 	.string	"task_state_t"
-.LASF151:
+.LASF191:
 	.string	"_Z11Roomba_Initv"
-.LASF124:
+.LASF159:
 	.string	"_Z15send_IR_Commandv"
 .LASF75:
 	.string	"RADIO_PIPE_EMPTY"
@@ -3239,67 +3800,81 @@ radio_send_receive_service:
 	.string	"char"
 .LASF94:
 	.string	"_radio_transmit"
-.LASF109:
+.LASF144:
 	.string	"radio_status"
 .LASF102:
 	.string	"DISABLE"
-.LASF140:
+.LASF180:
 	.string	"Service_Subscribe"
-.LASF144:
+.LASF112:
+	.string	"_u16u"
+.LASF184:
 	.string	"Radio_Configure_Rx"
-.LASF160:
+.LASF200:
 	.string	"12task_state_t"
-.LASF116:
+.LASF151:
 	.string	"_Z18send_recieve_radiov"
 .LASF72:
 	.string	"RADIO_PIPE_3"
-.LASF164:
+.LASF205:
 	.string	"pipe_number"
 .LASF1:
 	.string	"uint8_t"
-.LASF152:
+.LASF192:
 	.string	"_Z7IR_initv"
 .LASF91:
 	.string	"RADIO_RX_MORE_PACKETS"
-.LASF126:
+.LASF119:
+	.string	"cliff_right"
+.LASF161:
 	.string	"MISO"
 .LASF59:
 	.string	"_filler"
+.LASF116:
+	.string	"cliff_left"
 .LASF23:
 	.string	"WAITING"
 .LASF10:
 	.string	"long long int"
 .LASF20:
 	.string	"DEAD"
+.LASF105:
+	.string	"_i16s"
+.LASF109:
+	.string	"_i16u"
 .LASF97:
 	.string	"RADIO_TX_STATUS"
 .LASF22:
 	.string	"READY"
-.LASF105:
+.LASF140:
 	.string	"bool"
 .LASF89:
 	.string	"RADIO_RX_TRANSMITTING"
-.LASF165:
+.LASF206:
 	.string	"send_radio"
+.LASF107:
+	.string	"high_byte"
 .LASF54:
 	.string	"MESSAGE_PACKET"
 .LASF52:
 	.string	"GAMESTATE_PACKET"
 .LASF29:
 	.string	"remaining_wcet"
-.LASF141:
+.LASF181:
 	.string	"Service_Publish"
-.LASF122:
+.LASF157:
 	.string	"_Z15radio_rxhandlerh"
-.LASF139:
+.LASF179:
 	.string	"_Z12Roomba_Driveii"
-.LASF153:
+.LASF169:
+	.string	"roomba_sensor_packet"
+.LASF193:
 	.string	"IR_transmit"
 .LASF84:
 	.string	"RADIO_1MBPS"
-.LASF158:
+.LASF198:
 	.string	".././project2.cpp"
-.LASF138:
+.LASF176:
 	.string	"_Z17Radio_Set_Tx_AddrPh"
 .LASF21:
 	.string	"RUNNING"
@@ -3307,34 +3882,56 @@ radio_send_receive_service:
 	.string	"td_struct"
 .LASF5:
 	.string	"uint16_t"
-.LASF115:
+.LASF113:
+	.string	"uint16_u"
+.LASF127:
+	.string	"angle"
+.LASF150:
 	.string	"Send_Drive_Command"
-.LASF131:
+.LASF139:
+	.string	"ROOMBA_SENSOR_GROUP"
+.LASF168:
 	.string	"roomba_identity"
 .LASF96:
 	.string	"RADIO_TX_SUCCESS"
+.LASF114:
+	.string	"bumps_wheeldrops"
 .LASF81:
 	.string	"RADIO_HIGHEST_POWER"
-.LASF166:
+.LASF207:
 	.string	"_Z10send_radiov"
+.LASF121:
+	.string	"motor_overcurrents"
 .LASF7:
 	.string	"long int"
 .LASF69:
 	.string	"RADIO_PIPE_0"
-.LASF108:
+.LASF137:
+	.string	"CHASSIS"
+.LASF126:
+	.string	"distance"
+.LASF106:
+	.string	"low_byte"
+.LASF143:
 	.string	"radio_status_send"
+.LASF128:
+	.string	"charging_state"
 .LASF60:
 	.string	"gamestate"
-.LASF168:
+.LASF209:
 	.string	"r_main"
-.LASF118:
+.LASF175:
+	.string	"Roomba_UpdateSensorPacket"
+.LASF153:
 	.string	"ir_rxhandler"
 .LASF32:
 	.string	"start"
 .LASF28:
 	.string	"stack"
-.LASF110:
+.LASF145:
 	.string	"radio_packet"
+.LASF122:
+	.string	"dirt_left"
 .LASF92:
 	.string	"RADIO_RX_SUCCESS"
 .LASF90:
@@ -3345,15 +3942,17 @@ radio_send_receive_service:
 	.string	"sizetype"
 .LASF9:
 	.string	"long unsigned int"
+.LASF125:
+	.string	"buttons"
 .LASF56:
 	.string	"address"
 .LASF49:
 	.string	"roomba_state"
-.LASF157:
+.LASF197:
 	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
-.LASF134:
-	.string	"_Z14Radio_TransmitP3_rp14_radio_tx_wait"
 .LASF172:
+	.string	"_Z14Radio_TransmitP3_rp14_radio_tx_wait"
+.LASF213:
 	.string	"_Z10IR_getLastv"
 .LASF99:
 	.string	"RADIO_WAIT_FOR_TX"
@@ -3363,24 +3962,36 @@ radio_send_receive_service:
 	.string	"unsigned char"
 .LASF42:
 	.string	"COPS_AND_ROBBERS"
-.LASF156:
+.LASF196:
 	.string	"Task_Create_Periodic"
-.LASF125:
+.LASF120:
+	.string	"virtual_wall"
+.LASF160:
 	.string	"MOSI"
+.LASF130:
+	.string	"current"
 .LASF38:
 	.string	"COP1"
 .LASF39:
 	.string	"COP2"
+.LASF108:
+	.string	"int16_split"
+.LASF177:
+	.string	"_Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t"
+.LASF190:
+	.string	"IR_init"
 .LASF33:
 	.string	"state"
 .LASF44:
 	.string	"game_state"
 .LASF76:
 	.string	"RADIO_PIPE"
-.LASF130:
+.LASF167:
 	.string	"radio_send_receive_service"
 .LASF65:
 	.string	"timestamp"
+.LASF115:
+	.string	"wall"
 .LASF40:
 	.string	"ROBBER1"
 .LASF41:
@@ -3395,17 +4006,23 @@ radio_send_receive_service:
 	.string	"period"
 .LASF100:
 	.string	"RADIO_RETURN_ON_TX"
+.LASF201:
+	.string	"20roomba_sensor_data_t"
+.LASF138:
+	.string	"INTERNAL"
 .LASF104:
 	.string	"ON_OFF"
-.LASF106:
+.LASF141:
 	.string	"__tmp"
-.LASF159:
+.LASF117:
+	.string	"cliff_front_left"
+.LASF199:
 	.string	"C:\\\\Users\\\\Mikko\\\\Documents\\\\CSC460\\\\Project\\\\csc460-RTOS\\\\project3\\\\project3\\\\project2\\\\Debug"
-.LASF112:
+.LASF147:
 	.string	"radio_receive_service_value"
 .LASF93:
 	.string	"RADIO_RX_STATUS"
-.LASF135:
+.LASF173:
 	.string	"_Z13Radio_ReceiveP3_rp"
 .LASF14:
 	.string	"double"
@@ -3413,19 +4030,20 @@ radio_send_receive_service:
 	.string	"_radio_receive"
 .LASF95:
 	.string	"RADIO_TX_MAX_RT"
-.LASF133:
-	.string	"Radio_Receive"
-.LASF150:
-	.string	"IR_init"
 .LASF171:
+	.string	"Radio_Receive"
+.LASF118:
+	.string	"cliff_front_right"
+.LASF212:
 	.string	"IR_getLast"
 .LASF15:
 	.string	"SERVICE"
-.LASF113:
+.LASF148:
 	.string	"radio_roomba_state"
-.LASF123:
+.LASF158:
 	.string	"send_IR_Command"
 .LASF80:
 	.string	"RADIO_HIGH_POWER"
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"
+.global __do_copy_data
 .global __do_clear_bss

@@ -98,7 +98,7 @@ _Z16Roomba_UART_Init9_uart_bps:
 	ldi r24,lo8(64)
 	sts 200,r24
 	.loc 1 43 0
-	ldi r24,lo8(8)
+	ldi r24,lo8(-104)
 	sts 201,r24
 	.loc 1 45 0
 	ldi r24,lo8(6)
