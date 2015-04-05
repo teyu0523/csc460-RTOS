@@ -121,28 +121,10 @@ void send_recieve_radio(){
 }
 
 
-void send_radio(){
-	
-	
-
-	//IRpacket.type = IR_COMMAND;
-	//memcpy(IRpacket.payload.ir_command.sender_address, my_addr, RADIO_ADDRESS_LENGTH);
-	//IRpacket.payload.ir_command.ir_command = SEND_BYTE;
-	//IRpacket.payload.ir_command.ir_data = 'A';
-	//Radio_Transmit(&IRpacket, RADIO_WAIT_FOR_TX) == RADIO_TX_MAX_RT;
-	//if (rxflag)
-	//{
-		//if (Radio_Receive(&packet) != RADIO_RX_MORE_PACKETS)
-		//{
-			//rxflag = 0;
-		//} 
-	//}
-}
-
 void setup(){
 	
 	
-	//setting LEDS for getting hit by TEAM (PH3 - pin 6) and ENEMY (PH4 - pin 7) 
+	//setting LEDS for getting hit by ALIVE (PH3 - pin 6) and DEAD (PH4 - pin 7) 
 	DDRH |= (uint8_t)(_BV(PH3)) | (uint8_t)(_BV(PH4));
 	DDRE |= (uint8_t)(_BV(PE3));
 	if((roomba_state&DEAD) == 0){
@@ -170,25 +152,33 @@ void setup(){
 }
 
 void Send_Drive_Command(){
-	if((roomba_state & DEAD) == 0){ // If roomba alive
-		for(;;) {
-			Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet); // updates the sensors in the roombas chassis
-			Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet); // updates the external sensors of the bot
+	for(;;) {
+		
+		
+		if((roomba_state & DEAD) == 0){ // If roomba alive
+				Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet); // updates the sensors in the roombas chassis
+				Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet); // updates the external sensors of the bot
 
-			if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
-			{
-				roomba_velocity = 100;
-				roomba_rotation = 1;
-			} else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
-			{
-				roomba_velocity = 100;
-				roomba_rotation = -1;
-			} else {
-				roomba_velocity = 240;
+				if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
+				{
+					roomba_velocity = 100;
+					roomba_rotation = 1;
+				} else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
+				{
+					roomba_velocity = 100;
+					roomba_rotation = -1;
+				} else {
+					roomba_velocity = 240;
+					roomba_rotation = 0;
+				}
+				Roomba_Drive(roomba_velocity, roomba_rotation);
+				Task_Next();
+		}
+		else if ((roomba_state&DEAD) > 0){
+				roomba_velocity = 0;
 				roomba_rotation = 0;
-			}
-			Roomba_Drive(roomba_velocity, roomba_rotation);
-			Task_Next();
+				Roomba_Drive(roomba_velocity, roomba_rotation);
+				Task_Next();
 		}
 	}
 }
@@ -213,6 +203,7 @@ int r_main(void)
 	setup();
 	Task_Create_System(send_recieve_radio, 0);
 	Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
+	//Task_Create_Periodic(send_IR_Command,0,20,4,5);
 	
 	return 1;
 }

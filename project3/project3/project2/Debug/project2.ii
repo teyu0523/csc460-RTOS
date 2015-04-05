@@ -2481,10 +2481,6 @@ void send_recieve_radio(){
 }
 
 
-void send_radio(){
-# 140 ".././project2.cpp"
-}
-
 void setup(){
 
 
@@ -2516,25 +2512,33 @@ void setup(){
 }
 
 void Send_Drive_Command(){
- if((roomba_state & 1 << 0) == 0){
-  for(;;) {
-   Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet);
-   Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet);
+ for(;;) {
 
-   if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
-   {
-    roomba_velocity = 100;
-    roomba_rotation = 1;
-   } else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
-   {
-    roomba_velocity = 100;
-    roomba_rotation = -1;
-   } else {
-    roomba_velocity = 240;
+
+  if((roomba_state & 1 << 0) == 0){
+    Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet);
+    Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet);
+
+    if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
+    {
+     roomba_velocity = 100;
+     roomba_rotation = 1;
+    } else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
+    {
+     roomba_velocity = 100;
+     roomba_rotation = -1;
+    } else {
+     roomba_velocity = 240;
+     roomba_rotation = 0;
+    }
+    Roomba_Drive(roomba_velocity, roomba_rotation);
+    Task_Next();
+  }
+  else if ((roomba_state&1 << 0) > 0){
+    roomba_velocity = 0;
     roomba_rotation = 0;
-   }
-   Roomba_Drive(roomba_velocity, roomba_rotation);
-   Task_Next();
+    Roomba_Drive(roomba_velocity, roomba_rotation);
+    Task_Next();
   }
  }
 }
@@ -2559,6 +2563,7 @@ int r_main(void)
  setup();
  Task_Create_System(send_recieve_radio, 0);
  Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
+
 
  return 1;
 }
