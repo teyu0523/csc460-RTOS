@@ -31,6 +31,8 @@ COPS_AND_ROBBERS roomba_identity = COP1;
 
 roomba_sensor_data_t roomba_sensor_packet;
 
+pf_gamestate_t current_game_state;
+
 void ir_rxhandler(){
 	uint8_t ir_value = IR_getLast();
 	
@@ -96,6 +98,9 @@ void send_recieve_radio(){
 		PORTE |= (uint8_t)(_BV(PE3)); 
 		while(radio_status == RADIO_RX_MORE_PACKETS || radio_status == RADIO_RX_SUCCESS){
 			uint8_t radio_roomba_state = radio_packet.payload.gamestate.roomba_states[roomba_identity];
+			
+			current_game_state = radio_packet.payload.gamestate;
+			
 			if(radio_packet.type != GAMESTATE_PACKET){
 				break;		
 			}
@@ -147,6 +152,9 @@ void setup(){
 	radio_send_receive_service = Service_Init();
 	
 	
+	current_game_state.game_state = GAME_STARTING;
+	
+	
 	Roomba_Init();
 	IR_init();
 }
@@ -154,32 +162,66 @@ void setup(){
 void Send_Drive_Command(){
 	for(;;) {
 		
-		
-		if((roomba_state & DEAD) == 0){ // If roomba alive
-				Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet); // updates the sensors in the roombas chassis
-				Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet); // updates the external sensors of the bot
-
-				if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
-				{
-					roomba_velocity = 100;
-					roomba_rotation = 1;
-				} else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
-				{
-					roomba_velocity = 100;
-					roomba_rotation = -1;
-				} else {
-					roomba_velocity = 240;
-					roomba_rotation = 0;
-				}
-				Roomba_Drive(roomba_velocity, roomba_rotation);
-				Task_Next();
-		}
-		else if ((roomba_state&DEAD) > 0){
+		switch(current_game_state.game_state){
+			
+			case GAME_STARTING:
 				roomba_velocity = 0;
 				roomba_rotation = 0;
 				Roomba_Drive(roomba_velocity, roomba_rotation);
 				Task_Next();
+				break;
+			
+			case GAME_RUNNING:
+				
+				if((roomba_state & DEAD) == 0){ // If roomba alive
+						Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet); // updates the sensors in the roombas chassis
+						Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet); // updates the external sensors of the bot
+
+						if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
+						{
+							roomba_velocity = 100;
+							roomba_rotation = 1;
+						} else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
+						{
+							roomba_velocity = 100;
+							roomba_rotation = -1;
+						} else {
+							roomba_velocity = 240;
+							roomba_rotation = 0;
+						}
+						Roomba_Drive(roomba_velocity, roomba_rotation);
+						Task_Next();
+				}
+				else if ((roomba_state&DEAD) > 0){
+						roomba_velocity = 0;
+						roomba_rotation = 0;
+						Roomba_Drive(roomba_velocity, roomba_rotation);
+						Task_Next();
+				}
+				break;
+				
+			case GAME_OVER:
+				//roomba won and is alive - rotate
+				if((roomba_state & DEAD) == 0){
+					roomba_velocity = 240;
+					roomba_rotation = -1;
+					Roomba_Drive(roomba_velocity, roomba_rotation);
+					Task_Next();	
+				}
+				else{
+					roomba_velocity = 0;
+					roomba_rotation = 0;
+					Roomba_Drive(roomba_velocity, roomba_rotation);
+					Task_Next();
+				}
+				break;
+			
+			default:
+				break;
+				
+					
 		}
+		
 	}
 }
 
