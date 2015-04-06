@@ -29,7 +29,8 @@ SERVICE* radio_send_receive_service;
 uint8_t roomba_state;
 COPS_AND_ROBBERS roomba_identity = COP1;
 
-roomba_sensor_data_t roomba_sensor_packet;
+roomba_sensor_data_t roomba_bumper_sensor_packet;
+roomba_sensor_data_t roomba_light_sensor_packet;
 
 pf_gamestate_t current_game_state;
 
@@ -174,18 +175,30 @@ void Send_Drive_Command(){
 			case GAME_RUNNING:
 				
 				if((roomba_state & DEAD) == 0){ // If roomba alive
-						Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet); // updates the sensors in the roombas chassis
-						Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet); // updates the external sensors of the bot
+						//Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet); // updates the sensors in the roombas chassis
+						Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_bumper_sensor_packet); // updates the external sensors of the bot
+						Roomba_UpdateSensorPacket(LIGHT_SENSOR, &roomba_light_sensor_packet); // updates the light sensors of the bot
 
-						if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
+						if(roomba_bumper_sensor_packet.bumps_wheeldrops & 0x1)
 						{
 							roomba_velocity = 100;
 							roomba_rotation = 1;
-						} else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
+						} else if (roomba_bumper_sensor_packet.bumps_wheeldrops & 0x2)
 						{
 							roomba_velocity = 100;
 							roomba_rotation = -1;
-						} else {
+						}
+						//left light sensor
+						else if (roomba_light_sensor_packet.light_bumber & 0x1 || roomba_light_sensor_packet.light_bumber & 0x2 || roomba_light_sensor_packet.light_bumber & 0x3){
+							roomba_velocity = 240;
+							roomba_rotation = 100;
+						}
+						//right light sensor
+						else if (roomba_light_sensor_packet.light_bumber & 0x6 || roomba_light_sensor_packet.light_bumber & 0x5 || roomba_light_sensor_packet.light_bumber & 0x4){
+							roomba_velocity = 240;
+							roomba_rotation = -100;
+						}
+						else {
 							roomba_velocity = 240;
 							roomba_rotation = 0;
 						}
@@ -208,6 +221,7 @@ void Send_Drive_Command(){
 					Roomba_Drive(roomba_velocity, roomba_rotation);
 					Task_Next();	
 				}
+				//roomba lost and dead
 				else{
 					roomba_velocity = 0;
 					roomba_rotation = 0;
@@ -244,8 +258,11 @@ int r_main(void)
 	
 	setup();
 	Task_Create_System(send_recieve_radio, 0);
-	Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
-	//Task_Create_Periodic(send_IR_Command,0,20,4,5);
+	
+	Task_Create_RR(Send_Drive_Command, 0);
+	//Task_Create_RR(send_IR_Command, 0);
+	//Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
+	Task_Create_Periodic(send_IR_Command,0,100,4,5);
 	
 	return 1;
 }

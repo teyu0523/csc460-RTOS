@@ -168,19 +168,26 @@ _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t:
 .LVL11:
 	.loc 1 55 0
 	cpi r17,lo8(2)
-	breq .L11
-	cpi r17,lo8(3)
 	brne .+2
 	rjmp .L13
+	brsh .L6
 	cpi r17,lo8(1)
-	breq .+2
+	breq .L18
 	rjmp .L4
-.L9:
+.L6:
+	cpi r17,lo8(3)
+	brne .+2
+	rjmp .L15
+	cpi r17,lo8(101)
+	brne .+2
+	rjmp .L19
+	rjmp .L4
+.L18:
 	.loc 1 59 0 discriminator 1
 	call _Z19uart_bytes_receivedv
 .LVL12:
 	cpi r24,lo8(10)
-	brne .L9
+	brne .L18
 	.loc 1 60 0
 	ldi r24,0
 	ldi r25,0
@@ -243,12 +250,12 @@ _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t:
 	std Y+9,r24
 	.loc 1 70 0
 	rjmp .L4
-.L11:
+.L13:
 	.loc 1 73 0 discriminator 1
 	call _Z19uart_bytes_receivedv
 .LVL23:
 	cpi r24,lo8(6)
-	brne .L11
+	brne .L13
 	.loc 1 74 0
 	ldi r24,0
 	ldi r25,0
@@ -287,12 +294,12 @@ _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t:
 	std Y+14,r24
 	.loc 1 80 0
 	rjmp .L4
-.L13:
+.L15:
 	.loc 1 83 0 discriminator 1
 	call _Z19uart_bytes_receivedv
 .LVL30:
 	cpi r24,lo8(10)
-	brne .L13
+	brne .L15
 	.loc 1 84 0
 	ldi r24,0
 	ldi r25,0
@@ -353,17 +360,175 @@ _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t:
 	call _Z13uart_get_bytei
 .LVL40:
 	std Y+24,r24
+	.loc 1 94 0
+	rjmp .L4
+.L19:
+	.loc 1 97 0 discriminator 1
+	call _Z19uart_bytes_receivedv
+.LVL41:
+	cpi r24,lo8(28)
+	brne .L19
+	.loc 1 98 0
+	ldi r24,0
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL42:
+	std Y+27,r24
+	.loc 1 99 0
+	ldi r24,lo8(1)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL43:
+	std Y+26,r24
+	.loc 1 100 0
+	ldi r24,lo8(2)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL44:
+	std Y+29,r24
+	.loc 1 101 0
+	ldi r24,lo8(3)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL45:
+	std Y+28,r24
+	.loc 1 102 0
+	ldi r24,lo8(4)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL46:
+	std Y+30,r24
+	.loc 1 103 0
+	ldi r24,lo8(5)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL47:
+	std Y+32,r24
+	.loc 1 104 0
+	ldi r24,lo8(6)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL48:
+	std Y+31,r24
+	.loc 1 105 0
+	ldi r24,lo8(7)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL49:
+	std Y+34,r24
+	.loc 1 106 0
+	ldi r24,lo8(8)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL50:
+	std Y+33,r24
+	.loc 1 107 0
+	ldi r24,lo8(9)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL51:
+	std Y+36,r24
+	.loc 1 108 0
+	ldi r24,lo8(10)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL52:
+	std Y+35,r24
+	.loc 1 109 0
+	ldi r24,lo8(11)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL53:
+	std Y+38,r24
+	.loc 1 110 0
+	ldi r24,lo8(12)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL54:
+	std Y+37,r24
+	.loc 1 111 0
+	ldi r24,lo8(13)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL55:
+	std Y+40,r24
+	.loc 1 112 0
+	ldi r24,lo8(14)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL56:
+	std Y+39,r24
+	.loc 1 113 0
+	ldi r24,lo8(15)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL57:
+	std Y+42,r24
+	.loc 1 114 0
+	ldi r24,lo8(16)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL58:
+	std Y+41,r24
+	.loc 1 115 0
+	ldi r24,lo8(17)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL59:
+	std Y+44,r24
+	.loc 1 116 0
+	ldi r24,lo8(18)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL60:
+	std Y+43,r24
+	.loc 1 117 0
+	ldi r24,lo8(19)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL61:
+	std Y+46,r24
+	.loc 1 118 0
+	ldi r24,lo8(20)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL62:
+	std Y+45,r24
+	.loc 1 119 0
+	ldi r24,lo8(21)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL63:
+	std Y+48,r24
+	.loc 1 120 0
+	ldi r24,lo8(22)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL64:
+	std Y+47,r24
+	.loc 1 121 0
+	ldi r24,lo8(23)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL65:
+	std Y+50,r24
+	.loc 1 122 0
+	ldi r24,lo8(24)
+	ldi r25,0
+	call _Z13uart_get_bytei
+.LVL66:
+	std Y+49,r24
 .L4:
 /* epilogue start */
-	.loc 1 97 0
+	.loc 1 126 0
 	pop r29
 	pop r28
-.LVL41:
+.LVL67:
 	pop r17
-.LVL42:
-	.loc 1 96 0
+.LVL68:
+	.loc 1 125 0
 	jmp _Z18uart_reset_receivev
-.LVL43:
+.LVL69:
 	.cfi_endproc
 .LFE9:
 	.size	_Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t, .-_Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t
@@ -372,9 +537,9 @@ _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t:
 	.type	_Z12Roomba_Driveii, @function
 _Z12Roomba_Driveii:
 .LFB10:
-	.loc 1 100 0
+	.loc 1 129 0
 	.cfi_startproc
-.LVL44:
+.LVL70:
 	push r17
 .LCFI3:
 	.cfi_def_cfa_offset 4
@@ -399,42 +564,42 @@ _Z12Roomba_Driveii:
 /* stack size = 6 */
 .L__stack_usage = 6
 	mov r17,r24
-	.loc 1 101 0
+	.loc 1 130 0
 	ldi r24,lo8(-119)
-.LVL45:
+.LVL71:
 	std Y+3,r22
 	std Y+2,r23
 	std Y+1,r25
 	call _Z16Roomba_Send_Byteh
-.LVL46:
-	.loc 1 102 0
+.LVL72:
+	.loc 1 131 0
 	ldd r25,Y+1
 	mov r24,r25
 	call _Z16Roomba_Send_Byteh
-.LVL47:
-	.loc 1 103 0
+.LVL73:
+	.loc 1 132 0
 	mov r24,r17
 	call _Z16Roomba_Send_Byteh
-.LVL48:
-	.loc 1 104 0
+.LVL74:
+	.loc 1 133 0
 	ldd r23,Y+2
 	mov r24,r23
 	call _Z16Roomba_Send_Byteh
-.LVL49:
-	.loc 1 105 0
+.LVL75:
+	.loc 1 134 0
 	ldd r22,Y+3
 	mov r24,r22
 /* epilogue start */
-	.loc 1 106 0
+	.loc 1 135 0
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop r29
 	pop r28
 	pop r17
-	.loc 1 105 0
+	.loc 1 134 0
 	jmp _Z16Roomba_Send_Byteh
-.LVL50:
+.LVL76:
 	.cfi_endproc
 .LFE10:
 	.size	_Z12Roomba_Driveii, .-_Z12Roomba_Driveii
@@ -447,15 +612,15 @@ _Z12Roomba_Driveii:
 	.file 7 "../roomba/roomba_sci.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x90b
+	.long	0xc29
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF86
+	.long	.LASF100
 	.byte	0x4
-	.long	.LASF87
-	.long	.LASF88
+	.long	.LASF101
+	.long	.LASF102
 	.long	.Ldebug_ranges0+0
 	.long	0
 	.long	0
@@ -518,7 +683,7 @@ _Z12Roomba_Driveii:
 	.byte	0x7
 	.long	.LASF11
 	.uleb128 0x5
-	.long	.LASF49
+	.long	.LASF62
 	.byte	0x1
 	.byte	0x4
 	.byte	0x13
@@ -549,7 +714,7 @@ _Z12Roomba_Driveii:
 	.byte	0x8
 	.long	.LASF18
 	.uleb128 0x7
-	.long	.LASF89
+	.long	.LASF103
 	.byte	0x2
 	.byte	0x5
 	.byte	0xc
@@ -621,11 +786,11 @@ _Z12Roomba_Driveii:
 	.byte	0x1e
 	.long	0x137
 	.uleb128 0xb
-	.byte	0x1a
+	.byte	0x33
 	.byte	0x5
 	.byte	0x22
-	.long	.LASF90
-	.long	0x28a
+	.long	.LASF104
+	.long	0x340
 	.uleb128 0x8
 	.long	.LASF28
 	.byte	0x5
@@ -786,101 +951,208 @@ _Z12Roomba_Driveii:
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x18
-	.byte	0
-	.uleb128 0x2
+	.uleb128 0x8
 	.long	.LASF48
 	.byte	0x5
-	.byte	0x3c
+	.byte	0x3e
+	.long	0x15a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1a
+	.uleb128 0x8
+	.long	.LASF49
+	.byte	0x5
+	.byte	0x3f
+	.long	0x15a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1c
+	.uleb128 0x8
+	.long	.LASF50
+	.byte	0x5
+	.byte	0x40
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1e
+	.uleb128 0x8
+	.long	.LASF51
+	.byte	0x5
+	.byte	0x41
+	.long	0x15a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1f
+	.uleb128 0x8
+	.long	.LASF52
+	.byte	0x5
+	.byte	0x42
+	.long	0x15a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x21
+	.uleb128 0x8
+	.long	.LASF53
+	.byte	0x5
+	.byte	0x43
+	.long	0x15a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x23
+	.uleb128 0x8
+	.long	.LASF54
+	.byte	0x5
+	.byte	0x44
+	.long	0x15a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x25
+	.uleb128 0x8
+	.long	.LASF55
+	.byte	0x5
+	.byte	0x45
+	.long	0x15a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x27
+	.uleb128 0x8
+	.long	.LASF56
+	.byte	0x5
+	.byte	0x46
+	.long	0x15a
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x29
+	.uleb128 0x8
+	.long	.LASF57
+	.byte	0x5
+	.byte	0x47
+	.long	0x12c
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2b
+	.uleb128 0x8
+	.long	.LASF58
+	.byte	0x5
+	.byte	0x48
+	.long	0x12c
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2d
+	.uleb128 0x8
+	.long	.LASF59
+	.byte	0x5
+	.byte	0x49
+	.long	0x12c
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2f
+	.uleb128 0x8
+	.long	.LASF60
+	.byte	0x5
+	.byte	0x4a
+	.long	0x12c
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x31
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF61
+	.byte	0x5
+	.byte	0x4b
 	.long	0x165
 	.uleb128 0x5
-	.long	.LASF50
+	.long	.LASF63
 	.byte	0x1
 	.byte	0x6
 	.byte	0xe
-	.long	0x2b4
+	.long	0x371
 	.uleb128 0x6
-	.long	.LASF51
+	.long	.LASF64
 	.sleb128 1
 	.uleb128 0x6
-	.long	.LASF52
+	.long	.LASF65
 	.sleb128 2
 	.uleb128 0x6
-	.long	.LASF53
+	.long	.LASF66
 	.sleb128 3
+	.uleb128 0x6
+	.long	.LASF67
+	.sleb128 101
 	.byte	0
 	.uleb128 0x2
-	.long	.LASF54
+	.long	.LASF68
 	.byte	0x6
-	.byte	0x13
-	.long	0x295
+	.byte	0x14
+	.long	0x34b
 	.uleb128 0xc
 	.string	"_br"
 	.byte	0x1
 	.byte	0x7
 	.byte	0x26
-	.long	0x314
+	.long	0x3d1
 	.uleb128 0x6
-	.long	.LASF55
+	.long	.LASF69
 	.sleb128 0
 	.uleb128 0x6
-	.long	.LASF56
+	.long	.LASF70
 	.sleb128 1
 	.uleb128 0x6
-	.long	.LASF57
+	.long	.LASF71
 	.sleb128 2
 	.uleb128 0x6
-	.long	.LASF58
+	.long	.LASF72
 	.sleb128 3
 	.uleb128 0x6
-	.long	.LASF59
+	.long	.LASF73
 	.sleb128 4
 	.uleb128 0x6
-	.long	.LASF60
+	.long	.LASF74
 	.sleb128 5
 	.uleb128 0x6
-	.long	.LASF61
+	.long	.LASF75
 	.sleb128 6
 	.uleb128 0x6
-	.long	.LASF62
+	.long	.LASF76
 	.sleb128 7
 	.uleb128 0x6
-	.long	.LASF63
+	.long	.LASF77
 	.sleb128 8
 	.uleb128 0x6
-	.long	.LASF64
+	.long	.LASF78
 	.sleb128 9
 	.uleb128 0x6
-	.long	.LASF65
+	.long	.LASF79
 	.sleb128 10
 	.uleb128 0x6
-	.long	.LASF66
+	.long	.LASF80
 	.sleb128 11
 	.byte	0
 	.uleb128 0xd
-	.long	.LASF91
+	.long	.LASF105
 	.byte	0x2
 	.byte	0x8e
 	.byte	0x3
-	.long	0x353
+	.long	0x410
 	.uleb128 0xe
-	.long	.LASF92
+	.long	.LASF106
 	.byte	0x2
 	.byte	0x8e
-	.long	0x353
+	.long	0x410
 	.uleb128 0xf
 	.uleb128 0x10
-	.long	.LASF67
+	.long	.LASF81
 	.byte	0x2
 	.byte	0x90
-	.long	0x353
+	.long	0x410
 	.uleb128 0x10
-	.long	.LASF68
+	.long	.LASF82
 	.byte	0x2
 	.byte	0x94
 	.long	0x78
 	.uleb128 0x11
 	.byte	0x1
-	.long	.LASF93
+	.long	.LASF107
 	.byte	0x2
 	.byte	0x95
 	.byte	0x1
@@ -892,13 +1164,13 @@ _Z12Roomba_Driveii:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x4
-	.long	.LASF69
+	.long	.LASF83
 	.uleb128 0x13
 	.byte	0x1
-	.long	.LASF70
+	.long	.LASF84
 	.byte	0x1
 	.byte	0xd
-	.long	.LASF72
+	.long	.LASF86
 	.long	.LFB7
 	.long	.LFE7
 	.byte	0x3
@@ -906,103 +1178,103 @@ _Z12Roomba_Driveii:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x4e9
+	.long	0x5a6
 	.uleb128 0x14
-	.long	0x314
+	.long	0x3d1
 	.long	.LBB14
 	.long	.LBE14
 	.byte	0x1
 	.byte	0x1b
-	.long	0x3b2
+	.long	0x46f
 	.uleb128 0x15
-	.long	0x320
+	.long	0x3dd
 	.byte	0x4
 	.long	0x41a00000
 	.uleb128 0x16
 	.long	.LBB15
 	.long	.LBE15
 	.uleb128 0x17
-	.long	0x32c
+	.long	0x3e9
 	.byte	0x4
 	.long	0x489c4000
 	.uleb128 0x18
-	.long	0x337
+	.long	0x3f4
 	.long	0x4e200
 	.byte	0
 	.byte	0
 	.uleb128 0x14
-	.long	0x314
+	.long	0x3d1
 	.long	.LBB16
 	.long	.LBE16
 	.byte	0x1
 	.byte	0x20
-	.long	0x3ed
+	.long	0x4aa
 	.uleb128 0x15
-	.long	0x320
+	.long	0x3dd
 	.byte	0x4
 	.long	0x42c80000
 	.uleb128 0x16
 	.long	.LBB17
 	.long	.LBE17
 	.uleb128 0x17
-	.long	0x32c
+	.long	0x3e9
 	.byte	0x4
 	.long	0x49c35000
 	.uleb128 0x18
-	.long	0x337
+	.long	0x3f4
 	.long	0x186a00
 	.byte	0
 	.byte	0
 	.uleb128 0x14
-	.long	0x314
+	.long	0x3d1
 	.long	.LBB18
 	.long	.LBE18
 	.byte	0x1
 	.byte	0x28
-	.long	0x428
+	.long	0x4e5
 	.uleb128 0x15
-	.long	0x320
+	.long	0x3dd
 	.byte	0x4
 	.long	0x41a00000
 	.uleb128 0x16
 	.long	.LBB19
 	.long	.LBE19
 	.uleb128 0x17
-	.long	0x32c
+	.long	0x3e9
 	.byte	0x4
 	.long	0x489c4000
 	.uleb128 0x18
-	.long	0x337
+	.long	0x3f4
 	.long	0x4e200
 	.byte	0
 	.byte	0
 	.uleb128 0x14
-	.long	0x314
+	.long	0x3d1
 	.long	.LBB20
 	.long	.LBE20
 	.byte	0x1
 	.byte	0x2c
-	.long	0x463
+	.long	0x520
 	.uleb128 0x15
-	.long	0x320
+	.long	0x3dd
 	.byte	0x4
 	.long	0x41a00000
 	.uleb128 0x16
 	.long	.LBB21
 	.long	.LBE21
 	.uleb128 0x17
-	.long	0x32c
+	.long	0x3e9
 	.byte	0x4
 	.long	0x489c4000
 	.uleb128 0x18
-	.long	0x337
+	.long	0x3f4
 	.long	0x4e200
 	.byte	0
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL0
-	.long	0x8a7
-	.long	0x476
+	.long	0xbc5
+	.long	0x533
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1011,8 +1283,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL1
-	.long	0x8be
-	.long	0x48a
+	.long	0xbdc
+	.long	0x547
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1022,8 +1294,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL2
-	.long	0x8be
-	.long	0x49e
+	.long	0xbdc
+	.long	0x55b
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1033,8 +1305,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL3
-	.long	0x8be
-	.long	0x4b1
+	.long	0xbdc
+	.long	0x56e
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1043,8 +1315,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL4
-	.long	0x8a7
-	.long	0x4c4
+	.long	0xbc5
+	.long	0x581
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1053,8 +1325,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL5
-	.long	0x8be
-	.long	0x4d8
+	.long	0xbdc
+	.long	0x595
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1064,7 +1336,7 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x1b
 	.long	.LVL6
-	.long	0x8be
+	.long	0xbdc
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1074,18 +1346,18 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.byte	0
 	.uleb128 0x1c
-	.long	0x342
+	.long	0x3ff
 	.byte	0
-	.long	0x4f9
+	.long	0x5b6
 	.uleb128 0x12
 	.long	0x83
 	.byte	0
 	.uleb128 0x13
 	.byte	0x1
-	.long	.LASF71
+	.long	.LASF85
 	.byte	0x1
 	.byte	0x2f
-	.long	.LASF73
+	.long	.LASF87
 	.long	.LFB8
 	.long	.LFE8
 	.byte	0x3
@@ -1093,11 +1365,11 @@ _Z12Roomba_Driveii:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x528
+	.long	0x5e5
 	.uleb128 0x1d
 	.long	.LVL7
 	.byte	0x1
-	.long	0x8be
+	.long	0xbdc
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1108,31 +1380,31 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x1e
 	.byte	0x1
-	.long	.LASF74
+	.long	.LASF88
 	.byte	0x1
 	.byte	0x33
-	.long	.LASF75
+	.long	.LASF89
 	.long	.LFB9
 	.long	.LFE9
 	.long	.LLST0
 	.byte	0x1
-	.long	0x821
+	.long	0xb3f
 	.uleb128 0x1f
-	.long	.LASF76
+	.long	.LASF90
 	.byte	0x1
 	.byte	0x33
-	.long	0x2b4
+	.long	0x371
 	.long	.LLST1
 	.uleb128 0x1f
-	.long	.LASF77
+	.long	.LASF91
 	.byte	0x1
 	.byte	0x33
-	.long	0x821
+	.long	0xb3f
 	.long	.LLST2
 	.uleb128 0x19
 	.long	.LVL10
-	.long	0x8be
-	.long	0x577
+	.long	0xbdc
+	.long	0x634
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1142,8 +1414,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL11
-	.long	0x8be
-	.long	0x58b
+	.long	0xbdc
+	.long	0x648
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1153,11 +1425,11 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x20
 	.long	.LVL12
-	.long	0x8d5
+	.long	0xbf3
 	.uleb128 0x19
 	.long	.LVL13
-	.long	0x8e6
-	.long	0x5ac
+	.long	0xc04
+	.long	0x669
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1171,8 +1443,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL14
-	.long	0x8e6
-	.long	0x5c4
+	.long	0xc04
+	.long	0x681
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1186,8 +1458,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL15
-	.long	0x8e6
-	.long	0x5dc
+	.long	0xc04
+	.long	0x699
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1201,8 +1473,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL16
-	.long	0x8e6
-	.long	0x5f4
+	.long	0xc04
+	.long	0x6b1
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1216,8 +1488,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL17
-	.long	0x8e6
-	.long	0x60c
+	.long	0xc04
+	.long	0x6c9
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1231,8 +1503,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL18
-	.long	0x8e6
-	.long	0x624
+	.long	0xc04
+	.long	0x6e1
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1246,8 +1518,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL19
-	.long	0x8e6
-	.long	0x63c
+	.long	0xc04
+	.long	0x6f9
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1261,8 +1533,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL20
-	.long	0x8e6
-	.long	0x654
+	.long	0xc04
+	.long	0x711
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1276,8 +1548,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL21
-	.long	0x8e6
-	.long	0x66c
+	.long	0xc04
+	.long	0x729
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1291,8 +1563,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL22
-	.long	0x8e6
-	.long	0x684
+	.long	0xc04
+	.long	0x741
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1306,11 +1578,11 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x20
 	.long	.LVL23
-	.long	0x8d5
+	.long	0xbf3
 	.uleb128 0x19
 	.long	.LVL24
-	.long	0x8e6
-	.long	0x6a5
+	.long	0xc04
+	.long	0x762
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1324,8 +1596,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL25
-	.long	0x8e6
-	.long	0x6bd
+	.long	0xc04
+	.long	0x77a
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1339,8 +1611,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL26
-	.long	0x8e6
-	.long	0x6d5
+	.long	0xc04
+	.long	0x792
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1354,8 +1626,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL27
-	.long	0x8e6
-	.long	0x6ed
+	.long	0xc04
+	.long	0x7aa
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1369,8 +1641,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL28
-	.long	0x8e6
-	.long	0x705
+	.long	0xc04
+	.long	0x7c2
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1384,8 +1656,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL29
-	.long	0x8e6
-	.long	0x71d
+	.long	0xc04
+	.long	0x7da
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1399,11 +1671,11 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x20
 	.long	.LVL30
-	.long	0x8d5
+	.long	0xbf3
 	.uleb128 0x19
 	.long	.LVL31
-	.long	0x8e6
-	.long	0x73e
+	.long	0xc04
+	.long	0x7fb
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1417,8 +1689,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL32
-	.long	0x8e6
-	.long	0x756
+	.long	0xc04
+	.long	0x813
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1432,8 +1704,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL33
-	.long	0x8e6
-	.long	0x76e
+	.long	0xc04
+	.long	0x82b
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1447,8 +1719,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL34
-	.long	0x8e6
-	.long	0x786
+	.long	0xc04
+	.long	0x843
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1462,8 +1734,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL35
-	.long	0x8e6
-	.long	0x79e
+	.long	0xc04
+	.long	0x85b
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1477,8 +1749,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL36
-	.long	0x8e6
-	.long	0x7b6
+	.long	0xc04
+	.long	0x873
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1492,8 +1764,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL37
-	.long	0x8e6
-	.long	0x7ce
+	.long	0xc04
+	.long	0x88b
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1507,8 +1779,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL38
-	.long	0x8e6
-	.long	0x7e6
+	.long	0xc04
+	.long	0x8a3
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1522,8 +1794,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL39
-	.long	0x8e6
-	.long	0x7fe
+	.long	0xc04
+	.long	0x8bb
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1537,8 +1809,8 @@ _Z12Roomba_Driveii:
 	.byte	0
 	.uleb128 0x19
 	.long	.LVL40
-	.long	0x8e6
-	.long	0x816
+	.long	0xc04
+	.long	0x8d3
 	.uleb128 0x1a
 	.byte	0x6
 	.byte	0x68
@@ -1550,41 +1822,419 @@ _Z12Roomba_Driveii:
 	.byte	0x1
 	.byte	0x39
 	.byte	0
-	.uleb128 0x21
-	.long	.LVL43
+	.uleb128 0x20
+	.long	.LVL41
+	.long	0xbf3
+	.uleb128 0x19
+	.long	.LVL42
+	.long	0xc04
+	.long	0x8f4
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
 	.byte	0x1
-	.long	0x901
+	.byte	0x30
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL43
+	.long	0xc04
+	.long	0x90c
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x31
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL44
+	.long	0xc04
+	.long	0x924
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x32
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL45
+	.long	0xc04
+	.long	0x93c
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x33
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL46
+	.long	0xc04
+	.long	0x954
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x34
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL47
+	.long	0xc04
+	.long	0x96c
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x35
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL48
+	.long	0xc04
+	.long	0x984
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x36
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL49
+	.long	0xc04
+	.long	0x99c
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x37
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL50
+	.long	0xc04
+	.long	0x9b4
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x38
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL51
+	.long	0xc04
+	.long	0x9cc
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x39
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL52
+	.long	0xc04
+	.long	0x9e4
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x3a
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL53
+	.long	0xc04
+	.long	0x9fc
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x3b
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL54
+	.long	0xc04
+	.long	0xa14
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x3c
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL55
+	.long	0xc04
+	.long	0xa2c
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x3d
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL56
+	.long	0xc04
+	.long	0xa44
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x3e
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL57
+	.long	0xc04
+	.long	0xa5c
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x3f
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL58
+	.long	0xc04
+	.long	0xa74
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x40
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL59
+	.long	0xc04
+	.long	0xa8c
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x41
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL60
+	.long	0xc04
+	.long	0xaa4
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x42
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL61
+	.long	0xc04
+	.long	0xabc
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x43
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL62
+	.long	0xc04
+	.long	0xad4
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x44
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL63
+	.long	0xc04
+	.long	0xaec
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x45
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL64
+	.long	0xc04
+	.long	0xb04
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x46
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL65
+	.long	0xc04
+	.long	0xb1c
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x47
+	.byte	0
+	.uleb128 0x19
+	.long	.LVL66
+	.long	0xc04
+	.long	0xb34
+	.uleb128 0x1a
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x48
+	.byte	0
+	.uleb128 0x21
+	.long	.LVL69
+	.byte	0x1
+	.long	0xc1f
 	.byte	0
 	.uleb128 0x22
 	.byte	0x2
-	.long	0x28a
+	.long	0x340
 	.uleb128 0x1e
 	.byte	0x1
-	.long	.LASF78
+	.long	.LASF92
 	.byte	0x1
-	.byte	0x63
-	.long	.LASF79
+	.byte	0x80
+	.long	.LASF93
 	.long	.LFB10
 	.long	.LFE10
 	.long	.LLST3
 	.byte	0x1
-	.long	0x8a7
+	.long	0xbc5
 	.uleb128 0x1f
-	.long	.LASF80
+	.long	.LASF94
 	.byte	0x1
-	.byte	0x63
+	.byte	0x80
 	.long	0x4d
 	.long	.LLST4
 	.uleb128 0x1f
-	.long	.LASF81
+	.long	.LASF95
 	.byte	0x1
-	.byte	0x63
+	.byte	0x80
 	.long	0x4d
 	.long	.LLST5
 	.uleb128 0x19
-	.long	.LVL46
-	.long	0x8be
-	.long	0x876
+	.long	.LVL72
+	.long	0xbdc
+	.long	0xb94
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1593,12 +2243,12 @@ _Z12Roomba_Driveii:
 	.byte	0x89
 	.byte	0
 	.uleb128 0x20
-	.long	.LVL47
-	.long	0x8be
+	.long	.LVL73
+	.long	0xbdc
 	.uleb128 0x19
-	.long	.LVL48
-	.long	0x8be
-	.long	0x893
+	.long	.LVL74
+	.long	0xbdc
+	.long	0xbb1
 	.uleb128 0x1a
 	.byte	0x1
 	.byte	0x68
@@ -1607,61 +2257,61 @@ _Z12Roomba_Driveii:
 	.sleb128 0
 	.byte	0
 	.uleb128 0x20
-	.long	.LVL49
-	.long	0x8be
+	.long	.LVL75
+	.long	0xbdc
 	.uleb128 0x21
-	.long	.LVL50
+	.long	.LVL76
 	.byte	0x1
-	.long	0x8be
+	.long	0xbdc
 	.byte	0
 	.uleb128 0x23
 	.byte	0x1
-	.long	.LASF82
+	.long	.LASF96
 	.byte	0x4
 	.byte	0x1c
-	.long	.LASF84
+	.long	.LASF98
 	.byte	0x1
-	.long	0x8be
+	.long	0xbdc
 	.uleb128 0x12
 	.long	0xc3
 	.byte	0
 	.uleb128 0x23
 	.byte	0x1
-	.long	.LASF83
+	.long	.LASF97
 	.byte	0x4
 	.byte	0x11
-	.long	.LASF85
+	.long	.LASF99
 	.byte	0x1
-	.long	0x8d5
+	.long	0xbf3
 	.uleb128 0x12
 	.long	0x3b
 	.byte	0
 	.uleb128 0x24
 	.byte	0x1
-	.long	.LASF94
+	.long	.LASF108
 	.byte	0x4
 	.byte	0x1d
-	.long	.LASF95
+	.long	.LASF109
 	.long	0x3b
 	.byte	0x1
 	.uleb128 0x25
 	.byte	0x1
-	.long	.LASF96
+	.long	.LASF110
 	.byte	0x4
 	.byte	0x1f
-	.long	.LASF97
+	.long	.LASF111
 	.long	0x3b
 	.byte	0x1
-	.long	0x901
+	.long	0xc1f
 	.uleb128 0x12
 	.long	0x58
 	.byte	0
 	.uleb128 0x26
 	.byte	0x1
-	.long	.LASF98
+	.long	.LASF112
 	.byte	0x4
 	.byte	0x1e
-	.long	.LASF99
+	.long	.LASF113
 	.byte	0x1
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
@@ -2212,10 +2862,10 @@ _Z12Roomba_Driveii:
 	.word	0x1
 	.byte	0x68
 	.long	.LVL9
-	.long	.LVL42
+	.long	.LVL68
 	.word	0x1
 	.byte	0x61
-	.long	.LVL42
+	.long	.LVL68
 	.long	.LFE9
 	.word	0x4
 	.byte	0xf3
@@ -2235,7 +2885,7 @@ _Z12Roomba_Driveii:
 	.byte	0x93
 	.uleb128 0x1
 	.long	.LVL10-1
-	.long	.LVL41
+	.long	.LVL67
 	.word	0x6
 	.byte	0x6c
 	.byte	0x93
@@ -2243,7 +2893,7 @@ _Z12Roomba_Driveii:
 	.byte	0x6d
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL41
+	.long	.LVL67
 	.long	.LFE9
 	.word	0x4
 	.byte	0xf3
@@ -2291,8 +2941,8 @@ _Z12Roomba_Driveii:
 	.long	0
 	.long	0
 .LLST4:
-	.long	.LVL44
-	.long	.LVL45
+	.long	.LVL70
+	.long	.LVL71
 	.word	0x6
 	.byte	0x68
 	.byte	0x93
@@ -2300,7 +2950,7 @@ _Z12Roomba_Driveii:
 	.byte	0x69
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL45
+	.long	.LVL71
 	.long	.LFE10
 	.word	0x4
 	.byte	0xf3
@@ -2310,8 +2960,8 @@ _Z12Roomba_Driveii:
 	.long	0
 	.long	0
 .LLST5:
-	.long	.LVL44
-	.long	.LVL46-1
+	.long	.LVL70
+	.long	.LVL72-1
 	.word	0x6
 	.byte	0x66
 	.byte	0x93
@@ -2319,7 +2969,7 @@ _Z12Roomba_Driveii:
 	.byte	0x67
 	.byte	0x93
 	.uleb128 0x1
-	.long	.LVL46-1
+	.long	.LVL72-1
 	.long	.LFE10
 	.word	0x4
 	.byte	0xf3
@@ -2361,49 +3011,55 @@ _Z12Roomba_Driveii:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF48:
+.LASF61:
 	.string	"roomba_sensor_data_t"
-.LASF54:
+.LASF68:
 	.string	"ROOMBA_SENSOR_GROUP"
 .LASF12:
 	.string	"UART_19200"
-.LASF56:
+.LASF70:
 	.string	"ROOMBA_600BPS"
+.LASF50:
+	.string	"light_bumber"
 .LASF29:
 	.string	"wall"
-.LASF63:
+.LASF77:
 	.string	"ROOMBA_28800BPS"
 .LASF42:
 	.string	"charging_state"
 .LASF0:
 	.string	"int8_t"
-.LASF61:
+.LASF75:
 	.string	"ROOMBA_14400BPS"
-.LASF53:
+.LASF66:
 	.string	"INTERNAL"
-.LASF71:
-	.string	"Roomba_Finish"
-.LASF93:
+.LASF52:
+	.string	"left_front_light_bumber_signal"
+.LASF107:
 	.string	"__builtin_avr_delay_cycles"
 .LASF39:
 	.string	"buttons"
-.LASF76:
+.LASF51:
+	.string	"left_light_bumber_signal"
+.LASF56:
+	.string	"right_light_bumber_signal"
+.LASF90:
 	.string	"group"
 .LASF37:
 	.string	"dirt_right"
-.LASF72:
+.LASF86:
 	.string	"_Z11Roomba_Initv"
-.LASF82:
+.LASF96:
 	.string	"Roomba_UART_Init"
 .LASF36:
 	.string	"dirt_left"
-.LASF59:
+.LASF73:
 	.string	"ROOMBA_4800BPS"
-.LASF94:
+.LASF108:
 	.string	"uart_bytes_received"
-.LASF80:
+.LASF94:
 	.string	"velocity"
-.LASF87:
+.LASF101:
 	.string	"../roomba/roomba.cpp"
 .LASF21:
 	.string	"int16_split"
@@ -2419,31 +3075,35 @@ _Z12Roomba_Driveii:
 	.string	"angle"
 .LASF1:
 	.string	"uint8_t"
-.LASF55:
+.LASF69:
 	.string	"ROOMBA_300BPS"
-.LASF74:
+.LASF88:
 	.string	"Roomba_UpdateSensorPacket"
-.LASF70:
+.LASF55:
+	.string	"right_front_light_bumber_signal"
+.LASF84:
 	.string	"Roomba_Init"
 .LASF19:
 	.string	"low_byte"
-.LASF62:
+.LASF76:
 	.string	"ROOMBA_19200BPS"
-.LASF67:
+.LASF81:
 	.string	"__tmp"
-.LASF73:
+.LASF87:
 	.string	"_Z13Roomba_Finishv"
 .LASF10:
 	.string	"long long int"
 .LASF35:
 	.string	"motor_overcurrents"
+.LASF58:
+	.string	"right_motor_current"
 .LASF7:
 	.string	"long int"
 .LASF43:
 	.string	"voltage"
 .LASF23:
 	.string	"bytes"
-.LASF91:
+.LASF105:
 	.string	"_delay_ms"
 .LASF38:
 	.string	"remote_opcode"
@@ -2451,24 +3111,32 @@ _Z12Roomba_Driveii:
 	.string	"virtual_wall"
 .LASF14:
 	.string	"UART_57600"
-.LASF84:
+.LASF48:
+	.string	"left_encoder_counts"
+.LASF98:
 	.string	"_Z16Roomba_UART_Init9_uart_bps"
-.LASF95:
+.LASF109:
 	.string	"_Z19uart_bytes_receivedv"
 .LASF46:
 	.string	"charge"
 .LASF33:
 	.string	"cliff_right"
-.LASF90:
+.LASF104:
 	.string	"20roomba_sensor_data_t"
-.LASF65:
+.LASF54:
+	.string	"right_center_light_bumber_signal"
+.LASF79:
 	.string	"ROOMBA_57600BPS"
 .LASF3:
 	.string	"unsigned char"
-.LASF77:
+.LASF91:
 	.string	"sensor_packet"
-.LASF81:
-	.string	"radius"
+.LASF53:
+	.string	"left_center_light_bumber_signal"
+.LASF49:
+	.string	"right_encoder_counts"
+.LASF67:
+	.string	"LIGHT_SENSOR"
 .LASF2:
 	.string	"signed char"
 .LASF47:
@@ -2483,82 +3151,92 @@ _Z12Roomba_Driveii:
 	.string	"uint16_t"
 .LASF27:
 	.string	"uint16_u"
-.LASF57:
+.LASF71:
 	.string	"ROOMBA_1200BPS"
 .LASF44:
 	.string	"current"
 .LASF32:
 	.string	"cliff_front_right"
-.LASF58:
+.LASF72:
 	.string	"ROOMBA_2400BPS"
 .LASF16:
 	.string	"UART_DEFAULT"
+.LASF60:
+	.string	"side_brush_motor_current"
 .LASF18:
 	.string	"char"
 .LASF40:
 	.string	"distance"
-.LASF96:
+.LASF110:
 	.string	"uart_get_byte"
-.LASF98:
+.LASF112:
 	.string	"uart_reset_receive"
-.LASF78:
+.LASF92:
 	.string	"Roomba_Drive"
 .LASF4:
 	.string	"int16_t"
 .LASF24:
 	.string	"int16_u"
-.LASF88:
+.LASF102:
 	.string	"C:\\\\Users\\\\Mikko\\\\Documents\\\\CSC460\\\\Project\\\\csc460-RTOS\\\\project3\\\\project3\\\\project2\\\\Debug"
 .LASF15:
 	.string	"UART_115200"
-.LASF50:
+.LASF63:
 	.string	"_rsg"
 .LASF9:
 	.string	"long unsigned int"
-.LASF79:
+.LASF93:
 	.string	"_Z12Roomba_Driveii"
-.LASF89:
+.LASF103:
 	.string	"_i16s"
-.LASF69:
+.LASF83:
 	.string	"double"
 .LASF25:
 	.string	"_i16u"
-.LASF66:
+.LASF80:
 	.string	"ROOMBA_115200BPS"
-.LASF75:
+.LASF89:
 	.string	"_Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t"
 .LASF45:
 	.string	"temperature"
-.LASF83:
+.LASF57:
+	.string	"left_motor_current"
+.LASF97:
 	.string	"Roomba_Send_Byte"
-.LASF51:
+.LASF64:
 	.string	"EXTERNAL_ROOMBA"
-.LASF92:
+.LASF59:
+	.string	"main_brush_motor_current"
+.LASF106:
 	.string	"__ms"
-.LASF68:
+.LASF85:
+	.string	"Roomba_Finish"
+.LASF82:
 	.string	"__ticks_dc"
 .LASF26:
 	.string	"_u16u"
-.LASF60:
+.LASF74:
 	.string	"ROOMBA_9600BPS"
-.LASF52:
+.LASF65:
 	.string	"CHASSIS"
-.LASF49:
+.LASF62:
 	.string	"_uart_bps"
 .LASF30:
 	.string	"cliff_left"
-.LASF64:
+.LASF95:
+	.string	"radius"
+.LASF78:
 	.string	"ROOMBA_38400BPS"
 .LASF28:
 	.string	"bumps_wheeldrops"
 .LASF22:
 	.string	"value"
-.LASF85:
-	.string	"_Z16Roomba_Send_Byteh"
-.LASF97:
-	.string	"_Z13uart_get_bytei"
 .LASF99:
+	.string	"_Z16Roomba_Send_Byteh"
+.LASF111:
+	.string	"_Z13uart_get_bytei"
+.LASF113:
 	.string	"_Z18uart_reset_receivev"
-.LASF86:
+.LASF100:
 	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"

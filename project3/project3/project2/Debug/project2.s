@@ -14,7 +14,7 @@ __zero_reg__ = 1
 _Z18send_recieve_radiov:
 .LFB96:
 	.file 1 ".././project2.cpp"
-	.loc 1 82 0
+	.loc 1 83 0
 	.cfi_startproc
 	push r28
 .LCFI0:
@@ -41,24 +41,24 @@ _Z18send_recieve_radiov:
 /* stack size = 36 */
 .L__stack_usage = 36
 .LBB8:
-	.loc 1 83 0
-	sbi 0x4,7
 	.loc 1 84 0
+	sbi 0x4,7
+	.loc 1 85 0
 	out 0x5,__zero_reg__
-	.loc 1 90 0
+	.loc 1 91 0
 	ldi r24,lo8(BASE_ADDRESS)
 	ldi r25,hi8(BASE_ADDRESS)
 	call _Z17Radio_Set_Tx_AddrPh
 .LVL0:
 .LBB9:
 .LBB10:
-	.loc 1 102 0
+	.loc 1 103 0
 	ldi r17,lo8(5)
-	.loc 1 115 0
+	.loc 1 116 0
 	ldi r16,lo8(1)
 .L9:
 .LBE10:
-	.loc 1 94 0
+	.loc 1 95 0
 	movw r22,r28
 	subi r22,-33
 	sbci r23,-1
@@ -66,21 +66,21 @@ _Z18send_recieve_radiov:
 	lds r25,radio_send_receive_service+1
 	call Service_Subscribe
 .LVL1:
-	.loc 1 97 0
+	.loc 1 98 0
 	movw r24,r28
 	adiw r24,1
 	call _Z13Radio_ReceiveP3_rp
 .LVL2:
-	.loc 1 98 0
+	.loc 1 99 0
 	sbi 0xe,3
 .L2:
-	.loc 1 99 0 discriminator 1
+	.loc 1 100 0 discriminator 1
 	subi r24,lo8(-(-3))
 .LVL3:
 	cpi r24,lo8(2)
 	brsh .L9
 .LBB11:
-	.loc 1 100 0
+	.loc 1 101 0
 	lds r18,roomba_identity
 	ldi r30,lo8(5)
 	ldi r31,0
@@ -90,7 +90,7 @@ _Z18send_recieve_radiov:
 	adc r31,__zero_reg__
 	ld r24,Z
 .LVL4:
-	.loc 1 102 0
+	.loc 1 103 0
 	movw r30,r28
 	adiw r30,4
 	ldi r26,lo8(current_game_state)
@@ -101,27 +101,27 @@ _Z18send_recieve_radiov:
 	st X+,r0
 	dec r25
 	brne 0b
-	.loc 1 104 0
+	.loc 1 105 0
 	ldd r25,Y+1
 	cpse r25,__zero_reg__
 	rjmp .L9
-	.loc 1 107 0
+	.loc 1 108 0
 	lds r25,roomba_state
 	cp r24,r25
 	breq .L5
-	.loc 1 108 0
+	.loc 1 109 0
 	sbrc r24,1
 	rjmp .L6
-	.loc 1 109 0
+	.loc 1 110 0
 	sbrc r25,1
 	rjmp .L6
 .LVL5:
-	.loc 1 114 0
+	.loc 1 115 0
 	std Y+4,r18
 	std Y+5,r25
-	.loc 1 115 0
-	std Y+1,r16
 	.loc 1 116 0
+	std Y+1,r16
+	.loc 1 117 0
 	ldi r22,lo8(1)
 	movw r24,r28
 .LVL6:
@@ -131,11 +131,11 @@ _Z18send_recieve_radiov:
 	rjmp .L5
 .LVL8:
 .L6:
-	.loc 1 120 0
+	.loc 1 121 0
 	sts roomba_state,r24
 .LVL9:
 .L5:
-	.loc 1 123 0
+	.loc 1 124 0
 	movw r24,r28
 	adiw r24,1
 	call _Z13Radio_ReceiveP3_rp
@@ -152,203 +152,279 @@ _Z18send_recieve_radiov:
 	.type	_Z18Send_Drive_Commandv, @function
 _Z18Send_Drive_Commandv:
 .LFB98:
-	.loc 1 162 0
+	.loc 1 163 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 189 0
-	ldi r16,lo8(-16)
+	.loc 1 193 0
+	ldi r28,lo8(-16)
+	ldi r29,0
+	.loc 1 194 0
+	ldi r16,lo8(100)
 	ldi r17,0
-	.loc 1 186 0
-	ldi r24,lo8(100)
-	mov r14,r24
-	mov r15,__zero_reg__
-	.loc 1 187 0
-	ldi r28,lo8(-1)
-	ldi r29,lo8(-1)
-	.loc 1 183 0
-	clr r12
-	inc r12
-	mov r13,__zero_reg__
+	.loc 1 199 0
+	ldi r24,lo8(-100)
+	mov r12,r24
+	clr r13
+	dec r13
+	.loc 1 189 0
+	clr r14
+	dec r14
+	mov r15,r14
+	.loc 1 185 0
+	clr r10
+	inc r10
+	mov r11,__zero_reg__
 .L12:
-	.loc 1 165 0
+	.loc 1 166 0
 	lds r24,current_game_state
 .L17:
 	cpi r24,lo8(1)
 	breq .L14
-	brlo .L19
+	brsh .+2
+	rjmp .L19
 	cpi r24,lo8(2)
 	brne .+2
 	rjmp .L16
 	rjmp .L17
 .L14:
-	.loc 1 176 0
+	.loc 1 177 0
 	lds r24,roomba_state
 	sbrc r24,0
 	rjmp .L19
-	.loc 1 177 0
-	ldi r22,lo8(roomba_sensor_packet)
-	ldi r23,hi8(roomba_sensor_packet)
-	ldi r24,lo8(2)
-	call _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t
-.LVL11:
-	.loc 1 178 0
-	ldi r22,lo8(roomba_sensor_packet)
-	ldi r23,hi8(roomba_sensor_packet)
+	.loc 1 179 0
+	ldi r22,lo8(roomba_bumper_sensor_packet)
+	ldi r23,hi8(roomba_bumper_sensor_packet)
 	ldi r24,lo8(1)
 	call _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t
-.LVL12:
+.LVL11:
 	.loc 1 180 0
-	lds r24,roomba_sensor_packet
+	ldi r22,lo8(roomba_light_sensor_packet)
+	ldi r23,hi8(roomba_light_sensor_packet)
+	ldi r24,lo8(101)
+	call _Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t
+.LVL12:
+	.loc 1 182 0
+	lds r24,roomba_bumper_sensor_packet
 	sbrs r24,0
 	rjmp .L20
-	.loc 1 182 0
-	sts roomba_velocity+1,r15
-	sts roomba_velocity,r14
-	.loc 1 183 0
+	.loc 1 184 0
+	sts roomba_velocity+1,r17
+	sts roomba_velocity,r16
+	.loc 1 185 0
+	sts roomba_rotation+1,r11
+	sts roomba_rotation,r10
+	rjmp .L21
+.L20:
+	.loc 1 186 0
+	sbrs r24,1
+	rjmp .L22
+	.loc 1 188 0
+	sts roomba_velocity+1,r17
+	sts roomba_velocity,r16
+	.loc 1 189 0
+	sts roomba_rotation+1,r15
+	sts roomba_rotation,r14
+	rjmp .L21
+.L22:
+	.loc 1 192 0
+	lds r24,roomba_light_sensor_packet+30
+	sbrc r24,0
+	rjmp .L23
+	.loc 1 192 0 is_stmt 0 discriminator 1
+	mov r25,r24
+	andi r25,lo8(3)
+	breq .L24
+.L23:
+	.loc 1 193 0 is_stmt 1
+	sts roomba_velocity+1,r29
+	sts roomba_velocity,r28
+	.loc 1 194 0
+	sts roomba_rotation+1,r17
+	sts roomba_rotation,r16
+	rjmp .L21
+.L24:
+	.loc 1 197 0
+	mov r25,r24
+	andi r25,lo8(6)
+	.loc 1 198 0
+	sts roomba_velocity+1,r29
+	sts roomba_velocity,r28
+	.loc 1 197 0
+	cpse r25,__zero_reg__
+	rjmp .L25
+	.loc 1 197 0 is_stmt 0 discriminator 1
+	andi r24,lo8(5)
+	breq .L26
+.L25:
+	.loc 1 199 0 is_stmt 1
 	sts roomba_rotation+1,r13
 	sts roomba_rotation,r12
 	rjmp .L21
-.L20:
-	.loc 1 184 0
-	sbrs r24,1
-	rjmp .L22
-	.loc 1 186 0
-	sts roomba_velocity+1,r15
-	sts roomba_velocity,r14
-	.loc 1 187 0
-	sts roomba_rotation+1,r29
-	sts roomba_rotation,r28
-	rjmp .L21
-.L22:
-	.loc 1 189 0
-	sts roomba_velocity+1,r17
-	sts roomba_velocity,r16
-	.loc 1 190 0
+.L26:
+	.loc 1 203 0
 	sts roomba_rotation+1,__zero_reg__
 	sts roomba_rotation,__zero_reg__
 .L21:
-	.loc 1 192 0 discriminator 1
+	.loc 1 205 0 discriminator 1
 	lds r22,roomba_rotation
 	lds r23,roomba_rotation+1
 	lds r24,roomba_velocity
 	lds r25,roomba_velocity+1
-	rjmp .L23
+	rjmp .L27
 .L19:
-	.loc 1 196 0
+	.loc 1 209 0
 	sts roomba_velocity+1,__zero_reg__
 	sts roomba_velocity,__zero_reg__
-	.loc 1 197 0
+	.loc 1 210 0
 	sts roomba_rotation+1,__zero_reg__
 	sts roomba_rotation,__zero_reg__
-	.loc 1 198 0
+	.loc 1 211 0
 	ldi r22,0
 	ldi r23,0
 	ldi r24,0
 	ldi r25,0
-	rjmp .L23
+	rjmp .L27
 .L16:
-	.loc 1 205 0
+	.loc 1 218 0
 	lds r24,roomba_state
 	sbrc r24,0
 	rjmp .L19
-	.loc 1 206 0
-	sts roomba_velocity+1,r17
-	sts roomba_velocity,r16
-	.loc 1 207 0
-	sts roomba_rotation+1,r29
-	sts roomba_rotation,r28
-	.loc 1 208 0
+	.loc 1 219 0
+	sts roomba_velocity+1,r29
+	sts roomba_velocity,r28
+	.loc 1 220 0
+	sts roomba_rotation+1,r15
+	sts roomba_rotation,r14
+	.loc 1 221 0
 	ldi r22,lo8(-1)
 	ldi r23,lo8(-1)
 	ldi r24,lo8(-16)
 	ldi r25,0
-.L23:
+.L27:
 	call _Z12Roomba_Driveii
 .LVL13:
-	.loc 1 209 0
+	.loc 1 222 0
 	call Task_Next
 .LVL14:
 	rjmp .L12
 	.cfi_endproc
 .LFE98:
 	.size	_Z18Send_Drive_Commandv, .-_Z18Send_Drive_Commandv
+	.section	.text._Z15send_IR_Commandv,"ax",@progbits
+.global	_Z15send_IR_Commandv
+	.type	_Z15send_IR_Commandv, @function
+_Z15send_IR_Commandv:
+.LFB99:
+	.loc 1 242 0
+	.cfi_startproc
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 0 */
+.L__stack_usage = 0
+.L31:
+	.loc 1 245 0
+	lds r24,roomba_state
+	sbrc r24,0
+	rjmp .L29
+	.loc 1 246 0
+	lds r24,roomba_identity
+	cpi r24,lo8(2)
+	brsh .L30
+	.loc 1 247 0
+	ldi r24,lo8(66)
+	rjmp .L32
+.L30:
+	.loc 1 249 0
+	ldi r24,lo8(65)
+.L32:
+	call _Z11IR_transmith
+.LVL15:
+.L29:
+	.loc 1 252 0
+	call Task_Next
+.LVL16:
+	.loc 1 242 0
+	rjmp .L31
+	.cfi_endproc
+.LFE99:
+	.size	_Z15send_IR_Commandv, .-_Z15send_IR_Commandv
 	.section	.text._Z12ir_rxhandlerv,"ax",@progbits
 .global	_Z12ir_rxhandlerv
 	.type	_Z12ir_rxhandlerv, @function
 _Z12ir_rxhandlerv:
 .LFB94:
-	.loc 1 36 0
+	.loc 1 37 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
 .LBB12:
-	.loc 1 37 0
+	.loc 1 38 0
 	call _Z10IR_getLastv
-.LVL15:
-	.loc 1 39 0
-	cpi r24,lo8(66)
-	brne .L25
-	.loc 1 41 0
-	lds r24,roomba_state
-.LVL16:
-	sbrc r24,1
-	rjmp .L24
-	.loc 1 42 0
-	lds r18,roomba_identity
-	mov r25,r24
-	andi r25,lo8(1)
-	cpi r18,lo8(2)
-	brsh .L28
-	rjmp .L34
 .LVL17:
-.L25:
-	.loc 1 54 0
-	cpi r24,lo8(65)
-	brne .L24
-	.loc 1 55 0
+	.loc 1 40 0
+	cpi r24,lo8(66)
+	brne .L34
+	.loc 1 42 0
 	lds r24,roomba_state
 .LVL18:
 	sbrc r24,1
-	rjmp .L24
-	.loc 1 56 0
+	rjmp .L33
+	.loc 1 43 0
 	lds r18,roomba_identity
 	mov r25,r24
 	andi r25,lo8(1)
 	cpi r18,lo8(2)
-	brlo .L28
+	brsh .L37
+	rjmp .L43
+.LVL19:
 .L34:
-	.loc 1 56 0 is_stmt 0 discriminator 1
+	.loc 1 55 0
+	cpi r24,lo8(65)
+	brne .L33
+	.loc 1 56 0
+	lds r24,roomba_state
+.LVL20:
+	sbrc r24,1
+	rjmp .L33
+	.loc 1 57 0
+	lds r18,roomba_identity
+	mov r25,r24
+	andi r25,lo8(1)
+	cpi r18,lo8(2)
+	brlo .L37
+.L43:
+	.loc 1 57 0 is_stmt 0 discriminator 1
 	cpi r25,lo8(1)
-	brne .L24
-	.loc 1 57 0 is_stmt 1
+	brne .L33
+	.loc 1 58 0 is_stmt 1
 	eor r24,r25
 	sts roomba_state,r24
-	rjmp .L30
-.L28:
-	.loc 1 60 0 discriminator 1
+	rjmp .L39
+.L37:
+	.loc 1 61 0 discriminator 1
 	cpse r25,__zero_reg__
-	rjmp .L24
-	.loc 1 61 0
+	rjmp .L33
+	.loc 1 62 0
 	ldi r25,lo8(1)
 	eor r25,r24
 	sts roomba_state,r25
-.L30:
-	.loc 1 62 0
+.L39:
+	.loc 1 63 0
 	lds r24,258
 	ldi r25,lo8(8)
 	eor r24,r25
 	sts 258,r24
-	.loc 1 63 0
+	.loc 1 64 0
 	lds r24,258
 	ldi r25,lo8(16)
 	eor r24,r25
 	sts 258,r24
-.L24:
+.L33:
 	ret
 .LBE12:
 	.cfi_endproc
@@ -359,47 +435,47 @@ _Z12ir_rxhandlerv:
 	.type	_Z15radio_rxhandlerh, @function
 _Z15radio_rxhandlerh:
 .LFB95:
-	.loc 1 70 0
+	.loc 1 71 0
 	.cfi_startproc
-.LVL19:
+.LVL21:
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 71 0
+	.loc 1 72 0
 	in r25,0xe
 	ldi r18,lo8(8)
 	eor r25,r18
 	out 0xe,r25
-	.loc 1 72 0
+	.loc 1 73 0
 	mov r22,r24
 	ldi r23,0
 	lds r24,radio_send_receive_service
 	lds r25,radio_send_receive_service+1
-.LVL20:
+.LVL22:
 	call Service_Publish
-.LVL21:
-	.loc 1 73 0
+.LVL23:
+	.loc 1 74 0
 	lds r24,roomba_state
 	sbrc r24,0
-	rjmp .L36
-	.loc 1 74 0
+	rjmp .L45
+	.loc 1 75 0
 	lds r24,258
 	andi r24,lo8(-17)
 	sts 258,r24
-	.loc 1 75 0
+	.loc 1 76 0
 	lds r24,258
 	ori r24,lo8(8)
-	rjmp .L38
-.L36:
-	.loc 1 77 0
+	rjmp .L47
+.L45:
+	.loc 1 78 0
 	lds r24,258
 	ori r24,lo8(16)
 	sts 258,r24
-	.loc 1 78 0
+	.loc 1 79 0
 	lds r24,258
 	andi r24,lo8(-9)
-.L38:
+.L47:
 	sts 258,r24
 	ret
 	.cfi_endproc
@@ -410,41 +486,41 @@ _Z15radio_rxhandlerh:
 	.type	setup, @function
 setup:
 .LFB97:
-	.loc 1 129 0
+	.loc 1 130 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 133 0
+	.loc 1 134 0
 	lds r24,257
 	ori r24,lo8(24)
 	sts 257,r24
-	.loc 1 134 0
-	sbi 0xd,3
 	.loc 1 135 0
+	sbi 0xd,3
+	.loc 1 136 0
 	lds r24,roomba_state
 	sbrc r24,0
-	rjmp .L40
-	.loc 1 136 0
+	rjmp .L49
+	.loc 1 137 0
 	lds r24,258
 	ori r24,lo8(8)
-	rjmp .L42
-.L40:
-	.loc 1 138 0
+	rjmp .L51
+.L49:
+	.loc 1 139 0
 	lds r24,258
 	ori r24,lo8(16)
-.L42:
+.L51:
 	sts 258,r24
-	.loc 1 142 0
+	.loc 1 143 0
 	lds r24,266
 	ori r24,lo8(4)
 	sts 266,r24
-	.loc 1 143 0
+	.loc 1 144 0
 	lds r24,267
 	andi r24,lo8(-5)
 	sts 267,r24
-.LVL22:
+.LVL24:
 .LBB13:
 .LBB14:
 	.file 2 "c:\\program files (x86)\\atmel\\atmel toolchain\\avr8 gcc\\native\\3.4.1061\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h"
@@ -460,11 +536,11 @@ setup:
 	nop
 .LBE14:
 .LBE13:
-	.loc 1 145 0
+	.loc 1 146 0
 	lds r24,267
 	ori r24,lo8(4)
 	sts 267,r24
-.LVL23:
+.LVL25:
 .LBB15:
 .LBB16:
 	.loc 2 163 0
@@ -479,11 +555,11 @@ setup:
 	nop
 .LBE16:
 .LBE15:
-	.loc 1 147 0
+	.loc 1 148 0
 	lds r24,BASE_FREQUENCY
 	call _Z10Radio_Inith
-.LVL24:
-	.loc 1 149 0
+.LVL26:
+	.loc 1 150 0
 	lds r22,roomba_identity
 	ldi r18,lo8(5)
 	mul r22,r18
@@ -494,72 +570,34 @@ setup:
 	ldi r20,lo8(1)
 	ldi r24,0
 	call _Z18Radio_Configure_Rx11_radio_pipePh3_ed
-.LVL25:
-	.loc 1 151 0
+.LVL27:
+	.loc 1 152 0
 	ldi r22,lo8(3)
 	ldi r24,0
 	call _Z15Radio_Configure9_radio_dr15_radio_tx_power
-.LVL26:
-	.loc 1 152 0
+.LVL28:
+	.loc 1 153 0
 	call Service_Init
-.LVL27:
+.LVL29:
 	sts radio_send_receive_service+1,r25
 	sts radio_send_receive_service,r24
-	.loc 1 155 0
+	.loc 1 156 0
 	sts current_game_state,__zero_reg__
-	.loc 1 158 0
-	call _Z11Roomba_Initv
-.LVL28:
 	.loc 1 159 0
+	call _Z11Roomba_Initv
+.LVL30:
+	.loc 1 160 0
 	jmp _Z7IR_initv
-.LVL29:
+.LVL31:
 	.cfi_endproc
 .LFE97:
 	.size	setup, .-setup
-	.section	.text._Z15send_IR_Commandv,"ax",@progbits
-.global	_Z15send_IR_Commandv
-	.type	_Z15send_IR_Commandv, @function
-_Z15send_IR_Commandv:
-.LFB99:
-	.loc 1 228 0
-	.cfi_startproc
-/* prologue: function */
-/* frame size = 0 */
-/* stack size = 0 */
-.L__stack_usage = 0
-.L46:
-	.loc 1 231 0
-	lds r24,roomba_state
-	sbrc r24,0
-	rjmp .L44
-	.loc 1 232 0
-	lds r24,roomba_identity
-	cpi r24,lo8(2)
-	brsh .L45
-	.loc 1 233 0
-	ldi r24,lo8(66)
-	rjmp .L47
-.L45:
-	.loc 1 235 0
-	ldi r24,lo8(65)
-.L47:
-	call _Z11IR_transmith
-.LVL30:
-.L44:
-	.loc 1 238 0
-	call Task_Next
-.LVL31:
-	.loc 1 228 0
-	rjmp .L46
-	.cfi_endproc
-.LFE99:
-	.size	_Z15send_IR_Commandv, .-_Z15send_IR_Commandv
 	.section	.text._Z6r_mainv,"ax",@progbits
 .global	_Z6r_mainv
 	.type	_Z6r_mainv, @function
 _Z6r_mainv:
 .LFB100:
-	.loc 1 243 0
+	.loc 1 257 0
 	.cfi_startproc
 	push r16
 .LCFI4:
@@ -573,30 +611,37 @@ _Z6r_mainv:
 /* frame size = 0 */
 /* stack size = 2 */
 .L__stack_usage = 2
-	.loc 1 245 0
+	.loc 1 259 0
 	call setup
 .LVL32:
-	.loc 1 246 0
+	.loc 1 260 0
 	ldi r22,0
 	ldi r23,0
 	ldi r24,lo8(gs(_Z18send_recieve_radiov))
 	ldi r25,hi8(gs(_Z18send_recieve_radiov))
 	call Task_Create_System
 .LVL33:
-	.loc 1 247 0
-	ldi r16,lo8(5)
-	ldi r17,0
-	ldi r18,lo8(4)
-	ldi r19,0
-	ldi r20,lo8(10)
-	ldi r21,0
+	.loc 1 262 0
 	ldi r22,0
 	ldi r23,0
 	ldi r24,lo8(gs(_Z18Send_Drive_Commandv))
 	ldi r25,hi8(gs(_Z18Send_Drive_Commandv))
-	call Task_Create_Periodic
+	call Task_Create_RR
 .LVL34:
-	.loc 1 251 0
+	.loc 1 265 0
+	ldi r16,lo8(5)
+	ldi r17,0
+	ldi r18,lo8(4)
+	ldi r19,0
+	ldi r20,lo8(100)
+	ldi r21,0
+	ldi r22,0
+	ldi r23,0
+	ldi r24,lo8(gs(_Z15send_IR_Commandv))
+	ldi r25,hi8(gs(_Z15send_IR_Commandv))
+	call Task_Create_Periodic
+.LVL35:
+	.loc 1 268 0
 	ldi r24,lo8(1)
 	ldi r25,0
 /* epilogue start */
@@ -612,12 +657,18 @@ _Z6r_mainv:
 	.size	current_game_state, 5
 current_game_state:
 	.zero	5
-.global	roomba_sensor_packet
-	.section	.bss.roomba_sensor_packet,"aw",@nobits
-	.type	roomba_sensor_packet, @object
-	.size	roomba_sensor_packet, 26
-roomba_sensor_packet:
-	.zero	26
+.global	roomba_light_sensor_packet
+	.section	.bss.roomba_light_sensor_packet,"aw",@nobits
+	.type	roomba_light_sensor_packet, @object
+	.size	roomba_light_sensor_packet, 51
+roomba_light_sensor_packet:
+	.zero	51
+.global	roomba_bumper_sensor_packet
+	.section	.bss.roomba_bumper_sensor_packet,"aw",@nobits
+	.type	roomba_bumper_sensor_packet, @object
+	.size	roomba_bumper_sensor_packet, 51
+roomba_bumper_sensor_packet:
+	.zero	51
 .global	roomba_identity
 	.section	.bss.roomba_identity,"aw",@nobits
 	.type	roomba_identity, @object
@@ -662,15 +713,15 @@ roomba_velocity:
 	.file 12 ".././ir/ir.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0xe2d
+	.long	0xf42
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF202
+	.long	.LASF218
 	.byte	0x4
-	.long	.LASF203
-	.long	.LASF204
+	.long	.LASF219
+	.long	.LASF220
 	.long	.Ldebug_ranges0+0x18
 	.long	0
 	.long	0
@@ -796,7 +847,7 @@ roomba_velocity:
 	.byte	0x1
 	.byte	0x5
 	.byte	0x36
-	.long	.LASF205
+	.long	.LASF221
 	.long	0x129
 	.uleb128 0xa
 	.long	.LASF20
@@ -1425,11 +1476,11 @@ roomba_velocity:
 	.byte	0x1e
 	.long	0x5b7
 	.uleb128 0x16
-	.byte	0x1a
+	.byte	0x33
 	.byte	0x9
 	.byte	0x22
-	.long	.LASF206
-	.long	0x70a
+	.long	.LASF222
+	.long	0x7c0
 	.uleb128 0x6
 	.long	.LASF118
 	.byte	0x9
@@ -1590,62 +1641,169 @@ roomba_velocity:
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x18
-	.byte	0
-	.uleb128 0x2
+	.uleb128 0x6
 	.long	.LASF138
 	.byte	0x9
-	.byte	0x3c
+	.byte	0x3e
+	.long	0x5da
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1a
+	.uleb128 0x6
+	.long	.LASF139
+	.byte	0x9
+	.byte	0x3f
+	.long	0x5da
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1c
+	.uleb128 0x6
+	.long	.LASF140
+	.byte	0x9
+	.byte	0x40
+	.long	0x3b
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1e
+	.uleb128 0x6
+	.long	.LASF141
+	.byte	0x9
+	.byte	0x41
+	.long	0x5da
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x1f
+	.uleb128 0x6
+	.long	.LASF142
+	.byte	0x9
+	.byte	0x42
+	.long	0x5da
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x21
+	.uleb128 0x6
+	.long	.LASF143
+	.byte	0x9
+	.byte	0x43
+	.long	0x5da
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x23
+	.uleb128 0x6
+	.long	.LASF144
+	.byte	0x9
+	.byte	0x44
+	.long	0x5da
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x25
+	.uleb128 0x6
+	.long	.LASF145
+	.byte	0x9
+	.byte	0x45
+	.long	0x5da
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x27
+	.uleb128 0x6
+	.long	.LASF146
+	.byte	0x9
+	.byte	0x46
+	.long	0x5da
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x29
+	.uleb128 0x6
+	.long	.LASF147
+	.byte	0x9
+	.byte	0x47
+	.long	0x5ac
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2b
+	.uleb128 0x6
+	.long	.LASF148
+	.byte	0x9
+	.byte	0x48
+	.long	0x5ac
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2d
+	.uleb128 0x6
+	.long	.LASF149
+	.byte	0x9
+	.byte	0x49
+	.long	0x5ac
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2f
+	.uleb128 0x6
+	.long	.LASF150
+	.byte	0x9
+	.byte	0x4a
+	.long	0x5ac
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x31
+	.byte	0
+	.uleb128 0x2
+	.long	.LASF151
+	.byte	0x9
+	.byte	0x4b
 	.long	0x5e5
 	.uleb128 0x10
-	.long	.LASF139
+	.long	.LASF152
 	.byte	0x1
 	.byte	0xa
 	.byte	0xe
-	.long	0x734
+	.long	0x7f1
 	.uleb128 0xa
-	.long	.LASF140
+	.long	.LASF153
 	.sleb128 1
 	.uleb128 0xa
-	.long	.LASF141
+	.long	.LASF154
 	.sleb128 2
 	.uleb128 0xa
-	.long	.LASF142
+	.long	.LASF155
 	.sleb128 3
+	.uleb128 0xa
+	.long	.LASF156
+	.sleb128 101
 	.byte	0
 	.uleb128 0x2
-	.long	.LASF143
+	.long	.LASF157
 	.byte	0xa
-	.byte	0x13
-	.long	0x715
+	.byte	0x14
+	.long	0x7cb
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x2
-	.long	.LASF144
+	.long	.LASF158
 	.uleb128 0x17
-	.long	.LASF207
+	.long	.LASF223
 	.byte	0x2
 	.byte	0x8e
 	.byte	0x3
-	.long	0x785
+	.long	0x842
 	.uleb128 0x18
-	.long	.LASF208
+	.long	.LASF224
 	.byte	0x2
 	.byte	0x8e
 	.long	0xa6
 	.uleb128 0x19
 	.uleb128 0x1a
-	.long	.LASF145
+	.long	.LASF159
 	.byte	0x2
 	.byte	0x90
 	.long	0xa6
 	.uleb128 0x1a
-	.long	.LASF146
+	.long	.LASF160
 	.byte	0x2
 	.byte	0x94
 	.long	0x78
 	.uleb128 0x1b
 	.byte	0x1
-	.long	.LASF209
+	.long	.LASF225
 	.byte	0x2
 	.byte	0x95
 	.byte	0x1
@@ -1656,64 +1814,64 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x1d
 	.byte	0x1
-	.long	.LASF153
+	.long	.LASF167
 	.byte	0x1
-	.byte	0x52
-	.long	.LASF155
+	.byte	0x53
+	.long	.LASF169
 	.long	.LFB96
 	.long	.LFE96
 	.long	.LLST0
 	.byte	0x1
-	.long	0x876
+	.long	0x933
 	.uleb128 0x1e
 	.long	.LBB8
 	.long	.LBE8
 	.uleb128 0x1a
-	.long	.LASF147
-	.byte	0x1
-	.byte	0x55
-	.long	0x502
-	.uleb128 0x1f
-	.long	.LASF148
+	.long	.LASF161
 	.byte	0x1
 	.byte	0x56
+	.long	0x502
+	.uleb128 0x1f
+	.long	.LASF162
+	.byte	0x1
+	.byte	0x57
 	.long	0x4de
 	.long	.LLST1
 	.uleb128 0x20
-	.long	.LASF149
+	.long	.LASF163
 	.byte	0x1
-	.byte	0x57
+	.byte	0x58
 	.long	0x412
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
 	.uleb128 0x1f
-	.long	.LASF150
+	.long	.LASF164
 	.byte	0x1
-	.byte	0x58
+	.byte	0x59
 	.long	0x309
 	.long	.LLST2
 	.uleb128 0x20
-	.long	.LASF151
+	.long	.LASF165
 	.byte	0x1
-	.byte	0x59
+	.byte	0x5a
 	.long	0x4d
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 33
 	.uleb128 0x21
 	.long	.Ldebug_ranges0+0
-	.long	0x83d
+	.long	0x8fa
 	.uleb128 0x1f
-	.long	.LASF152
+	.long	.LASF166
 	.byte	0x1
-	.byte	0x64
+	.byte	0x65
 	.long	0x3b
 	.long	.LLST3
 	.uleb128 0x22
 	.long	.LVL7
-	.long	0xc75
-	.long	0x827
+	.long	0xd6d
+	.long	0x8e4
 	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
@@ -1734,7 +1892,7 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x24
 	.long	.LVL10
-	.long	0xc9b
+	.long	0xd93
 	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
@@ -1750,11 +1908,11 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x25
 	.long	.LVL0
-	.long	0xcb6
+	.long	0xdae
 	.uleb128 0x22
 	.long	.LVL1
-	.long	0xccd
-	.long	0x85f
+	.long	0xdc5
+	.long	0x91c
 	.uleb128 0x23
 	.byte	0x6
 	.byte	0x66
@@ -1769,7 +1927,7 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x24
 	.long	.LVL2
-	.long	0xc9b
+	.long	0xd93
 	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
@@ -1786,10 +1944,10 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x26
 	.byte	0x1
-	.long	.LASF154
+	.long	.LASF168
 	.byte	0x1
-	.byte	0xa2
-	.long	.LASF156
+	.byte	0xa3
+	.long	.LASF170
 	.long	.LFB98
 	.long	.LFE98
 	.byte	0x3
@@ -1797,32 +1955,11 @@ roomba_velocity:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x8e8
+	.long	0x9a6
 	.uleb128 0x22
 	.long	.LVL11
-	.long	0xce6
-	.long	0x8b4
-	.uleb128 0x23
-	.byte	0x1
-	.byte	0x68
-	.byte	0x1
-	.byte	0x32
-	.uleb128 0x23
-	.byte	0x6
-	.byte	0x66
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x67
-	.byte	0x93
-	.uleb128 0x1
-	.byte	0x5
-	.byte	0x3
-	.long	roomba_sensor_packet
-	.byte	0
-	.uleb128 0x22
-	.long	.LVL12
-	.long	0xce6
-	.long	0x8d5
+	.long	0xdde
+	.long	0x971
 	.uleb128 0x23
 	.byte	0x1
 	.byte	0x68
@@ -1838,21 +1975,64 @@ roomba_velocity:
 	.uleb128 0x1
 	.byte	0x5
 	.byte	0x3
-	.long	roomba_sensor_packet
+	.long	roomba_bumper_sensor_packet
+	.byte	0
+	.uleb128 0x22
+	.long	.LVL12
+	.long	0xdde
+	.long	0x993
+	.uleb128 0x23
+	.byte	0x1
+	.byte	0x68
+	.byte	0x2
+	.byte	0x8
+	.byte	0x65
+	.uleb128 0x23
+	.byte	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5
+	.byte	0x3
+	.long	roomba_light_sensor_packet
 	.byte	0
 	.uleb128 0x25
 	.long	.LVL13
-	.long	0xd08
+	.long	0xe00
 	.uleb128 0x25
 	.long	.LVL14
-	.long	0xd24
+	.long	0xe1c
 	.byte	0
 	.uleb128 0x26
 	.byte	0x1
-	.long	.LASF157
+	.long	.LASF171
 	.byte	0x1
-	.byte	0x24
-	.long	.LASF158
+	.byte	0xf2
+	.long	.LASF172
+	.long	.LFB99
+	.long	.LFE99
+	.byte	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.byte	0x1
+	.long	0x9d6
+	.uleb128 0x25
+	.long	.LVL15
+	.long	0xe26
+	.uleb128 0x25
+	.long	.LVL16
+	.long	0xe1c
+	.byte	0
+	.uleb128 0x26
+	.byte	0x1
+	.long	.LASF173
+	.byte	0x1
+	.byte	0x25
+	.long	.LASF174
 	.long	.LFB94
 	.long	.LFE94
 	.byte	0x3
@@ -1860,27 +2040,27 @@ roomba_velocity:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x928
+	.long	0xa16
 	.uleb128 0x1e
 	.long	.LBB12
 	.long	.LBE12
 	.uleb128 0x1f
-	.long	.LASF159
+	.long	.LASF175
 	.byte	0x1
-	.byte	0x25
+	.byte	0x26
 	.long	0x3b
 	.long	.LLST4
 	.uleb128 0x25
-	.long	.LVL15
-	.long	0xd2e
+	.long	.LVL17
+	.long	0xe3d
 	.byte	0
 	.byte	0
 	.uleb128 0x26
 	.byte	0x1
-	.long	.LASF160
+	.long	.LASF176
 	.byte	0x1
-	.byte	0x46
-	.long	.LASF161
+	.byte	0x47
+	.long	.LASF177
 	.long	.LFB95
 	.long	.LFE95
 	.byte	0x3
@@ -1888,22 +2068,22 @@ roomba_velocity:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0x95e
+	.long	0xa4c
 	.uleb128 0x27
-	.long	.LASF210
+	.long	.LASF226
 	.byte	0x1
-	.byte	0x46
+	.byte	0x47
 	.long	0x3b
 	.long	.LLST5
 	.uleb128 0x25
-	.long	.LVL21
-	.long	0xd3f
+	.long	.LVL23
+	.long	0xe4e
 	.byte	0
 	.uleb128 0x28
 	.byte	0x1
-	.long	.LASF211
+	.long	.LASF227
 	.byte	0x1
-	.byte	0x81
+	.byte	0x82
 	.long	.LFB97
 	.long	.LFE97
 	.byte	0x3
@@ -1911,60 +2091,60 @@ roomba_velocity:
 	.uleb128 0x20
 	.sleb128 3
 	.byte	0x1
-	.long	0xa43
+	.long	0xb31
 	.uleb128 0x29
-	.long	0x746
+	.long	0x803
 	.long	.LBB13
 	.long	.LBE13
 	.byte	0x1
-	.byte	0x90
-	.long	0x9b2
+	.byte	0x91
+	.long	0xaa0
 	.uleb128 0x2a
-	.long	0x752
+	.long	0x80f
 	.byte	0x4
 	.long	0x43fa0000
 	.uleb128 0x1e
 	.long	.LBB14
 	.long	.LBE14
 	.uleb128 0x2b
-	.long	0x75e
+	.long	0x81b
 	.byte	0x4
 	.long	0x4af42400
 	.uleb128 0x2c
-	.long	0x769
+	.long	0x826
 	.long	0x7a1200
 	.byte	0
 	.byte	0
 	.uleb128 0x29
-	.long	0x746
+	.long	0x803
 	.long	.LBB15
 	.long	.LBE15
 	.byte	0x1
-	.byte	0x92
-	.long	0x9ed
+	.byte	0x93
+	.long	0xadb
 	.uleb128 0x2a
-	.long	0x752
+	.long	0x80f
 	.byte	0x4
 	.long	0x43fa0000
 	.uleb128 0x1e
 	.long	.LBB16
 	.long	.LBE16
 	.uleb128 0x2b
-	.long	0x75e
+	.long	0x81b
 	.byte	0x4
 	.long	0x4af42400
 	.uleb128 0x2c
-	.long	0x769
+	.long	0x826
 	.long	0x7a1200
 	.byte	0
 	.byte	0
 	.uleb128 0x25
-	.long	.LVL24
-	.long	0xd58
+	.long	.LVL26
+	.long	0xe67
 	.uleb128 0x22
-	.long	.LVL25
-	.long	0xd6f
-	.long	0xa0e
+	.long	.LVL27
+	.long	0xe7e
+	.long	0xafc
 	.uleb128 0x23
 	.byte	0x1
 	.byte	0x68
@@ -1977,9 +2157,9 @@ roomba_velocity:
 	.byte	0x31
 	.byte	0
 	.uleb128 0x22
-	.long	.LVL26
-	.long	0xd90
-	.long	0xa26
+	.long	.LVL28
+	.long	0xe9f
+	.long	0xb14
 	.uleb128 0x23
 	.byte	0x1
 	.byte	0x68
@@ -1992,63 +2172,42 @@ roomba_velocity:
 	.byte	0x33
 	.byte	0
 	.uleb128 0x25
-	.long	.LVL27
-	.long	0xdac
-	.uleb128 0x25
-	.long	.LVL28
-	.long	0xdba
-	.uleb128 0x2d
 	.long	.LVL29
+	.long	0xebb
+	.uleb128 0x25
+	.long	.LVL30
+	.long	0xec9
+	.uleb128 0x2d
+	.long	.LVL31
 	.byte	0x1
-	.long	0xdc7
+	.long	0xed6
 	.byte	0
 	.uleb128 0x2e
-	.long	0x774
+	.long	0x831
 	.byte	0
-	.long	0xa53
+	.long	0xb41
 	.uleb128 0x1c
 	.long	0x83
 	.byte	0
-	.uleb128 0x26
-	.byte	0x1
-	.long	.LASF162
-	.byte	0x1
-	.byte	0xe4
-	.long	.LASF163
-	.long	.LFB99
-	.long	.LFE99
-	.byte	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.byte	0x1
-	.long	0xa83
-	.uleb128 0x25
-	.long	.LVL30
-	.long	0xdd4
-	.uleb128 0x25
-	.long	.LVL31
-	.long	0xd24
-	.byte	0
 	.uleb128 0x2f
 	.byte	0x1
-	.long	.LASF212
+	.long	.LASF228
 	.byte	0x1
-	.byte	0xf2
-	.long	.LASF213
+	.word	0x100
+	.long	.LASF229
 	.long	0x58
 	.long	.LFB100
 	.long	.LFE100
 	.long	.LLST6
 	.byte	0x1
-	.long	0xb15
+	.long	0xbfb
 	.uleb128 0x25
 	.long	.LVL32
-	.long	0x95e
+	.long	0xa4c
 	.uleb128 0x22
 	.long	.LVL33
-	.long	0xdeb
-	.long	0xad3
+	.long	0xee3
+	.long	0xb92
 	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
@@ -2071,9 +2230,10 @@ roomba_velocity:
 	.byte	0x1
 	.byte	0x30
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x22
 	.long	.LVL34
-	.long	0xe08
+	.long	0xf00
+	.long	0xbb8
 	.uleb128 0x23
 	.byte	0x6
 	.byte	0x68
@@ -2095,6 +2255,31 @@ roomba_velocity:
 	.uleb128 0x1
 	.byte	0x1
 	.byte	0x30
+	.byte	0
+	.uleb128 0x24
+	.long	.LVL35
+	.long	0xf1d
+	.uleb128 0x23
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5
+	.byte	0x3
+	.long	_Z15send_IR_Commandv
+	.uleb128 0x23
+	.byte	0x6
+	.byte	0x66
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x67
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x30
 	.uleb128 0x23
 	.byte	0x6
 	.byte	0x64
@@ -2103,8 +2288,9 @@ roomba_velocity:
 	.byte	0x65
 	.byte	0x93
 	.uleb128 0x1
-	.byte	0x1
-	.byte	0x3a
+	.byte	0x2
+	.byte	0x8
+	.byte	0x64
 	.uleb128 0x23
 	.byte	0x6
 	.byte	0x62
@@ -2132,90 +2318,90 @@ roomba_velocity:
 	.string	"SS"
 	.byte	0xb
 	.byte	0x28
-	.long	0xb20
+	.long	0xc06
 	.byte	0xa
 	.uleb128 0x31
 	.long	0x3b
 	.uleb128 0x32
-	.long	.LASF164
+	.long	.LASF178
 	.byte	0xb
 	.byte	0x29
-	.long	0xb20
+	.long	0xc06
 	.byte	0xb
 	.uleb128 0x32
-	.long	.LASF165
+	.long	.LASF179
 	.byte	0xb
 	.byte	0x2a
-	.long	0xb20
+	.long	0xc06
 	.byte	0xc
 	.uleb128 0x30
 	.string	"SCK"
 	.byte	0xb
 	.byte	0x2b
-	.long	0xb20
+	.long	0xc06
 	.byte	0xd
 	.uleb128 0x30
 	.string	"SDA"
 	.byte	0xb
 	.byte	0x2d
-	.long	0xb20
+	.long	0xc06
 	.byte	0x12
 	.uleb128 0x30
 	.string	"SCL"
 	.byte	0xb
 	.byte	0x2e
-	.long	0xb20
+	.long	0xc06
 	.byte	0x13
 	.uleb128 0x30
 	.string	"A0"
 	.byte	0xb
 	.byte	0x31
-	.long	0xb20
+	.long	0xc06
 	.byte	0xe
 	.uleb128 0x30
 	.string	"A1"
 	.byte	0xb
 	.byte	0x32
-	.long	0xb20
+	.long	0xc06
 	.byte	0xf
 	.uleb128 0x30
 	.string	"A2"
 	.byte	0xb
 	.byte	0x33
-	.long	0xb20
+	.long	0xc06
 	.byte	0x10
 	.uleb128 0x30
 	.string	"A3"
 	.byte	0xb
 	.byte	0x34
-	.long	0xb20
+	.long	0xc06
 	.byte	0x11
 	.uleb128 0x30
 	.string	"A4"
 	.byte	0xb
 	.byte	0x35
-	.long	0xb20
+	.long	0xc06
 	.byte	0x12
 	.uleb128 0x30
 	.string	"A5"
 	.byte	0xb
 	.byte	0x36
-	.long	0xb20
+	.long	0xc06
 	.byte	0x13
 	.uleb128 0x30
 	.string	"A6"
 	.byte	0xb
 	.byte	0x37
-	.long	0xb20
+	.long	0xc06
 	.byte	0x14
 	.uleb128 0x30
 	.string	"A7"
 	.byte	0xb
 	.byte	0x38
-	.long	0xb20
+	.long	0xc06
 	.byte	0x15
 	.uleb128 0x33
-	.long	.LASF166
+	.long	.LASF180
 	.byte	0x6
 	.byte	0x30
 	.long	0x35c
@@ -2223,28 +2409,28 @@ roomba_velocity:
 	.byte	0x1
 	.uleb128 0xd
 	.long	0x46
-	.long	0xbd7
+	.long	0xcbd
 	.uleb128 0x34
 	.uleb128 0xe
 	.long	0x20f
 	.byte	0x4
 	.byte	0
 	.uleb128 0x33
-	.long	.LASF167
+	.long	.LASF181
 	.byte	0x6
 	.byte	0x31
-	.long	0xbc6
+	.long	0xcac
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x33
-	.long	.LASF168
+	.long	.LASF182
 	.byte	0x6
 	.byte	0x33
 	.long	0x3b
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x35
-	.long	.LASF169
+	.long	.LASF183
 	.byte	0x1
 	.byte	0x15
 	.long	0x4d
@@ -2253,7 +2439,7 @@ roomba_velocity:
 	.byte	0x3
 	.long	roomba_velocity
 	.uleb128 0x35
-	.long	.LASF170
+	.long	.LASF184
 	.byte	0x1
 	.byte	0x16
 	.long	0x4d
@@ -2262,10 +2448,10 @@ roomba_velocity:
 	.byte	0x3
 	.long	roomba_rotation
 	.uleb128 0x35
-	.long	.LASF171
+	.long	.LASF185
 	.byte	0x1
 	.byte	0x1c
-	.long	0xc27
+	.long	0xd0d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -2283,7 +2469,7 @@ roomba_velocity:
 	.byte	0x3
 	.long	roomba_state
 	.uleb128 0x35
-	.long	.LASF172
+	.long	.LASF186
 	.byte	0x1
 	.byte	0x1e
 	.long	0x291
@@ -2292,18 +2478,27 @@ roomba_velocity:
 	.byte	0x3
 	.long	roomba_identity
 	.uleb128 0x35
-	.long	.LASF173
+	.long	.LASF187
 	.byte	0x1
 	.byte	0x20
-	.long	0x70a
+	.long	0x7c0
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.long	roomba_sensor_packet
+	.long	roomba_bumper_sensor_packet
 	.uleb128 0x35
-	.long	.LASF174
+	.long	.LASF188
 	.byte	0x1
-	.byte	0x22
+	.byte	0x21
+	.long	0x7c0
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.long	roomba_light_sensor_packet
+	.uleb128 0x35
+	.long	.LASF189
+	.byte	0x1
+	.byte	0x23
 	.long	0x2d5
 	.byte	0x1
 	.byte	0x5
@@ -2311,15 +2506,15 @@ roomba_velocity:
 	.long	current_game_state
 	.uleb128 0x36
 	.byte	0x1
-	.long	.LASF175
+	.long	.LASF190
 	.byte	0x8
 	.byte	0x8b
-	.long	.LASF177
+	.long	.LASF192
 	.long	0x502
 	.byte	0x1
-	.long	0xc95
+	.long	0xd8d
 	.uleb128 0x1c
-	.long	0xc95
+	.long	0xd8d
 	.uleb128 0x1c
 	.long	0x526
 	.byte	0
@@ -2328,63 +2523,63 @@ roomba_velocity:
 	.long	0x412
 	.uleb128 0x36
 	.byte	0x1
-	.long	.LASF176
+	.long	.LASF191
 	.byte	0x8
 	.byte	0x93
-	.long	.LASF178
+	.long	.LASF193
 	.long	0x4de
 	.byte	0x1
-	.long	0xcb6
+	.long	0xdae
 	.uleb128 0x1c
-	.long	0xc95
+	.long	0xd8d
 	.byte	0
 	.uleb128 0x37
 	.byte	0x1
-	.long	.LASF179
+	.long	.LASF194
 	.byte	0x8
 	.byte	0x7c
-	.long	.LASF181
+	.long	.LASF196
 	.byte	0x1
-	.long	0xccd
+	.long	0xdc5
 	.uleb128 0x1c
 	.long	0x21b
 	.byte	0
 	.uleb128 0x38
 	.byte	0x1
-	.long	.LASF185
+	.long	.LASF202
 	.byte	0x4
 	.word	0x148
 	.byte	0x1
-	.long	0xce6
+	.long	0xdde
 	.uleb128 0x1c
-	.long	0xc27
+	.long	0xd0d
 	.uleb128 0x1c
 	.long	0x247
 	.byte	0
 	.uleb128 0x37
 	.byte	0x1
-	.long	.LASF180
+	.long	.LASF195
 	.byte	0xa
-	.byte	0x28
-	.long	.LASF182
+	.byte	0x29
+	.long	.LASF197
 	.byte	0x1
-	.long	0xd02
+	.long	0xdfa
 	.uleb128 0x1c
-	.long	0x734
+	.long	0x7f1
 	.uleb128 0x1c
-	.long	0xd02
+	.long	0xdfa
 	.byte	0
 	.uleb128 0x7
 	.byte	0x2
-	.long	0x70a
+	.long	0x7c0
 	.uleb128 0x37
 	.byte	0x1
-	.long	.LASF183
+	.long	.LASF198
 	.byte	0xa
-	.byte	0x34
-	.long	.LASF184
+	.byte	0x35
+	.long	.LASF199
 	.byte	0x1
-	.long	0xd24
+	.long	0xe1c
 	.uleb128 0x1c
 	.long	0x4d
 	.uleb128 0x1c
@@ -2392,49 +2587,60 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x39
 	.byte	0x1
-	.long	.LASF214
+	.long	.LASF230
 	.byte	0x4
 	.word	0x12e
 	.byte	0x1
+	.uleb128 0x37
+	.byte	0x1
+	.long	.LASF200
+	.byte	0xc
+	.byte	0x11
+	.long	.LASF201
+	.byte	0x1
+	.long	0xe3d
+	.uleb128 0x1c
+	.long	0x3b
+	.byte	0
 	.uleb128 0x3a
 	.byte	0x1
-	.long	.LASF215
+	.long	.LASF231
 	.byte	0xc
 	.byte	0x13
-	.long	.LASF216
+	.long	.LASF232
 	.long	0x3b
 	.byte	0x1
 	.uleb128 0x38
 	.byte	0x1
-	.long	.LASF186
+	.long	.LASF203
 	.byte	0x4
 	.word	0x152
 	.byte	0x1
-	.long	0xd58
+	.long	0xe67
 	.uleb128 0x1c
-	.long	0xc27
+	.long	0xd0d
 	.uleb128 0x1c
 	.long	0x4d
 	.byte	0
 	.uleb128 0x37
 	.byte	0x1
-	.long	.LASF187
+	.long	.LASF204
 	.byte	0x8
 	.byte	0x4f
-	.long	.LASF188
+	.long	.LASF205
 	.byte	0x1
-	.long	0xd6f
+	.long	0xe7e
 	.uleb128 0x1c
 	.long	0x3b
 	.byte	0
 	.uleb128 0x37
 	.byte	0x1
-	.long	.LASF189
+	.long	.LASF206
 	.byte	0x8
 	.byte	0x6f
-	.long	.LASF190
+	.long	.LASF207
 	.byte	0x1
-	.long	0xd90
+	.long	0xe9f
 	.uleb128 0x1c
 	.long	0x454
 	.uleb128 0x1c
@@ -2444,12 +2650,12 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x37
 	.byte	0x1
-	.long	.LASF191
+	.long	.LASF208
 	.byte	0x8
 	.byte	0x76
-	.long	.LASF192
+	.long	.LASF209
 	.byte	0x1
-	.long	0xdac
+	.long	0xebb
 	.uleb128 0x1c
 	.long	0x4a8
 	.uleb128 0x1c
@@ -2457,44 +2663,46 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x3b
 	.byte	0x1
-	.long	.LASF193
+	.long	.LASF210
 	.byte	0x4
 	.word	0x13e
-	.long	0xc27
+	.long	0xd0d
 	.byte	0x1
 	.uleb128 0x3c
 	.byte	0x1
-	.long	.LASF194
+	.long	.LASF211
 	.byte	0xa
-	.byte	0x1b
-	.long	.LASF196
+	.byte	0x1c
+	.long	.LASF213
 	.byte	0x1
 	.uleb128 0x3c
 	.byte	0x1
-	.long	.LASF195
+	.long	.LASF212
 	.byte	0xc
 	.byte	0x12
-	.long	.LASF197
+	.long	.LASF214
 	.byte	0x1
-	.uleb128 0x37
-	.byte	0x1
-	.long	.LASF198
-	.byte	0xc
-	.byte	0x11
-	.long	.LASF199
-	.byte	0x1
-	.long	0xdeb
-	.uleb128 0x1c
-	.long	0x3b
-	.byte	0
 	.uleb128 0x3d
 	.byte	0x1
-	.long	.LASF200
+	.long	.LASF215
 	.byte	0x4
 	.word	0x110
 	.long	0x29
 	.byte	0x1
-	.long	0xe08
+	.long	0xf00
+	.uleb128 0x1c
+	.long	0xfd
+	.uleb128 0x1c
+	.long	0x4d
+	.byte	0
+	.uleb128 0x3d
+	.byte	0x1
+	.long	.LASF216
+	.byte	0x4
+	.word	0x111
+	.long	0x29
+	.byte	0x1
+	.long	0xf1d
 	.uleb128 0x1c
 	.long	0xfd
 	.uleb128 0x1c
@@ -2502,7 +2710,7 @@ roomba_velocity:
 	.byte	0
 	.uleb128 0x3e
 	.byte	0x1
-	.long	.LASF201
+	.long	.LASF217
 	.byte	0x4
 	.word	0x123
 	.long	0x29
@@ -3121,7 +3329,7 @@ roomba_velocity:
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
-	.uleb128 0xb
+	.uleb128 0x5
 	.uleb128 0x2007
 	.uleb128 0xe
 	.uleb128 0x49
@@ -3450,26 +3658,26 @@ roomba_velocity:
 	.long	0
 	.long	0
 .LLST4:
-	.long	.LVL15
-	.long	.LVL16
-	.word	0x1
-	.byte	0x68
 	.long	.LVL17
 	.long	.LVL18
+	.word	0x1
+	.byte	0x68
+	.long	.LVL19
+	.long	.LVL20
 	.word	0x1
 	.byte	0x68
 	.long	0
 	.long	0
 .LLST5:
-	.long	.LVL19
-	.long	.LVL20
+	.long	.LVL21
+	.long	.LVL22
 	.word	0x1
 	.byte	0x68
-	.long	.LVL20
-	.long	.LVL21-1
+	.long	.LVL22
+	.long	.LVL23-1
 	.word	0x1
 	.byte	0x66
-	.long	.LVL21-1
+	.long	.LVL23-1
 	.long	.LFE95
 	.word	0x4
 	.byte	0xf3
@@ -3511,14 +3719,14 @@ roomba_velocity:
 	.long	.LFE96-.LFB96
 	.long	.LFB98
 	.long	.LFE98-.LFB98
+	.long	.LFB99
+	.long	.LFE99-.LFB99
 	.long	.LFB94
 	.long	.LFE94-.LFB94
 	.long	.LFB95
 	.long	.LFE95-.LFB95
 	.long	.LFB97
 	.long	.LFE97-.LFB97
-	.long	.LFB99
-	.long	.LFE99-.LFB99
 	.long	.LFB100
 	.long	.LFE100-.LFB100
 	.long	0
@@ -3535,14 +3743,14 @@ roomba_velocity:
 	.long	.LFE96
 	.long	.LFB98
 	.long	.LFE98
+	.long	.LFB99
+	.long	.LFE99
 	.long	.LFB94
 	.long	.LFE94
 	.long	.LFB95
 	.long	.LFE95
 	.long	.LFB97
 	.long	.LFE97
-	.long	.LFB99
-	.long	.LFE99
 	.long	.LFB100
 	.long	.LFE100
 	.long	0
@@ -3550,31 +3758,35 @@ roomba_velocity:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF190:
+.LASF145:
+	.string	"right_front_light_bumber_signal"
+.LASF207:
 	.string	"_Z18Radio_Configure_Rx11_radio_pipePh3_ed"
-.LASF150:
+.LASF164:
 	.string	"pk_roomba_state"
 .LASF82:
 	.string	"RADIO_LOWEST_POWER"
 .LASF42:
 	.string	"_cops_and_robbers"
+.LASF187:
+	.string	"roomba_bumper_sensor_packet"
 .LASF135:
 	.string	"temperature"
 .LASF67:
 	.string	"payloadformat_t"
-.LASF193:
+.LASF210:
 	.string	"Service_Init"
 .LASF41:
 	.string	"_game_state"
 .LASF87:
 	.string	"_radio_dr"
-.LASF183:
+.LASF198:
 	.string	"Roomba_Drive"
-.LASF168:
+.LASF182:
 	.string	"BASE_FREQUENCY"
 .LASF38:
 	.string	"GAME_STARTING"
-.LASF160:
+.LASF176:
 	.string	"radio_rxhandler"
 .LASF128:
 	.string	"remote_opcode"
@@ -3582,17 +3794,17 @@ roomba_velocity:
 	.string	"unsigned int"
 .LASF35:
 	.string	"next"
-.LASF146:
+.LASF160:
 	.string	"__ticks_dc"
-.LASF166:
+.LASF180:
 	.string	"BASE_ADDRESS"
 .LASF55:
 	.string	"pf_roombastate_t"
-.LASF169:
+.LASF183:
 	.string	"roomba_velocity"
-.LASF159:
+.LASF175:
 	.string	"ir_value"
-.LASF138:
+.LASF151:
 	.string	"roomba_sensor_data_t"
 .LASF133:
 	.string	"voltage"
@@ -3600,9 +3812,9 @@ roomba_velocity:
 	.string	"level"
 .LASF48:
 	.string	"_gs_pkt"
-.LASF167:
+.LASF181:
 	.string	"ROOMBA_ADDRESSES"
-.LASF199:
+.LASF201:
 	.string	"_Z11IR_transmith"
 .LASF31:
 	.string	"wcet"
@@ -3610,13 +3822,13 @@ roomba_velocity:
 	.string	"tasks"
 .LASF81:
 	.string	"_radio_tx_power"
-.LASF192:
+.LASF209:
 	.string	"_Z15Radio_Configure9_radio_dr15_radio_tx_power"
 .LASF62:
 	.string	"pf_message_t"
 .LASF36:
 	.string	"prev"
-.LASF200:
+.LASF215:
 	.string	"Task_Create_System"
 .LASF65:
 	.string	"roombastate"
@@ -3626,7 +3838,7 @@ roomba_velocity:
 	.string	"_roomba_pkt"
 .LASF71:
 	.string	"radiopacket_t"
-.LASF214:
+.LASF230:
 	.string	"Task_Next"
 .LASF92:
 	.string	"RADIO_RX_INVALID_ARGS"
@@ -3634,23 +3846,23 @@ roomba_velocity:
 	.string	"uint32_t"
 .LASF0:
 	.string	"int8_t"
-.LASF213:
+.LASF229:
 	.string	"_Z6r_mainv"
-.LASF140:
+.LASF153:
 	.string	"EXTERNAL_ROOMBA"
 .LASF57:
 	.string	"ROOMBASTATE_PACKET"
-.LASF207:
+.LASF223:
 	.string	"_delay_ms"
 .LASF66:
 	.string	"message"
 .LASF13:
 	.string	"float"
-.LASF209:
+.LASF225:
 	.string	"__builtin_avr_delay_cycles"
 .LASF136:
 	.string	"charge"
-.LASF211:
+.LASF227:
 	.string	"setup"
 .LASF102:
 	.string	"_radio_tx_wait"
@@ -3658,27 +3870,29 @@ roomba_velocity:
 	.string	"int16_t"
 .LASF115:
 	.string	"int16_u"
-.LASF139:
+.LASF152:
 	.string	"_rsg"
 .LASF89:
 	.string	"RADIO_2MBPS"
 .LASF11:
 	.string	"long long unsigned int"
-.LASF158:
+.LASF142:
+	.string	"left_front_light_bumber_signal"
+.LASF174:
 	.string	"_Z12ir_rxhandlerv"
 .LASF137:
 	.string	"capacity"
 .LASF59:
 	.string	"_msg"
-.LASF156:
+.LASF170:
 	.string	"_Z18Send_Drive_Commandv"
 .LASF51:
 	.string	"pf_gamestate_t"
-.LASF187:
+.LASF204:
 	.string	"Radio_Init"
 .LASF18:
 	.string	"value"
-.LASF175:
+.LASF190:
 	.string	"Radio_Transmit"
 .LASF19:
 	.string	"counter"
@@ -3694,37 +3908,39 @@ roomba_velocity:
 	.string	"RADIO_PIPE_5"
 .LASF26:
 	.string	"service"
-.LASF208:
-	.string	"__ms"
+.LASF140:
+	.string	"light_bumber"
 .LASF70:
 	.string	"payload"
 .LASF17:
 	.string	"valueLocations"
-.LASF153:
+.LASF167:
 	.string	"send_recieve_radio"
 .LASF127:
 	.string	"dirt_right"
 .LASF61:
 	.string	"messagecontent"
-.LASF179:
-	.string	"Radio_Set_Tx_Addr"
+.LASF144:
+	.string	"right_center_light_bumber_signal"
 .LASF194:
+	.string	"Radio_Set_Tx_Addr"
+.LASF211:
 	.string	"Roomba_Init"
-.LASF191:
+.LASF208:
 	.string	"Radio_Configure"
 .LASF105:
 	.string	"RADIO_TX_WAIT"
 .LASF114:
 	.string	"bytes"
-.LASF188:
+.LASF205:
 	.string	"_Z10Radio_Inith"
-.LASF170:
+.LASF184:
 	.string	"roomba_rotation"
 .LASF24:
 	.string	"task_state_t"
-.LASF196:
+.LASF213:
 	.string	"_Z11Roomba_Initv"
-.LASF163:
+.LASF172:
 	.string	"_Z15send_IR_Commandv"
 .LASF79:
 	.string	"RADIO_PIPE_EMPTY"
@@ -3740,33 +3956,39 @@ roomba_velocity:
 	.string	"char"
 .LASF98:
 	.string	"_radio_transmit"
-.LASF148:
+.LASF162:
 	.string	"radio_status"
 .LASF106:
 	.string	"DISABLE"
-.LASF185:
+.LASF147:
+	.string	"left_motor_current"
+.LASF202:
 	.string	"Service_Subscribe"
 .LASF116:
 	.string	"_u16u"
-.LASF189:
+.LASF206:
 	.string	"Radio_Configure_Rx"
-.LASF205:
+.LASF221:
 	.string	"12task_state_t"
-.LASF155:
+.LASF169:
 	.string	"_Z18send_recieve_radiov"
 .LASF76:
 	.string	"RADIO_PIPE_3"
-.LASF210:
+.LASF226:
 	.string	"pipe_number"
 .LASF1:
 	.string	"uint8_t"
-.LASF197:
+.LASF214:
 	.string	"_Z7IR_initv"
 .LASF95:
 	.string	"RADIO_RX_MORE_PACKETS"
+.LASF139:
+	.string	"right_encoder_counts"
+.LASF224:
+	.string	"__ms"
 .LASF123:
 	.string	"cliff_right"
-.LASF165:
+.LASF179:
 	.string	"MISO"
 .LASF63:
 	.string	"_filler"
@@ -3786,7 +4008,7 @@ roomba_velocity:
 	.string	"RADIO_TX_STATUS"
 .LASF22:
 	.string	"READY"
-.LASF144:
+.LASF158:
 	.string	"bool"
 .LASF93:
 	.string	"RADIO_RX_TRANSMITTING"
@@ -3798,37 +4020,45 @@ roomba_velocity:
 	.string	"GAMESTATE_PACKET"
 .LASF29:
 	.string	"remaining_wcet"
-.LASF186:
+.LASF203:
 	.string	"Service_Publish"
-.LASF161:
+.LASF177:
 	.string	"_Z15radio_rxhandlerh"
-.LASF184:
+.LASF150:
+	.string	"side_brush_motor_current"
+.LASF199:
 	.string	"_Z12Roomba_Driveii"
-.LASF173:
-	.string	"roomba_sensor_packet"
-.LASF198:
+.LASF200:
 	.string	"IR_transmit"
 .LASF88:
 	.string	"RADIO_1MBPS"
-.LASF203:
+.LASF219:
 	.string	".././project2.cpp"
-.LASF181:
+.LASF196:
 	.string	"_Z17Radio_Set_Tx_AddrPh"
 .LASF21:
 	.string	"RUNNING"
+.LASF143:
+	.string	"left_center_light_bumber_signal"
+.LASF138:
+	.string	"left_encoder_counts"
 .LASF27:
 	.string	"td_struct"
 .LASF5:
 	.string	"uint16_t"
 .LASF117:
 	.string	"uint16_u"
+.LASF188:
+	.string	"roomba_light_sensor_packet"
+.LASF156:
+	.string	"LIGHT_SENSOR"
 .LASF131:
 	.string	"angle"
-.LASF154:
+.LASF168:
 	.string	"Send_Drive_Command"
-.LASF143:
+.LASF157:
 	.string	"ROOMBA_SENSOR_GROUP"
-.LASF172:
+.LASF186:
 	.string	"roomba_identity"
 .LASF100:
 	.string	"RADIO_TX_SUCCESS"
@@ -3842,34 +4072,38 @@ roomba_velocity:
 	.string	"long int"
 .LASF73:
 	.string	"RADIO_PIPE_0"
-.LASF141:
+.LASF154:
 	.string	"CHASSIS"
 .LASF130:
 	.string	"distance"
 .LASF110:
 	.string	"low_byte"
-.LASF147:
+.LASF161:
 	.string	"radio_status_send"
 .LASF132:
 	.string	"charging_state"
+.LASF141:
+	.string	"left_light_bumber_signal"
 .LASF64:
 	.string	"gamestate"
-.LASF174:
+.LASF189:
 	.string	"current_game_state"
-.LASF212:
+.LASF228:
 	.string	"r_main"
-.LASF180:
+.LASF195:
 	.string	"Roomba_UpdateSensorPacket"
-.LASF157:
+.LASF173:
 	.string	"ir_rxhandler"
 .LASF32:
 	.string	"start"
 .LASF28:
 	.string	"stack"
-.LASF149:
+.LASF163:
 	.string	"radio_packet"
 .LASF126:
 	.string	"dirt_left"
+.LASF216:
+	.string	"Task_Create_RR"
 .LASF96:
 	.string	"RADIO_RX_SUCCESS"
 .LASF94:
@@ -3886,11 +4120,13 @@ roomba_velocity:
 	.string	"address"
 .LASF54:
 	.string	"roomba_state"
-.LASF202:
+.LASF218:
 	.string	"GNU C++ 4.8.1 -fpreprocessed -mrelax -mmcu=atmega2560 -g2 -Os -ansi -funsigned-char -funsigned-bitfields -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-rtti -fno-enforce-eh-specs -fno-exceptions"
-.LASF177:
+.LASF146:
+	.string	"right_light_bumber_signal"
+.LASF192:
 	.string	"_Z14Radio_TransmitP3_rp14_radio_tx_wait"
-.LASF216:
+.LASF232:
 	.string	"_Z10IR_getLastv"
 .LASF103:
 	.string	"RADIO_WAIT_FOR_TX"
@@ -3900,11 +4136,11 @@ roomba_velocity:
 	.string	"unsigned char"
 .LASF47:
 	.string	"COPS_AND_ROBBERS"
-.LASF201:
+.LASF217:
 	.string	"Task_Create_Periodic"
 .LASF124:
 	.string	"virtual_wall"
-.LASF164:
+.LASF178:
 	.string	"MOSI"
 .LASF134:
 	.string	"current"
@@ -3914,9 +4150,9 @@ roomba_velocity:
 	.string	"COP2"
 .LASF112:
 	.string	"int16_split"
-.LASF182:
+.LASF197:
 	.string	"_Z25Roomba_UpdateSensorPacket4_rsgP20roomba_sensor_data_t"
-.LASF195:
+.LASF212:
 	.string	"IR_init"
 .LASF33:
 	.string	"state"
@@ -3924,7 +4160,7 @@ roomba_velocity:
 	.string	"game_state"
 .LASF80:
 	.string	"RADIO_PIPE"
-.LASF171:
+.LASF185:
 	.string	"radio_send_receive_service"
 .LASF69:
 	.string	"timestamp"
@@ -3938,6 +4174,8 @@ roomba_velocity:
 	.string	"ROBBER2"
 .LASF90:
 	.string	"RADIO_DATA_RATE"
+.LASF148:
+	.string	"right_motor_current"
 .LASF72:
 	.string	"_radio_pipe"
 .LASF2:
@@ -3946,23 +4184,23 @@ roomba_velocity:
 	.string	"period"
 .LASF104:
 	.string	"RADIO_RETURN_ON_TX"
-.LASF206:
+.LASF222:
 	.string	"20roomba_sensor_data_t"
-.LASF142:
+.LASF155:
 	.string	"INTERNAL"
 .LASF108:
 	.string	"ON_OFF"
-.LASF145:
+.LASF159:
 	.string	"__tmp"
 .LASF121:
 	.string	"cliff_front_left"
-.LASF204:
+.LASF220:
 	.string	"C:\\\\Users\\\\Mikko\\\\Documents\\\\CSC460\\\\Project\\\\csc460-RTOS\\\\project3\\\\project3\\\\project2\\\\Debug"
-.LASF151:
+.LASF165:
 	.string	"radio_receive_service_value"
 .LASF97:
 	.string	"RADIO_RX_STATUS"
-.LASF178:
+.LASF193:
 	.string	"_Z13Radio_ReceiveP3_rp"
 .LASF14:
 	.string	"double"
@@ -3970,20 +4208,22 @@ roomba_velocity:
 	.string	"_radio_receive"
 .LASF99:
 	.string	"RADIO_TX_MAX_RT"
-.LASF176:
+.LASF191:
 	.string	"Radio_Receive"
 .LASF122:
 	.string	"cliff_front_right"
-.LASF215:
+.LASF231:
 	.string	"IR_getLast"
 .LASF15:
 	.string	"SERVICE"
-.LASF152:
+.LASF166:
 	.string	"radio_roomba_state"
-.LASF162:
+.LASF171:
 	.string	"send_IR_Command"
 .LASF84:
 	.string	"RADIO_HIGH_POWER"
+.LASF149:
+	.string	"main_brush_motor_current"
 	.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.4.5_1522) 4.8.1"
 .global __do_copy_data
 .global __do_clear_bss

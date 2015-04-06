@@ -878,6 +878,21 @@ typedef struct
     int8_t temperature;
     uint16_u charge;
     uint16_u capacity;
+
+
+ uint16_u left_encoder_counts;
+ uint16_u right_encoder_counts;
+ uint8_t light_bumber;
+ uint16_u left_light_bumber_signal;
+ uint16_u left_front_light_bumber_signal;
+ uint16_u left_center_light_bumber_signal;
+ uint16_u right_center_light_bumber_signal;
+ uint16_u right_front_light_bumber_signal;
+ uint16_u right_light_bumber_signal;
+ int16_u left_motor_current;
+ int16_u right_motor_current;
+ int16_u main_brush_motor_current;
+ int16_u side_brush_motor_current;
 } roomba_sensor_data_t;
 # 13 "../roomba/roomba.h" 2
 
@@ -886,6 +901,7 @@ typedef enum _rsg
  EXTERNAL_ROOMBA=1,
  CHASSIS=2,
  INTERNAL=3,
+ LIGHT_SENSOR=101,
 } ROOMBA_SENSOR_GROUP;
 
 
@@ -895,9 +911,9 @@ typedef enum _rsg
 
 
 void Roomba_Init();
-# 40 "../roomba/roomba.h"
+# 41 "../roomba/roomba.h"
 void Roomba_UpdateSensorPacket(ROOMBA_SENSOR_GROUP group, roomba_sensor_data_t* sensor_packet);
-# 52 "../roomba/roomba.h"
+# 53 "../roomba/roomba.h"
 void Roomba_Drive( int16_t velocity, int16_t radius );
 # 11 "../roomba/roomba.cpp" 2
 # 1 "../roomba/roomba_sci.h" 1
@@ -1009,6 +1025,35 @@ void Roomba_UpdateSensorPacket(ROOMBA_SENSOR_GROUP group, roomba_sensor_data_t* 
   sensor_packet->charge.bytes.low_byte = uart_get_byte(7);
   sensor_packet->capacity.bytes.high_byte = uart_get_byte(8);
   sensor_packet->capacity.bytes.low_byte = uart_get_byte(9);
+  break;
+ case LIGHT_SENSOR:
+
+  while (uart_bytes_received() != 28);
+  sensor_packet->left_encoder_counts.bytes.high_byte = uart_get_byte(0);
+  sensor_packet->left_encoder_counts.bytes.low_byte = uart_get_byte(1);
+  sensor_packet->right_encoder_counts.bytes.high_byte = uart_get_byte(2);
+  sensor_packet->right_encoder_counts.bytes.low_byte = uart_get_byte(3);
+  sensor_packet->light_bumber = uart_get_byte(4);
+  sensor_packet->left_light_bumber_signal.bytes.high_byte = uart_get_byte(5);
+  sensor_packet->left_light_bumber_signal.bytes.low_byte = uart_get_byte(6);
+  sensor_packet->left_front_light_bumber_signal.bytes.high_byte = uart_get_byte(7);
+  sensor_packet->left_front_light_bumber_signal.bytes.low_byte = uart_get_byte(8);
+  sensor_packet->left_center_light_bumber_signal.bytes.high_byte = uart_get_byte(9);
+  sensor_packet->left_center_light_bumber_signal.bytes.low_byte = uart_get_byte(10);
+  sensor_packet->right_center_light_bumber_signal.bytes.high_byte = uart_get_byte(11);
+  sensor_packet->right_center_light_bumber_signal.bytes.low_byte = uart_get_byte(12);
+  sensor_packet->right_front_light_bumber_signal.bytes.high_byte = uart_get_byte(13);
+  sensor_packet->right_front_light_bumber_signal.bytes.low_byte = uart_get_byte(14);
+  sensor_packet->right_light_bumber_signal.bytes.high_byte = uart_get_byte(15);
+  sensor_packet->right_light_bumber_signal.bytes.low_byte = uart_get_byte(16);
+  sensor_packet->left_motor_current.bytes.high_byte = uart_get_byte(17);
+  sensor_packet->left_motor_current.bytes.low_byte = uart_get_byte(18);
+  sensor_packet->right_motor_current.bytes.high_byte = uart_get_byte(19);
+  sensor_packet->right_motor_current.bytes.low_byte = uart_get_byte(20);
+  sensor_packet->main_brush_motor_current.bytes.high_byte = uart_get_byte(21);
+  sensor_packet->main_brush_motor_current.bytes.low_byte = uart_get_byte(22);
+  sensor_packet->side_brush_motor_current.bytes.high_byte = uart_get_byte(23);
+  sensor_packet->side_brush_motor_current.bytes.low_byte = uart_get_byte(24);
   break;
  }
  uart_reset_receive();

@@ -16,6 +16,7 @@ typedef enum _rsg
 	EXTERNAL_ROOMBA=1,		// group 1 (bumper/wheeldrops, cliff sensors, virtual wall, motor overcurrents, dirt sensors)
 	CHASSIS=2,		// group 2 (remote, buttons, distance, angle)
 	INTERNAL=3,		// group 3 (charging state; battery voltage, current, charge and capacity; internal temperature)
+	LIGHT_SENSOR=101,
 } ROOMBA_SENSOR_GROUP;
 
 #define HIGH_BYTE(x) (x>>8)

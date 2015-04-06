@@ -2314,6 +2314,21 @@ typedef struct
     int8_t temperature;
     uint16_u charge;
     uint16_u capacity;
+
+
+ uint16_u left_encoder_counts;
+ uint16_u right_encoder_counts;
+ uint8_t light_bumber;
+ uint16_u left_light_bumber_signal;
+ uint16_u left_front_light_bumber_signal;
+ uint16_u left_center_light_bumber_signal;
+ uint16_u right_center_light_bumber_signal;
+ uint16_u right_front_light_bumber_signal;
+ uint16_u right_light_bumber_signal;
+ int16_u left_motor_current;
+ int16_u right_motor_current;
+ int16_u main_brush_motor_current;
+ int16_u side_brush_motor_current;
 } roomba_sensor_data_t;
 # 13 ".././roomba/roomba.h" 2
 
@@ -2322,6 +2337,7 @@ typedef enum _rsg
  EXTERNAL_ROOMBA=1,
  CHASSIS=2,
  INTERNAL=3,
+ LIGHT_SENSOR=101,
 } ROOMBA_SENSOR_GROUP;
 
 
@@ -2331,9 +2347,9 @@ typedef enum _rsg
 
 
 void Roomba_Init();
-# 40 ".././roomba/roomba.h"
+# 41 ".././roomba/roomba.h"
 void Roomba_UpdateSensorPacket(ROOMBA_SENSOR_GROUP group, roomba_sensor_data_t* sensor_packet);
-# 52 ".././roomba/roomba.h"
+# 53 ".././roomba/roomba.h"
 void Roomba_Drive( int16_t velocity, int16_t radius );
 # 13 ".././project2.cpp" 2
 # 1 ".././roomba/roomba_sci.h" 1
@@ -2389,7 +2405,8 @@ SERVICE* radio_send_receive_service;
 uint8_t roomba_state;
 COPS_AND_ROBBERS roomba_identity = COP1;
 
-roomba_sensor_data_t roomba_sensor_packet;
+roomba_sensor_data_t roomba_bumper_sensor_packet;
+roomba_sensor_data_t roomba_light_sensor_packet;
 
 pf_gamestate_t current_game_state;
 
@@ -2534,18 +2551,30 @@ void Send_Drive_Command(){
    case GAME_RUNNING:
 
     if((roomba_state & 1 << 0) == 0){
-      Roomba_UpdateSensorPacket(CHASSIS, &roomba_sensor_packet);
-      Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_sensor_packet);
 
-      if(roomba_sensor_packet.bumps_wheeldrops & 0x1)
+      Roomba_UpdateSensorPacket(EXTERNAL_ROOMBA, &roomba_bumper_sensor_packet);
+      Roomba_UpdateSensorPacket(LIGHT_SENSOR, &roomba_light_sensor_packet);
+
+      if(roomba_bumper_sensor_packet.bumps_wheeldrops & 0x1)
       {
        roomba_velocity = 100;
        roomba_rotation = 1;
-      } else if (roomba_sensor_packet.bumps_wheeldrops & 0x2)
+      } else if (roomba_bumper_sensor_packet.bumps_wheeldrops & 0x2)
       {
        roomba_velocity = 100;
        roomba_rotation = -1;
-      } else {
+      }
+
+      else if (roomba_light_sensor_packet.light_bumber & 0x1 || roomba_light_sensor_packet.light_bumber & 0x2 || roomba_light_sensor_packet.light_bumber & 0x3){
+       roomba_velocity = 240;
+       roomba_rotation = 100;
+      }
+
+      else if (roomba_light_sensor_packet.light_bumber & 0x6 || roomba_light_sensor_packet.light_bumber & 0x5 || roomba_light_sensor_packet.light_bumber & 0x4){
+       roomba_velocity = 240;
+       roomba_rotation = -100;
+      }
+      else {
        roomba_velocity = 240;
        roomba_rotation = 0;
       }
@@ -2568,6 +2597,7 @@ void Send_Drive_Command(){
      Roomba_Drive(roomba_velocity, roomba_rotation);
      Task_Next();
     }
+
     else{
      roomba_velocity = 0;
      roomba_rotation = 0;
@@ -2604,8 +2634,11 @@ int r_main(void)
 
  setup();
  Task_Create_System(send_recieve_radio, 0);
- Task_Create_Periodic(Send_Drive_Command,0,10,4,5);
 
+ Task_Create_RR(Send_Drive_Command, 0);
+
+
+ Task_Create_Periodic(send_IR_Command,0,100,4,5);
 
  return 1;
 }
